@@ -7,6 +7,24 @@ CREATE TABLE member (
 	cedit_num INT comment '信用分數'
 ) comment '會員資料';
 
+CREATE TABLE product (
+	product_id INT UNSIGNED PRIMARY KEY auto_increment comment '產品編號',
+	product_name VARCHAR(100) NOT NULL comment '產品名稱',
+	product_description VARCHAR(100) NOT NULL comment '產品說明',
+	product_price INT UNSIGNED NOT NULL comment '產品價格',
+	product_discount ENUM ('0.9', '0.85', '0.8') comment '產品特價',
+	product_discount_start_date DATE comment '產品折價開始日期',
+	product_discount_end_date DATE comment '產品折價開始日期',
+	product_number INT UNSIGNED NOT NULL comment '產品庫存'
+) comment '產品';
+
+CREATE TABLE count_records (
+	count_id INT UNSIGNED PRIMARY KEY comment '數量記數',
+	product_id INT UNSIGNED NOT NULL UNIQUE comment '商品編號',
+	count_num INT UNSIGNED NOT NULL comment '商品數量',
+	CONSTRAINT product_id FOREIGN KEY(product_id) REFERENCES product (product_id),
+) comment '數量紀錄';
+
 CREATE TABLE order (
 	order_id INT UNSIGNED PRIMARY KEY comment '訂單編號',
 	member_id INT UNSIGNED NOT NULL UNIQUE comment '會員編號',
@@ -23,7 +41,7 @@ CREATE TABLE order (
 	CONSTRAINT member_id FOREIGN KEY(member_id) REFERENCES member (member_id),
 	CONSTRAINT product_id FOREIGN KEY(product_id) REFERENCES product (product_id),
 	CONSTRAINT coupon_id FOREIGN KEY(coupon_id) REFERENCES coupon (coupon_id),
-	CONSTRAINT count_id FOREIGN KEY(count_id) REFERENCES count_record (count_id)
+	CONSTRAINT count_id FOREIGN KEY(count_id) REFERENCES count_records (count_id)
 ) comment '訂單';
 
 CREATE TABLE cart (
@@ -36,12 +54,6 @@ CREATE TABLE cart (
 	CONSTRAINT count_id FOREIGN KEY(count_id) REFERENCES count_record (count_id)
 ) COMMENT '購物車';
 
-CREATE TABLE count_records (
-	count_id INT UNSIGNED PRIMARY KEY comment '數量記數',
-	product_id INT UNSIGNED NOT NULL UNIQUE comment '商品編號',
-	count_num INT UNSIGNED NOT NULL comment '商品數量',
-	CONSTRAINT product_id FOREIGN KEY(product_id) REFERENCES product (product_id),
-) comment '數量紀錄';
 
 CREATE TABLE ad (
 	ad_id INT UNSIGNED PRIMARY KEY comment '廣告編號',
@@ -49,16 +61,6 @@ CREATE TABLE ad (
 	ad_img_id VARCHAR(100) comment '廣告圖片'
 ) comment '廣告';
 
-CREATE TABLE product (
-	product_id INT UNSIGNED PRIMARY KEY auto_increment comment '產品編號',
-	product_name VARCHAR(100) NOT NULL comment '產品名稱',
-	product_description VARCHAR(100) NOT NULL comment '產品說明',
-	product_price INT UNSIGNED NOT NULL comment '產品價格',
-	product_discount ENUM ('0.9', '0.85', '0.8') comment '產品特價',
-	product_discount_start_date DATE comment '產品折價開始日期',
-	product_discount_end_date DATE comment '產品折價開始日期',
-	product_number INT UNSIGNED NOT NULL comment '產品庫存'
-) comment '產品';
 
 CREATE TABLE customer_service (
 	cs_id INT UNSIGNED PRIMARY KEY auto_increment comment '客服人員編號',
