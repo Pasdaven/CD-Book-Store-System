@@ -1,3 +1,12 @@
+CREATE TABLE member (
+	id INT UNSIGNED PRIMARY KEY auto_increment comment '會員編號',
+	member_name VARCHAR(20) comment '會員名稱',
+	birthday DATE comment '生日',
+	phone_num INT UNSIGNED comment '手機號碼',
+	sex ENUM('Male', 'Female') comment '性別',
+	cedit_num INT comment '信用分數'
+) comment '會員資料';
+
 CREATE TABLE order (
 	order_id INT UNSIGNED PRIMARY KEY comment '訂單編號',
 	member_id INT UNSIGNED NOT NULL UNIQUE comment '會員編號',
@@ -40,55 +49,35 @@ CREATE TABLE ad (
 	ad_img_id VARCHAR(100) comment '廣告圖片'
 ) comment '廣告';
 
-CREATE TABLE member (
-  id INT UNSIGNED PRIMARY KEY auto_increment comment '會員編號',
-  member_name VARCHAR(20) comment '會員名稱',
-  birthday DATE comment '生日',
-  phone_num INT UNSIGNED comment '手機號碼',
-  sex ENUM('Male', 'Female') comment '性別',
-  cedit_num INT comment '信用分數'
-) comment '會員資料';
+CREATE TABLE product (
+	product_id INT UNSIGNED PRIMARY KEY auto_increment comment '產品編號',
+	product_name VARCHAR(100) NOT NULL comment '產品名稱',
+	product_description VARCHAR(100) NOT NULL comment '產品說明',
+	product_price INT UNSIGNED NOT NULL comment '產品價格',
+	product_discount ENUM ('0.9', '0.85', '0.8') comment '產品特價',
+	product_discount_start_date DATE comment '產品折價開始日期',
+	product_discount_end_date DATE comment '產品折價開始日期',
+	product_number INT UNSIGNED NOT NULL comment '產品庫存'
+) comment '產品';
 
-CREATE TABLE member_account (
-  
-)
+CREATE TABLE customer_service (
+	cs_id INT UNSIGNED PRIMARY KEY auto_increment comment '客服人員編號',
+	cs_name VARCHAR(100) NOT NULL comment '客服人員姓名'
+) comment '客服人員';
 
-CREATE TABLE product {
-  product_id INT UNSIGNED PRIMARY KEY auto_increment comment '產品編號',
-  product_name VARCHAR(100) NOT NULL comment '產品名稱',
-  product_description VARCHAR(100) NOT NULL comment '產品說明',
-  product_price INT UNSIGNED NOT NULL comment '產品價格',
-  product_discount ENUM ('0.9', '0.85', '0.8') comment '產品特價',
-  product_discount_start_date DATE comment '產品折價開始日期',
-  product_discount_end_date DATE comment '產品折價開始日期',
-  product_number INT UNSIGNED NOT NULL comment '產品庫存'
-} comment '產品';
+CREATE TABLE cs_record (
+	cs_record_id INT UNSIGNED PRIMARY KEY auto_increment comment '客服紀錄編號',
+	member_id INT UNSIGNED comment '會員編號',
+	FOREIGN KEY (member_id) REFERENCES member(member_id)
+) comment '客服紀錄';
 
-CREATE TABLE customer_service {
-  cs_id INT UNSIGNED PRIMARY KEY auto_increment comment '客服人員編號',
-  cs_name VARCHAR(100) NOT NULL comment '客服人員姓名'
-} comment '客服人員';
-
-CREATE TABLE cs_record {
-  cs_record_id INT UNSIGNED PRIMARY KEY auto_increment comment '客服紀錄編號',
-  member_id INT UNSIGNED comment '會員編號',
-  FOREIGN KEY (member_id) REFERENCES member(member_id)
-} comment '客服紀錄';
-
-CREATE TABLE cs_message {
-  cs_record_id INT UNSIGNED '客服紀錄編號',
-  message_id INT UNSIGNED auto_increment comment '訊息記錄編號',
-  msg_content VARCHAR(100) NOT NULL comment '訊息內容',
-  msg_by ENUM ('cs', 'member') NOT NULL comment '訊息建立者',
-  create_time DATETIME NOT NULL comment '訊息時間'
-} comment '客服訊息';
-	member_id INT UNSIGNED PRIMARY KEY auto_increment comment '會員編號',
-	member_name VARCHAR(20) comment '會員名稱',
-	birthday DATE comment '生日',
-	phone_num INT UNSIGNED comment '手機號碼',
-	sex ENUM('Male', 'Female') comment '性別',
-	cedit_num INT comment '信用分數'
-) comment '會員資料';
+CREATE TABLE cs_message (
+	cs_record_id INT UNSIGNED '客服紀錄編號',
+	message_id INT UNSIGNED auto_increment comment '訊息記錄編號',
+	msg_content VARCHAR(100) NOT NULL comment '訊息內容',
+	msg_by ENUM ('cs', 'member') NOT NULL comment '訊息建立者',
+	create_time DATETIME NOT NULL comment '訊息時間'
+) comment '客服訊息';
 
 CREATE TABLE member_account (
 	member_id INT UNSIGNED NOT NULL comment '會員編號',
