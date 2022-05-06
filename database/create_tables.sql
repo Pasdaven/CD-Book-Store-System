@@ -8,15 +8,22 @@ CREATE TABLE member (
 ) comment '會員資料';
 
 CREATE TABLE product (
-	product_id INT UNSIGNED PRIMARY KEY auto_increment comment '產品編號',
-	product_name VARCHAR(100) NOT NULL comment '產品名稱',
-	product_description VARCHAR(100) NOT NULL comment '產品說明',
-	product_price INT UNSIGNED NOT NULL comment '產品價格',
-	product_discount ENUM ('0.9', '0.85', '0.8') comment '產品特價',
-	product_discount_start_date DATE comment '產品折價開始日期',
-	product_discount_end_date DATE comment '產品折價開始日期',
-	product_number INT UNSIGNED NOT NULL comment '產品庫存'
-) comment '產品';
+	product_id INT UNSIGNED PRIMARY KEY auto_increment comment '商品編號',
+	product_name VARCHAR(100) NOT NULL comment '商品名稱',
+	product_description VARCHAR(100) NOT NULL comment '商品說明',
+	product_price INT UNSIGNED NOT NULL comment '商品價格',
+	product_discount ENUM ('0.9', '0.85', '0.8') comment '商品特價',
+	product_discount_start_date DATE comment '商品折價開始日期',
+	product_discount_end_date DATE comment '商品折價開始日期',
+	product_number INT UNSIGNED NOT NULL comment '商品庫存'
+) comment '商品';
+
+CREATE TABLE coupon (
+  coupon_id INT UNSIGNED auto_increment comment '券編號',
+	member_id INT UNSIGNED NOT NULL comment '會員編號',
+  feature ENUM ('50', '100', '150', 'free-shipping') NOT NULL comment '券種類',
+  coupon_month INT UNSIGNED NOT NULL comment '券月份'
+) comment '券';
 
 CREATE TABLE count_records (
 	count_id INT UNSIGNED PRIMARY KEY comment '數量記數',
