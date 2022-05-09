@@ -17,10 +17,10 @@ class Model {
         $result = mysqli_query($this->getDB(), $sql);
         return $result;
     }
-    public function insert($table, $line) {
-        return "INSERT INTO $table (" . implode(',', array_keys($line)) . ") VALUES (" . implode(',', $line) . ")";
+    public function insert($line) {
+        return "INSERT INTO $this->table (" . implode(',', array_keys($line)) . ") VALUES (" . implode(',', $line) . ")";
     }
-    public function update($table, $line) {
+    public function update($line) {
         $str = "";
         $i = 0;
         foreach ($line as $kname => $kvalue) {
@@ -30,10 +30,10 @@ class Model {
                 $str .= ",";
             }
         }
-        return "UPDATE $table SET " . $str;
+        return "UPDATE $this->table SET " . $str;
     }
-    public function delete($table) {
-        return "DELETE FROM $table";
+    public function delete() {
+        return "DELETE FROM $this->table";
     }
     public function select($table, $arr = NULL) {
         if ($arr) {
@@ -55,6 +55,6 @@ class Model {
         return " NATURAL JOIN $table";
     }
     public function leftjoin($table, $kname, $comparator, $kvalue) {
-        return " LEFT JOIN ON $kname $comparator $kvalue";
+        return " LEFT JOIN ON $table $kname $comparator $kvalue";
     }
 }
