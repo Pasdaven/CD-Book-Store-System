@@ -14,11 +14,17 @@ class Model {
     }
     //執行sql，返回結果集
     public function execute($sql) {
-        $result = mysqli_query($this->getDB(), $sql);
-        return $result;
+        $list = mysqli_query($this->getDB(), $sql);
+        if (is_object($list)) {
+            $result = array();
+            while ($row = mysqli_fetch_assoc($list)) {
+                $result[] = $row;
+            }
+            return $result;
+        }
     }
     public function insert($line) {
-        return "INSERT INTO $this->table (" . implode(',', array_keys($line)) . ") VALUES (" . implode(',', $line) . ")";
+        return "INSERT INTO $this->table (" . implode(',', array_keys($line)) . ") VALUES (\"" . implode('","', $line) . "\")";
     }
     public function update($line) {
         $str = "";
@@ -27,10 +33,10 @@ class Model {
             $str .= $kname . "=" . $kvalue;
             $i++;
             if ($i < count($line)) {
-                $str .= ",";
+                $str .= "','";
             }
         }
-        return "UPDATE $this->table SET " . $str;
+        return "UPDATE $this->table SET " . "'" . $str . "'";
     }
     public function delete() {
         return "DELETE FROM $this->table";
@@ -43,10 +49,10 @@ class Model {
         }
     }
     public function where($kname, $comparator, $kvalue) {
-        return " WHERE $kname $comparator $kvalue";
+        return " WHERE $kname $comparator '$kvalue'";
     }
     public function orwhere($kname, $operator, $kvalue) {
-        return " OR $kname $operator $kvalue";
+        return " OR $kname $operator '$kvalue'";
     }
     public function orderby($kname, $sort) {
         return " ORDER BY $kname $sort";
@@ -55,6 +61,6 @@ class Model {
         return " NATURAL JOIN $table";
     }
     public function leftjoin($table, $kname, $comparator, $kvalue) {
-        return " LEFT JOIN ON $table $kname $comparator $kvalue";
+        return " LEFT JOIN ON $table $kname $comparator '$kvalue'";
     }
 }
