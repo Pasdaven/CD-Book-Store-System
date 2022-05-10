@@ -1,7 +1,7 @@
 <?php
 require_once("model.php");
 
-class Member_mod extends Model {
+class Member extends Model {
     protected $table = 'member';
     
 }
