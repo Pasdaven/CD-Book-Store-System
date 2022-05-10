@@ -2,6 +2,6 @@
 
 use model\Model;
 
-class Count_records extends Model {
+class CountRecords extends Model {
     protected $table = 'count_records';
 }
