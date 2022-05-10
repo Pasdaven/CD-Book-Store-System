@@ -1,5 +1,7 @@
 <?php
 
+namespace model;
+
 class Model {
 
     //連接資料庫
