@@ -62,7 +62,7 @@ CREATE TABLE cart (
 ) COMMENT '購物車';
 
 CREATE TABLE ad (
-	ad_id INT UNSIGNED PRIMARY KEY comment '廣告編號',
+	ad_id INT UNSIGNED PRIMARY KEY auto_increment comment '廣告編號',
 	ad_description VARCHAR(100) comment '廣告說明',
 	ad_img_id VARCHAR(100) comment '廣告圖片'
 ) comment '廣告';
