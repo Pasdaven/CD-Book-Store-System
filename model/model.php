@@ -1,6 +1,6 @@
 <?php
 
-namespace model;
+// namespace model;
 
 class Model {
     //連接資料庫
@@ -31,7 +31,7 @@ class Model {
         }
         return "INSERT INTO $this->table (" . implode(',', array_keys($line)) . ") VALUES (\"" . implode('","', $line) . "\")";
     }
-    public function update($line) {
+    public function update($line, $table = NULL) {
         $str = "";
         $i = 0;
         foreach ($line as $kname => $kvalue) {
@@ -40,6 +40,9 @@ class Model {
             if ($i < count($line)) {
                 $str .= "','";
             }
+        }
+        if ($table) {
+            return "UPDATE $table SET " . "'" . $str . "'";
         }
         return "UPDATE $this->table SET " . "'" . $str . "'";
     }
