@@ -35,16 +35,16 @@ class Model {
         $str = "";
         $i = 0;
         foreach ($line as $kname => $kvalue) {
-            $str .= $kname . "=" . $kvalue;
+            $str .= $kname . "= '" . $kvalue . "'";
             $i++;
             if ($i < count($line)) {
                 $str .= "','";
             }
         }
         if ($table) {
-            return "UPDATE $table SET " . "'" . $str . "'";
+            return "UPDATE $table SET " . $str;
         }
-        return "UPDATE $this->table SET " . "'" . $str . "'";
+        return "UPDATE $this->table SET " . $str;
     }
     public function delete() {
         return "DELETE FROM $this->table";
