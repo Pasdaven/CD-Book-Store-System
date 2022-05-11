@@ -46,7 +46,10 @@ class Model {
         }
         return "UPDATE $this->table SET " . $str;
     }
-    public function delete() {
+    public function delete($table = NULL) {
+        if ($table) {
+            return "DELETE FROM $table";
+        }
         return "DELETE FROM $this->table";
     }
     public function select($table, $arr = NULL) {
