@@ -3,7 +3,6 @@
 namespace model;
 
 class Model {
-
     //連接資料庫
     private function getDB() {
         $host = 'localhost';
@@ -24,6 +23,7 @@ class Model {
             }
             return $result;
         }
+        return $list;
     }
     public function insert($line) {
         return "INSERT INTO $this->table (" . implode(',', array_keys($line)) . ") VALUES (\"" . implode('","', $line) . "\")";
