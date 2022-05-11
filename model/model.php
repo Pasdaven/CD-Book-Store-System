@@ -25,8 +25,8 @@ class Model {
         }
         return $list;
     }
-    public function insert($line) {
-        return "INSERT INTO $this->table (" . implode(',', array_keys($line)) . ") VALUES (\"" . implode('","', $line) . "\")";
+    public function insert($table, $line) {
+        return "INSERT INTO $table (" . implode(',', array_keys($line)) . ") VALUES (\"" . implode('","', $line) . "\")";
     }
     public function update($line) {
         $str = "";
