@@ -1,7 +1,7 @@
 <?php
 
-// use model\Model;
-require_once("../model/model.php");
+use model\Model;
+
 class Member extends Model {
     protected $member_table = 'member';
     protected $member_account_table = 'member_account';
