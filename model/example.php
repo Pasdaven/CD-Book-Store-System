@@ -5,6 +5,7 @@ $sql = $this->select('table', ['id', 'name']) . $this->where('id', '=', '10');
 //result是陣列
 $result = $this->execute($sql);
 
+$sql = $this->insert(['price' => 400, 'product' => 'Laptop', 'prod' => 'Laptop'], 'table');
 $sql = $this->insert(['price' => 400, 'product' => 'Laptop', 'prod' => 'Laptop']);
 //無回傳值
 $this->execute($sql);
