@@ -1,8 +1,8 @@
 <?php
-
 $decoded = json_decode(file_get_contents('php://input'), true);
 
 $ctrl = $decoded['controller'];
+require('../model/model.php');
 require_once($ctrl . '.php');
 $obj = new $ctrl();
 if (array_key_exists('parameter', $decoded)) {

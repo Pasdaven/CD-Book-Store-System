@@ -1,7 +1,7 @@
 $(() => {
     $('#submitBtn').click(() => {
-        let member_id = 10;
-        let product_id = 10;
+        let member_id = 4;
+        let product_id = 5;
         let product_comment = "abc";
         let data = {
             controller: 'CommentList',
