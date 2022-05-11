@@ -14,7 +14,7 @@ $sql = $this->update(['price' => 400, 'product' => 'Laptop', 'prod' => 'Laptop']
 $sql = $this->update(['price' => 400]);
 $this->execute($sql);
 
-$sql = $this->delete('table') . $this->where('id', '=', '10');
+$sql = $this->delete() . $this->where('id', '=', '10');
 
 $sql = $this->select('table') . $this->where('id', '=', $this->select('othertable', ['id']));
 $sql = $this->select('table') . $this->naturaljoin('othertable');

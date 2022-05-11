@@ -38,7 +38,7 @@ class Model {
             $str .= $kname . "= '" . $kvalue . "'";
             $i++;
             if ($i < count($line)) {
-                $str .= "','";
+                $str .= ",";
             }
         }
         if ($table) {
