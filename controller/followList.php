@@ -5,8 +5,8 @@ use model\Model;
 class FollowList extends Model {
     protected $table = 'follow_list';
 
-    public function insertFollowList() {
-        $sql = $this->insert(['member_id' => '1', 'product_id' => '1']);
+    public function insertFollowList($param) {
+        $sql = $this->insert(['member_id' => $param['member_id'], 'product_id' => $param['product_id']]);
         $this->execute($sql);
     }
 
