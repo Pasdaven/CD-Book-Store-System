@@ -5,8 +5,6 @@ use model\Model;
 class CommentList extends Model {
     protected $table = 'comment_list';
     public function createComment($param) {
-        $m = new Model();
-        return $m->test;
         $member_id = $param['member_id'];
         $product_id = $param['product_id'];
         $product_comment = $param['product_comment'];
