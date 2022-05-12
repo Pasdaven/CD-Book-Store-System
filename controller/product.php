@@ -27,12 +27,23 @@ class Product extends Model {
         $product_id = $param["product_id"];
         $new_product_number = $param["new_product_number"];
         $sql = $this->update(['product_number' => $new_product_number]) . $this->where('product_id', '=', $product_id);
-        $this->execute($sql);
+        return $this->execute($sql);
     }
 
     // 查詢某商品id對應的價錢
     public function searchPriceById($product_id) {
         $sql = $this->select($this->table, ['product_price']) . $this->where('product_id', '=', $product_id);
+
+        return $this->execute($sql);
+    }
+
+    public function createProduct($param) {
+        $product_name = $param['product_name'];
+        $product_description = $param['product_description'];
+        $product_image = $param['product_image'];
+        $product_price = $param['product_price'];
+        $product_number = $param['product_number'];
+        $sql = $this->insert(['product_name' => $product_name, 'product_description' => $product_description, 'product_image' => $product_image, 'product_price' => $product_price, 'product_number' => $product_number]);
 
         return $this->execute($sql);
     }
