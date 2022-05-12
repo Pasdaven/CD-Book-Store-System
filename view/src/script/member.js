@@ -126,20 +126,22 @@ function updateMemberInfo() {
     }];
 
     for (var i = 0; i < length(memberInfo); i++) {
-        let data = {
-            controller: 'member',
-            method: 'updateMemberInfo',
-            parameter: {
-                change_place: memberInfo[i].key,
-                change_text: memberInfo[i].value,
-            }
-        };
-        let json = JSON.stringify(data);
-        $.ajax({
-            url: '/CD-Book-Store-System/controller/core.php',
-            method: 'POST',
-            data: json,
-        });
+        if (memberInfo[i].value != null) {
+            let data = {
+                controller: 'member',
+                method: 'updateMemberInfo',
+                parameter: {
+                    change_place: memberInfo[i].key,
+                    change_text: memberInfo[i].value,
+                }
+            };
+            let json = JSON.stringify(data);
+            $.ajax({
+                url: '/CD-Book-Store-System/controller/core.php',
+                method: 'POST',
+                data: json,
+            });
+        }
     }
 
 }
