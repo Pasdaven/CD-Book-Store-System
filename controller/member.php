@@ -31,10 +31,8 @@ class Member extends Model {
             $result = $this->execute($this->select($this->member_table));
             $member_id = $result[count($result) - 1]['member_id'];
             $member_account_sql = $this->insert(['member_id' => $member_id, 'email' => $param['email'], 'member_password' => $param['member_password']], $this->member_account_table);
-            $this->execute($member_account_sql);
-            
+            return $this->execute($member_account_sql);
             // 註冊成功
-            return true;
         } else {
             // email重複註冊失敗
             return false;
@@ -44,21 +42,34 @@ class Member extends Model {
     public function forgetPassword($param) {
         $account_data = $this->execute($this->select($this->member_account_table) . $this->where('email', '=', $param['email']));
         if (count($account_data) == 1) {
-            return true;
+            $password = $this->execute($this->select($this->member_account_table, ['member_password']) . $this->where('email', '=', $param['email']));
+            $confirm_number = (int)(crc32($password) / 10000);
+            // 發送 confirm number email
+            
         } else {
             // 無此email
             return false;
         }
     }
 
+    public function confirm($param) {
+        $password = $this->execute($this->select($this->member_account_table, ['member_password']) . $this->where('email', '=', $param['email']));
+        $confirm_number = (int)(crc32($password[0]['member_password']) / 10000);
+        if ($param['confirmNumber'] == $confirm_number) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function resetPassword($param) {
         $sql = $this->update(['member_password' => $param['new_password']], $this->member_account_table) . $this->where('member_id', '=', $param['member_id']);
-        $this->execute($sql);
+        return $this->execute($sql);
     }
 
     public function updateMemberInfo($param) {
-        $sql = $this->update([$param['change_place'] => $param['change_text']], $this->member_table) . $this->where('member_id', '=', $param['member_id']);
-        $this->execute($sql);
+        $sql = $this->update(['member_name' => $param['member_name'], 'birthday' => $param['birthday'], 'phone_num' => $param['phone_num'], 'sex' => $param['sex'], 'credit_num' => $param['credit_num']], $this->member_table) . $this->where('member_id', '=', $param['member_id']);
+        return $this->execute($sql);
     }
 
     public function getMemberInfo() {
