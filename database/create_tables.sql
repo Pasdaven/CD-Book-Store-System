@@ -11,6 +11,7 @@ CREATE TABLE product (
     product_id INT UNSIGNED PRIMARY KEY auto_increment COMMENT '商品編號',
     product_name VARCHAR(100) NOT NULL COMMENT '商品名稱',
     product_description VARCHAR(100) NOT NULL COMMENT '商品說明',
+    product_image VARCHAR(100) NOT NULL COMMENT '商品圖片',
     product_price INT UNSIGNED NOT NULL COMMENT '商品價格',
     product_discount ENUM ('0.9', '0.85', '0.8') COMMENT '商品特價',
     product_discount_start_date DATE COMMENT '商品折價開始日期',
@@ -18,17 +19,9 @@ CREATE TABLE product (
     product_number INT UNSIGNED NOT NULL COMMENT '商品庫存'
 ) COMMENT '商品';
 
-CREATE TABLE coupon (
-    coupon_id INT UNSIGNED PRIMARY KEY auto_increment COMMENT '券編號',
-    member_id INT UNSIGNED NOT NULL COMMENT '會員編號',
-    feature ENUM ('50', '100', '150', 'free-shipping') NOT NULL COMMENT '券種類',
-    coupon_month VARCHAR(100) NOT NULL COMMENT '券月份'
-) COMMENT '券';
-
 CREATE TABLE order_list (
     order_id INT UNSIGNED PRIMARY KEY auto_increment COMMENT '訂單編號',
-    member_id INT UNSIGNED NOT NULL COMMENT '會員編號',
-    coupon_id INT UNSIGNED NOT NULL COMMENT '折價卷編號',
+    member_id INT UNSIGNED NOT NULL UNIQUE COMMENT '會員編號',
     deliver_method ENUM('home delivery', 'convenience store delivery') NOT NULL COMMENT '運送方式',
     price INT COMMENT '價格',
     phone_num INT UNSIGNED comment '手機號碼',
@@ -36,9 +29,17 @@ CREATE TABLE order_list (
     order_address VARCHAR(100) COMMENT '地址',
     payment ENUM('cash', 'credit card') NOT NULL COMMENT '付款方式',
     order_state ENUM('wait', 'finish', 'cancel', 'return') NOT NULL COMMENT '訂單狀態',
-    FOREIGN KEY(member_id) REFERENCES member (member_id),
-    FOREIGN KEY(coupon_id) REFERENCES coupon (coupon_id)
+    FOREIGN KEY(member_id) REFERENCES member (member_id)
 ) COMMENT '訂單';
+
+CREATE TABLE coupon (
+    coupon_id INT UNSIGNED PRIMARY KEY auto_increment COMMENT '券編號',
+    member_id INT UNSIGNED NOT NULL COMMENT '會員編號',
+    feature ENUM ('50', '100', '150', 'free-shipping') NOT NULL COMMENT '券種類',
+    order_id INT UNSIGNED COMMENT '訂單編號',
+    coupon_month VARCHAR(100) NOT NULL COMMENT '券月份',
+    FOREIGN KEY(order_id) REFERENCES order_list (order_id)
+) COMMENT '券';
 
 CREATE TABLE order_product (
     order_id INT UNSIGNED NOT NULL COMMENT '訂單編號',
@@ -73,7 +74,7 @@ CREATE TABLE cs_record (
     cs_record_id INT UNSIGNED PRIMARY KEY auto_increment COMMENT '客服紀錄編號',
     member_id INT UNSIGNED NOT NULL COMMENT '會員編號',
     cs_id INT UNSIGNED NOT NULL COMMENT '客服人員編號',
-    topic ENUM ('product', 'other') NOT NULL,
+    topic ENUM ('product', 'other') NOT NULL COMMENT '主題',
     product_id INT UNSIGNED comment '商品編號',
     FOREIGN KEY (member_id) REFERENCES member(member_id),
     FOREIGN KEY (cs_id) REFERENCES customer_service(cs_id),
