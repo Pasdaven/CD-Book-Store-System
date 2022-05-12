@@ -24,9 +24,10 @@ class Model {
             }
             return $result;
         }
-        $affected_rows = mysqli_affected_rows($link);
         $id = mysqli_insert_id($link);
-        return ['affected rows' => $affected_rows, 'id' => $id];
+        $affected_rows = mysqli_affected_rows($link);
+        $affect = ($affected_rows) ? true : false;
+        return ($id > 0) ? $id : $affect;
     }
     public function insert($line, $table = NULL) {
         if ($table) {
