@@ -1,5 +1,8 @@
 # MISC
 .DS_Store
-*test.php
-*test.html
+
+# Test File
+*test.*
+
+# Test Folder
 *test
