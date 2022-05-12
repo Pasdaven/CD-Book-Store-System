@@ -29,4 +29,11 @@ class Product extends Model {
         $sql = $this->update(['product_number' => $new_product_number]) . $this->where('product_id', '=', $product_id);
         $this->execute($sql);
     }
+
+    // 查詢某商品id對應的價錢
+    protected function searchPriceById($product_id) {
+        $sql = $this->select($this->table, ['product_price']) . $this->where('product_id', '=', $product_id);
+
+        return $this->execute($sql);
+    }
 }
