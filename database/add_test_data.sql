@@ -13,9 +13,13 @@ VALUES  (1, 'member1@gmail.com', '1234'),
         (5, 'member5@gmail.com', '4321');
 
 INSERT INTO `product` 
+VALUES  (NULL, 'book1', 'book1', 'url', '100', NULL, NULL, NULL, '200'),
         (NULL, 'book2', 'book2', 'url', '200', NULL, NULL, NULL, '20'),
         (NULL, 'book3', 'book3', 'url', '340', NULL, NULL, NULL, '250'),
         (NULL, 'book4', 'book4', 'url', '1240', NULL, NULL, NULL, '232'),
         (NULL, 'book5', 'book5', 'url', '16800', NULL, NULL, NULL, '600');
 
 INSERT INTO `customer_service`
+VALUES  (NULL, 'Steve'),
+        (NULL, 'Pascal'),
+        (NULL, 'Jason');
