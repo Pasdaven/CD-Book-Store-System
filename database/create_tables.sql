@@ -22,7 +22,7 @@ CREATE TABLE coupon (
     coupon_id INT UNSIGNED PRIMARY KEY auto_increment COMMENT '券編號',
     member_id INT UNSIGNED NOT NULL COMMENT '會員編號',
     feature ENUM ('50', '100', '150', 'free-shipping') NOT NULL COMMENT '券種類',
-    coupon_month INT UNSIGNED NOT NULL COMMENT '券月份'
+    coupon_month VARCHAR(100) NOT NULL COMMENT '券月份'
 ) COMMENT '券';
 
 CREATE TABLE count_records (
