@@ -21,7 +21,7 @@ CREATE TABLE product (
 
 CREATE TABLE order_list (
     order_id INT UNSIGNED PRIMARY KEY auto_increment COMMENT '訂單編號',
-    member_id INT UNSIGNED NOT NULL UNIQUE COMMENT '會員編號',
+    member_id INT UNSIGNED NOT NULL COMMENT '會員編號',
     deliver_method ENUM('home delivery', 'convenience store delivery') NOT NULL COMMENT '運送方式',
     price INT COMMENT '價格',
     phone_num INT UNSIGNED comment '手機號碼',

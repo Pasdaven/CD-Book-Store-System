@@ -1,6 +1,7 @@
 <?php
 
 use model\Model;
+
 require_once("member.php");
 
 class Coupon extends Model {
@@ -24,13 +25,17 @@ class Coupon extends Model {
         $member_id = $param['member_id'];
         $month = date("Y-m");
         $sql = $this->select($this->table) . $this->where('member_id', '=', $member_id) . $this->and('order_id', '=', 'NULL') . $this->and('coupon_month', '=', $month);
+        return $this->execute($sql);
+    }
 
+    // 透過coupon_id查詢卷種類
+    public function getCouponFeature($coupon_id) {
+        $sql = $this->select($this->table, ['feature']) . $this->where('coupon_id', '=', $coupon_id);
         return $this->execute($sql);
     }
 
     public function useCoupon($order_id, $coupon_id) {
         $sql = $this->update(['order_id' => $order_id]) . $this->where('coupon_id', '=', $coupon_id);
-
         return $this->execute($sql);
     }
 }

@@ -22,7 +22,7 @@ class Product extends Model {
         return $this->execute($sql);
     }
 
-    // 更新傳入商品id的商品庫存
+    // 傳入商品id更新商品庫存
     public function updateProductNum($param) {
         $product_id = $param["product_id"];
         $new_product_number = $param["new_product_number"];
@@ -49,12 +49,12 @@ class Product extends Model {
     }
 
     // 在訂單建立時減少商品庫存
-    public function reduceProductNum($product_id, $count_num) {
-        $param[] = ['product_id' => $product_id];
+    public function reduceProductNum($param) {
+        $count_num = $param['count_num'];
+        $product_id = $param['product_id'];
         $current_product_number = $this->searchProductNum($param);
-        $new_product_number = $current_product_number - $count_num;
-        $sql = $this->update(['product_number' => $new_product_number]) . $this->where('product_id', '=', $product_id);
-
-        return $this->execute($sql);
+        $new_product_number = $current_product_number[0]['product_number'] - $count_num;
+        $param['new_product_number'] = $new_product_number;
+        return $this->updateProductNum($param);
     }
 }
