@@ -14,6 +14,15 @@ function insertAd() {
         url: '/CD-Book-Store-System/controller/core.php',
         method: 'POST',
         data: json,
+        success: res => {
+            if (res) {
+                // 新增成功
+
+            } else {
+                // 新增失敗
+                
+            }
+        }
     });
 }
 
@@ -33,6 +42,15 @@ function deleteAd() {
         url: '/CD-Book-Store-System/controller/core.php',
         method: 'POST',
         data: json,
+        success: res => {
+            if (res) {
+                // 刪除成功
+
+            } else {
+                // 刪除失敗
+                
+            }
+        }
     });
 }
 

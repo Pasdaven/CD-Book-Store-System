@@ -1,6 +1,6 @@
 const insertCart = () => {
     let member_id = 1;
-    let product_id = 1;
+    let product_id = 3;
     let count_num = 20;
     let data = {
         controller: 'Cart',

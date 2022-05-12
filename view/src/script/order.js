@@ -1,20 +1,29 @@
-const insertOrder = () => {
+const insertOrder = (res) => {
+    let arr = [];
+    for(var i = 0; i < res.length; i++) {
+        arr.push([res[i]['product_id'], res[i]['count_num']]);
+    }
     let member_id = 1;
     let coupon_id = 1;
-    let deliver_method = 1;
-    let price = 1;
-    let phone_num = 1;
+    let deliver_method = 'home delivery';
+    let phone_num = 0974451234;
     let convenience_store = 1;
-    let order_address = 1;
-    let payment = 1;
-    let order_state = 20;
+    let order_address = 'taiwan';
+    let payment = 'cash';
+    let order_state = 'wait';
     let data = {
-        controller: 'Order',
+        controller: 'OrderList',
         method: 'insertOrder',
         parameter: {
+            arr: arr,
             member_id: member_id,
-            product_id: product_id,
-            count_num: count_num
+            coupon_id: coupon_id,
+            deliver_method: deliver_method,
+            phone_num: phone_num,
+            convenience_store: convenience_store,
+            order_address: order_address,
+            payment: payment,
+            order_state: order_state
         }
     };
     let json = JSON.stringify(data);
@@ -81,6 +90,25 @@ const updateOrder = () => {
 $(() => {
     getOrder();
 });
-$('#insertOrder').click(() => {insertOrder()});
+res = [
+        {
+        "cart_id": "1",
+        "member_id": "1",
+        "product_id": "1",
+        "count_num": "20"
+        },
+        {
+            "cart_id": "2",
+            "member_id": "1",
+            "product_id": "2",
+            "count_num": "20"
+        },
+        {
+            "cart_id": "3",
+            "member_id": "1",
+            "product_id": "3",
+            "count_num": "40"
+        }];
+$('#insertOrder').click(() => {insertOrder(res)});
 $('#deleteOrder').click(() => {deleteOrder()});
 $('#updateOrder').click(() => {updateOrder()});

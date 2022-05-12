@@ -83,11 +83,38 @@ function forgetPassword() {
         method: 'POST',
         data: json,
         success: res => {
+            if (!res) {
+                // 無此email
+
+            }
+        }
+    });
+}
+
+function confirm() {
+    let email = $('#email').val();
+    let confirmNumber = $('#confirmNumber').val();
+
+    let data = {
+        controller: 'member',
+        method: 'confirm',
+        parameter: {
+            email: email,
+            confirmNumber: confirmNumber
+        }
+    };
+    let json = JSON.stringify(data);
+    $.ajax({
+        url: '/CD-Book-Store-System/controller/core.php',
+        method: 'POST',
+        data: json,
+        success: res => {
             if (res) {
-                // 有此email，發送驗證碼
+                // 驗證碼正確
 
             } else {
-                // 無此email
+                // 驗證碼錯誤
+
             }
         }
     });
@@ -110,20 +137,24 @@ function resetPassword() {
             url: '/CD-Book-Store-System/controller/core.php',
             method: 'POST',
             data: json,
+            success: res => {
+                if (res) {
+                    // 重置密碼成功
+    
+                }
+            }
         });
     } else {
-        // 兩個新帳號不相同
+        // 兩個新密碼不相同
     }
 }
 
 function updateMemberInfo() {
-    let memberInfo = [{
-        member_name: $('#member_name').val(),
-        birthday: $('#birthday').val(),
-        phone_num: $('#phone_num').val(),
-        sex: $('#sex').val(),
-        credit_num: $('#credit_num').val()
-    }];
+    let member_name = $('#member_name').val();
+    let birthday = $('#birthday').val();
+    let phone_num = $('#phone_num').val();
+    let sex = $('#sex').val();
+    let credit_num = $('#credit_num').val();
 
     for (var i = 0; i < length(memberInfo); i++) {
         if (memberInfo[i].value != null) {
@@ -131,8 +162,11 @@ function updateMemberInfo() {
                 controller: 'member',
                 method: 'updateMemberInfo',
                 parameter: {
-                    change_place: memberInfo[i].key,
-                    change_text: memberInfo[i].value,
+                    member_name: member_name,
+                    birthday: birthday,
+                    phone_num: phone_num,
+                    sex: sex,
+                    credit_num: credit_num
                 }
             };
             let json = JSON.stringify(data);
@@ -140,10 +174,17 @@ function updateMemberInfo() {
                 url: '/CD-Book-Store-System/controller/core.php',
                 method: 'POST',
                 data: json,
+                success: res => {
+                    if (res) {
+                        // 更改成功
+        
+                    } else {
+                        // 更改失敗
+                    }
+                }
             });
         }
     }
-
 }
 
 function getMemberInfo() {
