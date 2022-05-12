@@ -22,7 +22,6 @@ class CommentList extends Model {
     public function deleteComment($param) {
         $comment_id = $param['comment_id'];
         $sql = $this->delete() . $this->where('comment_id', '=', $comment_id);
-        echo $sql;
         return $this->execute($sql);
     }
     public function getCommentList() {

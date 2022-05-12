@@ -1,12 +1,5 @@
-$(() => {
-    getComment();
-});
-$('#insertBtn').click(insertComment());
-$('#deleteBtn').click(deleteComment());
-$('#updateBtn').click(updateComment());
-
 const insertComment = () => {
-    let comment_id = 4;
+    let member_id = 1;
     let product_id = 5;
     let product_comment = "abcdv";
     let data = {
@@ -25,7 +18,6 @@ const insertComment = () => {
         data: json,
         success: res => console.log(res)
     });
-    window.location.reload();
 }
 
 const deleteComment = () => {
@@ -44,7 +36,6 @@ const deleteComment = () => {
         data: json,
         success: res => console.log(res)
     });
-    window.location.reload();
 }
 
 const getComment = () => {
@@ -79,5 +70,11 @@ const updateComment = () => {
         data: json,
         success: res => console.log(res)
     });
-    window.location.reload();
 }
+
+$(() => {
+    getComment();
+});
+$('#insertComment').click(() => {insertComment()});
+$('#deleteComment').click(() => {deleteComment()});
+$('#updateComment').click(() => {updateComment()});

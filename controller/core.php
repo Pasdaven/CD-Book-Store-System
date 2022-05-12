@@ -1,6 +1,5 @@
 <?php
 $decoded = json_decode(file_get_contents('php://input'), true);
-
 $ctrl = $decoded['controller'];
 require('../model/model.php');
 require_once($ctrl . '.php');
