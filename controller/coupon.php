@@ -22,7 +22,8 @@ class Coupon extends Model {
     // 查詢某個member_id擁有的coupon
     public function getCoupon($param) {
         $member_id = $param['member_id'];
-        $sql = $this->select($this->table) . $this->where('member_id', '=', $member_id);
+        $month = date("Y-m");
+        $sql = $this->select($this->table) . $this->where('member_id', '=', $member_id) . $this->and('order_id', '=', 'NULL') . $this->and('coupon_month', '=', $month);
 
         return $this->execute($sql);
     }
