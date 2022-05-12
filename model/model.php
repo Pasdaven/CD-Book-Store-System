@@ -66,6 +66,9 @@ class Model {
     public function where($kname, $comparator, $kvalue) {
         return " WHERE $kname $comparator '$kvalue'";
     }
+    public function and($kname, $comparator, $kvalue) {
+        return " AND $kname $comparator '$kvalue'";
+    }
     public function orwhere($kname, $operator, $kvalue) {
         return " OR $kname $operator '$kvalue'";
     }
