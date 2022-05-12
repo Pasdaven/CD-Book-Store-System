@@ -35,7 +35,7 @@ function register() {
     let birthday = $('#birthday').val();
     let phone_num = $('#phone_num').val();
     let sex = $('#sex').val();
-    let cedit_num = $('#cedit_num').val();
+    let credit_num = $('#credit_num').val();
 
     let data = {
         controller: 'member',
@@ -47,7 +47,7 @@ function register() {
             birthday: birthday,
             phone_num: phone_num,
             sex: sex,
-            cedit_num: cedit_num
+            credit_num: credit_num
         }
     };
     let json = JSON.stringify(data);
@@ -122,7 +122,7 @@ function updateMemberInfo() {
         birthday: $('#birthday').val(),
         phone_num: $('#phone_num').val(),
         sex: $('#sex').val(),
-        cedit_num: $('#cedit_num').val()
+        credit_num: $('#credit_num').val()
     }];
 
     for (var i = 0; i < length(memberInfo); i++) {

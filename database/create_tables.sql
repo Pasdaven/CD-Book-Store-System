@@ -4,7 +4,7 @@ CREATE TABLE member (
     birthday DATE COMMENT '生日',
     phone_num INT UNSIGNED COMMENT '手機號碼',
     sex ENUM('Male', 'Female') COMMENT '性別',
-    cedit_num INT COMMENT '信用分數'
+    credit_num INT COMMENT '信用分數'
 ) COMMENT '會員資料';
 
 CREATE TABLE product (
