@@ -65,4 +65,8 @@ class Member extends Model {
         $sql = $this->select($this->member_table);
         return $this->execute($sql);
     }
+    public function getMemberCredit() {
+        $sql = $this->select($this->member_table, ['member_id']) . $this->where('credit_num', '>=', '80');
+        return $this->execute($sql);
+    }
 }

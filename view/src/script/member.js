@@ -161,3 +161,19 @@ function getMemberInfo() {
         }
     });
 }
+
+function getMemberCredit() {
+    let data = {
+        controller: 'member',
+        method: 'getMemberCredit',
+    };
+    let json = JSON.stringify(data);
+    $.ajax({
+        url: '/CD-Book-Store-System/controller/core.php',
+        method: 'POST',
+        data: json,
+        success: res => {
+            console.log(res);
+        }
+    });
+}
