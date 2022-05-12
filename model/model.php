@@ -15,7 +15,8 @@ class Model {
     }
     //執行sql，返回結果集
     public function execute($sql) {
-        $list = mysqli_query($this->getDB(), $sql);
+        $link = $this->getDB();
+        $list = mysqli_query($link, $sql);
         if (is_object($list)) {
             $result = array();
             while ($row = mysqli_fetch_assoc($list)) {
@@ -23,7 +24,9 @@ class Model {
             }
             return $result;
         }
-        return $list;
+        $affected_rows = mysqli_affected_rows($link);
+        $id = mysqli_insert_id($link);
+        return ['affected rows' => $affected_rows, 'id' => $id];
     }
     public function insert($line, $table = NULL) {
         if ($table) {
