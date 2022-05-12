@@ -50,7 +50,7 @@ class Product extends Model {
 
     // 在訂單建立時減少商品庫存
     public function reduceProductNum($product_id, $count_num) {
-        $param = ['product_id' => $product_id];
+        $param[] = ['product_id' => $product_id];
         $current_product_number = $this->searchProductNum($param);
         $new_product_number = $current_product_number - $count_num;
         $sql = $this->update(['product_number' => $new_product_number]) . $this->where('product_id', '=', $product_id);
