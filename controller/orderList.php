@@ -8,14 +8,20 @@ class OrderList extends Model {
     protected $table = 'order_list';
     public function insertOrder($param) {
         $member_id = $param['member_id'];
-        $product_id = $param['product_id'];
-        $count_num = $param['count_num'];
-        $sql = $this->select($this->table, ['count_num']) . $this->where('product_id', '=', $product_id);
-        if ($result = $this->execute($sql)) {
-            $sql = $this->update(['count_num' => $count_num + $result[0]['count_num']]) . $this->where('product_id', '=', $product_id);
-        } else {
-            $sql = $this->insert(['member_id' => $member_id, 'product_id' => $product_id, 'count_num' => $count_num]);
-        }
+        $coupon_id = $param['coupon_id'];
+        $deliver_method = $param['deliver_method'];
+        $phone_num = $param['phone_num'];
+        $convenience_store = $param['convenience_store'];
+        $order_address = $param['order_address'];
+        $payment = $param['payment'];
+        $order_state = $param['order_state'];
+        $sql = $this->insert([
+            'member_id' => $member_id, 'coupon_id' => $coupon_id, 'deliver_method' => $deliver_method, 'phone_num' => $phone_num, 'convenience_store' => $convenience_store, 'order_address' => $order_address, 'payment' => $payment, 'order_state' => $order_state
+        ]);
+        $order_id = $this->execute($sql);
+        $o_p = new OrderProduct();
+        $price = $o_p->insertOrderProductAndCalculatePrice($param, $order_id);
+        $sql = $this->update(['price' => $price]) . $this->where('order_id', '=', $order_id);
         return $this->execute($sql);
     }
     public function updateOrder($param) {

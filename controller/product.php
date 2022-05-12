@@ -10,18 +10,18 @@ class Product extends Model {
     public function searchProductByName($param) {
         $product_name = $param["product_name"];
         $sql = $this->select($this->table) . $this->where('product_name', 'LIKE', "%{$product_name}%");
-        
+
         return $this->execute($sql);
     }
-    
+
     // 使用商品id查詢商品庫存
     public function searchProductNum($param) {
         $product_id = $param["product_id"];
         $sql = $this->select($this->table, ['product_number']) . $this->where('product_id', '=', $product_id);
-        
+
         return $this->execute($sql);
     }
-    
+
     // 更新傳入商品id的商品庫存
     public function updateProductNum($param) {
         $product_id = $param["product_id"];
@@ -31,7 +31,7 @@ class Product extends Model {
     }
 
     // 查詢某商品id對應的價錢
-    protected function searchPriceById($product_id) {
+    public function searchPriceById($product_id) {
         $sql = $this->select($this->table, ['product_price']) . $this->where('product_id', '=', $product_id);
 
         return $this->execute($sql);

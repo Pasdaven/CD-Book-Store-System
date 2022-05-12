@@ -27,8 +27,8 @@ CREATE TABLE coupon (
 
 CREATE TABLE order_list (
     order_id INT UNSIGNED PRIMARY KEY auto_increment COMMENT '訂單編號',
-    member_id INT UNSIGNED NOT NULL UNIQUE COMMENT '會員編號',
-    coupon_id INT UNSIGNED NOT NULL UNIQUE COMMENT '折價卷編號',
+    member_id INT UNSIGNED NOT NULL COMMENT '會員編號',
+    coupon_id INT UNSIGNED NOT NULL COMMENT '折價卷編號',
     deliver_method ENUM('home delivery', 'convenience store delivery') NOT NULL COMMENT '運送方式',
     price INT COMMENT '價格',
     phone_num INT UNSIGNED comment '手機號碼',
@@ -51,8 +51,8 @@ CREATE TABLE order_product (
 
 CREATE TABLE cart (
     cart_id INT UNSIGNED PRIMARY KEY auto_increment COMMENT '購物車編號',
-    member_id INT UNSIGNED NOT NULL UNIQUE COMMENT '會員編號',
-    product_id INT UNSIGNED NOT NULL UNIQUE COMMENT '商品編號',
+    member_id INT UNSIGNED NOT NULL COMMENT '會員編號',
+    product_id INT UNSIGNED NOT NULL COMMENT '商品編號',
     count_num INT UNSIGNED NOT NULL COMMENT '商品數量',
     FOREIGN KEY(member_id) REFERENCES member (member_id),
     FOREIGN KEY(product_id) REFERENCES product (product_id)
