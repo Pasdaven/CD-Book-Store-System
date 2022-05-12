@@ -46,6 +46,9 @@ function deleteAd() {
             if (res) {
                 // 刪除成功
 
+            } else {
+                // 刪除失敗
+                
             }
         }
     });
