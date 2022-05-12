@@ -14,4 +14,9 @@ class Ad extends Model {
         $sql = $this->delete() . $this->where('ad_id', '=', $param['ad_id']);
         $this->execute($sql);
     }
+
+    public function getAd() {
+        $sql = $this->select($this->table);
+        return $this->execute($sql);
+    }
 }

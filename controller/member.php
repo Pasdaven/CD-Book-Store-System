@@ -13,19 +13,19 @@ class Member extends Model {
                 // 登入成功
                 return true;
             } else {
-                // 密碼錯誤登入失敗
+                // 帳號密碼錯誤登入失敗
                 return false;
             }
         } else {
-            // 無此email
+            // 帳號密碼錯誤登入失敗
             return false;
         }
     }
 
     public function register($param) {
-        $email[] = $this->execute($this->select($this->member_account_table) . $this->where('email', '=', 'membertree@gmail.com'));
+        $email[] = $this->execute($this->select($this->member_account_table) . $this->where('email', '=', $param['email']));
         if (count($email) == 1) {
-            $member_sql = $this->insert(['member_name' => $param['member_name'], 'birthday' => $param['birthday'], 'phone_num' => $param['phone_num'], 'sex' => $param['sex'], 'cedit_num' => $param['cedit_num']], $this->member_table);
+            $member_sql = $this->insert(['member_name' => $param['member_name'], 'birthday' => $param['birthday'], 'phone_num' => $param['phone_num'], 'sex' => $param['sex'], 'credit_num' => $param['credit_num']], $this->member_table);
             $this->execute($member_sql);
 
             $result = $this->execute($this->select($this->member_table));
@@ -59,5 +59,14 @@ class Member extends Model {
     public function updateMemberInfo($param) {
         $sql = $this->update([$param['change_place'] => $param['change_text']], $this->member_table) . $this->where('member_id', '=', $param['member_id']);
         $this->execute($sql);
+    }
+
+    public function getMemberInfo() {
+        $sql = $this->select($this->member_table);
+        return $this->execute($sql);
+    }
+    public function getMemberCredit() {
+        $sql = $this->select($this->member_table, ['member_id']) . $this->where('credit_num', '>=', '80');
+        return $this->execute($sql);
     }
 }
