@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+.container {
+    height: 100vh;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+}
+section {
+    height: 100vh;
+    display: flex;
+    scroll-snap-align: start;
+}
+.content {
+    background-image: url("../image/product-bg.png");
+    background-size: 100% 100%;
+    display: flex;
+    flex-flow: column;
+    flex-wrap: wrap;
+}
+.comment {
+    background: #b1dee9;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+.nav {
+    width: 100%;
+    height: 7vh;
+    background: white;
+    position: fixed;
+}
+.info {
+    margin-top: 18vh;
+    margin-left: 10vw;
+    height: 60vh;
+    display: flex;
+}
+.book-img {
+    height: 100%;
+    width: auto;
+}
+.rate {
+    text-align: center;
+    margin-top: 16px;
+}
+.bi-star-fill {
+    color: white;
+    font-size: 24px;
+    margin: 10px;
+}
+.bi-star {
+    color: white;
+    font-size: 24px;
+    margin: 10px;
+}
+.info-text {
+    padding: 20px;
+    margin-left: 2vw;
+    margin-right: 10vw;
+}
+.book-name {
+    color: #3f4953;
+    font-size: 48px;
+}
+.book-auth {
+    margin-top: 10px;
+    color: #9199a0;
+    font-size: 32px;
+}
+.book-description {
+    margin-top: 10px;
+    color: #9199a0;
+    font-size: 26px;
+}
+.price {
+    width: 100%;
+    margin-top: 5vh;
+    display: flex;
+    justify-content: end;
+}
+.price-text {
+    font-size: 36px;
+    color: #3f4953;
+}
+.btn-area {
+    width: 100%;
+    margin-top: 2vh;
+    display: flex;
+    justify-content: end;
+}
+.fav-btn {
+    box-shadow: 1.8px 1.8px 6.8px rgba(0, 0, 0, 0.024), 5px 5px 18.9px rgba(0, 0, 0, 0.035),
+        12.1px 12.1px 45.5px rgba(0, 0, 0, 0.046), 40px 40px 151px rgba(0, 0, 0, 0.07);
+    background: white;
+    font-size: 16px;
+    color: #3f4953;
+    outline: none;
+    border: none;
+    border-radius: 7px;
+    height: 50px;
+    width: 160px;
+    transition: 0.6s;
+    margin-right: 15px;
+}
+.fav-btn:hover {
+    background: rgb(237, 237, 237);
+    transition: 0.6s;
+    cursor: pointer;
+}
+.bi-heart-fill {
+    margin-left: 10px;
+    color: #f0b0b0;
+}
+.cart-btn {
+    box-shadow: 1.8px 1.8px 6.8px rgba(0, 0, 0, 0.024), 5px 5px 18.9px rgba(0, 0, 0, 0.035),
+        12.1px 12.1px 45.5px rgba(0, 0, 0, 0.046), 40px 40px 151px rgba(0, 0, 0, 0.07);
+    background: white;
+    font-size: 16px;
+    color: #3f4953;
+    outline: none;
+    border: none;
+    border-radius: 7px;
+    height: 50px;
+    width: 160px;
+    transition: 0.6s;
+}
+.cart-btn:hover {
+    background: rgb(237, 237, 237);
+    transition: 0.6s;
+    cursor: pointer;
+}
+.bi-cart-fill {
+    margin-left: 10px;
+    color: #b1dee9;
+}
+.footer {
+    margin-top: auto;
+    text-align: center;
+    padding-bottom: 2vh;
+    color: white;
+}
