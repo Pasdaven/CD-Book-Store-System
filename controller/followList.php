@@ -2,6 +2,8 @@
 
 use model\Model;
 
+require_once('./product.php');
+
 class FollowList extends Model {
     protected $table = 'follow_list';
 
@@ -15,8 +17,14 @@ class FollowList extends Model {
         $this->execute($sql);
     }
 
-    public function getFollowList() {
-        $sql = $this->select($this->table);
-        return $this->execute($sql);
+    public function getFollowList($param) {
+        $member_id = $param['member_id'];
+        $sql = $this->select($this->table) . $this->where('member_id', '=', $member_id);
+        $result = $this->execute($sql);
+        $product = new Product();
+        foreach ($result as $r) {
+            $arr[] = $product->searchProductById($r['product_id']);
+        }
+        return $arr;
     }
 }

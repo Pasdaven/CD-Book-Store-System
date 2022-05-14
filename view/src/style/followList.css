@@ -1,0 +1,23 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  .page {
+    background-color: #E5E5E5;
+    width: 100%;
+    height: 100vh;
+  }
+
+  .btn-view-info{
+    color: #fff;
+    background-color: #ABDA9F;
+    border-color: #ABDA9F;
+  }
+
+  .btn-add-to-cart{
+    color: #fff;
+    background-color: #B1DEE9;
+    border-color: #B1DEE9;
+  }

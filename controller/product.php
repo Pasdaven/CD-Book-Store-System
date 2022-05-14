@@ -57,4 +57,10 @@ class Product extends Model {
         $param['new_product_number'] = $new_product_number;
         return $this->updateProductNum($param);
     }
+
+    //透過商品id查詢商品資料
+    public function searchProductById($product_id) {
+        $sql = $this->select($this->table) . $this->where('product_id', '=', $product_id);
+        return $this->execute($sql);
+    }
 }
