@@ -19,10 +19,10 @@ function login() {
         success: res => {
             if (res) {
                 // 登入成功
-
+                
             } else {
                 // 帳號密碼錯誤登入失敗
-
+                $('#modal').modal('show');
             }
         }
     });
