@@ -67,6 +67,15 @@
     width: 100vw;
 }
 
+.navbar_topic {
+    text-decoration: none;
+    color: transparent;
+}
+
+.navbar_topic:hover {
+    color: transparent;
+}
+
 .gradient-text {
     color: transparent;
     background: conic-gradient(#D9D7F1 12%,
