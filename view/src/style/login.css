@@ -20,18 +20,18 @@ body {
 }
 
 .card_left_symbol {
-    color: #9DAB73;
+    /* color: #9DAB73; */
     font-size: 80px;
     font-weight: 700;
     /* text-shadow: 3px 4px 4px rgba(0, 0, 0, 0.25); */
-    text-shadow: 0px 0px 0 rgb(145, 159, 103),
+    /* text-shadow: 0px 0px 0 rgb(145, 159, 103),
         1px 1px 0 rgb(133, 147, 91),
         2px 2px 0 rgb(121, 135, 79),
         3px 3px 0 rgb(109, 123, 67),
         4px 4px 0 rgb(97, 111, 55),
         5px 5px 4px rgba(0, 0, 0, 0.25),
         5px 5px 1px rgba(0, 0, 0, 0.5),
-        0px 0px 4px rgba(0, 0, 0, .2);
+        0px 0px 4px rgba(0, 0, 0, .2); */
     /* 1px 18px 6px rgba(16,16,16,0.4),
     1px 22px 10px rgba(16,16,16,0.2),
     1px 25px 35px rgba(16,16,16,0.2),
@@ -39,18 +39,19 @@ body {
 }
 
 .card_left_name {
-    color: #9DAB73;
+    /* color: #9DAB73; */
     font-size: 40px;
     margin-top: -40px;
+    font-weight: 600;
     /* text-shadow: 3px 4px 4px rgba(0, 0, 0, 0.25); */
-    text-shadow: 0px 0px 0 rgb(145, 159, 103),
+    /* text-shadow: 0px 0px 0 rgb(145, 159, 103),
         1px 1px 0 rgb(133, 147, 91),
         2px 2px 0 rgb(121, 135, 79),
         3px 3px 0 rgb(109, 123, 67),
         4px 4px 0 rgb(97, 111, 55),
         5px 5px 4px rgba(0, 0, 0, 0.25),
         5px 5px 1px rgba(0, 0, 0, 0.5),
-        0px 0px 4px rgba(0, 0, 0, .2);
+        0px 0px 4px rgba(0, 0, 0, .2); */
     /* 1px 18px 6px rgba(16,16,16,0.4),
     1px 22px 10px rgba(16,16,16,0.2),
     1px 25px 35px rgba(16,16,16,0.2),
@@ -133,4 +134,59 @@ body {
 
 .modal_border {
     border-radius: 20px;
+}
+
+.gradient-text {
+    color: transparent;
+    background: conic-gradient(#D9D7F1 12%,
+            #BAABDA 12%, #BAABDA 33%,
+            #E7FBBE 33%, #E7FBBE 55%,
+            #FFCBCB 55%, #FFCBCB 70%,
+            #B5DEFF 70%, #B5DEFF 87%,
+            #F7D1BA 87%);
+    background-size: 50%;
+    background-clip: text;
+    -webkit-background-clip: text;
+
+    animation: expand-rev 0.5s ease forwards;
+
+    cursor: pointer;
+}
+
+.gradient-text:hover {
+    animation: expand 0.5s ease forwards;
+}
+
+@keyframes expand {
+    0% {
+        background-size: 50%;
+        background-position: 0 0;
+    }
+
+    20% {
+        background-size: 55%;
+        background-position: 0 1em;
+    }
+
+    100% {
+        background-size: 325%;
+        background-position: -10em -4em;
+    }
+}
+
+@keyframes expand-rev {
+    0% {
+        background-size: 325%;
+        background-position: -10em -4em;
+    }
+
+    20% {
+        background-size: 55%;
+        background-position: 0 1em;
+    }
+
+    100% {
+        background-size: 50%;
+        background-position: 0 0;
+    }
 }
