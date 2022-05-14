@@ -17,6 +17,24 @@
 </head>
 
 <body>
+    <div class="modal fade" id="modal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+        aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal_border">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel"><strong>Login Fail</strong></h5>
+                </div>
+                <div class="modal-body">
+                    Member Email not exist or Member Password get wrong. 
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn blue" data-bs-dismiss="modal"
+                        onclick="location.reload();">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <div class="row">
             <div class="col-2"></div>
@@ -41,7 +59,7 @@
                                             placeholder="email">
                                     </div>
                                     <div class="d-flex justify-content-center">
-                                        <input class="form-control my-3 login_input" type="text" id="member_password"
+                                        <input class="form-control my-3 login_input" type="password" id="member_password"
                                             placeholder="password">
                                     </div>
                                     <div class="d-flex justify-content-center">

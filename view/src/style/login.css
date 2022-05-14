@@ -130,3 +130,7 @@ body {
 /* .blue:hover {
     background-color: #B1DEE9;
 } */
+
+.modal_border {
+    border-radius: 20px;
+}
