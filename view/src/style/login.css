@@ -132,6 +132,28 @@ body {
     background-color: #B1DEE9;
 } */
 
+.create_account_link {
+    color: #A19A9A;
+    text-decoration: none;
+    font-size: 16px;
+    margin-left: -15px;
+}
+
+.create_account_link:hover {
+    color: #A19A9A;
+}
+
+.forget_password_link {
+    color: #A19A9A;
+    text-decoration: none;
+    font-size: 16px;
+    margin-left: -35px;
+}
+
+.forget_password_link:hover {
+    color: #A19A9A;
+}
+
 .modal_border {
     border-radius: 20px;
 }
