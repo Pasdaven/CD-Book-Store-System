@@ -43,9 +43,10 @@ class Member extends Model {
         $account_data = $this->execute($this->select($this->member_account_table) . $this->where('email', '=', $param['email']));
         if (count($account_data) == 1) {
             $password = $this->execute($this->select($this->member_account_table, ['member_password']) . $this->where('email', '=', $param['email']));
-            $confirm_number = (int)(crc32($password) / 10000);
+            $confirm_number = (int)(crc32($password[0]['member_password']) / 10000);
             // 發送 confirm number email
-            
+            return $confirm_number;
+            // return true;
         } else {
             // 無此email
             return false;
