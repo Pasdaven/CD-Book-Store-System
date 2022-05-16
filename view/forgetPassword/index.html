@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/CD-Book-Store-System/view/src/style/forgetPassword.css">
+</head>
+
+<body>
+    <!-- send email modal -->
+    <div class="modal fade" id="modalSendMail" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+        aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal_border">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel"><strong>Send Verification Code</strong></h5>
+                </div>
+                <div class="modal-body">
+                    Verification code has send to your email.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn blue" data-bs-dismiss="modal"
+                        onclick="">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- email not found modal -->
+    <div class="modal fade" id="modalNoMail" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+        aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal_border">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel"><strong>Email Not Found</strong></h5>
+                </div>
+                <div class="modal-body">
+                    Email not found.<br>
+                    Please check your email.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn blue" data-bs-dismiss="modal"
+                        onclick="">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- verification code wrong -->
+    <div class="modal fade" id="modalConfirmWrong" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+        aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal_border">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel"><strong>Verification Code Wrong</strong></h5>
+                </div>
+                <div class="modal-body">
+                    Verification code wrong.
+                    Please enter again.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn blue" data-bs-dismiss="modal"
+                        onclick="">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- error -->
+    <div class="modal fade" id="error" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+        aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal_border">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel"><strong>Error</strong></h5>
+                </div>
+                <div class="modal-body">
+                    Please enter your email and verification code.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn blue" data-bs-dismiss="modal"
+                        onclick="">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <div class="login_card">
+                    <div class="row">
+                        <div class="col-5">
+                            <div class="card_left">
+                                <span class="d-flex justify-content-center card_left_symbol gradient-text">P</span><br>
+                                <span class="d-flex justify-content-center card_left_name gradient-text">Pascal
+                                    Store</span>
+                            </div>
+                        </div>
+                        <div class="col-2 hidden">
+                            <div class="card_triangle"></div>
+                        </div>
+                        <div class="col-5">
+                            <div class="card_square">
+                                <div class="square_middle">
+                                    <h3 class="d-flex justify-content-center">Forget Password</h3>
+                                    <div class="d-flex justify-content-center m-3">
+                                        <input class="form-control my-4 member_input" type="text" id="email"
+                                            placeholder="email">
+                                            <button class="btn blue" type="submit" onclick="forgetPassword();">send</button>
+                                    </div>
+                                    <div class="d-flex justify-content-center m-3">
+                                        <input class="form-control my-4 member_input" type="verification code"
+                                            id="confirmNumber" placeholder="verification code">
+                                        <button class="btn blue" type="submit" onclick="confirm();">confirm</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/CD-BOOK-STORE-SYSTEM/view/src/script/member.js"></script>
+</body>
+
+</html>
