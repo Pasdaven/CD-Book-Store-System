@@ -10,34 +10,39 @@
     </head>
     <body>
         <div class="container">
-            <section class="content">
-                <!-- content -->
-                <div class="nav"></div>
-                <div class="info">
-                    <div class="info-img">
-                        <div class="image">
-                            <img src="../src/image/book.png" class="book-img" />
-                        </div>
+            <!-- navBar -->
+            <div class="nav"></div>
+            <!-- navBar end -->
+            <!-- contentArea -->
+            <section class="contentArea">
+                <div class="productWrap">
+                    <!-- productLeftBox -->
+                    <div class="productLeftBox">
+                        <img src="../src/image/book.png" class="book-img" />
                         <div class="rate">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star"></i>
+                            <i class="bi bi-star-fill star"></i>
+                            <i class="bi bi-star-fill star"></i>
+                            <i class="bi bi-star-fill star"></i>
+                            <i class="bi bi-star-fill star"></i>
+                            <i class="bi bi-star star"></i>
                         </div>
                     </div>
-                    <div class="info-text">
-                        <h1 class="book-name">Elon Musk</h1>
-                        <h2 class="book-auth">by Ashlee Vance</h2>
-                        <p class="book-description">
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo illum unde vero sit repellat
-                            veritatis velit quisquam qui ipsum repellendus, tenetur iste hic iusto voluptatum ipsa
-                            molestiae minus totam, harum, amet magni facere! Voluptatibus sed animi laudantium totam
-                            alias repellendus laborum sint qui cum, nesciunt velit doloremque pariatur labore fugit,
-                            vero molestias soluta? Excepturi repellendus et sunt ea nesciunt est molestiae quos quidem
-                            ipsum. Numquam, atque? Eius dicta ullam blanditiis odit aspernatur. Ducimus, veniam
-                            accusamus itaque iste
-                        </p>
+                    <!-- productLeftBox end -->
+                    <!-- productRightBox -->
+                    <div class="productRightBox">
+                        <div class="product-text">
+                            <h1 class="book-name">Elon Musk</h1>
+                            <h2 class="book-auth">by Ashlee Vance</h2>
+                            <p class="book-description">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo illum unde vero sit
+                                repellat veritatis velit quisquam qui ipsum repellendus, tenetur iste hic iusto
+                                voluptatum ipsa molestiae minus totam, harum, amet magni facere! Voluptatibus sed animi
+                                laudantium totam alias repellendus laborum sint qui cum, nesciunt velit doloremque
+                                pariatur labore fugit, vero molestias soluta? Excepturi repellendus et sunt ea nesciunt
+                                est molestiae quos quidem ipsum. Numquam, atque? Eius dicta ullam blanditiis odit
+                                aspernatur. Ducimus, veniam accusamus itaque iste
+                            </p>
+                        </div>
                         <div class="price">
                             <p class="price-text"><strong>NT$ 199</strong></p>
                         </div>
@@ -46,16 +51,293 @@
                             <button class="cart-btn">Add to cart<i class="bi bi-cart-fill"></i></button>
                         </div>
                     </div>
+                    <!-- productRightBox end -->
                 </div>
-                <div class="footer">
+                <div class="scrollHint">
                     <p>Scroll to see comments</p>
-                    <i class="bi bi-chevron-compact-down"></i>
+                    <div class="scrollIcon">
+                        <i class="bi bi-chevron-compact-down" onclick="document.getElementById('commentArea').scrollIntoView({behavior: 'smooth'});"></i>
+                    </div>
                 </div>
             </section>
-            <section class="comment">
-                <!-- comment -->
-                <h1>comment</h1>
+            <!-- contentArea end -->
+            <!-- commentArea -->
+            <section class="commentArea" id="commentArea">
+                <div class="commentWrap">
+                    <!-- commentLeftBox -->
+                    <div class="commentLeftBox">
+                        <div class="commentImgArea">
+                            <img src="../src/image/book.png" class="commentBookImg" />
+                        </div>
+                        <div class="commentInfoArea">
+                            <h1 class="commentBookName">Elon Musk</h1>
+                            <h2 class="commentBookAuth">by Ashlee Vance</h2>
+                            <div class="commentRate">
+                                <i class="bi bi-star-fill star"></i>
+                                <i class="bi bi-star-fill star"></i>
+                                <i class="bi bi-star-fill star"></i>
+                                <i class="bi bi-star-fill star"></i>
+                                <i class="bi bi-star star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- commentLeftBox end -->
+                    <!-- commentRightBox -->
+                    <div class="commentRightBox">
+                        <div class="commentTitleArea">
+                            <h1 class="commentTitle">Comments</h1>
+                        </div>
+                        <!-- Comment Component Area -->
+                        <div class="commentComponentArea">
+                            <div class="commentComponent">
+                                <div class="commentProfileImageArea">
+                                    <img src="../src/image/profile-image.png" class="profileImg" />
+                                </div>
+                                <div class="commentTextArea">
+                                    <div class="commentTextHead">
+                                        <div class="commentUserName">
+                                            <h1>Elon Musk</h1>
+                                        </div>
+                                        <div class="commentTextRate">
+                                            <i class="bi bi-star-fill starDark"></i>
+                                            <i class="bi bi-star-fill starDark"></i>
+                                            <i class="bi bi-star-fill starDark"></i>
+                                            <i class="bi bi-star-fill starDark"></i>
+                                            <i class="bi bi-star starDark"></i>
+                                        </div>
+                                    </div>
+                                    <div class="commentTextBody">
+                                        <p class="commentText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Iaculis donec dignissim nec vel venenatis. Ac, amet nunc etiam ut in in mattis mauris sodales.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="commentComponent">
+                                <div class="commentProfileImageArea">
+                                    <img src="../src/image/profile-image.png" class="profileImg" />
+                                </div>
+                                <div class="commentTextArea">
+                                    <div class="commentTextHead">
+                                        <div class="commentUserName">
+                                            <h1>Elon Musk</h1>
+                                        </div>
+                                        <div class="commentTextRate">
+                                            <i class="bi bi-star-fill starDark"></i>
+                                            <i class="bi bi-star-fill starDark"></i>
+                                            <i class="bi bi-star-fill starDark"></i>
+                                            <i class="bi bi-star-fill starDark"></i>
+                                            <i class="bi bi-star starDark"></i>
+                                        </div>
+                                    </div>
+                                    <div class="commentTextBody">
+                                        <p class="commentText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Iaculis donec dignissim nec vel venenatis. Ac, amet nunc etiam ut in in mattis mauris sodales.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="commentComponent">
+                                <div class="commentProfileImageArea">
+                                    <img src="../src/image/profile-image.png" class="profileImg" />
+                                </div>
+                                <div class="commentTextArea">
+                                    <div class="commentTextHead">
+                                        <div class="commentUserName">
+                                            <h1>Elon Musk</h1>
+                                        </div>
+                                        <div class="commentTextRate">
+                                            <i class="bi bi-star-fill starDark"></i>
+                                            <i class="bi bi-star-fill starDark"></i>
+                                            <i class="bi bi-star-fill starDark"></i>
+                                            <i class="bi bi-star-fill starDark"></i>
+                                            <i class="bi bi-star starDark"></i>
+                                        </div>
+                                    </div>
+                                    <div class="commentTextBody">
+                                        <p class="commentText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Iaculis donec dignissim nec vel venenatis. Ac, amet nunc etiam ut in in mattis mauris sodales.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="commentComponent">
+                                <div class="commentProfileImageArea">
+                                    <img src="../src/image/profile-image.png" class="profileImg" />
+                                </div>
+                                <div class="commentTextArea">
+                                    <div class="commentTextHead">
+                                        <div class="commentUserName">
+                                            <h1>Elon Musk</h1>
+                                        </div>
+                                        <div class="commentTextRate">
+                                            <i class="bi bi-star-fill starDark"></i>
+                                            <i class="bi bi-star-fill starDark"></i>
+                                            <i class="bi bi-star-fill starDark"></i>
+                                            <i class="bi bi-star-fill starDark"></i>
+                                            <i class="bi bi-star starDark"></i>
+                                        </div>
+                                    </div>
+                                    <div class="commentTextBody">
+                                        <p class="commentText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Iaculis donec dignissim nec vel venenatis. Ac, amet nunc etiam ut in in mattis mauris sodales.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="commentComponent">
+                                <div class="commentProfileImageArea">
+                                    <img src="../src/image/profile-image.png" class="profileImg" />
+                                </div>
+                                <div class="commentTextArea">
+                                    <div class="commentTextHead">
+                                        <div class="commentUserName">
+                                            <h1>Elon Musk</h1>
+                                        </div>
+                                        <div class="commentTextRate">
+                                            <i class="bi bi-star-fill starDark"></i>
+                                            <i class="bi bi-star-fill starDark"></i>
+                                            <i class="bi bi-star-fill starDark"></i>
+                                            <i class="bi bi-star-fill starDark"></i>
+                                            <i class="bi bi-star starDark"></i>
+                                        </div>
+                                    </div>
+                                    <div class="commentTextBody">
+                                        <p class="commentText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Iaculis donec dignissim nec vel venenatis. Ac, amet nunc etiam ut in in mattis mauris sodales.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="commentComponent">
+                                <div class="commentProfileImageArea">
+                                    <img src="../src/image/profile-image.png" class="profileImg" />
+                                </div>
+                                <div class="commentTextArea">
+                                    <div class="commentTextHead">
+                                        <div class="commentUserName">
+                                            <h1>Elon Musk</h1>
+                                        </div>
+                                        <div class="commentTextRate">
+                                            <i class="bi bi-star-fill starDark"></i>
+                                            <i class="bi bi-star-fill starDark"></i>
+                                            <i class="bi bi-star-fill starDark"></i>
+                                            <i class="bi bi-star-fill starDark"></i>
+                                            <i class="bi bi-star starDark"></i>
+                                        </div>
+                                    </div>
+                                    <div class="commentTextBody">
+                                        <p class="commentText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Iaculis donec dignissim nec vel venenatis. Ac, amet nunc etiam ut in in mattis mauris sodales.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="commentComponent">
+                                <div class="commentProfileImageArea">
+                                    <img src="../src/image/profile-image.png" class="profileImg" />
+                                </div>
+                                <div class="commentTextArea">
+                                    <div class="commentTextHead">
+                                        <div class="commentUserName">
+                                            <h1>Elon Musk</h1>
+                                        </div>
+                                        <div class="commentTextRate">
+                                            <i class="bi bi-star-fill starDark"></i>
+                                            <i class="bi bi-star-fill starDark"></i>
+                                            <i class="bi bi-star-fill starDark"></i>
+                                            <i class="bi bi-star-fill starDark"></i>
+                                            <i class="bi bi-star starDark"></i>
+                                        </div>
+                                    </div>
+                                    <div class="commentTextBody">
+                                        <p class="commentText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Iaculis donec dignissim nec vel venenatis. Ac, amet nunc etiam ut in in mattis mauris sodales.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="commentComponent">
+                                <div class="commentProfileImageArea">
+                                    <img src="../src/image/profile-image.png" class="profileImg" />
+                                </div>
+                                <div class="commentTextArea">
+                                    <div class="commentTextHead">
+                                        <div class="commentUserName">
+                                            <h1>Elon Musk</h1>
+                                        </div>
+                                        <div class="commentTextRate">
+                                            <i class="bi bi-star-fill starDark"></i>
+                                            <i class="bi bi-star-fill starDark"></i>
+                                            <i class="bi bi-star-fill starDark"></i>
+                                            <i class="bi bi-star-fill starDark"></i>
+                                            <i class="bi bi-star starDark"></i>
+                                        </div>
+                                    </div>
+                                    <div class="commentTextBody">
+                                        <p class="commentText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Iaculis donec dignissim nec vel venenatis. Ac, amet nunc etiam ut in in mattis mauris sodales.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="commentComponent">
+                                <div class="commentProfileImageArea">
+                                    <img src="../src/image/profile-image.png" class="profileImg" />
+                                </div>
+                                <div class="commentTextArea">
+                                    <div class="commentTextHead">
+                                        <div class="commentUserName">
+                                            <h1>Elon Musk</h1>
+                                        </div>
+                                        <div class="commentTextRate">
+                                            <i class="bi bi-star-fill starDark"></i>
+                                            <i class="bi bi-star-fill starDark"></i>
+                                            <i class="bi bi-star-fill starDark"></i>
+                                            <i class="bi bi-star-fill starDark"></i>
+                                            <i class="bi bi-star starDark"></i>
+                                        </div>
+                                    </div>
+                                    <div class="commentTextBody">
+                                        <p class="commentText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Iaculis donec dignissim nec vel venenatis. Ac, amet nunc etiam ut in in mattis mauris sodales.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="commentComponent">
+                                <div class="commentProfileImageArea">
+                                    <img src="../src/image/profile-image.png" class="profileImg" />
+                                </div>
+                                <div class="commentTextArea">
+                                    <div class="commentTextHead">
+                                        <div class="commentUserName">
+                                            <h1>Elon Musk</h1>
+                                        </div>
+                                        <div class="commentTextRate">
+                                            <i class="bi bi-star-fill starDark"></i>
+                                            <i class="bi bi-star-fill starDark"></i>
+                                            <i class="bi bi-star-fill starDark"></i>
+                                            <i class="bi bi-star-fill starDark"></i>
+                                            <i class="bi bi-star starDark"></i>
+                                        </div>
+                                    </div>
+                                    <div class="commentTextBody">
+                                        <p class="commentText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Iaculis donec dignissim nec vel venenatis. Ac, amet nunc etiam ut in in mattis mauris sodales.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="commentComponent">
+                                <div class="commentProfileImageArea">
+                                    <img src="../src/image/profile-image.png" class="profileImg" />
+                                </div>
+                                <div class="commentTextArea">
+                                    <div class="commentTextHead">
+                                        <div class="commentUserName">
+                                            <h1>Elon Musk</h1>
+                                        </div>
+                                        <div class="commentTextRate">
+                                            <i class="bi bi-star-fill starDark"></i>
+                                            <i class="bi bi-star-fill starDark"></i>
+                                            <i class="bi bi-star-fill starDark"></i>
+                                            <i class="bi bi-star-fill starDark"></i>
+                                            <i class="bi bi-star starDark"></i>
+                                        </div>
+                                    </div>
+                                    <div class="commentTextBody">
+                                        <p class="commentText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Iaculis donec dignissim nec vel venenatis. Ac, amet nunc etiam ut in in mattis mauris sodales.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Comment Component Area end-->
+                    </div>
+                    <!-- commentRightBox end -->
+                </div>
             </section>
+            <!-- commentArea end -->
         </div>
     </body>
 </html>
