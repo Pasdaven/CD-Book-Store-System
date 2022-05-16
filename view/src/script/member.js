@@ -19,7 +19,7 @@ function login() {
         success: res => {
             if (res) {
                 // 登入成功
-                
+
             } else {
                 // 帳號密碼錯誤登入失敗
                 $('#modal').modal('show');
@@ -129,15 +129,17 @@ function confirm() {
 }
 
 function resetPassword() {
+    // let member_id = $.session.get('member_id');
     let new_password = $('#new_password').val();
     let confirm_password = $('#confirm_password').val();
-
-    if (new_password == confirm_password) {
+    
+    if (new_password.localeCompare(confirm_password) == 0) {
         let data = {
             controller: 'member',
             method: 'resetPassword',
             parameter: {
-                member_password: new_password
+                member_id: member_id,
+                new_password: new_password
             }
         };
         let json = JSON.stringify(data);
@@ -148,12 +150,13 @@ function resetPassword() {
             success: res => {
                 if (res) {
                     // 重置密碼成功
-    
+                    $('#modalSuccess').modal('show');
                 }
             }
         });
     } else {
         // 兩個新密碼不相同
+        $('#modalNotSame').modal('show');
     }
 }
 
@@ -185,7 +188,7 @@ function updateMemberInfo() {
                 success: res => {
                     if (res) {
                         // 更改成功
-        
+
                     } else {
                         // 更改失敗
                     }
