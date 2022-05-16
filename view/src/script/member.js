@@ -83,9 +83,12 @@ function forgetPassword() {
         method: 'POST',
         data: json,
         success: res => {
+            console.log(res);
             if (!res) {
                 // 無此email
-
+                $('#modalNoMail').modal('show');
+            } else {
+                $('#modalSendMail').modal('show');
             }
         }
     });
@@ -94,6 +97,10 @@ function forgetPassword() {
 function confirm() {
     let email = $('#email').val();
     let confirmNumber = $('#confirmNumber').val();
+
+    if (email == '' || confirmNumber == '') {
+        $('#error').modal('show');
+    }
 
     let data = {
         controller: 'member',
@@ -109,12 +116,13 @@ function confirm() {
         method: 'POST',
         data: json,
         success: res => {
+            console.log(res);
             if (res) {
                 // 驗證碼正確
-
+                window.location.replace('/CD-Book-Store-System/view/resetPassword/index.html');
             } else {
                 // 驗證碼錯誤
-
+                $('#modalConfirmWrong').modal('show');
             }
         }
     });
