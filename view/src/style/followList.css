@@ -21,3 +21,7 @@
     background-color: #B1DEE9;
     border-color: #B1DEE9;
   }
+
+  .scroll{
+    overflow-y: scroll;
+  }
