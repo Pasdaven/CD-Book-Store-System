@@ -57,4 +57,11 @@ class Cart extends Model {
         $order = new OrderList();
         return $order->insertOrder($param);
     }
+    public function isCart($param) {
+        $member_id = $param['member_id'];
+        $product_id = $param['product_id'];
+        $sql = $this->select($this->table) . $this->where('member_id', '=', $member_id) . $this->and('product_id', '=', $product_id);
+        
+        return $this->execute($sql);
+    }
 }
