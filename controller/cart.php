@@ -8,7 +8,7 @@ class Cart extends Model {
     public function insertCart($param) {
         $member_id = $param['member_id'];
         $product_id = $param['product_id'];
-        $count_num = $param['count_num'];
+        $count_num = 1;
         $product = new Product();
         $product_num = $product->searchProductNum($param)[0]['product_number'];
 
@@ -45,12 +45,14 @@ class Cart extends Model {
         $sql = $this->delete() . $this->where('member_id', '=', $member_id);
         return $this->execute($sql);
     }
-    public function getCart() {
-        $sql = $this->select($this->table);
+    public function getCart($param) {
+        $member_id = $param['member_id'];
+        $sql = $this->select($this->table) . ' AS c,product AS p WHERE p.product_id IN (' . $this->select($this->table, ['c.product_id']) . $this->where('c.member_id', '=', $member_id) . ')';
         return $this->execute($sql);
     }
     public function checkout($param) {
-        $getcart = $this->getCart();
+        $getcart = $this->getCart($param);
+        return $getcart;
         foreach ($getcart as $a) {
             $param['arr'][] = ['product_id' => $a['product_id'], 'count_num' => $a['count_num']];
         }
