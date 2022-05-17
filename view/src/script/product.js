@@ -8,6 +8,16 @@ const getUrl = () => {
     return param.get('id');
 }
 
+const displayData = (data) => {
+    $('#product_name').html(data[0]['product_name']);
+    $('#comment_product_name').html(data[0]['product_name']);
+    $('#product_author').html(data[0]['product_author']);
+    $('#product_description').html(data[0]['product_description']);
+    $('#product_price').html(data[0]['product_price']);
+    $("#product_image").attr("src", data[0]['product_image']);
+    $("#comment_product_image").attr("src", data[0]['product_image']);
+}
+
 const searchProductByName = () => {
     let product_name = $("#text-1").val();
     let data = {
