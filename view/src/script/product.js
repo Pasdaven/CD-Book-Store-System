@@ -42,6 +42,28 @@ $("#follow_btn").click(() => {
     }
 })
 
+const displayCartBtn = (data) => {
+    (data == "") ? showCartBtn() : showUnCartBtn();
+}
+const showCartBtn = () => {
+    $('#cart_btn_txt').html('Add To Cart');
+    $('#cart_btn').removeClass('unCart-btn');
+    $('#cart_btn').addClass('cart-btn');
+}
+const showUnCartBtn = () => {
+    $('#cart_btn_txt').html('Remove');
+    $('#cart_btn').removeClass('cart-btn');
+    $('#cart_btn').addClass('unCart-btn');
+}
+$("#cart_btn").click(() => {
+    if ($("#cart_btn").hasClass("cart-btn")) {
+        addToCart();
+        showUnCartBtn();
+    } else {
+        removeCart();
+        showCartBtn();
+    }
+})
 
 /* Ajax Function */
 const searchProductById = product_id => {
