@@ -20,6 +20,6 @@ VALUES  (1, '鋼鐵人馬斯克', '阿什利·萬斯', 'Lorem ipsum, dolor sit a
         (5, '豆漿娘娘駕到', '阿晧（漿爸）', 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo illum unde vero sit repellat veritatis velit quisquam qui ipsum repellendus, tenetur iste hic iusto voluptatum ipsa molestiae minus totam, harum, amet magni facere! Voluptatibus sed animi laudantium totam alias repellendus laborum sint qui cum, nesciunt velit doloremque pariatur labore fugit, vero molestias soluta? Excepturi repellendus et sunt ea nesciunt est molestiae quos quidem ipsum. Numquam, atque?', 'http://localhost/cd-book-store-system/view/src/image/book-5.png', '16800', NULL, NULL, NULL, '600');
 
 INSERT INTO `customer_service`
-VALUES  (NULL, 'Steve'),
-        (NULL, 'Pascal'),
-        (NULL, 'Jason');
+VALUES  (1, 'Steve'),
+        (2, 'Pascal'),
+        (3, 'Jason');
