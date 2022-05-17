@@ -106,7 +106,7 @@ section {
     margin-top: 10px;
     color: #9199a0;
     font-size: 26px;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 .price {
     width: 100%;
