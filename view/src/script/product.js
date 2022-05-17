@@ -216,3 +216,42 @@ const checkCart = () => {
     });
 }
 
+const addToCart = () => {
+    let product_id = getUrl();
+    let member_id = 1;
+    let data = {
+        controller: "cart",
+        method: "insertCart",
+        parameter: {
+            product_id: product_id,
+            member_id: member_id,
+        },
+    };
+    let json = JSON.stringify(data);
+    $.ajax({
+        url: "/cd-book-store-system/controller/core.php",
+        method: "POST",
+        data: json,
+        success: (res) => console.log('add to cart'),
+    });
+}
+
+const removeCart = () => {
+    let product_id = getUrl();
+    let member_id = 1;
+    let data = {
+        controller: "cart",
+        method: "deleteCartByMIdPId",
+        parameter: {
+            product_id: product_id,
+            member_id: member_id,
+        },
+    };
+    let json = JSON.stringify(data);
+    $.ajax({
+        url: "/cd-book-store-system/controller/core.php",
+        method: "POST",
+        data: json,
+        success: (res) => console.log('remove cart'),
+    });
+}
