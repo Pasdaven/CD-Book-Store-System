@@ -8,17 +8,19 @@ $(() => {
 /* DOM Function */
 const getUrl = () => {
     let param = new URLSearchParams(window.location.search);
-    return param.get('id');
-}
+    return param.get("id");
+};
 
 const displayData = (data) => {
-    $('#product_name').html(data[0]['product_name']);
-    $('#comment_product_name').html(data[0]['product_name']);
-    $('#product_author').html(data[0]['product_author']);
-    $('#product_description').html(data[0]['product_description']);
-    $('#product_price').html(data[0]['product_price']);
-    $("#product_image").attr("src", data[0]['product_image']);
-    $("#comment_product_image").attr("src", data[0]['product_image']);
+    $("#product_name").html(data[0]["product_name"]);
+    $("#comment_product_name").html(data[0]["product_name"]);
+    $("#product_author").html(data[0]["product_author"]);
+    $("#product_description").html(data[0]["product_description"]);
+    $("#product_price").html(data[0]["product_price"]);
+    $("#product_image").attr("src", data[0]["product_image"]);
+    $("#comment_product_image").attr("src", data[0]["product_image"]);
+};
+
 const displayFollowBtn = (data) => {
     (data == "") ? showFollowBtn() : showUnFollowBtn();
 }
@@ -66,7 +68,7 @@ $("#cart_btn").click(() => {
 })
 
 /* Ajax Function */
-const searchProductById = product_id => {
+const searchProductById = (product_id) => {
     let data = {
         controller: "product",
         method: "searchProductById",
@@ -127,7 +129,7 @@ const updateProductNum = () => {
         method: "updateProductNum",
         parameter: {
             product_id: product_id,
-            new_product_number: new_product_number
+            new_product_number: new_product_number,
         },
     };
     let json = JSON.stringify(data);
@@ -137,7 +139,10 @@ const updateProductNum = () => {
         data: json,
         success: (res) => console.log(res),
     });
-};    let product_id = getUrl();
+};
+
+const checkFollow = () => {
+    let product_id = getUrl();
     let member_id = 1;
     let data = {
         controller: "followList",
