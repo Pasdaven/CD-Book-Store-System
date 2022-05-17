@@ -19,7 +19,29 @@ const displayData = (data) => {
     $('#product_price').html(data[0]['product_price']);
     $("#product_image").attr("src", data[0]['product_image']);
     $("#comment_product_image").attr("src", data[0]['product_image']);
+const displayFollowBtn = (data) => {
+    (data == "") ? showFollowBtn() : showUnFollowBtn();
 }
+const showFollowBtn = () => {
+    $('#follow_btn_txt').html('Follow');
+    $('#follow_btn').removeClass('unFollow-btn');
+    $('#follow_btn').addClass('follow-btn');
+}
+const showUnFollowBtn = () => {
+    $('#follow_btn_txt').html('Unfollow');
+    $('#follow_btn').removeClass('follow-btn');
+    $('#follow_btn').addClass('unFollow-btn');
+}
+$("#follow_btn").click(() => {
+    if ($("#follow_btn").hasClass("follow-btn")) {
+        addToFollow();
+        showUnFollowBtn();
+    } else {
+        removeFollow();
+        showFollowBtn();
+    }
+})
+
 
 /* Ajax Function */
 const searchProductById = product_id => {
