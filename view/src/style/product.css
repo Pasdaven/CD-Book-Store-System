@@ -309,6 +309,11 @@ section {
     flex: 1;
     margin-right: 20px;
     margin-left: 20px;
+    height: 6vh;
+}
+.profileImg {
+    height: 100%;
+    border-radius: 50%;
 }
 .commentTextHead {
     display: flex;
