@@ -27,4 +27,12 @@ class FollowList extends Model {
         }
         return $arr;
     }
+
+    public function isFollow($param) {
+        $member_id = $param['member_id'];
+        $product_id = $param['product_id'];
+        $sql = $this->select($this->table) . $this->where('member_id', '=', $member_id) . $this->and('product_id', '=', $product_id);
+
+        return $this->execute($sql);
+    }
 }
