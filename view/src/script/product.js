@@ -18,6 +18,23 @@ const displayData = (data) => {
     $("#comment_product_image").attr("src", data[0]['product_image']);
 }
 
+const searchProductById = product_id => {
+    let data = {
+        controller: "product",
+        method: "searchProductById",
+        parameter: {
+            product_id: product_id,
+        },
+    };
+    let json = JSON.stringify(data);
+    $.ajax({
+        url: "/cd-book-store-system/controller/core.php",
+        method: "POST",
+        data: json,
+        success: (res) => displayData(res),
+    });
+};
+
 const searchProductByName = () => {
     let product_name = $("#text-1").val();
     let data = {
