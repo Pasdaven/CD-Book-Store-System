@@ -3,6 +3,7 @@ $(() => {
     searchProductById(product_id);
 });
 
+/* DOM Function */
 const getUrl = () => {
     let param = new URLSearchParams(window.location.search);
     return param.get('id');
@@ -18,6 +19,7 @@ const displayData = (data) => {
     $("#comment_product_image").attr("src", data[0]['product_image']);
 }
 
+/* Ajax Function */
 const searchProductById = product_id => {
     let data = {
         controller: "product",
