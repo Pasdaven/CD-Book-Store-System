@@ -190,20 +190,38 @@ section {
     width: 160px;
     transition: 0.6s;
 }
-.bi-cart-fill {
-    transition: 0.6s;
+.cart-btn > .bi-cart-fill {
     margin-left: 10px;
     color: #b1dee9;
 }
 .cart-btn:hover {
-    color: white;
-    background: #b1dee9;
+    background: rgb(236, 236, 236);
     transition: 0.6s;
     cursor: pointer;
 }
-.cart-btn:hover .bi-cart-fill {
-    transition: 0.6s;
+
+/* .unCart-btn */
+.unCart-btn {
+    box-shadow: 1.8px 1.8px 6.8px rgba(0, 0, 0, 0.024), 5px 5px 18.9px rgba(0, 0, 0, 0.035),
+        12.1px 12.1px 45.5px rgba(0, 0, 0, 0.046), 40px 40px 151px rgba(0, 0, 0, 0.07);
+    background: #b1dee9;
+    font-size: 16px;
     color: white;
+    outline: none;
+    border: none;
+    border-radius: 7px;
+    height: 50px;
+    width: 160px;
+    transition: 0.6s;
+}
+.unCart-btn > .bi-cart-fill {
+    margin-left: 10px;
+    color: white;
+}
+.unCart-btn:hover {
+    background: #97cfdd;
+    transition: 0.6s;
+    cursor: pointer;
 }
 
 /* Scroll */
