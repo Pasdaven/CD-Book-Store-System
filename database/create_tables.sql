@@ -10,7 +10,8 @@ CREATE TABLE member (
 CREATE TABLE product (
     product_id INT UNSIGNED PRIMARY KEY auto_increment COMMENT '商品編號',
     product_name VARCHAR(100) NOT NULL COMMENT '商品名稱',
-    product_description VARCHAR(100) NOT NULL COMMENT '商品說明',
+    product_author VARCHAR(100) NOT NULL COMMENT '作者名稱',
+    product_description VARCHAR(500) NOT NULL COMMENT '商品說明',
     product_image VARCHAR(100) NOT NULL COMMENT '商品圖片',
     product_price INT UNSIGNED NOT NULL COMMENT '商品價格',
     product_discount ENUM ('0.9', '0.85', '0.8') COMMENT '商品特價',
