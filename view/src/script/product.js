@@ -1,3 +1,8 @@
+$(() => {
+    let product_id = getUrl();
+    searchProductById(product_id);
+});
+
 const searchProductByName = () => {
     let product_name = $("#text-1").val();
     let data = {
