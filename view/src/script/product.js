@@ -3,6 +3,11 @@ $(() => {
     searchProductById(product_id);
 });
 
+const getUrl = () => {
+    let param = new URLSearchParams(window.location.search);
+    return param.get('id');
+}
+
 const searchProductByName = () => {
     let product_name = $("#text-1").val();
     let data = {
