@@ -24,7 +24,7 @@ class Member extends Model {
 
     public function register($param) {
         $email[] = $this->execute($this->select($this->member_account_table) . $this->where('email', '=', $param['email']));
-        if (count($email) == 1) {
+        if (count($email[0]) == 0) {
             $member_sql = $this->insert(['member_name' => $param['member_name'], 'birthday' => $param['birthday'], 'phone_num' => $param['phone_num'], 'sex' => $param['sex'], 'credit_num' => $param['credit_num']], $this->member_table);
             $this->execute($member_sql);
 
