@@ -34,8 +34,23 @@ function register() {
     let member_name = $('#member_name').val();
     let birthday = $('#birthday').val();
     let phone_num = $('#phone_num').val();
-    let sex = $('#sex').val();
-    let credit_num = $('#credit_num').val();
+    let credit_num = '100';
+
+    let sex = []
+    let checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
+    for (let i = 0; i < checkboxes.length; i++) {
+        sex.push(checkboxes[i].value)
+    }
+
+    if (email == '' || member_password == '' || member_name == '' || birthday == '' || phone_num == '' || credit_num == '' || sex.length == 0) {
+        $('#modalError').modal('show');
+        return;
+    }
+
+    if (sex.length == 2) {
+        $('#modalSex').modal('show');
+        return;
+    }
 
     let data = {
         controller: 'member',
@@ -46,7 +61,7 @@ function register() {
             member_name: member_name,
             birthday: birthday,
             phone_num: phone_num,
-            sex: sex,
+            sex: sex[0],
             credit_num: credit_num
         }
     };
@@ -58,10 +73,10 @@ function register() {
         success: res => {
             if (res) {
                 // 註冊成功
-
+                $('#modalSuccess').modal('show');
             } else {
                 // email重複註冊失敗
-
+                $('#modalEmailSame').modal('show');
             }
         }
     });
@@ -132,7 +147,7 @@ function resetPassword() {
     // let member_id = $.session.get('member_id');
     let new_password = $('#new_password').val();
     let confirm_password = $('#confirm_password').val();
-    
+
     if (new_password.localeCompare(confirm_password) == 0) {
         let data = {
             controller: 'member',
