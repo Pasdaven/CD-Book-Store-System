@@ -315,7 +315,7 @@ section {
     align-content: center;
 }
 .commentUserName {
-    color: #3F4953;
+    color: #3f4953;
 }
 .commentTextRate {
     display: flex;
@@ -323,10 +323,10 @@ section {
     margin-left: 20px;
 }
 .starDark {
-    color: #8C929B;
+    color: #8c929b;
     font-size: 18px;
     margin-right: 10px;
 }
 .commentText {
-    color: #8C929B;
+    color: #8c929b;
 }
