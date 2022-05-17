@@ -23,7 +23,8 @@ class FollowList extends Model {
         $result = $this->execute($sql);
         $product = new Product();
         foreach ($result as $r) {
-            $arr[] = $product->searchProductById($r['product_id']);
+            $param['product_id'] = $r['product_id'];
+            $arr[] = $product->searchProductById($param);
         }
         return $arr;
     }
