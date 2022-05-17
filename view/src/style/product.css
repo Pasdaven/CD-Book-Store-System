@@ -82,6 +82,7 @@ section {
 
 /* productRightBox */
 .productRightBox {
+    width: 70%;
     margin-right: 6vw;
     height: 100%;
 }
@@ -192,13 +193,13 @@ section {
     text-align: center;
     padding-bottom: 2vh;
     color: white;
+    cursor: pointer;
 }
 .scrollIcon {
     animation: scroll;
     animation-duration: 3s;
     animation-timing-function: ease-in-out;
     animation-iteration-count: infinite;
-    cursor: pointer;
 }
 .bi-chevron-compact-down {
     font-size: 24px;
@@ -306,7 +307,6 @@ section {
     padding-bottom: 25px;
 }
 .commentProfileImageArea {
-    flex: 1;
     margin-right: 20px;
     margin-left: 20px;
     height: 6vh;
