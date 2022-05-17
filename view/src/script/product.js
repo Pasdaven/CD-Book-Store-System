@@ -1,6 +1,8 @@
 $(() => {
     let product_id = getUrl();
     searchProductById(product_id);
+    checkFollow();
+    checkCart();
 });
 
 /* DOM Function */
