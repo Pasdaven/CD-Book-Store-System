@@ -176,41 +176,66 @@ function resetPassword() {
 }
 
 function updateMemberInfo() {
+    let member_id = $.session.get('member_id');
     let member_name = $('#member_name').val();
     let birthday = $('#birthday').val();
     let phone_num = $('#phone_num').val();
-    let sex = $('#sex').val();
-    let credit_num = $('#credit_num').val();
+    let member_password = $('#member_password').val();
 
-    for (var i = 0; i < length(memberInfo); i++) {
-        if (memberInfo[i].value != null) {
-            let data = {
-                controller: 'member',
-                method: 'updateMemberInfo',
-                parameter: {
-                    member_name: member_name,
-                    birthday: birthday,
-                    phone_num: phone_num,
-                    sex: sex,
-                    credit_num: credit_num
-                }
-            };
-            let json = JSON.stringify(data);
-            $.ajax({
-                url: '/CD-Book-Store-System/controller/core.php',
-                method: 'POST',
-                data: json,
-                success: res => {
-                    if (res) {
-                        // 更改成功
-
-                    } else {
-                        // 更改失敗
-                    }
-                }
-            });
-        }
+    let sex = []
+    let checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
+    for (let i = 0; i < checkboxes.length; i++) {
+        sex.push(checkboxes[i].value)
     }
+
+    if (member_password == '' || member_name == '' || birthday == '' || phone_num == '' || sex.length == 0) {
+        $('#modalError').modal('show');
+        return;
+    }
+
+    if (member_name.length > 100) {
+        $('#modalNameError').modal('show');
+        return;
+    }
+
+    if (phone_num.length > 10) {
+        $('#modalPhoneError').modal('show');
+        return;
+    }
+
+    if (member_password.length > 100) {
+        $('#modalPasswordError').modal('show');
+        return;
+    }
+
+    if (sex.length == 2) {
+        $('#modalSex').modal('show');
+        return;
+    }
+
+    let data = {
+        controller: 'member',
+        method: 'updateMemberInfo',
+        parameter: {
+            member_id: member_id,
+            member_name: member_name,
+            birthday: birthday,
+            phone_num: phone_num,
+            sex: sex[0],
+            member_password: member_password
+        }
+    };
+    console.log(data);
+    let json = JSON.stringify(data);
+    $.ajax({
+        url: '/CD-Book-Store-System/controller/core.php',
+        method: 'POST',
+        data: json,
+        success: res => {
+            // 更改成功
+            $('#modalSuccess').modal('show');
+        }
+    });
 }
 
 function getMemberInfo() {
@@ -225,6 +250,53 @@ function getMemberInfo() {
         data: json,
         success: res => {
             console.log(res);
+        }
+    });
+}
+
+function getMemberInfoById() {
+    let member_id = $.session.get('member_id');
+
+    let data = {
+        controller: 'member',
+        method: 'getMemberInfoById',
+        parameter: {
+            member_id: member_id
+        }
+    };
+    let json = JSON.stringify(data);
+    $.ajax({
+        url: '/CD-Book-Store-System/controller/core.php',
+        method: 'POST',
+        data: json,
+        success: res => {
+            // console.log(res);
+            $('#member_name').val(res[0]['member_name']);
+            $(`#${res[0]['sex']}`).prop('checked', true);
+            $('#phone_num').val(res[0]['phone_num']);
+            $('#birthday').val(res[0]['birthday']);
+        }
+    });
+}
+
+function getMemberAccountById() {
+    let member_id = $.session.get('member_id');
+
+    let data = {
+        controller: 'member',
+        method: 'getMemberAccountById',
+        parameter: {
+            member_id: member_id
+        }
+    };
+    let json = JSON.stringify(data);
+    $.ajax({
+        url: '/CD-Book-Store-System/controller/core.php',
+        method: 'POST',
+        data: json,
+        success: res => {
+            // console.log(res);
+            $('#member_password').val(res[0]['member_password']);
         }
     });
 }
