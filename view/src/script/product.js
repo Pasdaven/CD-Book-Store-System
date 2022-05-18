@@ -259,4 +259,22 @@ const removeCart = () => {
         data: json,
         success: (res) => console.log('remove cart'),
     });
-}
+}};
+    let product_id = getUrl();
+    let member_id = 1;
+    let data = {
+        controller: "browserHistory",
+        method: "insertBrowserHis",
+        parameter: {
+            product_id: product_id,
+            member_id: member_id,
+        },
+    };
+    let json = JSON.stringify(data);
+    $.ajax({
+        url: "/cd-book-store-system/controller/core.php",
+        method: "POST",
+        data: json,
+        success: (res) => console.log(res),
+    });
+};
