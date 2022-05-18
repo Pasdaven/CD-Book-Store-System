@@ -213,20 +213,25 @@ const getCoupon = () => {
 
 const displayCartInfo = (data) => {
     for (i = 0; i < data.length; i++) {
-        $('#cart').append(cartComponent(data[i]['product_name'], data[i]['cart_id'], data[i]['count_num'] * data[i]['product_price'], data[i]['count_num']));
+        if (data[i]['count_num'] == '0') {
+            deleteCart(data[i]['cart_id']);
+        }else {
+            $('#cart').append(cartComponent(data[i]['product_name'], data[i]['cart_id'], data[i]['count_num'] * data[i]['product_price'], data[i]['count_num']));
+        }
     }
 }
 
 const cartComponent = (product_name, cart_id, total_price, count_num) => {
     return `
     <div class="row align-items-center border-line py-3 cart${cart_id}">
-        <div class="col-6"><img src="./getImage.jfif" alt="" width="113.7" height="162.79"><h2 class="ms-5" style="display: inline;">${product_name}</h2></div>
+        <div class="col-2 px-0 mx-0"><img src="./getImage.jfif" alt="" width="113.7" height="162.79"></div>
+        <div class="col-3 ms-3"><h4 style="display: inline;">${product_name}</h4></div>
         <ul class="quanity">
             <li><span class="sub" id="${cart_id}sub">-</span></li>
             <li><input type="text" class="input-num" id="${cart_id}input-num" value="${count_num}"></li>
             <li><span class="add" id="${cart_id}add">+</span></li>
         </ul>
-        <div class="col-2 px-0" style="margin-left: 130px;"><h2 id="${cart_id}price">$${total_price}</h2></div>
+        <div class="col-2 px-0" style="margin-left: 130px;"><h4 id="${cart_id}price">$${total_price}</h4></div>
         <button type="button" class="btn-close" id="${cart_id}" aria-label="Close"></button>
     </div>
     `;
