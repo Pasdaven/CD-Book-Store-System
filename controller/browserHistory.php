@@ -2,6 +2,8 @@
 
 use model\Model;
 
+require_once('./product.php');
+
 class BrowserHistory extends Model {
     protected $table = 'browsing_history';
 
@@ -13,13 +15,20 @@ class BrowserHistory extends Model {
 
     public function getBrowserHis($param) {
         $member_id = $param['member_id'];
-        $sql = $this->select($this->table) . $this->where('member_id', '=', $member_id);
+        $sql = $this->select($this->table) . $this->where('member_id', '=', $member_id) . $this->orderby('browsing_his_id', 'DESC');
         $result = $this->execute($sql);
         $product = new Product();
         foreach ($result as $r) {
             $param['product_id'] = $r['product_id'];
-            $arr[] = $product->searchProductById($param);
+            $arr[] = [0 => $product->searchProductById($param), 1 => $r];
         }
         return $arr;
+    }
+
+    public function deleteBrowserHis($param) {
+        $member_id = $param['member_id'];
+        $product_id = $param['product_id'];
+        $sql = $this->delete() . $this->where('member_id', '=', $member_id) . $this->and('product_id', '=', $product_id);
+        $this->execute($sql);
     }
 }

@@ -13,7 +13,9 @@ class FollowList extends Model {
     }
 
     public function deleteFollowList($param) {
-        $sql = $this->delete() . $this->where('member_id', '=', $param['member_id']) . ' and ' . 'product_id = ' . $param['product_id'];
+        $member_id = $param['member_id'];
+        $product_id = $param['product_id'];
+        $sql = $this->delete() . $this->where('member_id', '=', $member_id) . $this->and('product_id', '=', $product_id);
         $this->execute($sql);
     }
 
