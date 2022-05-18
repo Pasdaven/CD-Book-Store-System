@@ -19,7 +19,7 @@ function getOrderList() {
                 let html = `
                     <div class="mx-auto orderList_card my-5 p-4" id="order-${res[i]['order_id']}">
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-5">
                                 <div class="card card_up">
                                 <div class="d-flex">
                                     <h5 class="card_title">Order : </h5> 
@@ -44,7 +44,7 @@ function getOrderList() {
                                 </div>
                                 </div>
                             </div>
-                            <div class="col-6 card" id="product-${res[i]['order_id']}">
+                            <div class="col-7 card" id="product-${res[i]['order_id']}">
                             <h5 class="card_title">Purchase Product : </h5>
                             </div>
                         </div>
@@ -102,14 +102,13 @@ function getOrderList() {
                     `
                     $(`#deliver-${res[i]['order_id']}`).append(deliver);
                 }
+                getOrderProduct(res[i]['order_id']);
             }
         }
     });
 }
 
-function getOrderProduct() {
-    let order_id = '3';
-
+function getOrderProduct(order_id) {
     let data = {
         controller: 'orderProduct',
         method: 'getOrderProductById',
@@ -123,7 +122,7 @@ function getOrderProduct() {
         method: 'POST',
         data: json,
         success: res => {
-            console.log(res);
+            // console.log(res);
             for (var i = 0; i < res.length; i++) {
                 let product_id = res[i]['product_id'];
                 let count_num = res[i]['count_num'];
@@ -140,22 +139,60 @@ function getOrderProduct() {
                     method: 'POST',
                     data: json,
                     success: res1 => {
-                        console.log(res1);
+                        // console.log(res1);
                         let product = `
                         <div class="d-flex">
                             <h6 class="card_title">Product Name : </h6>
-                            <h6 class="px-2">${res1[0]['product_name']}</h6>
+                            <h6 class="px-2 card_text">${res1[0]['product_name']}</h6>
                             <h6 class="card_title">Count : </h6>
-                            <h6 class="px-2">${count_num}</h6>
+                            <h6 class="px-2 card_text">${count_num}</h6>
                             <h6 class="card_title">Price : </h6>
-                            <h6 class="px-2">${count_num * res1[0]['product_price']}</h6>
+                            <h6 class="px-2 card_text">${count_num * res1[0]['product_price']}</h6>
+                            <div style="margin-top: -32px;">
+                                <button class="btn btn-sm green" style="font-size: 12px;" onclick="showCommentModal(${product_id})">Comment</button>
+                            </div>
                         </div>
                             
                         `
                         $(`#product-${order_id}`).append(product);
+
+                        let modal = `
+                        <div class="modal fade" id="modal-${product_id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Product Comment</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                    <div class="d-flex justify-content-center">
+                                    <input class="form-control my-4 comment_input" list="star_list" placeholder="Star For Product" id="star-${product_id}">
+                                    <datalist id="star_list">
+                                    <option value="1">
+                                    <option value="2">
+                                    <option value="3">
+                                    <option value="4">
+                                    <option value="5">
+                                    </datalist>
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <input class="form-control my-4 comment_input" type="text" id="comment-${product_id}" placeholder="Comment">
+                                    </div>
+                                    </div>
+                                    <div class="modal-footer d-flex justify-content-center">
+                                        <button type="button" class="btn green" data-bs-dismiss="modal" onclick="insertComment(${product_id});">Comment</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        `
+                        $('#modal_list').append(modal);
                     }
                 });
             }
         }
     });
+}
+
+function showCommentModal(order_id) {
+    $(`#modal-${order_id}`).modal('show');
 }
