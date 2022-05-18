@@ -1,5 +1,6 @@
 function getOrderList() {
-    let member_id = '1';
+    // let member_id = '1';
+    let member_id = $.session.get('member_id');
 
     let data = {
         controller: 'orderList',
