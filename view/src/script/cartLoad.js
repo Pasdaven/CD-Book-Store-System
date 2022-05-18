@@ -6,7 +6,8 @@ $(() => {
     displayCouponInfo(resCoupon);
     let couponOption = document.getElementById('form-select');
     couponOption.onchange=function() {
-        curCoupon = $('#form-select option:selected').text();
+        let curCoupon = $('#form-select option:selected').text();
+        let coupon_id = parseInt($('#form-select option:selected').attr('id'));
         if (curCoupon == 'clear all') {
             $('#displayCoupon1').remove();
             $('#displayCoupon2').remove();
@@ -15,22 +16,22 @@ $(() => {
         } else if (curCoupon == '50' || curCoupon == '100' || curCoupon == '150') {
             if ($('#displayCoupon1').text() && ($('#displayCoupon1').text() == 'free-shipping')) {
                 if (!$('#displayCoupon2').text()) {
-                    $('#displayCoupon').append(`<span id="displayCoupon2" class="display-coupon ms-2">${curCoupon}</span>`);
+                    $('#displayCoupon').append(`<span id="displayCoupon2" value="${coupon_id}" class="display-coupon ms-2">${curCoupon}</span>`);
                 } else {
-                    $('#displayCoupon2').text(curCoupon);
+                    $('#displayCoupon2').text(curCoupon).attr('value', coupon_id);
                 }
             } else if (!$('#displayCoupon1').text()) {
-                $('#displayCoupon').append(`<span id="displayCoupon1" class="display-coupon ms-2">${curCoupon}</span>`);
+                $('#displayCoupon').append(`<span id="displayCoupon1" value="${coupon_id}" class="display-coupon ms-2">${curCoupon}</span>`);
             } else {
-                $('#displayCoupon1').text(curCoupon);
+                $('#displayCoupon1').text(curCoupon).attr('value', coupon_id);
             }
             $('#discount').text("-$" + curCoupon);
         } else if (curCoupon == 'free-shipping') {
             if (!$('#displayCoupon1').text()) {
-                $('#displayCoupon').append(`<span id="displayCoupon1" class="display-coupon ms-2">${curCoupon}</span>`);
+                $('#displayCoupon').append(`<span id="displayCoupon1" value="${coupon_id}" class="display-coupon ms-2">${curCoupon}</span>`);
             } else if ($('#displayCoupon1').text() && ($('#displayCoupon1').text() == 'free-shipping')) {
             } else if (!$('#displayCoupon2').text()) {
-                $('#displayCoupon').append(`<span id="displayCoupon2" class="display-coupon ms-2">${curCoupon}</span>`);
+                $('#displayCoupon').append(`<span id="displayCoupon2" value="${coupon_id}" class="display-coupon ms-2">${curCoupon}</span>`);
             }
             $('#shipping').text("$0");
         }
@@ -56,6 +57,22 @@ $(() => {
         let id = parseInt($(this).attr('id'));
         sub(id);
     });
-    checkout();
+    $(".btn-check-out").click(function() {
+        let coupon_id = [];
+        if ($('#displayCoupon1').text()) {
+            coupon_id = $('#displayCoupon2').text() ? [$('#displayCoupon1').attr('value'), $('#displayCoupon2').attr('value')] : [$('#displayCoupon1').attr('value')];
+        }
+        let subtotal = parseInt($('#subtotal').text().substring(1));
+        let discount = 0;
+        if (parseInt($('#discount').text().substring(1)) == 0) {
+            discount = parseInt($('#discount').text().substring(1));
+        } else {
+            discount = parseInt($('#discount').text().substring(2));
+        }
+        let deliver = parseInt($('#shipping').text().substring(1));
+        let total = parseInt($('#total').text().substring(1));
+        let url = `http://localhost/CD-BOOK-STORE-SYSTEM/view/payment/?coupon_id=${coupon_id}&subtotal=${subtotal}&deliver=${deliver}&discount=${discount}&total=${total}`;
+        window.location = url;
+    });
 });
 
