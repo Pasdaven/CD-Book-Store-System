@@ -1,4 +1,5 @@
 $(() => {
+    getFollowList();
     let res = getFollowList();
     displayFollowListInfo(res);
     $(".product").click(function() {
@@ -36,6 +37,9 @@ $(() => {
 const displayFollowListInfo = (data) => {
     let resCart = getCart();
     let flag = 1;
+    if (data == 0) {
+        $('#followList').append(`<h1 class="d-flex justify-content-center align-items-center" style="height:500px;">No Following List</h1>`);
+    }
     for (let i = 0; i < data.length; i++) {
         flag = 1;
         for (let j = 0; j < resCart.length; j++) {
