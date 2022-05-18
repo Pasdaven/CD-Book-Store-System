@@ -1,4 +1,4 @@
-function insertFollowList() {
+const insertFollowList = () => {
     let member_id = $.session.get('member_id');
     let product_id = $('#product_id').val();
     let data = {
@@ -17,7 +17,7 @@ function insertFollowList() {
     });
 }
 
-function deleteFollowList(id) {
+const deleteFollowList = (id) => {
     // let member_id = $.session.get('member_id');
     let member_id = 1;
     let product_id = id;
@@ -37,7 +37,7 @@ function deleteFollowList(id) {
     });
 }
 
-function getFollowList() {
+const getFollowList = () => {
     let member_id = 1;
     let data = {
         controller: 'followList',
@@ -48,12 +48,15 @@ function getFollowList() {
     };
     let json = JSON.stringify(data);
     $.ajax({
-        url: '/CD-Book-Store-System/controller/core.php',
+        url: '/CD-BOOK-STORE-SYSTEM/controller/core.php',
         method: 'POST',
         data: json,
         async: false,
-        success: function(res) {
+        success: function (res) {
             result = res;
+        },
+        error: function (res) {
+            result = 0;
         }
     });
     return result;

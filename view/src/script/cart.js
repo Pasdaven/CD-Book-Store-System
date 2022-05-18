@@ -222,15 +222,15 @@ const displayCartInfo = (data) => {
         if (data[i]['count_num'] == '0') {
             deleteCart(data[i]['cart_id']);
         }else {
-            $('#cart').append(cartComponent(data[i]['product_name'], data[i]['cart_id'], data[i]['count_num'] * data[i]['product_price'], data[i]['count_num']));
+            $('#cart').append(cartComponent(data[i]['product_name'], data[i]['cart_id'], data[i]['count_num'] * data[i]['product_price'], data[i]['count_num'], data[i]['product_image']));
         }
     }
 }
 
-const cartComponent = (product_name, cart_id, total_price, count_num) => {
+const cartComponent = (product_name, cart_id, total_price, count_num, product_image) => {
     return `
     <div class="row align-items-center border-line py-3 cart${cart_id}">
-        <div class="col-2 px-0 mx-0"><img src="./getImage.jfif" alt="" width="113.7" height="162.79"></div>
+        <div class="col-2 px-0 mx-0"><img src="${product_image}" alt="" width="113.7" height="162.79"></div>
         <div class="col-3 ms-3"><h4 style="display: inline;">${product_name}</h4></div>
         <ul class="quanity">
             <li><span class="sub" id="${cart_id}sub">-</span></li>
