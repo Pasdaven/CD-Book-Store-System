@@ -28,4 +28,10 @@ class CommentList extends Model {
         $sql = $this->select($this->table);
         return $this->execute($sql);
     }
+
+    public function getAvgStarById($param) {
+        $product_id = $param['product_id'];
+        $sql = $this->select($this->table, ['AVG(star)']) . $this->where('product_id', '=', $product_id);
+        return $this->execute($sql);
+    }
 }
