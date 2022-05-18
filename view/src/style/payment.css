@@ -1,0 +1,140 @@
+body {
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    box-sizing: border-box;
+    background-color: #E5E5E5;
+}
+
+.check_out {
+    height: 750px;
+    width: 1000px;
+    background-color: #FFFFFF;
+    margin-top: 20%;
+    border-radius: 50px;
+    box-shadow: -50px -50px 0px #F6FAF1;
+}
+
+.check_inner {
+    margin: 50px;
+    color: #A19A9A;
+}
+
+.store_number {
+    margin-left: 26px;
+    padding-bottom: 15px;
+}
+
+.summary {
+    color: #FFFFFF;
+    background-color: #9DAB73;
+    width: 300px;
+    height: 360px;
+    border-radius: 50px;
+    margin-top: 100px;
+    margin-left: -30px;
+}
+
+.info_input {
+    width: 280px;
+    height: 45px;
+    background: #DDE9E2;
+    border-radius: 15px;
+    position: relative;
+    display: inline-block;
+    content: center;
+    margin-left: 20px;
+}
+
+.price {
+    margin-top: 60px;
+}
+
+.btn {
+    border-radius: 20px;
+    width: 160px;
+    font-size: 18px;
+    text-decoration: none;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #A19A9A;
+    position: relative;
+    display: inline-block;
+}
+
+.green {
+    background-color: #ECFBB2;
+    box-shadow: 0px 5px 0px 0px #ECFBB2;
+}
+
+.green:hover {
+    color: #A19A9A;
+}
+
+.blue {
+    background-color: #B1DEE9;
+    box-shadow: 0px 5px 0px 0px #B1DEE9;
+}
+
+.blue:hover {
+    color: #A19A9A;
+}
+
+.modal_border {
+    border-radius: 20px;
+}
+
+.gradient-text {
+    color: transparent;
+    background: conic-gradient(#D9D7F1 12%,
+            #BAABDA 12%, #BAABDA 33%,
+            #E7FBBE 33%, #E7FBBE 55%,
+            #FFCBCB 55%, #FFCBCB 70%,
+            #B5DEFF 70%, #B5DEFF 87%,
+            #F7D1BA 87%);
+    background-size: 50%;
+    background-clip: text;
+    -webkit-background-clip: text;
+
+    animation: expand-rev 0.5s ease forwards;
+
+    cursor: pointer;
+}
+
+.gradient-text:hover {
+    animation: expand 0.5s ease forwards;
+}
+
+@keyframes expand {
+    0% {
+        background-size: 50%;
+        background-position: 0 0;
+    }
+
+    20% {
+        background-size: 55%;
+        background-position: 0 1em;
+    }
+
+    100% {
+        background-size: 325%;
+        background-position: -10em -4em;
+    }
+}
+
+@keyframes expand-rev {
+    0% {
+        background-size: 325%;
+        background-position: -10em -4em;
+    }
+
+    20% {
+        background-size: 55%;
+        background-position: 0 1em;
+    }
+
+    100% {
+        background-size: 50%;
+        background-position: 0 0;
+    }
+}
