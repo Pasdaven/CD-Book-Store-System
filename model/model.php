@@ -3,6 +3,8 @@
 namespace model;
 
 class Model {
+
+    public $null = NULL;
     //連接資料庫
     private function getDB() {
         $host = 'localhost';
@@ -67,6 +69,9 @@ class Model {
         return " WHERE $kname $comparator '$kvalue'";
     }
     public function and($kname, $comparator, $kvalue) {
+        if ($kvalue == $this->null) {
+            return " AND $kname IS NULL";
+        }
         return " AND $kname $comparator '$kvalue'";
     }
     public function orwhere($kname, $operator, $kvalue) {
