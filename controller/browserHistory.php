@@ -3,6 +3,7 @@
 use model\Model;
 
 require_once('./product.php');
+require_once('./commentList.php');
 
 class BrowserHistory extends Model {
     protected $table = 'browsing_history';
@@ -17,10 +18,11 @@ class BrowserHistory extends Model {
         $member_id = $param['member_id'];
         $sql = $this->select($this->table) . $this->where('member_id', '=', $member_id) . $this->orderby('browsing_his_id', 'DESC');
         $result = $this->execute($sql);
+        $commentlist = new CommentList();
         $product = new Product();
         foreach ($result as $r) {
             $param['product_id'] = $r['product_id'];
-            $arr[] = [0 => $product->searchProductById($param), 1 => $r];
+            $arr[] = [0 => $product->searchProductById($param), 1 => $r, 2 => $commentlist->getAvgStarById($param)];
         }
         return $arr;
     }
