@@ -281,3 +281,28 @@ const createBrowsingHistory = () => {
         success: (res) => console.log(res),
     });
 };
+
+const displayRate = (data) => {
+    let rate = parseInt(data[0]["avg_star"][0]["AVG(star)"]);
+    switch (rate) {
+        case 1:
+            $(".star1").addClass("bi-star-fill");
+            $(".star2, .star3, .star4, .star5").addClass("bi-star");
+            break;
+        case 2:
+            $(".star1, .star2").addClass("bi-star-fill");
+            $(".star3, .star4, .star5").addClass("bi-star");
+            break;
+        case 3:
+            $(".star1, .star2, .star3").addClass("bi-star-fill");
+            $(".star4, .star5").addClass("bi-star");
+            break;
+        case 4:
+            $(".star1, .star2, .star3, .star4").addClass("bi-star-fill");
+            $(".star5").addClass("bi-star");
+            break;
+        case 5:
+            $(".star1, .star2, .star3, .star4, .star5").addClass("bi-star-fill");
+            break;
+    }
+};
