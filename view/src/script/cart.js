@@ -89,6 +89,9 @@ const checkout = () => {
     // let url_string = 'http://localhost/CD-BOOK-STORE-SYSTEM/view/payment/?coupon_id=[4,5]&subtotal=1200&deliver=60&discount=100&total=1160';
     let url = new URL(url_string);
     let coupon_id = url.searchParams.get("coupon_id");
+    let subtotal = url.searchParams.get("subtotal");
+    let deliver = url.searchParams.get("deliver");
+    let discount = url.searchParams.get("discount");
     let total = url.searchParams.get("total");
 
     let member_id = '1';
@@ -166,6 +169,9 @@ const checkout = () => {
             name: name,
             member_id: member_id,
             coupon_id: coupon_id,
+            subtotal: subtotal,
+            deliver: deliver,
+            discount: discount,
             price: total,
             phone_num: phone_num,
             deliver_method: deliver_method,
@@ -216,15 +222,15 @@ const displayCartInfo = (data) => {
         if (data[i]['count_num'] == '0') {
             deleteCart(data[i]['cart_id']);
         }else {
-            $('#cart').append(cartComponent(data[i]['product_name'], data[i]['cart_id'], data[i]['count_num'] * data[i]['product_price'], data[i]['count_num']));
+            $('#cart').append(cartComponent(data[i]['product_name'], data[i]['cart_id'], data[i]['count_num'] * data[i]['product_price'], data[i]['count_num'], data[i]['product_image']));
         }
     }
 }
 
-const cartComponent = (product_name, cart_id, total_price, count_num) => {
+const cartComponent = (product_name, cart_id, total_price, count_num, product_image) => {
     return `
     <div class="row align-items-center border-line py-3 cart${cart_id}">
-        <div class="col-2 px-0 mx-0"><img src="./getImage.jfif" alt="" width="113.7" height="162.79"></div>
+        <div class="col-2 px-0 mx-0"><img src="${product_image}" alt="" width="113.7" height="162.79"></div>
         <div class="col-3 ms-3"><h4 style="display: inline;">${product_name}</h4></div>
         <ul class="quanity">
             <li><span class="sub" id="${cart_id}sub">-</span></li>

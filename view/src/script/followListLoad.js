@@ -1,4 +1,5 @@
 $(() => {
+    getFollowList();
     let res = getFollowList();
     displayFollowListInfo(res);
     $(".product").click(function() {
@@ -36,26 +37,29 @@ $(() => {
 const displayFollowListInfo = (data) => {
     let resCart = getCart();
     let flag = 1;
+    if (data == 0) {
+        $('#followList').append(`<h1 class="d-flex justify-content-center align-items-center" style="height:500px;">No Following List</h1>`);
+    }
     for (let i = 0; i < data.length; i++) {
         flag = 1;
         for (let j = 0; j < resCart.length; j++) {
             if (resCart[j]['product_id'] == data[i][0]['product_id']) {
-                $('#followList').append(followListComponentInCart(data[i][0]['product_name'], data[i][0]['product_author'], data[i][0]['product_id']));
+                $('#followList').append(followListComponentInCart(data[i][0]['product_name'], data[i][0]['product_author'], data[i][0]['product_id'], data[i][0]['product_image']));
                 flag = 0;
                 break;
             }
         }
         if (flag) {
-            $('#followList').append(followListComponentNotInCart(data[i][0]['product_name'], data[i][0]['product_author'], data[i][0]['product_id']));
+            $('#followList').append(followListComponentNotInCart(data[i][0]['product_name'], data[i][0]['product_author'], data[i][0]['product_id'], data[i][0]['product_image']));
         }
     }
 }
 
-const followListComponentInCart = (product_name, product_author, product_id) => {
+const followListComponentInCart = (product_name, product_author, product_id, product_image) => {
     return `
     <div class="shadow card p-4 my-4 card${product_id}">
         <div class="d-flex">
-            <div class="px-3"><img src="./getImage.jfif" alt="" width="165" height="237"></div>
+            <div class="px-3"><img src="${product_image}" alt="" width="165" height="237"></div>
             <div class="flex-fill d-flex flex-column">
                 <div class="align-self-end"><i class="bi bi-heart-fill product" id="${product_id}" style="color: #F0B0B0;cursor:pointer;"></i></div>
                 <div class="flex-fill d-flex  align-items-center justify-content-end">
@@ -79,11 +83,11 @@ const followListComponentInCart = (product_name, product_author, product_id) => 
     `;
 }
 
-const followListComponentNotInCart = (product_name, product_author, product_id) => {
+const followListComponentNotInCart = (product_name, product_author, product_id, product_image) => {
     return `
     <div class="shadow card p-4 my-4 card${product_id}">
         <div class="d-flex">
-            <div class="px-3"><img src="./getImage.jfif" alt="" width="165" height="237"></div>
+            <div class="px-3"><img src="${product_image}" alt="" width="165" height="237"></div>
             <div class="flex-fill d-flex flex-column">
                 <div class="align-self-end"><i class="bi bi-heart-fill product" id="${product_id}" style="color: #F0B0B0;cursor:pointer;"></i></div>
                 <div class="flex-fill d-flex  align-items-center justify-content-end">

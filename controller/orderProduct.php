@@ -28,4 +28,9 @@ class OrderProduct extends Model {
         $sql = $this->delete() . $this->where('order_id', '=', $order_id);
         return $this->execute($sql);
     }
+    public function getOrderProductById($param) {
+        $order_id = $param['order_id'];
+        $sql = $this->select($this->table) . $this->where('order_id', '=', $order_id);
+        return $this->execute($sql);
+    }
 }

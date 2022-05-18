@@ -1,0 +1,50 @@
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.page {
+    background-color: #F3F5F7;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.title {
+    margin-top: 20px;
+    width: 300px;
+    font-size: 36px;
+}
+
+.card_title {
+    color: #9DAB73;
+}
+
+.orderList {
+    box-sizing: border-box;
+    height: 75vh;
+    overflow-y: scroll;
+
+}
+
+.orderList_card {
+    width: 1000px;
+    height: 380px;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    box-shadow: -20px -20px #F6FAF1;
+}
+
+.card {
+    border: none;
+    color: #A19A9A;
+}
+
+.card_up {
+    margin-left: 24px;
+}
+
+.card_down {
+    margin-left: 24px;
+}
