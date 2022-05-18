@@ -21,8 +21,8 @@ class OrderList extends Model {
             'name' => $name, 'member_id' => $member_id, 'deliver_method' => $deliver_method, 'price' => $price, 'phone_num' => $phone_num, 'convenience_store' => $convenience_store, 'order_address' => $order_address, 'payment' => $payment, 'order_state' => $order_state
         ]);
         $order_id = $this->execute($sql);
-        // $shipping_fee = 0;
-        // $coupon_fee = 0;
+        $shipping_fee = 0;
+        $coupon_fee = 0;
         // if ($deliver_method == 'home delivery') {
         //     $shipping_fee = 100;
         // } else {
@@ -38,8 +38,8 @@ class OrderList extends Model {
             // }
             $coupon->useCoupon($order_id, $coupon_id);
         }
-        // $o_p = new OrderProduct();
-        // $price = $o_p->insertOrderProductAndCalculatePrice($param, $order_id, $coupon_fee, $shipping_fee);
+        $o_p = new OrderProduct();
+        $price = $o_p->insertOrderProductAndCalculatePrice($param, $order_id, $coupon_fee, $shipping_fee);
         // $sql = $this->update(['price' => $price]) . $this->where('order_id', '=', $order_id);
         // $this->execute($sql);
         $cart = new Cart();

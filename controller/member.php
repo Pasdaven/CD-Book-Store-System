@@ -69,14 +69,32 @@ class Member extends Model {
     }
 
     public function updateMemberInfo($param) {
-        $sql = $this->update(['member_name' => $param['member_name'], 'birthday' => $param['birthday'], 'phone_num' => $param['phone_num'], 'sex' => $param['sex'], 'credit_num' => $param['credit_num']], $this->member_table) . $this->where('member_id', '=', $param['member_id']);
-        return $this->execute($sql);
+        $sql = $this->update(['member_name' => $param['member_name'], 'birthday' => $param['birthday'], 'phone_num' => $param['phone_num'], 'sex' => $param['sex']], $this->member_table) . $this->where('member_id', '=', $param['member_id']);
+        $this->execute($sql);
+        $sql = $this->update(['member_password' => $param['member_password']], $this->member_account_table) . $this->where('member_id', '=', $param['member_id']);
+        $this->execute($sql);
     }
 
-    public function getMemberInfo() {
+    public function getAllMemberInfo() {
         $sql = $this->select($this->member_table);
         return $this->execute($sql);
     }
+
+    public function getAllMemberAccount() {
+        $sql = $this->select($this->member_account_table);
+        return $this->execute($sql);
+    }
+
+    public function getMemberInfoById($param) {
+        $sql = $this->select($this->member_table) . $this->where('member_id', '=', $param['member_id']);
+        return $this->execute($sql);
+    }
+
+    public function getMemberAccountById($param) {
+        $sql = $this->select($this->member_account_table) . $this->where('member_id', '=', $param['member_id']);
+        return $this->execute($sql);
+    }
+
     public function getMemberCredit() {
         $sql = $this->select($this->member_table, ['member_id']) . $this->where('credit_num', '>=', '80');
         return $this->execute($sql);
