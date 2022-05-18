@@ -24,7 +24,7 @@ class Coupon extends Model {
     public function getCoupon($param) {
         $member_id = $param['member_id'];
         $month = date("Y-m");
-        $sql = $this->select($this->table) . $this->where('member_id', '=', $member_id) . $this->and('order_id', '=', $this->NULL) . $this->and('coupon_month', '=', $month);
+        $sql = $this->select($this->table) . $this->where('member_id', '=', $member_id) . $this->and('order_id', '=', $this->null) . $this->and('coupon_month', '=', $month);
         return $this->execute($sql);
     }
 
