@@ -1,6 +1,7 @@
 $(() => {
     let product_id = getUrl();
     searchProductById(product_id);
+    createBrowsingHistory();
     checkFollow();
     checkCart();
 });
