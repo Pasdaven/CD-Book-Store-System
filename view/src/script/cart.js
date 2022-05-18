@@ -73,39 +73,89 @@ const updateCart = () => {
 }
 
 const checkout = () => {
-    let member_id = 1;
-    let coupon_id = [1,2];
-    let deliver_method = 'home delivery';
-    let phone_num = 0974451234;
-    let convenience_store = 1;
-    let order_address = 'taiwan';
-    let payment = 'cash';
+    // let url_string = window.location.href;
+    let url_string = 'http://localhost/CD-BOOK-STORE-SYSTEM/view/payment/?coupon_id=[4,5]&subtotal=1200&deliver=60&discount=100&total=1160';
+    let url = new URL(url_string);
+    let coupon_id = url.searchParams.get("coupon_id");
+    let subtotal = url.searchParams.get("subtotal");
+    let deliver = url.searchParams.get("deliver");
+    let discount = url.searchParams.get("discount");
+    let total = url.searchParams.get("total");
+
+    let member_id = '1';
+    // let member_id = $.session.get('member_id');
+    let name = $('#name').val();
+    let phone_num = $('#phone').val();
+
+    let info = []
+    let checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
+    for (let i = 0; i < checkboxes.length; i++) {
+        info.push(checkboxes[i].value);
+    }
+    console.log(info);
+
+    if (name == '' || phone_num == '' || (info.includes('home delivery') && info.includes('convenience store delivery')) ||  (info.includes('credit card') && info.includes('cash'))) {
+        $('#modalError').modal('show');
+        return;
+    }
+
+    let deliver_method = '';
+    let convenience_store = '';
+    let order_address = '';
+    if (info.includes('home delivery') && info.includes('convenience store delivery')) {
+        $('#modalDeliverError').modal('show');
+    } else {
+        if (info.includes('home delivery')) {
+            deliver_method = 'home delivery';
+            order_address = $('#order_address').val();
+        } else {
+            deliver_method = 'convenience store delivery';
+            convenience_store = $('#StoreNumber').val();
+        }
+    }
+
+    let payment;
+    if (info.includes('credit card') && info.includes('cash')) {
+        $('#modalPayError').modal('show');
+    } else {
+        if (info.includes('credit card')) {
+            payment = 'credit card';
+        } else {
+            payment = 'cash';
+        }
+    }
+
     let data = {
-        controller: 'Cart',
+        controller: 'cart',
         method: 'checkout',
         parameter: {
+            name: name,
             member_id: member_id,
             coupon_id: coupon_id,
-            deliver_method: deliver_method,
+            price: total,
             phone_num: phone_num,
+            deliver_method: deliver_method,
             convenience_store: convenience_store,
             order_address: order_address,
             payment: payment
         }
     };
+    console.log(data);
     let json = JSON.stringify(data);
     $.ajax({
         url: '/CD-BOOK-STORE-SYSTEM/controller/core.php',
         method: 'POST',
         data: json,
-        success: res => console.log(res)
+        success: res => {
+            console.log(res);
+        }
     });
 }
 
 $(() => {
     getCart();
 });
-$('#insertCart').click(() => {insertCart()});
-$('#deleteCart').click(() => {deleteCart()});
-$('#updateCart').click(() => {updateCart()});
-$('#checkout').click(() => {checkout()});
+$('#insertCart').click(() => { insertCart() });
+$('#deleteCart').click(() => { deleteCart() });
+$('#updateCart').click(() => { updateCart() });
+$('#checkout').click(() => { checkout() });
