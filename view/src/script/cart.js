@@ -89,6 +89,9 @@ const checkout = () => {
     // let url_string = 'http://localhost/CD-BOOK-STORE-SYSTEM/view/payment/?coupon_id=[4,5]&subtotal=1200&deliver=60&discount=100&total=1160';
     let url = new URL(url_string);
     let coupon_id = url.searchParams.get("coupon_id");
+    let subtotal = url.searchParams.get("subtotal");
+    let deliver = url.searchParams.get("deliver");
+    let discount = url.searchParams.get("discount");
     let total = url.searchParams.get("total");
 
     let member_id = '1';
@@ -166,6 +169,9 @@ const checkout = () => {
             name: name,
             member_id: member_id,
             coupon_id: coupon_id,
+            subtotal: subtotal,
+            deliver: deliver,
+            discount: discount,
             price: total,
             phone_num: phone_num,
             deliver_method: deliver_method,
