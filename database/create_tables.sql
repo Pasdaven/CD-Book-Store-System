@@ -23,10 +23,11 @@ CREATE TABLE product (
 CREATE TABLE order_list (
     order_id INT UNSIGNED PRIMARY KEY auto_increment COMMENT '訂單編號',
     member_id INT UNSIGNED NOT NULL COMMENT '會員編號',
+    name VARCHAR(100) NOT NULL COMMENT '購買者名稱',
     deliver_method ENUM('home delivery', 'convenience store delivery') NOT NULL COMMENT '運送方式',
     price INT COMMENT '價格',
-    phone_num INT UNSIGNED comment '手機號碼',
-    convenience_store INT UNSIGNED COMMENT '便利商店',
+    phone_num VARCHAR(10) comment '手機號碼',
+    convenience_store VARCHAR(10) COMMENT '便利商店',
     order_address VARCHAR(100) COMMENT '地址',
     payment ENUM('cash', 'credit card') NOT NULL COMMENT '付款方式',
     order_state ENUM('wait', 'finish', 'cancel', 'return') NOT NULL COMMENT '訂單狀態',

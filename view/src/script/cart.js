@@ -47,7 +47,7 @@ const getCart = () => {
         method: 'POST',
         data: json,
         async: false,
-        success: function(res) {
+        success: function (res) {
             result = res;
         }
     });
@@ -71,22 +71,104 @@ const updateCart = (cart_id, count_num) => {
     });
 }
 
+function getUrl() {
+    let url_string = window.location.href;
+    let url = new URL(url_string);
+    let subtotal = url.searchParams.get("subtotal");
+    let deliver = url.searchParams.get("deliver");
+    let discount = url.searchParams.get("discount");
+    let total = url.searchParams.get("total");
+    $('#subtotal').append(subtotal);
+    $('#deliver').append(deliver);
+    $('#discount').append(discount);
+    $('#total').append(total);
+}
+
 const checkout = () => {
-    let member_id = 1;
-    let coupon_id = [1,2];
-    let deliver_method = 'home delivery';
-    let phone_num = 0974451234;
-    let convenience_store = 1;
-    let order_address = 'taiwan';
-    let payment = 'cash';
+    let url_string = window.location.href;
+    // let url_string = 'http://localhost/CD-BOOK-STORE-SYSTEM/view/payment/?coupon_id=[4,5]&subtotal=1200&deliver=60&discount=100&total=1160';
+    let url = new URL(url_string);
+    let coupon_id = url.searchParams.get("coupon_id");
+    let total = url.searchParams.get("total");
+
+    let member_id = '1';
+    // let member_id = $.session.get('member_id');
+    let name = $('#name').val();
+    let phone_num = $('#phone').val();
+
+    let info = []
+    let checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
+    for (let i = 0; i < checkboxes.length; i++) {
+        info.push(checkboxes[i].value);
+    }
+
+    if (name == '' || phone_num == '') {
+        $('#modalError').modal('show');
+        return;
+    }
+
+    let deliver_method = '';
+    let convenience_store = '';
+    let order_address = '';
+    if (info.includes('home delivery') == false && info.includes('convenience store delivery') == false) {
+        $('#modalError').modal('show');
+        return;
+    } else {
+        if (info.includes('home delivery') == true && info.includes('convenience store delivery') == true) {
+            $('#modalDeliverError').modal('show');
+            return;
+        } else {
+            if (info.includes('home delivery')) {
+                deliver_method = 'home delivery';
+                order_address = $('#order_address').val();
+                if (order_address == '') {
+                    $('#modalAddressError').modal('show');
+                    return;
+                }
+            } else {
+                deliver_method = 'convenience store delivery';
+                convenience_store = $('#StoreNumber').val();
+                if (convenience_store == '') {
+                    $('#modalStoreError').modal('show');
+                    return;
+                }
+            }
+        }
+    }
+
+    let payment;
+    let creditNumber;
+    if (info.includes('credit card') == false && info.includes('cash') == false) {
+        $('#modalError').modal('show');
+        return;
+    } else {
+        if (info.includes('credit card') == true && info.includes('cash') == true) {
+            $('#modalPayError').modal('show');
+            return;
+        } else {
+            if (info.includes('credit card')) {
+                payment = 'credit card';
+                creditNumber = $('#creditCardNumber').val();
+                if (creditNumber == '') {
+                    $('#modalCardError').modal('show');
+                    return;
+                }
+            } else {
+                payment = 'cash';
+            }
+        }
+    }
+
     let data = {
-        controller: 'Cart',
+        controller: 'cart',
         method: 'checkout',
         parameter: {
+            name: name,
             member_id: member_id,
             coupon_id: coupon_id,
-            deliver_method: deliver_method,
+            price: total,
             phone_num: phone_num,
+            deliver_method: deliver_method,
             convenience_store: convenience_store,
             order_address: order_address,
             payment: payment
@@ -97,7 +179,10 @@ const checkout = () => {
         url: '/CD-BOOK-STORE-SYSTEM/controller/core.php',
         method: 'POST',
         data: json,
-        success: res => console.log(res)
+        success: res => {
+            console.log(res);
+            $('#modalSuccess').modal('show');
+        }
     });
 }
 
@@ -116,7 +201,7 @@ const getCoupon = () => {
         method: 'POST',
         data: json,
         async: false,
-        success: function(res) {
+        success: function (res) {
             result = res;
         }
     });
@@ -173,7 +258,7 @@ const add = (id) => {
     let id_price = "#" + id + "price";
     let res = getCart();
     for (i = 0; i < res.length; i++) {
-        if (res[i]['cart_id'] == id) {         
+        if (res[i]['cart_id'] == id) {
             $(id_price).text("$" + $(num).val() * res[i]['product_price']);
             getSubtotal(res, $(num).val() * res[i]['product_price'], i);
             break;
@@ -182,7 +267,7 @@ const add = (id) => {
 }
 const sub = (id) => {
     let num = "#" + id + "input-num";
-    if(parseInt($(num).val()) <= 0) {
+    if (parseInt($(num).val()) <= 0) {
         $(num).val(0);
     } else {
         $(num).val(parseInt($(num).val()) - 1);
@@ -191,7 +276,7 @@ const sub = (id) => {
     let id_price = "#" + id + "price";
     let res = getCart();
     for (i = 0; i < res.length; i++) {
-        if (res[i]['cart_id'] == id) {         
+        if (res[i]['cart_id'] == id) {
             $(id_price).text("$" + $(num).val() * res[i]['product_price']);
             getSubtotal(res, $(num).val() * res[i]['product_price'], i);
             break;
@@ -204,7 +289,7 @@ const getSubtotal = (data, nowProductPrice, i) => {
     for (j = 0; j < data.length; j++) {
         if (j != i) {
             subtotal += data[j]['count_num'] * data[j]['product_price'];
-        }else {
+        } else {
             subtotal += nowProductPrice;
         }
     }
