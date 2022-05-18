@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order List</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/CD-Book-Store-System/view/src/style/orderList.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css" />
+</head>
+<body>
+    <div class="page">
+        <div class="container py-5">
+            <div class="row align-items-center justify-content-center">
+                <div>
+                    <h1 class="mx-auto title"><i class="bi bi-list-stars mx-3" style="color: #F0B0B0;"></i>Order List</h1>
+                </div>
+            </div>
+            <div class="row my-3">
+                <div class="col-1"></div>
+                <div class="col-10 orderList" id="orderList"></div>
+                <div class="col-1"></div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/CD-Book-Store-System/view/src/script/orderListLoad.js"></script>
+    <script>getOrderList(); getOrderProduct();</script>
+
+</body>
+</html>
