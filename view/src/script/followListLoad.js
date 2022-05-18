@@ -10,16 +10,99 @@ $(() => {
         let url = `http://localhost/CD-BOOK-STORE-SYSTEM/view/product/index.html?id=${id}`;
         window.location = url;
     });
-    $(".btn-not-add-to-cart").click(function() {
+
+
+    $(".atc").click(function() {
         let id = parseInt($(this).attr('id'));
-        insertCart(id);
-        let idname = "#" + $(this).attr('id');
-        $(idname).removeClass("btn-not-add-to-cart").addClass("btn-add-to-cart");
-    });
-    $(".btn-add-to-cart").click(function() {
-        let id = parseInt($(this).attr('id'));
-        deleteCart(id);
-        let idname = "#" + $(this).attr('id');
-        $(idname).removeClass("btn-add-to-cart").addClass("btn-not-add-to-cart");
+        let idAddToCart = "#" + id + "add-to-cart";
+        let idspan = "#" + id + "span";
+        let idicon = "#" + id + "icon";
+        if ($(this).val() == 1) {
+            insertCart(id);
+            $(idAddToCart).addClass('btn-add-to-cart ps-3').removeClass('btn-not-add-to-cart ps-5');
+            $(idspan).text('Remove from cart');
+            $(idicon).addClass('ms-4').removeClass('ms-5');
+            $(this).val(0);
+        }else {
+            $(idAddToCart).addClass('btn-not-add-to-cart ps-5').removeClass('btn-add-to-cart ps-3');
+            $(idspan).text('Add to cart');
+            $(idicon).addClass('ms-5').removeClass('ms-4');
+            $(this).val(1);
+            removeCart(id);
+        }
     });
 });
+
+const displayFollowListInfo = (data) => {
+    let resCart = getCart();
+    let flag = 1;
+    for (let i = 0; i < data.length; i++) {
+        flag = 1;
+        for (let j = 0; j < resCart.length; j++) {
+            if (resCart[j]['product_id'] == data[i][0]['product_id']) {
+                $('#followList').append(followListComponentInCart(data[i][0]['product_name'], data[i][0]['product_author'], data[i][0]['product_id']));
+                flag = 0;
+                break;
+            }
+        }
+        if (flag) {
+            $('#followList').append(followListComponentNotInCart(data[i][0]['product_name'], data[i][0]['product_author'], data[i][0]['product_id']));
+        }
+    }
+}
+
+const followListComponentInCart = (product_name, product_author, product_id) => {
+    return `
+    <div class="shadow card p-4 my-4 card${product_id}">
+        <div class="d-flex">
+            <div class="px-3"><img src="./getImage.jfif" alt="" width="165" height="237"></div>
+            <div class="flex-fill d-flex flex-column">
+                <div class="align-self-end"><i class="bi bi-heart-fill product" id="${product_id}" style="color: #F0B0B0;cursor:pointer;"></i></div>
+                <div class="flex-fill d-flex  align-items-center justify-content-end">
+                    <div class="col-4">
+                        <h1 style="color: #3F4953;font-size:28px;">${product_name}</h1>
+                        <p style="color: #9199A0;font-size:20px;">${product_author}</p>
+                        <i class="me-1 bi bi-star-fill" style="color: #8C929B;"></i>
+                        <i class="me-1 bi bi-star-fill" style="color: #8C929B;"></i>
+                        <i class="me-1 bi bi-star-fill" style="color: #8C929B;"></i>
+                        <i class="me-1 bi bi-star-fill" style="color: #8C929B;"></i>
+                        <i class="me-1 bi bi-star" style="color: #8C929B;"></i>
+                    </div>
+                    <div class="align-self-end pt-5 ${product_id}btn">
+                        <button type="button" class="ms-4 ps-5 btn btn-view-info" id="${product_id}view-info" style="width:225px;height:60px;">View info<i class="ms-5 bi bi-info-circle-fill"></i></button>
+                        <button type="button" class="ms-3 ps-3 btn btn-add-to-cart atc" value="0" id="${product_id}add-to-cart" style="width:225px;height:60px;"><span id="${product_id}span">Remove from cart</span><i id="${product_id}icon" class="ms-4 bi bi-cart-fill"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    `;
+}
+
+const followListComponentNotInCart = (product_name, product_author, product_id) => {
+    return `
+    <div class="shadow card p-4 my-4 card${product_id}">
+        <div class="d-flex">
+            <div class="px-3"><img src="./getImage.jfif" alt="" width="165" height="237"></div>
+            <div class="flex-fill d-flex flex-column">
+                <div class="align-self-end"><i class="bi bi-heart-fill product" id="${product_id}" style="color: #F0B0B0;cursor:pointer;"></i></div>
+                <div class="flex-fill d-flex  align-items-center justify-content-end">
+                    <div class="col-4">
+                        <h1 style="color: #3F4953;font-size:28px;">${product_name}</h1>
+                        <p style="color: #9199A0;font-size:20px;">${product_author}</p>
+                        <i class="me-1 bi bi-star-fill" style="color: #8C929B;"></i>
+                        <i class="me-1 bi bi-star-fill" style="color: #8C929B;"></i>
+                        <i class="me-1 bi bi-star-fill" style="color: #8C929B;"></i>
+                        <i class="me-1 bi bi-star-fill" style="color: #8C929B;"></i>
+                        <i class="me-1 bi bi-star" style="color: #8C929B;"></i>
+                    </div>
+                    <div class="align-self-end pt-5 ${product_id}btn">
+                        <button type="button" class="ms-4 ps-5 btn btn-view-info" id="${product_id}view-info" style="width:225px;height:60px;">View info<i class="ms-5 bi bi-info-circle-fill"></i></button>
+                        <button type="button" class="ms-3 ps-5 btn btn-not-add-to-cart atc" value="1" id="${product_id}add-to-cart" style="width:225px;height:60px;"><span id="${product_id}span">Add to cart</span><i id="${product_id}icon" class="ms-5 bi bi-cart-fill"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    `;
+}
