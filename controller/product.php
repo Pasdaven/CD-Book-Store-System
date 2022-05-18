@@ -2,6 +2,8 @@
 
 use model\Model;
 
+require_once("commentList.php");
+
 class Product extends Model {
 
     protected $table = "product";
@@ -60,6 +62,8 @@ class Product extends Model {
 
     //透過商品id查詢商品資料
     public function searchProductById($param) {
+        $commentList = new CommentList();
+
         $product_id = $param['product_id'];
         $sql = $this->select($this->table) . $this->where('product_id', '=', $product_id);
         return $this->execute($sql);
