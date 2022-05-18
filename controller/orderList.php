@@ -12,13 +12,16 @@ class OrderList extends Model {
         $member_id = $param['member_id'];
         $phone_num = $param['phone_num'];
         $price = $param['price'];
+        $subtotal = $param['subtotal'];
+        $deliver = $param['deliver'];
+        $discount = $param['discount'];
         $convenience_store = $param['convenience_store'];
         $order_address = $param['order_address'];
         $payment = $param['payment'];
         $order_state = 'wait';
         $deliver_method = $param['deliver_method'];
         $sql = $this->insert([
-            'name' => $name, 'member_id' => $member_id, 'deliver_method' => $deliver_method, 'price' => $price, 'phone_num' => $phone_num, 'convenience_store' => $convenience_store, 'order_address' => $order_address, 'payment' => $payment, 'order_state' => $order_state
+            'name' => $name, 'member_id' => $member_id, 'deliver_method' => $deliver_method, 'price' => $price, 'subtotal' => $subtotal, 'deliver' => $deliver, 'discount' => $discount, 'phone_num' => $phone_num, 'convenience_store' => $convenience_store, 'order_address' => $order_address, 'payment' => $payment, 'order_state' => $order_state
         ]);
         $order_id = $this->execute($sql);
         $shipping_fee = 0;
@@ -49,6 +52,12 @@ class OrderList extends Model {
         $sql = $this->select($this->table);
         return $this->execute($sql);
     }
+
+    public function getOrderById($param) {
+        $sql = $this->select($this->table) . $this->where('member_id', '=', $param['member_id']);
+        return $this->execute($sql);
+    }
+
     public function finishOrder($param) {
         $order_id = $param['order_id'];
         $order_state = 'finish';
