@@ -82,6 +82,7 @@ section {
 
 /* productRightBox */
 .productRightBox {
+    width: 70%;
     margin-right: 6vw;
     height: 100%;
 }
@@ -125,8 +126,8 @@ section {
     justify-content: end;
 }
 
-/* .fav-btn */
-.fav-btn {
+/* .follow-btn */
+.follow-btn {
     box-shadow: 1.8px 1.8px 6.8px rgba(0, 0, 0, 0.024), 5px 5px 18.9px rgba(0, 0, 0, 0.035),
         12.1px 12.1px 45.5px rgba(0, 0, 0, 0.046), 40px 40px 151px rgba(0, 0, 0, 0.07);
     background: white;
@@ -140,20 +141,39 @@ section {
     transition: 0.6s;
     margin-right: 15px;
 }
-.bi-heart-fill {
+.follow-btn > .bi-heart-fill {
     margin-left: 10px;
     color: #f0b0b0;
-    transition: 0.6s;
 }
-.fav-btn:hover {
-    color: white;
-    background: #f0b0b0;
+.follow-btn:hover {
+    background: rgb(236, 236, 236);
     transition: 0.6s;
     cursor: pointer;
 }
-.fav-btn:hover .bi-heart-fill {
-    transition: 0.6s;
+
+/* .unFollow-btn */
+.unFollow-btn {
+    box-shadow: 1.8px 1.8px 6.8px rgba(0, 0, 0, 0.024), 5px 5px 18.9px rgba(0, 0, 0, 0.035),
+        12.1px 12.1px 45.5px rgba(0, 0, 0, 0.046), 40px 40px 151px rgba(0, 0, 0, 0.07);
+    background: #f0b0b0;
+    font-size: 16px;
     color: white;
+    outline: none;
+    border: none;
+    border-radius: 7px;
+    height: 50px;
+    width: 160px;
+    transition: 0.6s;
+    margin-right: 15px;
+}
+.unFollow-btn > .bi-heart-fill {
+    margin-left: 10px;
+    color: white;
+}
+.unFollow-btn:hover {
+    background: #ec9c9c;
+    transition: 0.6s;
+    cursor: pointer;
 }
 
 /* .cart-btn */
@@ -170,20 +190,38 @@ section {
     width: 160px;
     transition: 0.6s;
 }
-.bi-cart-fill {
-    transition: 0.6s;
+.cart-btn > .bi-cart-fill {
     margin-left: 10px;
     color: #b1dee9;
 }
 .cart-btn:hover {
-    color: white;
-    background: #b1dee9;
+    background: rgb(236, 236, 236);
     transition: 0.6s;
     cursor: pointer;
 }
-.cart-btn:hover .bi-cart-fill {
-    transition: 0.6s;
+
+/* .unCart-btn */
+.unCart-btn {
+    box-shadow: 1.8px 1.8px 6.8px rgba(0, 0, 0, 0.024), 5px 5px 18.9px rgba(0, 0, 0, 0.035),
+        12.1px 12.1px 45.5px rgba(0, 0, 0, 0.046), 40px 40px 151px rgba(0, 0, 0, 0.07);
+    background: #b1dee9;
+    font-size: 16px;
     color: white;
+    outline: none;
+    border: none;
+    border-radius: 7px;
+    height: 50px;
+    width: 160px;
+    transition: 0.6s;
+}
+.unCart-btn > .bi-cart-fill {
+    margin-left: 10px;
+    color: white;
+}
+.unCart-btn:hover {
+    background: #97cfdd;
+    transition: 0.6s;
+    cursor: pointer;
 }
 
 /* Scroll */
@@ -192,13 +230,13 @@ section {
     text-align: center;
     padding-bottom: 2vh;
     color: white;
+    cursor: pointer;
 }
 .scrollIcon {
     animation: scroll;
     animation-duration: 3s;
     animation-timing-function: ease-in-out;
     animation-iteration-count: infinite;
-    cursor: pointer;
 }
 .bi-chevron-compact-down {
     font-size: 24px;
@@ -306,7 +344,6 @@ section {
     padding-bottom: 25px;
 }
 .commentProfileImageArea {
-    flex: 1;
     margin-right: 20px;
     margin-left: 20px;
     height: 6vh;

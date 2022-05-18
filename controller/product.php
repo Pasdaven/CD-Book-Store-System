@@ -59,7 +59,8 @@ class Product extends Model {
     }
 
     //透過商品id查詢商品資料
-    public function searchProductById($product_id) {
+    public function searchProductById($param) {
+        $product_id = $param['product_id'];
         $sql = $this->select($this->table) . $this->where('product_id', '=', $product_id);
         return $this->execute($sql);
     }
