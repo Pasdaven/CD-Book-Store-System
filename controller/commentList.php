@@ -7,9 +7,10 @@ class CommentList extends Model {
     public function createComment($param) {
         $member_id = $param['member_id'];
         $product_id = $param['product_id'];
+        $star = $param['star'];
         $product_comment = $param['product_comment'];
         $comment_create_time = date("Y-m-d H:i:s");
-        $sql = $this->insert(['member_id' => $member_id, 'product_id' => $product_id, 'product_comment' => $product_comment, 'comment_create_time' => $comment_create_time]);
+        $sql = $this->insert(['member_id' => $member_id, 'product_id' => $product_id, 'star' => $star, 'product_comment' => $product_comment, 'comment_create_time' => $comment_create_time]);
         return $this->execute($sql);
     }
     public function updateComment($param) {
