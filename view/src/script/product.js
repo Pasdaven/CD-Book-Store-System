@@ -20,6 +20,8 @@ const displayData = (data) => {
     $("#product_price").html(data[0]["product_price"]);
     $("#product_image").attr("src", data[0]["product_image"]);
     $("#comment_product_image").attr("src", data[0]["product_image"]);
+
+    displayRate(data);
 };
 
 const displayFollowBtn = (data) => {
