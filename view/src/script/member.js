@@ -47,6 +47,21 @@ function register() {
         return;
     }
 
+    if (member_name.length > 100) {
+        $('#modalNameError').modal('show');
+        return;
+    }
+
+    if (phone_num.length > 10) {
+        $('#modalPhoneError').modal('show');
+        return;
+    }
+
+    if (member_password.length > 100) {
+        $('#modalPasswordError').modal('show');
+        return;
+    }
+
     if (sex.length == 2) {
         $('#modalSex').modal('show');
         return;
