@@ -52,7 +52,6 @@ class Cart extends Model {
     }
     public function checkout($param) {
         $getcart = $this->getCart($param);
-        return $getcart;
         foreach ($getcart as $a) {
             $param['arr'][] = ['product_id' => $a['product_id'], 'count_num' => $a['count_num']];
         }
