@@ -1,6 +1,7 @@
 $(() => {
     let product_id = getUrl();
     searchProductById(product_id);
+    createBrowsingHistory();
     checkFollow();
     checkCart();
 });
@@ -22,18 +23,18 @@ const displayData = (data) => {
 };
 
 const displayFollowBtn = (data) => {
-    (data == "") ? showFollowBtn() : showUnFollowBtn();
-}
+    data == "" ? showFollowBtn() : showUnFollowBtn();
+};
 const showFollowBtn = () => {
-    $('#follow_btn_txt').html('Follow');
-    $('#follow_btn').removeClass('unFollow-btn');
-    $('#follow_btn').addClass('follow-btn');
-}
+    $("#follow_btn_txt").html("Follow");
+    $("#follow_btn").removeClass("unFollow-btn");
+    $("#follow_btn").addClass("follow-btn");
+};
 const showUnFollowBtn = () => {
-    $('#follow_btn_txt').html('Unfollow');
-    $('#follow_btn').removeClass('follow-btn');
-    $('#follow_btn').addClass('unFollow-btn');
-}
+    $("#follow_btn_txt").html("Unfollow");
+    $("#follow_btn").removeClass("follow-btn");
+    $("#follow_btn").addClass("unFollow-btn");
+};
 $("#follow_btn").click(() => {
     if ($("#follow_btn").hasClass("follow-btn")) {
         addToFollow();
@@ -42,21 +43,21 @@ $("#follow_btn").click(() => {
         removeFollow();
         showFollowBtn();
     }
-})
+});
 
 const displayCartBtn = (data) => {
-    (data == "") ? showCartBtn() : showUnCartBtn();
-}
+    data == "" ? showCartBtn() : showUnCartBtn();
+};
 const showCartBtn = () => {
-    $('#cart_btn_txt').html('Add To Cart');
-    $('#cart_btn').removeClass('unCart-btn');
-    $('#cart_btn').addClass('cart-btn');
-}
+    $("#cart_btn_txt").html("Add To Cart");
+    $("#cart_btn").removeClass("unCart-btn");
+    $("#cart_btn").addClass("cart-btn");
+};
 const showUnCartBtn = () => {
-    $('#cart_btn_txt').html('Remove');
-    $('#cart_btn').removeClass('cart-btn');
-    $('#cart_btn').addClass('unCart-btn');
-}
+    $("#cart_btn_txt").html("Remove");
+    $("#cart_btn").removeClass("cart-btn");
+    $("#cart_btn").addClass("unCart-btn");
+};
 $("#cart_btn").click(() => {
     if ($("#cart_btn").hasClass("cart-btn")) {
         addToCart();
@@ -65,7 +66,7 @@ $("#cart_btn").click(() => {
         removeCart();
         showCartBtn();
     }
-})
+});
 
 /* Ajax Function */
 const searchProductById = (product_id) => {
@@ -159,7 +160,7 @@ const checkFollow = () => {
         data: json,
         success: (res) => displayFollowBtn(res),
     });
-}
+};
 
 const addToFollow = () => {
     let product_id = getUrl();
@@ -177,7 +178,7 @@ const addToFollow = () => {
         url: "/cd-book-store-system/controller/core.php",
         method: "POST",
         data: json,
-        success: (res) => console.log('follow'),
+        success: (res) => console.log("follow"),
     });
 };
 
@@ -197,7 +198,7 @@ const removeFollow = () => {
         url: "/cd-book-store-system/controller/core.php",
         method: "POST",
         data: json,
-        success: (res) => console.log('un follow'),
+        success: (res) => console.log("un follow"),
     });
 };
 
@@ -219,7 +220,7 @@ const checkCart = () => {
         data: json,
         success: (res) => displayCartBtn(res),
     });
-}
+};
 
 const addToCart = () => {
     let product_id = getUrl();
@@ -237,9 +238,9 @@ const addToCart = () => {
         url: "/cd-book-store-system/controller/core.php",
         method: "POST",
         data: json,
-        success: (res) => console.log('add to cart'),
+        success: (res) => console.log("add to cart"),
     });
-}
+};
 
 const removeCart = () => {
     let product_id = getUrl();
@@ -257,6 +258,26 @@ const removeCart = () => {
         url: "/cd-book-store-system/controller/core.php",
         method: "POST",
         data: json,
-        success: (res) => console.log('remove cart'),
+        success: (res) => console.log("remove cart"),
     });
-}
+};
+
+const createBrowsingHistory = () => {
+    let product_id = getUrl();
+    let member_id = 1;
+    let data = {
+        controller: "browserHistory",
+        method: "insertBrowserHis",
+        parameter: {
+            product_id: product_id,
+            member_id: member_id,
+        },
+    };
+    let json = JSON.stringify(data);
+    $.ajax({
+        url: "/cd-book-store-system/controller/core.php",
+        method: "POST",
+        data: json,
+        success: (res) => console.log(res),
+    });
+};

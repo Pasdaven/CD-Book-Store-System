@@ -102,12 +102,12 @@ CREATE TABLE member_account (
 ) COMMENT '會員帳號密碼';
 
 CREATE TABLE browsing_history (
+    browsing_his_id INT UNSIGNED PRIMARY KEY auto_increment COMMENT '瀏覽紀錄編號',
     member_id INT UNSIGNED NOT NULL COMMENT '會員編號',
     product_id INT UNSIGNED NOT NULL COMMENT '商品編號',
     browse_time DATETIME NOT NULL COMMENT '瀏覽時間',
     FOREIGN KEY (member_id) REFERENCES member (member_id),
-    FOREIGN KEY (product_id) REFERENCES product (product_id),
-    PRIMARY KEY (member_id, product_id)
+    FOREIGN KEY (product_id) REFERENCES product (product_id)
 ) COMMENT '瀏覽紀錄';
 
 CREATE TABLE follow_list (
