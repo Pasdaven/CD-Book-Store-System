@@ -21,6 +21,10 @@ body {
     color: #9DAB73;
 }
 
+.card_text {
+    width: 65px;
+}
+
 .orderList {
     box-sizing: border-box;
     height: 75vh;
@@ -47,4 +51,91 @@ body {
 
 .card_down {
     margin-left: 24px;
+}
+
+.comment_input {
+    width: 300px;
+    height: 50px;
+    background: #F0F0F0;
+    border-radius: 20px;
+    position: relative;
+    display: inline-block;
+    content: center;
+}
+
+
+
+.btn {
+    border-radius: 20px;
+    padding: 10px 10px;
+    font-size: 22px;
+    text-decoration: none;
+    margin: 20px;
+    color: #A19A9A;
+    position: relative;
+    display: inline-block;
+}
+
+.green {
+    background-color: #ECFBB2;
+    box-shadow: 0px 5px 0px 0px #ECFBB2;
+}
+
+.green:hover {
+    color: #A19A9A;
+}
+
+.gradient-text {
+    color: transparent;
+    background: conic-gradient(#D9D7F1 12%,
+            #BAABDA 12%, #BAABDA 33%,
+            #E7FBBE 33%, #E7FBBE 55%,
+            #FFCBCB 55%, #FFCBCB 70%,
+            #B5DEFF 70%, #B5DEFF 87%,
+            #F7D1BA 87%);
+    background-size: 50%;
+    background-clip: text;
+    -webkit-background-clip: text;
+
+    animation: expand-rev 0.5s ease forwards;
+
+    cursor: pointer;
+}
+
+.gradient-text:hover {
+    animation: expand 0.5s ease forwards;
+}
+
+@keyframes expand {
+    0% {
+        background-size: 50%;
+        background-position: 0 0;
+    }
+
+    20% {
+        background-size: 55%;
+        background-position: 0 1em;
+    }
+
+    100% {
+        background-size: 325%;
+        background-position: -10em -4em;
+    }
+}
+
+@keyframes expand-rev {
+    0% {
+        background-size: 325%;
+        background-position: -10em -4em;
+    }
+
+    20% {
+        background-size: 55%;
+        background-position: 0 1em;
+    }
+
+    100% {
+        background-size: 50%;
+        background-position: 0 0;
+    }
 }
