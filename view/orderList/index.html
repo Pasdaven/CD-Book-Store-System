@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,12 +16,46 @@
     <link rel="stylesheet" href="/CD-Book-Store-System/view/src/style/orderList.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css" />
 </head>
+
 <body>
+    <div id="modal_list">
+        <div class="modal fade" id="modalStarError" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Star Only Can Choose 1 ~ 5</h5>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn green" data-bs-dismiss="modal" onclick="">close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal fade" id="modalSuccess" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Comment Success</h5>
+                    </div>
+                    <div class="modal-body">
+                        Thanks your comment.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn green" data-bs-dismiss="modal" onclick="">close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="page">
         <div class="container py-5">
             <div class="row align-items-center justify-content-center">
                 <div>
-                    <h1 class="mx-auto title"><i class="bi bi-list-stars mx-3" style="color: #F0B0B0;"></i>Order List</h1>
+                    <h1 class="mx-auto title"><i class="bi bi-list-stars mx-3" style="color: #F0B0B0;"></i>Order List
+                    </h1>
                 </div>
             </div>
             <div class="row my-3">
@@ -32,7 +67,9 @@
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="/CD-Book-Store-System/view/src/script/orderListLoad.js"></script>
-    <script>getOrderList(); getOrderProduct();</script>
+    <script src="/CD-Book-Store-System/view/src/script/comment.js"></script>
+    <script>getOrderList();</script>
 
 </body>
+
 </html>
