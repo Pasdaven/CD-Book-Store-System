@@ -1,10 +1,8 @@
 const insertCart = (product_id) => {
-    let member_id = 1;
     let data = {
         controller: 'Cart',
         method: 'insertCart',
         parameter: {
-            member_id: member_id,
             product_id: product_id
         }
     };
@@ -33,13 +31,9 @@ const deleteCart = (cart_id) => {
 }
 
 const getCart = () => {
-    let member_id = 1;
     let data = {
         controller: 'Cart',
-        method: 'getCart',
-        parameter: {
-            member_id: member_id
-        }
+        method: 'getCart'
     };
     let json = JSON.stringify(data);
     $.ajax({
@@ -93,9 +87,6 @@ const checkout = () => {
     let deliver = url.searchParams.get("deliver");
     let discount = url.searchParams.get("discount");
     let total = url.searchParams.get("total");
-
-    let member_id = '1';
-    // let member_id = $.session.get('member_id');
     let name = $('#name').val();
     let phone_num = $('#phone').val();
 
@@ -167,7 +158,6 @@ const checkout = () => {
         method: 'checkout',
         parameter: {
             name: name,
-            member_id: member_id,
             coupon_id: coupon_id,
             subtotal: subtotal,
             deliver: deliver,
@@ -193,13 +183,9 @@ const checkout = () => {
 }
 
 const getCoupon = () => {
-    let member_id = 1;
     let data = {
         controller: 'Coupon',
-        method: 'getCoupon',
-        parameter: {
-            member_id: member_id
-        }
+        method: 'getCoupon'
     };
     let json = JSON.stringify(data);
     $.ajax({
