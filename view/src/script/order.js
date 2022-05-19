@@ -86,11 +86,3 @@ function returnModal(order_id) {
     });
 }
 
-$(() => {
-    getOrder();
-});
-
-
-$('#finishOrder').click(() => { finishOrder() });
-$('#cancelOrder').click(() => { cancelOrder() });
-$('#returnOrder').click(() => { returnOrder() });
