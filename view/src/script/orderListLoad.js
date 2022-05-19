@@ -1,5 +1,5 @@
 function getOrderList() {
-    // let member_id = '1';
+    // let member_id = '2';
     let member_id = $.session.get('member_id');
 
     let data = {
@@ -15,7 +15,17 @@ function getOrderList() {
         method: 'POST',
         data: json,
         success: res => {
-            // console.log(res);
+            console.log(res);
+
+            if (res.length == 0) {
+                let html = `
+                    <div class="d-flex justify-content-center">
+                        <span style="font-size: 50px; margin-top: 25%;">No Order List</span>
+                    </div>
+                `
+                $('#orderList').append(html);
+            }
+
             for (var i = 0; i < res.length; i++) {
                 let html = `
                     <div class="mx-auto orderList_card my-5 p-4" id="order-${res[i]['order_id']}">
