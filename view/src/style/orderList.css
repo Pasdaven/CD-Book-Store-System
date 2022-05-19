@@ -95,9 +95,37 @@ body {
     display: inline-block;
 }
 
+.red {
+    color: #FFFFFF;
+    background-color: #ff5b5b;
+}
+
+.red:hover {
+    color: #FFFFFF;
+}
+
+.yellow {
+    color: #FFFFFF;
+    background-color: #f9d50e;
+}
+
+.yellow:hover {
+    color: #FFFFFF;
+}
+
+.deep_green {
+    color: #FFFFFF;
+    background-color: #28c270;
+}
+
+.deep_green:hover {
+    color: #FFFFFF;
+}
+
+
+
 .green {
     background-color: #ECFBB2;
-    box-shadow: 0px 5px 0px 0px #ECFBB2;
 }
 
 .green:hover {
