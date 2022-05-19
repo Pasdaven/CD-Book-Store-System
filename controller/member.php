@@ -11,6 +11,8 @@ class Member extends Model {
         if (count($account_data) == 1) {
             if ($account_data[0]['member_password'] == $param['member_password']) {
                 // 登入成功
+                $_SESSION['email'] = $account_data[0]['email'];
+                $_SESSION['member_id'] = $account_data[0]['member_id'];
                 return true;
             } else {
                 // 帳號密碼錯誤登入失敗
@@ -20,6 +22,11 @@ class Member extends Model {
             // 帳號密碼錯誤登入失敗
             return false;
         }
+    }
+
+
+    public function logout() {
+        session_destroy();
     }
 
     public function register($param) {
@@ -64,14 +71,14 @@ class Member extends Model {
     }
 
     public function resetPassword($param) {
-        $sql = $this->update(['member_password' => $param['new_password']], $this->member_account_table) . $this->where('member_id', '=', $param['member_id']);
+        $sql = $this->update(['member_password' => $param['new_password']], $this->member_account_table) . $this->where('member_id', '=', $_SESSION['member_id']);
         return $this->execute($sql);
     }
 
     public function updateMemberInfo($param) {
-        $sql = $this->update(['member_name' => $param['member_name'], 'birthday' => $param['birthday'], 'phone_num' => $param['phone_num'], 'sex' => $param['sex']], $this->member_table) . $this->where('member_id', '=', $param['member_id']);
+        $sql = $this->update(['member_name' => $param['member_name'], 'birthday' => $param['birthday'], 'phone_num' => $param['phone_num'], 'sex' => $param['sex']], $this->member_table) . $this->where('member_id', '=', $_SESSION['member_id']);
         $this->execute($sql);
-        $sql = $this->update(['member_password' => $param['member_password']], $this->member_account_table) . $this->where('member_id', '=', $param['member_id']);
+        $sql = $this->update(['member_password' => $param['member_password']], $this->member_account_table) . $this->where('member_id', '=', $_SESSION['member_id']);
         $this->execute($sql);
     }
 
@@ -85,13 +92,18 @@ class Member extends Model {
         return $this->execute($sql);
     }
 
-    public function getMemberInfoById($param) {
-        $sql = $this->select($this->member_table) . $this->where('member_id', '=', $param['member_id']);
+    public function getMemberInfoById() {
+        $sql = $this->select($this->member_table) . $this->where('member_id', '=', $_SESSION['member_id']);
         return $this->execute($sql);
     }
 
-    public function getMemberAccountById($param) {
-        $sql = $this->select($this->member_account_table) . $this->where('member_id', '=', $param['member_id']);
+    public function getMemberInfo() {
+        $sql = $this->select($this->member_table) . $this->where('member_id', '=', $_SESSION['member_id']);
+        return $this->execute($sql);
+    }
+
+    public function getMemberAccountById() {
+        $sql = $this->select($this->member_account_table) . $this->where('member_id', '=', $_SESSION['member_id']);
         return $this->execute($sql);
     }
 
