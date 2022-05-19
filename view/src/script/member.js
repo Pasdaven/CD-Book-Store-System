@@ -278,7 +278,7 @@ function updateMemberInfo() {
 function getMemberInfo() {
     let data = {
         controller: 'member',
-        method: 'getMemberInfo',
+        method: 'getAllMemberInfo',
     };
     let json = JSON.stringify(data);
     $.ajax({
