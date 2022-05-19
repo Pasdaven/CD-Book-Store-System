@@ -123,6 +123,53 @@ $(() => {
     });
 });
 
+const displayRate = (rate, product_id) => {
+    let star1 = '.star1' + product_id;
+    let star2 = '.star2' + product_id;
+    let star3 = '.star3' + product_id;
+    let star4 = '.star4' + product_id;
+    let star5 = '.star5' + product_id;
+    switch (rate) {
+        case 1:
+            $(star1).addClass('bi-star-fill');
+            $(star2).addClass('bi-star');
+            $(star3).addClass('bi-star');
+            $(star4).addClass('bi-star');
+            $(star5).addClass('bi-star');
+            break;
+        case 2:
+            $(star1).addClass('bi-star-fill');
+            $(star2).addClass('bi-star-fill');
+            $(star3).addClass('bi-star');
+            $(star4).addClass('bi-star');
+            $(star5).addClass('bi-star');
+            break;
+        case 3:
+            $(star1).addClass('bi-star-fill');
+            $(star2).addClass('bi-star-fill');
+            $(star3).addClass('bi-star-fill');
+            $(star4).addClass('bi-star');
+            $(star5).addClass('bi-star');
+            break;
+        case 4:
+            $(star1).addClass('bi-star-fill');
+            $(star2).addClass('bi-star-fill');
+            $(star3).addClass('bi-star-fill');
+            $(star4).addClass('bi-star-fill');
+            $(star5).addClass('bi-star');
+            break;
+        case 5:
+            $(star1).addClass('bi-star-fill');
+            $(star2).addClass('bi-star-fill');
+            $(star3).addClass('bi-star-fill');
+            $(star4).addClass('bi-star-fill');
+            $(star5).addClass('bi-star-fill');
+            break;
+        default:
+            break;
+    }
+}
+
 const displayBrowserHisInfo = (data) => {
     let resCart = getCart();
     let flag = 1;
@@ -139,13 +186,14 @@ const displayBrowserHisInfo = (data) => {
         for (let j = 0; j < resCart.length; j++) {
             if (resCart[j]['product_id'] == data[i][0][0]['product_id']) {
                 $('#browserHistory').append(BrowserHisComponentInCart(data[i][0][0]['product_name'], data[i][0][0]['product_author'], data[i][0][0]['product_id'], data[i][0][0]['product_image'], data[i][1]['browse_time']));
-
+                displayRate(parseInt(data[i][2][0]['AVG(star)']), data[i][0][0]['product_id']);
                 flag = 0;
                 break;
             }
         }
         if (flag) {
             $('#browserHistory').append(BrowserHisComponentNotInCart(data[i][0][0]['product_name'], data[i][0][0]['product_author'], data[i][0][0]['product_id'], data[i][0][0]['product_image'], data[i][1]['browse_time']));
+            displayRate(parseInt(data[i][2][0]['AVG(star)']), data[i][0][0]['product_id']);
         }
     }
 }
@@ -163,11 +211,11 @@ const BrowserHisComponentNotInCart = (product_name, product_author, product_id, 
                     <div class="col-4">
                         <h1 style="color: #3F4953;font-size:28px;">${product_name}</h1>
                         <p style="color: #9199A0;font-size:20px;">${product_author}</p>
-                        <i class="me-1 bi bi-star-fill" style="color: #8C929B;"></i>
-                        <i class="me-1 bi bi-star-fill" style="color: #8C929B;"></i>
-                        <i class="me-1 bi bi-star-fill" style="color: #8C929B;"></i>
-                        <i class="me-1 bi bi-star-fill" style="color: #8C929B;"></i>
-                        <i class="me-1 bi bi-star" style="color: #8C929B;"></i>
+                        <i class="me-1 bi star star1${product_id}" style="color: #8C929B;"></i>
+                        <i class="me-1 bi star star2${product_id}" style="color: #8C929B;"></i>
+                        <i class="me-1 bi star star3${product_id}" style="color: #8C929B;"></i>
+                        <i class="me-1 bi star star4${product_id}" style="color: #8C929B;"></i>
+                        <i class="me-1 bi star star5${product_id}" style="color: #8C929B;"></i>
                     </div>
                     <div class="align-self-end pt-5 ${product_id}btn">
                         <button type="button" class="ms-4 ps-5 btn btn-view-info" id="${product_id}view-info" style="width:225px;height:60px;">View info<i class="ms-5 bi bi-info-circle-fill"></i></button>
@@ -191,11 +239,11 @@ const BrowserHisComponentInCart = (product_name, product_author, product_id, pro
                     <div class="col-4">
                         <h1 style="color: #3F4953;font-size:28px;">${product_name}</h1>
                         <p style="color: #9199A0;font-size:20px;">${product_author}</p>
-                        <i class="me-1 bi bi-star-fill" style="color: #8C929B;"></i>
-                        <i class="me-1 bi bi-star-fill" style="color: #8C929B;"></i>
-                        <i class="me-1 bi bi-star-fill" style="color: #8C929B;"></i>
-                        <i class="me-1 bi bi-star-fill" style="color: #8C929B;"></i>
-                        <i class="me-1 bi bi-star" style="color: #8C929B;"></i>
+                        <i class="me-1 bi star star1${product_id}" style="color: #8C929B;"></i>
+                        <i class="me-1 bi star star2${product_id}" style="color: #8C929B;"></i>
+                        <i class="me-1 bi star star3${product_id}" style="color: #8C929B;"></i>
+                        <i class="me-1 bi star star4${product_id}" style="color: #8C929B;"></i>
+                        <i class="me-1 bi star star5${product_id}" style="color: #8C929B;"></i>
                     </div>
                     <div class="align-self-end pt-5 ${product_id}btn">
                         <button type="button" class="ms-4 ps-5 btn btn-view-info" id="${product_id}view-info" style="width:225px;height:60px;">View info<i class="ms-5 bi bi-info-circle-fill"></i></button>
