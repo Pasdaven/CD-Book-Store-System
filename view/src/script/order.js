@@ -1,6 +1,6 @@
 const getOrder = () => {
     let data = {
-        controller: 'OrderList',
+        controller: 'orderList',
         method: 'getOrder'
     };
     let json = JSON.stringify(data);
@@ -12,10 +12,9 @@ const getOrder = () => {
     });
 }
 
-const finishOrder = () => {
-    let order_id = 5;
+const finishOrder = (order_id) => {
     let data = {
-        controller: 'OrderList',
+        controller: 'orderList',
         method: 'finishOrder',
         parameter: {
             order_id: order_id
@@ -26,14 +25,13 @@ const finishOrder = () => {
         url: '/CD-BOOK-STORE-SYSTEM/controller/core.php',
         method: 'POST',
         data: json,
-        success: res => console.log(res)
+        success: res => {}
     });
 }
 
-const cancelOrder = () => {
-    let order_id = 5;
+const cancelOrder = (order_id) => {
     let data = {
-        controller: 'OrderList',
+        controller: 'orderList',
         method: 'cancelOrder',
         parameter: {
             order_id: order_id
@@ -44,17 +42,17 @@ const cancelOrder = () => {
         url: '/CD-BOOK-STORE-SYSTEM/controller/core.php',
         method: 'POST',
         data: json,
-        success: res => console.log(res)
+        success: res => { }
     });
 }
 
-const returnOrder = () => {
-    let order_id = 5;
+const returnOrder = (refundAccount, order_id) => {
     let data = {
-        controller: 'OrderList',
+        controller: 'orderList',
         method: 'returnOrder',
         parameter: {
-            order_id: order_id
+            order_id: order_id,
+            refundAccount: refundAccount
         }
     };
     let json = JSON.stringify(data);
@@ -62,7 +60,29 @@ const returnOrder = () => {
         url: '/CD-BOOK-STORE-SYSTEM/controller/core.php',
         method: 'POST',
         data: json,
-        success: res => console.log(res)
+        success: res => { }
+    });
+}
+
+function finishModal(order_id) {
+    $('#modalFinish').modal('show');
+    $("#orderFinish").click(function () {
+        finishOrder(order_id);
+        location.reload();
+    });
+}
+function cancelModal(order_id) {
+    $('#modalCancel').modal('show');
+    $("#orderCancel").click(function () {
+        cancelOrder(order_id);
+        location.reload();
+    });
+}
+function returnModal(order_id) {
+    $('#modalReturn').modal('show');
+    $("#orderReturn").click(function () {
+        returnOrder($('#returnAccount').val(), order_id);
+        location.reload();
     });
 }
 
@@ -71,6 +91,6 @@ $(() => {
 });
 
 
-$('#finishOrder').click(() => {finishOrder()});
-$('#cancelOrder').click(() => {cancelOrder()});
-$('#returnOrder').click(() => {returnOrder()});
+$('#finishOrder').click(() => { finishOrder() });
+$('#cancelOrder').click(() => { cancelOrder() });
+$('#returnOrder').click(() => { returnOrder() });
