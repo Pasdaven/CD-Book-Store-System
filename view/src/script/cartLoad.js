@@ -74,5 +74,7 @@ $(() => {
         let url = `http://localhost/CD-BOOK-STORE-SYSTEM/view/payment/?coupon_id=${coupon_id}&subtotal=${subtotal}&deliver=${deliver}&discount=${discount}&total=${total}`;
         window.location = url;
     });
+    let memberRes = getMemberInfo();
+    displayUserName(memberRes);
 });
 
