@@ -32,6 +32,8 @@ $(() => {
             removeCart(id);
         }
     });
+    let memberRes = getMemberInfo();
+    displayUserName(memberRes);
 });
 
 const displayRate = (rate, product_id) => {
