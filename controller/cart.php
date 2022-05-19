@@ -6,7 +6,7 @@ require_once('./orderList.php');
 class Cart extends Model {
     protected $table = 'cart';
     public function insertCart($param) {
-        $member_id = $param['member_id'];
+        $member_id = $_SESSION['member_id'];
         $product_id = $param['product_id'];
         $count_num = 1;
         $product = new Product();
@@ -45,8 +45,8 @@ class Cart extends Model {
         $sql = $this->delete() . $this->where('member_id', '=', $member_id);
         return $this->execute($sql);
     }
-    public function getCart($param) {
-        $member_id = $param['member_id'];
+    public function getCart() {
+        $member_id = $_SESSION['member_id'];
         $sql = $this->select($this->table) . ' AS c,product AS p WHERE p.product_id IN (' . $this->select($this->table, ['c.product_id']) . $this->where('c.member_id', '=', $member_id) . ')';
         return $this->execute($sql);
     }
@@ -59,15 +59,15 @@ class Cart extends Model {
         return $order->insertOrder($param);
     }
     public function isCart($param) {
-        $member_id = $param['member_id'];
+        $member_id = $_SESSION['member_id'];
         $product_id = $param['product_id'];
         $sql = $this->select($this->table) . $this->where('member_id', '=', $member_id) . $this->and('product_id', '=', $product_id);
-        
+
         return $this->execute($sql);
     }
     //刪除購物車中一條紀錄
     public function deleteCartByMIdPId($param) {
-        $member_id = $param['member_id'];
+        $member_id = $_SESSION['member_id'];
         $product_id = $param['product_id'];
         $sql = $this->delete() . $this->where('member_id', '=', $member_id) . $this->and('product_id', '=', $product_id);
         return $this->execute($sql);
