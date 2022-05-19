@@ -72,8 +72,9 @@ class OrderList extends Model {
     }
     public function returnOrder($param) {
         $order_id = $param['order_id'];
+        $refundAccount = $param['refundAccount'];
         $order_state = 'return';
-        $sql = $this->update(['order_state' => $order_state]) . $this->where('order_id', '=', $order_id);
+        $sql = $this->update(['order_state' => $order_state, 'refund_account' => $refundAccount]) . $this->where('order_id', '=', $order_id);
         return $this->execute($sql);
     }
 }
