@@ -33,6 +33,7 @@ CREATE TABLE order_list (
     convenience_store VARCHAR(10) COMMENT '便利商店',
     order_address VARCHAR(100) COMMENT '地址',
     payment ENUM('cash', 'credit card') NOT NULL COMMENT '付款方式',
+    refund_account VARCHAR(100) COMMENT '退款帳戶',
     order_state ENUM('wait', 'finish', 'cancel', 'return') NOT NULL COMMENT '訂單狀態',
     FOREIGN KEY(member_id) REFERENCES member (member_id)
 ) COMMENT '訂單';
