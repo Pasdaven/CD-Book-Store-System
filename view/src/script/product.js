@@ -146,13 +146,11 @@ const updateProductNum = () => {
 
 const checkFollow = () => {
     let product_id = getUrl();
-    let member_id = 1;
     let data = {
         controller: "followList",
         method: "isFollow",
         parameter: {
-            product_id: product_id,
-            member_id: member_id,
+            product_id: product_id
         },
     };
     let json = JSON.stringify(data);
@@ -166,13 +164,11 @@ const checkFollow = () => {
 
 const addToFollow = () => {
     let product_id = getUrl();
-    let member_id = 1;
     let data = {
         controller: "followList",
         method: "insertFollowList",
         parameter: {
-            product_id: product_id,
-            member_id: member_id,
+            product_id: product_id
         },
     };
     let json = JSON.stringify(data);
@@ -186,13 +182,11 @@ const addToFollow = () => {
 
 const removeFollow = () => {
     let product_id = getUrl();
-    let member_id = 1;
     let data = {
         controller: "followList",
         method: "deleteFollowList",
         parameter: {
-            product_id: product_id,
-            member_id: member_id,
+            product_id: product_id
         },
     };
     let json = JSON.stringify(data);
@@ -206,13 +200,11 @@ const removeFollow = () => {
 
 const checkCart = () => {
     let product_id = getUrl();
-    let member_id = 1;
     let data = {
         controller: "cart",
         method: "isCart",
         parameter: {
-            product_id: product_id,
-            member_id: member_id,
+            product_id: product_id
         },
     };
     let json = JSON.stringify(data);
@@ -226,13 +218,11 @@ const checkCart = () => {
 
 const addToCart = () => {
     let product_id = getUrl();
-    let member_id = 1;
     let data = {
         controller: "cart",
         method: "insertCart",
         parameter: {
-            product_id: product_id,
-            member_id: member_id,
+            product_id: product_id
         },
     };
     let json = JSON.stringify(data);
@@ -246,13 +236,11 @@ const addToCart = () => {
 
 const removeCart = () => {
     let product_id = getUrl();
-    let member_id = 1;
     let data = {
         controller: "cart",
         method: "deleteCartByMIdPId",
         parameter: {
-            product_id: product_id,
-            member_id: member_id,
+            product_id: product_id
         },
     };
     let json = JSON.stringify(data);
@@ -266,13 +254,11 @@ const removeCart = () => {
 
 const createBrowsingHistory = () => {
     let product_id = getUrl();
-    let member_id = 1;
     let data = {
         controller: "browserHistory",
         method: "insertBrowserHis",
         parameter: {
-            product_id: product_id,
-            member_id: member_id,
+            product_id: product_id
         },
     };
     let json = JSON.stringify(data);
