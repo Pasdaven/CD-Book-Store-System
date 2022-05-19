@@ -8,14 +8,12 @@ const getTime = () => {
 };
 
 const insertBrowserHis = () => {
-    let member_id = $.session.get('member_id');
     let product_id = $('#product_id').val();
     let browse_time = getTime();
     let data = {
         controller: 'BrowserHistory',
         method: 'insertBrowserHis',
         parameter: {
-            member_id: member_id,
             product_id: product_id,
             browse_time: browse_time
         }
@@ -29,13 +27,11 @@ const insertBrowserHis = () => {
 }
 
 const deleteBrowserHis = (id) => {
-    let member_id = 1;
     let product_id = id;
     let data = {
         controller: 'BrowserHistory',
         method: 'deleteBrowserHis',
         parameter: {
-            member_id: member_id,
             product_id: product_id
         }
     };
@@ -47,13 +43,9 @@ const deleteBrowserHis = (id) => {
     });
 }
 const getBrowserHis = () => {
-    let member_id = 1;
     let data = {
         controller: 'BrowserHistory',
-        method: 'getBrowserHis',
-        parameter: {
-            member_id: member_id
-        }
+        method: 'getBrowserHis'
     };
     let json = JSON.stringify(data);
     $.ajax({
@@ -121,6 +113,8 @@ $(() => {
             removeCart(id);
         }
     });
+    let memberRes = getMemberInfo();
+    displayUserName(memberRes);
 });
 
 const displayRate = (rate, product_id) => {
