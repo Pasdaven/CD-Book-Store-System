@@ -48,6 +48,53 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade" id="modalFinish" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Finish Order</h5>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn deep_green" data-bs-dismiss="modal" id="orderFinish" onclick="">finish</button>
+                        <button type="button" class="btn green" data-bs-dismiss="modal">close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="modalCancel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Cancel Order</h5>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn red" data-bs-dismiss="modal" id="orderCancel" onclick="">cancel</button>
+                        <button type="button" class="btn green" data-bs-dismiss="modal">close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="modalReturn" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Return Order</h5>
+                    </div>
+                    <div class="modal-body">
+                        Please send product back to Pascal Company<br>
+                        Address : 1 Infinite Loop Cupertino, CA 95014<br>
+                        <hr>
+                        After we get the return product, we will refund to your account<br><br>
+                        Thanks~<br><br>
+                        <input class="form-control my-4 comment_input" type="text" id="returnAccount" placeholder="Refund Account">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn yellow" data-bs-dismiss="modal" id="orderReturn" onclick="">return</button>
+                        <button type="button" class="btn green" data-bs-dismiss="modal">close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="page">
         <div class="container">
@@ -66,6 +113,7 @@
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="/CD-Book-Store-System/view/src/script/orderListLoad.js"></script>
+    <script src="/CD-Book-Store-System/view/src/script/order.js"></script>
     <script src="/CD-Book-Store-System/view/src/script/comment.js"></script>
     <script>getOrderList();</script>
 
