@@ -10,12 +10,12 @@ class BrowserHistory extends Model {
 
     public function insertBrowserHis($param) {
         $browse_time = date("Y-m-d H:i:s");
-        $sql = $this->insert(['member_id' => $param['member_id'], 'product_id' => $param['product_id'], 'browse_time' => $browse_time]);
+        $sql = $this->insert(['member_id' => $_SESSION['member_id'], 'product_id' => $param['product_id'], 'browse_time' => $browse_time]);
         $this->execute($sql);
     }
 
-    public function getBrowserHis($param) {
-        $member_id = $param['member_id'];
+    public function getBrowserHis() {
+        $member_id = $_SESSION['member_id'];
         $sql = $this->select($this->table) . $this->where('member_id', '=', $member_id) . $this->orderby('browsing_his_id', 'DESC');
         $result = $this->execute($sql);
         $commentlist = new CommentList();
@@ -28,7 +28,7 @@ class BrowserHistory extends Model {
     }
 
     public function deleteBrowserHis($param) {
-        $member_id = $param['member_id'];
+        $member_id = $_SESSION['member_id'];
         $product_id = $param['product_id'];
         $sql = $this->delete() . $this->where('member_id', '=', $member_id) . $this->and('product_id', '=', $product_id);
         $this->execute($sql);
