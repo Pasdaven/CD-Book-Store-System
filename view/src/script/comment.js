@@ -8,7 +8,6 @@ const getTime = () => {
 };
 
 const insertComment = (product_id) => {
-    let member_id = '1';
     let star = $(`#star-${product_id}`).val();
     let product_comment = $(`#comment-${product_id}`).val();
     let comment_create_time = getTime();
@@ -22,7 +21,6 @@ const insertComment = (product_id) => {
         controller: 'commentList',
         method: 'createComment',
         parameter: {
-            member_id: member_id,
             product_id: product_id,
             star: star,
             product_comment: product_comment,
@@ -93,10 +91,3 @@ const updateComment = () => {
         success: res => console.log(res)
     });
 }
-
-$(() => {
-    getComment();
-});
-$('#insertComment').click(() => {insertComment()});
-$('#deleteComment').click(() => {deleteComment()});
-$('#updateComment').click(() => {updateComment()});
