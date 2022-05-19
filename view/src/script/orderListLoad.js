@@ -1,13 +1,23 @@
+$(() => {
+    getOrderList();
+    getOrder();
+    $('#finishOrder').click(() => { finishOrder() });
+    $('#cancelOrder').click(() => { cancelOrder() });
+    $('#returnOrder').click(() => { returnOrder() });
+    getComment();
+    $('#insertComment').click(() => {insertComment()});
+    $('#deleteComment').click(() => {deleteComment()});
+    $('#updateComment').click(() => {updateComment()});
+    let memberRes = getMemberInfo();
+    displayUserName(memberRes);
+});
+
+
 function getOrderList() {
-    let member_id = '1';
-    // let member_id = $.session.get('member_id');
 
     let data = {
         controller: 'orderList',
-        method: 'getOrderById',
-        parameter: {
-            member_id: member_id
-        }
+        method: 'getOrderById'
     };
     let json = JSON.stringify(data);
     $.ajax({
