@@ -1,6 +1,6 @@
 function getOrderList() {
-    // let member_id = '1';
-    let member_id = $.session.get('member_id');
+    let member_id = '1';
+    // let member_id = $.session.get('member_id');
 
     let data = {
         controller: 'orderList',
@@ -61,7 +61,7 @@ function getOrderList() {
                         </div>
                         <hr class="mx-4" style="height: 2px;">
                         <div class="row">
-                            <div class="col">
+                            <div class="col-6">
                                 <div class="card card_down">
                                 <div class="d-flex">
                                     <h6 class="card_title"><i class="bi bi-list-ol mx-3"></i>Subtotal : </h6>
@@ -81,6 +81,7 @@ function getOrderList() {
                                 </div>
                                 </div>
                             </div>
+                            <div class="col-6" id="order_btn-${res[i]['order_id']}"></div>
                         </div>
                     </div>
 
@@ -113,6 +114,20 @@ function getOrderList() {
                     `
                     $(`#deliver-${res[i]['order_id']}`).append(deliver);
                 }
+
+                if (res[i]['order_state'] == 'wait') {
+                    let button = `
+                        <button class="btn red" style="width: 100px;" onclick="cancelModal(${res[i]['order_id']})">cancel</button>
+                    `
+                    $(`#order_btn-${res[i]['order_id']}`).append(button);
+                } else if (res[i]['order_state'] == 'arrive') {
+                    let button = `
+                        <button class="btn deep_green" style="width: 100px;" onclick="finishModal(${res[i]['order_id']})">finish</button>
+                        <button class="btn yellow" style="width: 100px;" onclick="returnModal(${res[i]['order_id']})">return</button>
+                    `
+                    $(`#order_btn-${res[i]['order_id']}`).append(button);
+                }
+
                 getOrderProduct(res[i]['order_id']);
             }
         }
