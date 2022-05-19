@@ -1,5 +1,4 @@
 // $('#submitBtn').click();
-
 function login() {
     let email = $('#email').val();
     let member_password = $('#member_password').val();
@@ -19,7 +18,8 @@ function login() {
         success: res => {
             if (res) {
                 // 登入成功
-
+                $url = "http://localhost/CD-BOOK-STORE-SYSTEM/view/product/index.html?id=1";
+                window.location.href = $url;
             } else {
                 // 帳號密碼錯誤登入失敗
                 $('#modal').modal('show');
@@ -27,6 +27,32 @@ function login() {
         }
     });
 }
+
+function logout() {
+    let data = {
+        controller: 'member',
+        method: 'logout'
+    };
+    let json = JSON.stringify(data);
+    $.ajax({
+        url: '/CD-Book-Store-System/controller/core.php',
+        method: 'POST',
+        data: json,
+        success: res => {
+            // 登出
+            $url = "http://localhost/CD-BOOK-STORE-SYSTEM/view/login/";
+            window.location.href = $url;
+        }
+    });
+}
+
+const displayUserName = (data) => {
+    let member_name = data[0]['member_name'];
+    $(".username-nav-item").append(`<button class="navbar_btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="bi bi-person-fill mx-2"></i>${member_name}</button>`);
+    $(".username-offcanvas-header").append(`<h4 class="offcanvas-title" id="offcanvasRightLabel"><i class="bi bi-person-fill mx-3"></i>${member_name}</h4>`);
+}
+
+
 
 function register() {
     let email = $('#email').val();
@@ -159,7 +185,6 @@ function confirm() {
 }
 
 function resetPassword() {
-    // let member_id = $.session.get('member_id');
     let new_password = $('#new_password').val();
     let confirm_password = $('#confirm_password').val();
 
@@ -168,7 +193,6 @@ function resetPassword() {
             controller: 'member',
             method: 'resetPassword',
             parameter: {
-                member_id: member_id,
                 new_password: new_password
             }
         };
@@ -191,7 +215,6 @@ function resetPassword() {
 }
 
 function updateMemberInfo() {
-    let member_id = $.session.get('member_id');
     let member_name = $('#member_name').val();
     let birthday = $('#birthday').val();
     let phone_num = $('#phone_num').val();
@@ -232,7 +255,6 @@ function updateMemberInfo() {
         controller: 'member',
         method: 'updateMemberInfo',
         parameter: {
-            member_id: member_id,
             member_name: member_name,
             birthday: birthday,
             phone_num: phone_num,
@@ -263,21 +285,19 @@ function getMemberInfo() {
         url: '/CD-Book-Store-System/controller/core.php',
         method: 'POST',
         data: json,
+        async: false,
         success: res => {
-            console.log(res);
+            result = res;
         }
     });
+    return result;
 }
 
 function getMemberInfoById() {
-    let member_id = $.session.get('member_id');
 
     let data = {
         controller: 'member',
-        method: 'getMemberInfoById',
-        parameter: {
-            member_id: member_id
-        }
+        method: 'getMemberInfoById'
     };
     let json = JSON.stringify(data);
     $.ajax({
@@ -295,14 +315,10 @@ function getMemberInfoById() {
 }
 
 function getMemberAccountById() {
-    let member_id = $.session.get('member_id');
 
     let data = {
         controller: 'member',
-        method: 'getMemberAccountById',
-        parameter: {
-            member_id: member_id
-        }
+        method: 'getMemberAccountById'
     };
     let json = JSON.stringify(data);
     $.ajax({
