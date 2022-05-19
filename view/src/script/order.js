@@ -8,7 +8,7 @@ const getOrder = () => {
         url: '/CD-BOOK-STORE-SYSTEM/controller/core.php',
         method: 'POST',
         data: json,
-        success: res => console.log(res)
+        success: res => {}
     });
 }
 
@@ -25,7 +25,7 @@ const finishOrder = (order_id) => {
         url: '/CD-BOOK-STORE-SYSTEM/controller/core.php',
         method: 'POST',
         data: json,
-        success: res => {}
+        success: res => { }
     });
 }
 
@@ -64,6 +64,24 @@ const returnOrder = (refundAccount, order_id) => {
     });
 }
 
+function updateOrderState(order_id, order_state) {
+    let data = {
+        controller: 'orderList',
+        method: 'updateOrderState',
+        parameter: {
+            order_id: order_id,
+            order_state: order_state
+        }
+    };
+    let json = JSON.stringify(data);
+    $.ajax({
+        url: '/CD-BOOK-STORE-SYSTEM/controller/core.php',
+        method: 'POST',
+        data: json,
+        success: res => { }
+    });
+}
+
 function finishModal(order_id) {
     $('#modalFinish').modal('show');
     $("#orderFinish").click(function () {
@@ -71,6 +89,7 @@ function finishModal(order_id) {
         location.reload();
     });
 }
+
 function cancelModal(order_id) {
     $('#modalCancel').modal('show');
     $("#orderCancel").click(function () {
@@ -78,11 +97,26 @@ function cancelModal(order_id) {
         location.reload();
     });
 }
+
 function returnModal(order_id) {
     $('#modalReturn').modal('show');
     $("#orderReturn").click(function () {
         returnOrder($('#returnAccount').val(), order_id);
         location.reload();
+    });
+}
+
+function changeOrderStateModal(order_id) {
+    $('#modalChangeOrderState').modal('show');
+    $("#changeOrderStateBtn").click(function () {
+        let order_state = $('#ChangeOrderState').val();
+
+        if (order_state != 'wait' && order_state != 'arrive' && order_state != 'finish' && order_state != 'cancel' && order_state != 'return') {
+            $('#modalStateError').modal('show');
+        } else {
+            updateOrderState(order_id, order_state);
+            $('#modalSuccess').modal('show');
+        }
     });
 }
 
