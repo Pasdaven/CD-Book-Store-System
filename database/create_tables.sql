@@ -80,10 +80,10 @@ CREATE TABLE cs_record (
     member_id INT UNSIGNED NOT NULL COMMENT '會員編號',
     cs_id INT UNSIGNED NOT NULL COMMENT '客服人員編號',
     topic ENUM ('product', 'other') NOT NULL COMMENT '主題',
-    product_id INT UNSIGNED comment '商品編號',
+    order_id INT UNSIGNED comment '訂單編號',
     FOREIGN KEY (member_id) REFERENCES member(member_id),
     FOREIGN KEY (cs_id) REFERENCES customer_service(cs_id),
-    FOREIGN KEY (product_id) REFERENCES product(product_id)
+    FOREIGN KEY (order_id) REFERENCES order_list(order_id)
 ) COMMENT '客服紀錄';
 
 CREATE TABLE cs_message (
