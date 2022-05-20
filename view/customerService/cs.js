@@ -42,3 +42,30 @@ const createMsgComponent = (data) => {
     $("#msg-content-area").append(html);
 };
 
+const loadUnreadMsg = () => {
+    let cs_record_id = 1;
+    let msg_by = "member";
+    let data = {
+        controller: "customerService",
+        method: "searchUnreadMsg",
+        parameter: {
+            cs_record_id: cs_record_id,
+            msg_by: msg_by,
+        },
+    };
+    let json = JSON.stringify(data);
+    $.ajax({
+        url: "/cd-book-store-system/controller/core.php",
+        method: "POST",
+        data: json,
+        success: (res) => {
+            if (res != "") {
+                res.forEach((element) => {
+                    createMsgComponent(element);
+                });
+                scrollToBottom();
+            }
+        },
+    });
+};
+
