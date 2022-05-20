@@ -5,6 +5,8 @@ use model\Model;
 require_once('./orderProduct.php');
 require_once('./coupon.php');
 require_once('./cart.php');
+require_once('./product.php');
+
 class OrderList extends Model {
     protected $table = 'order_list';
     public function insertOrder($param) {
@@ -91,5 +93,24 @@ class OrderList extends Model {
 
         $sql = $this->update(['order_state' => $order_state]) . $this->where('order_id', '=', $order_id);
         return $this->execute($sql);
+    }
+    
+    public function getOrderByOrderId($order_id) {
+        $orderProduct = new OrderProduct();
+        $product = new Product();
+
+        $sql = $this->select($this->table) . $this->where('order_id', '=', $order_id);
+        $order_info = $this->execute($sql);
+        
+        $param = array('order_id' => $order_info[0]['order_id']);
+        $order_product = $orderProduct->getOrderProductById($param);
+        for ($i = 0; $i < count($order_product); $i++) {
+            $param = array('product_id' => $order_product[$i]['product_id']);
+            $order_product[$i]['product_info'] = $product->searchProductById($param);
+        }
+
+        $order_info['product'] = $order_product;
+
+        return $order_info;
     }
 }

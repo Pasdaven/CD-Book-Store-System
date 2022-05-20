@@ -216,16 +216,18 @@ const displayCartInfo = (data) => {
 
 const cartComponent = (product_name, cart_id, total_price, count_num, product_image) => {
     return `
-    <div class="row align-items-center border-line py-3 cart${cart_id}">
-        <div class="col-2 px-0 mx-0"><img src="${product_image}" alt="" width="113.7" height="162.79"></div>
-        <div class="col-3 ms-3"><h4 style="display: inline;">${product_name}</h4></div>
-        <ul class="quanity">
-            <li><span class="sub" id="${cart_id}sub">-</span></li>
-            <li><input type="text" class="input-num" id="${cart_id}input-num" value="${count_num}"></li>
-            <li><span class="add" id="${cart_id}add">+</span></li>
-        </ul>
-        <div class="col-2 px-0" style="margin-left: 130px;"><h4 id="${cart_id}price">$${total_price}</h4></div>
-        <button type="button" class="btn-close" id="${cart_id}" aria-label="Close"></button>
+    <div class="row align-items-center justify-content-center border-line py-3 mx-0 cart${cart_id}" style="width:100%;">
+        <div class="col-2 px-0 mx-0"><img src="${product_image}" alt=""  height="162.79"></div>
+        <div class="col-3"><h4 style="display: inline;">${product_name}</h4></div>
+        <div class="quanity d-flex justify-content-center align-items-center col-3">
+            <div class="quanity-box justify-content-center align-items-center">
+                <span class="sub text-center" id="${cart_id}sub">-</span>
+                <input type="text" class="input-num text-center" id="${cart_id}input-num" value="${count_num}">
+                <span class="add text-center" id="${cart_id}add">+</span>
+            </div>
+        </div>
+        <div class="col-2 d-flex justify-content-center"><h4 id="${cart_id}price">$${total_price}</h4></div>
+        <div class="col-1"><button type="button" class="btn-close" id="${cart_id}" aria-label="Close"></button></div>
     </div>
     `;
 }

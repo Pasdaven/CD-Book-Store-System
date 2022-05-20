@@ -81,10 +81,10 @@ CREATE TABLE cs_record (
     member_id INT UNSIGNED NOT NULL COMMENT '會員編號',
     cs_id INT UNSIGNED NOT NULL COMMENT '客服人員編號',
     topic ENUM ('product', 'other') NOT NULL COMMENT '主題',
-    product_id INT UNSIGNED comment '商品編號',
+    order_id INT UNSIGNED comment '訂單編號',
     FOREIGN KEY (member_id) REFERENCES member(member_id),
     FOREIGN KEY (cs_id) REFERENCES customer_service(cs_id),
-    FOREIGN KEY (product_id) REFERENCES product(product_id)
+    FOREIGN KEY (order_id) REFERENCES order_list(order_id)
 ) COMMENT '客服紀錄';
 
 CREATE TABLE cs_message (
@@ -92,6 +92,7 @@ CREATE TABLE cs_message (
     cs_record_id INT UNSIGNED comment '客服紀錄編號',
     msg_content VARCHAR(100) NOT NULL COMMENT '訊息內容',
     msg_by ENUM ('cs', 'member') NOT NULL COMMENT '訊息建立者',
+    msg_state ENUM ('read', 'unread') NOT NULL COMMENT '訊息狀態',
     create_time DATETIME NOT NULL comment '訊息時間',
     FOREIGN KEY(cs_record_id) REFERENCES cs_record(cs_record_id),
     PRIMARY KEY (message_id, cs_record_id)

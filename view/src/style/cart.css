@@ -27,29 +27,27 @@
 
   .scroll {
     overflow-y: scroll;
-    overflow-x: hidden;
   }
 
 
-  ul,li {
-    list-style: none;
-    display:inline;
-  }
   .input-num {
     border:none;
   }
-  .quanity {
-    width: 92px;
-    background-color: #fff;
+
+  .quanity-box {
+    display: flex;
+    width: 80px;
     height: 40px;
-    cursor: pointer;
+    background-color: #fff;
     border-radius: 50px;
+    cursor: pointer;
   }
-  .quanity .sub, .input-num, .add {
-    display: inline-block;
+  .input-num {
+    width: 30px;
+    user-select:none;
+  }
+  .quanity .sub, .add {
     width: 20px;
-    height: 24px;
-    text-align: center;
     font-size: 24px;
     user-select:none;
   }
