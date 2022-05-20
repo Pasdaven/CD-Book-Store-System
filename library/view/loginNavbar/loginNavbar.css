@@ -59,6 +59,11 @@
     color: #A19A9A;
 }
 
+.search_input {
+    width: 240px;
+    height: 32px;
+}
+
 .navbar-nav {
     color: #A19A9A;
 }
