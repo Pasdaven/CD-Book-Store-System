@@ -18,7 +18,7 @@ function login() {
         success: res => {
             if (res) {
                 // 登入成功
-                $url = "http://localhost/CD-BOOK-STORE-SYSTEM/view/product/index.html?id=1";
+                $url = "http://localhost/CD-BOOK-STORE-SYSTEM/view/";
                 window.location.href = $url;
             } else {
                 // 帳號密碼錯誤登入失敗
