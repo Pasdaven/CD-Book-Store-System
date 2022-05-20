@@ -69,3 +69,28 @@ const loadUnreadMsg = () => {
     });
 };
 
+const loadMsg = () => {
+    let cs_record_id = 1;
+    let data = {
+        controller: "customerService",
+        method: "searchMsgByCsRecId",
+        parameter: {
+            cs_record_id: cs_record_id,
+        },
+    };
+    let json = JSON.stringify(data);
+    $.ajax({
+        url: "/cd-book-store-system/controller/core.php",
+        method: "POST",
+        data: json,
+        success: (res) => {
+            if (res != "") {
+                res.forEach((element) => {
+                    createMsgComponent(element);
+                });
+                scrollToBottom();
+            }
+        },
+    });
+};
+
