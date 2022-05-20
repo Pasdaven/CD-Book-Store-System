@@ -33,5 +33,11 @@ class CustomerService extends Model {
         return $this->searchMsgByMsgId($message_id);
     }
 
+    public function readMsg($message_id) {
+        $sql = $this->update(['msg_state' => 'read'], 'cs_message') . $this->where('message_id', '=', $message_id);
+
+        $this->execute($sql);
+    }
+
     }
 }
