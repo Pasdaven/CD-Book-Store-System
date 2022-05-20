@@ -1,23 +1,7 @@
-$(() => {
-    getOrderList();
-    getOrder();
-    $('#finishOrder').click(() => { finishOrder() });
-    $('#cancelOrder').click(() => { cancelOrder() });
-    $('#returnOrder').click(() => { returnOrder() });
-    getComment();
-    $('#insertComment').click(() => {insertComment()});
-    $('#deleteComment').click(() => {deleteComment()});
-    $('#updateComment').click(() => {updateComment()});
-    let memberRes = getMemberInfo();
-    displayUserName(memberRes);
-});
-
-
-function getOrderList() {
-
+function getAllOrderList() {
     let data = {
         controller: 'orderList',
-        method: 'getOrderById'
+        method: 'getOrder',
     };
     let json = JSON.stringify(data);
     $.ajax({
@@ -25,8 +9,6 @@ function getOrderList() {
         method: 'POST',
         data: json,
         success: res => {
-            console.log(res);
-
             if (res.length == 0) {
                 let html = `
                     <div class="d-flex justify-content-center">
@@ -45,6 +27,10 @@ function getOrderList() {
                                 <div class="d-flex">
                                     <h5 class="card_title">Order : </h5> 
                                     <h5 class="px-2">${res[i]['order_id']}</h5> 
+                                </div>
+                                <div class="d-flex">
+                                    <h6 class="card_title"><i class="bi bi-person-lines-fill mx-3"></i>Member ID : </h6>
+                                    <h6 class="px-2">${res[i]['member_id']}</h6>
                                 </div>
                                 <div class="d-flex">
                                     <h6 class="card_title"><i class="bi bi-clock mx-3"></i>State : </h6>
@@ -91,7 +77,9 @@ function getOrderList() {
                                 </div>
                                 </div>
                             </div>
-                            <div class="col-6" id="order_btn-${res[i]['order_id']}"></div>
+                            <div class="col-6">
+                                <button class="btn green" style="width: 300px;" onclick="changeOrderStateModal(${res[i]['order_id']})">Change Order State</button>
+                            </div>
                         </div>
                     </div>
 
@@ -125,26 +113,13 @@ function getOrderList() {
                     $(`#deliver-${res[i]['order_id']}`).append(deliver);
                 }
 
-                if (res[i]['order_state'] == 'wait') {
-                    let button = `
-                        <button class="btn red" style="width: 100px;" onclick="cancelModal(${res[i]['order_id']})">cancel</button>
-                    `
-                    $(`#order_btn-${res[i]['order_id']}`).append(button);
-                } else if (res[i]['order_state'] == 'arrive') {
-                    let button = `
-                        <button class="btn deep_green" style="width: 100px;" onclick="finishModal(${res[i]['order_id']})">finish</button>
-                        <button class="btn yellow" style="width: 100px;" onclick="returnModal(${res[i]['order_id']})">return</button>
-                    `
-                    $(`#order_btn-${res[i]['order_id']}`).append(button);
-                }
-
-                getOrderProduct(res[i]['order_id'], res[i]['order_state']);
+                getAllOrderProduct(res[i]['order_id'], res[i]['order_state']);
             }
         }
     });
 }
 
-function getOrderProduct(order_id, order_state) {
+function getAllOrderProduct(order_id, order_state) {
     let data = {
         controller: 'orderProduct',
         method: 'getOrderProductById',
@@ -184,58 +159,15 @@ function getOrderProduct(order_id, order_state) {
                             <h6 class="px-2 card_text">${count_num}</h6>
                             <h6 class="card_title">Price : </h6>
                             <h6 class="px-2" style="width: 80px;">${count_num * res1[0]['product_price']}</h6>
-                            <div id="orderComment-${product_id}"><div>
                         </div>
                             
                         `
                         $(`#product-${order_id}`).append(product);
 
-                        if (order_state == 'finish') {
-                            let comment = `
-                                <div style="margin-top: -32px;">
-                                    <button class="btn btn-sm green" style="font-size: 12px;" onclick="showCommentModal(${product_id})">Comment</button>
-                                </div>
-                            `
-                            $(`#orderComment-${product_id}`).append(comment);
-
-                            let modal = `
-                                <div class="modal fade" id="modal-${product_id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title">Product Comment</h5>
-                                            </div>
-                                            <div class="modal-body">
-                                            <div class="d-flex justify-content-center">
-                                            <input class="form-control my-4 comment_input" list="star_list" placeholder="Star For Product" id="star-${product_id}">
-                                            <datalist id="star_list">
-                                            <option value="1">
-                                            <option value="2">
-                                            <option value="3">
-                                            <option value="4">
-                                            <option value="5">
-                                            </datalist>
-                                            </div>
-                                            <div class="d-flex justify-content-center">
-                                                <input class="form-control my-4 comment_input" type="text" id="comment-${product_id}" placeholder="Comment">
-                                            </div>
-                                            </div>
-                                            <div class="modal-footer d-flex justify-content-center">
-                                                <button type="button" class="btn green" data-bs-dismiss="modal" onclick="insertComment(${product_id});">Comment</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                        `
-                            $('#modal_list').append(modal);
-                        }
+                        
                     }
                 });
             }
         }
     });
-}
-
-function showCommentModal(order_id) {
-    $(`#modal-${order_id}`).modal('show');
 }

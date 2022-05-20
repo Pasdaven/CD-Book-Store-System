@@ -9,19 +9,20 @@ class FollowList extends Model {
     protected $table = 'follow_list';
 
     public function insertFollowList($param) {
-        $sql = $this->insert(['member_id' => $param['member_id'], 'product_id' => $param['product_id']]);
+        $member_id = $_SESSION['member_id'];
+        $sql = $this->insert(['member_id' => $member_id, 'product_id' => $param['product_id']]);
         $this->execute($sql);
     }
 
     public function deleteFollowList($param) {
-        $member_id = $param['member_id'];
+        $member_id = $_SESSION['member_id'];
         $product_id = $param['product_id'];
         $sql = $this->delete() . $this->where('member_id', '=', $member_id) . $this->and('product_id', '=', $product_id);
         $this->execute($sql);
     }
 
-    public function getFollowList($param) {
-        $member_id = $param['member_id'];
+    public function getFollowList() {
+        $member_id = $_SESSION['member_id'];
         $sql = $this->select($this->table) . $this->where('member_id', '=', $member_id);
         $result = $this->execute($sql);
         $commentlist = new CommentList();
@@ -34,7 +35,7 @@ class FollowList extends Model {
     }
 
     public function isFollow($param) {
-        $member_id = $param['member_id'];
+        $member_id = $_SESSION['member_id'];
         $product_id = $param['product_id'];
         $sql = $this->select($this->table) . $this->where('member_id', '=', $member_id) . $this->and('product_id', '=', $product_id);
 

@@ -11,7 +11,7 @@ class OrderList extends Model {
     protected $table = 'order_list';
     public function insertOrder($param) {
         $name = $param['name'];
-        $member_id = $param['member_id'];
+        $member_id = $_SESSION['member_id'];
         $phone_num = $param['phone_num'];
         $price = $param['price'];
         $subtotal = $param['subtotal'];
@@ -55,8 +55,8 @@ class OrderList extends Model {
         return $this->execute($sql);
     }
 
-    public function getOrderById($param) {
-        $sql = $this->select($this->table) . $this->where('member_id', '=', $param['member_id']);
+    public function getOrderById() {
+        $sql = $this->select($this->table) . $this->where('member_id', '=', $_SESSION['member_id']);
         return $this->execute($sql);
     }
 
@@ -74,8 +74,15 @@ class OrderList extends Model {
     }
     public function returnOrder($param) {
         $order_id = $param['order_id'];
+        $refundAccount = $param['refundAccount'];
         $order_state = 'return';
-        $sql = $this->update(['order_state' => $order_state]) . $this->where('order_id', '=', $order_id);
+        $sql = $this->update(['order_state' => $order_state, 'refund_account' => $refundAccount]) . $this->where('order_id', '=', $order_id);
+        return $this->execute($sql);
+    }
+    public function updateOrderState($param) {
+        $order_id = $param['order_id'];
+        $order_state = $param['order_state'];
+        $sql = $this->update(['order_state' => $order_state, 'order_state' => $order_state]) . $this->where('order_id', '=', $order_id);
         return $this->execute($sql);
     }
     

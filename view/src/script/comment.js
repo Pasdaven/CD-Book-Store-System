@@ -8,7 +8,6 @@ const getTime = () => {
 };
 
 const insertComment = (product_id) => {
-    let member_id = '1';
     let star = $(`#star-${product_id}`).val();
     let product_comment = $(`#comment-${product_id}`).val();
     let comment_create_time = getTime();
@@ -22,7 +21,6 @@ const insertComment = (product_id) => {
         controller: 'commentList',
         method: 'createComment',
         parameter: {
-            member_id: member_id,
             product_id: product_id,
             star: star,
             product_comment: product_comment,
@@ -43,7 +41,7 @@ const insertComment = (product_id) => {
 const deleteComment = () => {
     let comment_id = 4;
     let data = {
-        controller: 'CommentList',
+        controller: 'commentList',
         method: 'deleteComment',
         parameter: {
             comment_id: comment_id
@@ -60,7 +58,7 @@ const deleteComment = () => {
 
 const getComment = () => {
     let data = {
-        controller: 'CommentList',
+        controller: 'commentList',
         method: 'getCommentList'
     };
     let json = JSON.stringify(data);
@@ -78,7 +76,7 @@ const updateComment = () => {
     let comment_id = 4;
     let product_comment = "abcdef";
     let data = {
-        controller: 'CommentList',
+        controller: 'commentList',
         method: 'updateComment',
         parameter: {
             comment_id: comment_id,
@@ -93,10 +91,3 @@ const updateComment = () => {
         success: res => console.log(res)
     });
 }
-
-$(() => {
-    getComment();
-});
-$('#insertComment').click(() => {insertComment()});
-$('#deleteComment').click(() => {deleteComment()});
-$('#updateComment').click(() => {updateComment()});

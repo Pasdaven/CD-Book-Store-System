@@ -1,11 +1,9 @@
 const insertFollowList = () => {
-    let member_id = $.session.get('member_id');
     let product_id = $('#product_id').val();
     let data = {
         controller: 'followList',
         method: 'insertFollowList',
         parameter: {
-            member_id: member_id,
             product_id: product_id
         }
     };
@@ -18,14 +16,11 @@ const insertFollowList = () => {
 }
 
 const deleteFollowList = (id) => {
-    // let member_id = $.session.get('member_id');
-    let member_id = 1;
     let product_id = id;
     let data = {
         controller: 'followList',
         method: 'deleteFollowList',
         parameter: {
-            member_id: member_id,
             product_id: product_id
         }
     };
@@ -38,13 +33,9 @@ const deleteFollowList = (id) => {
 }
 
 const getFollowList = () => {
-    let member_id = 1;
     let data = {
         controller: 'followList',
-        method: 'getFollowList',
-        parameter: {
-            member_id: member_id
-        }
+        method: 'getFollowList'
     };
     let json = JSON.stringify(data);
     $.ajax({
@@ -74,13 +65,11 @@ const removeFollowListCard = (id) => {
 
 
 const removeCart = (product_id) => {
-    let member_id = 1;
     let data = {
         controller: "cart",
         method: "deleteCartByMIdPId",
         parameter: {
-            product_id: product_id,
-            member_id: member_id,
+            product_id: product_id
         },
     };
     let json = JSON.stringify(data);
