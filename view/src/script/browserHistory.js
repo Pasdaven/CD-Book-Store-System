@@ -11,7 +11,7 @@ const insertBrowserHis = () => {
     let product_id = $('#product_id').val();
     let browse_time = getTime();
     let data = {
-        controller: 'BrowserHistory',
+        controller: 'browserHistory',
         method: 'insertBrowserHis',
         parameter: {
             product_id: product_id,
@@ -29,7 +29,7 @@ const insertBrowserHis = () => {
 const deleteBrowserHis = (id) => {
     let product_id = id;
     let data = {
-        controller: 'BrowserHistory',
+        controller: 'browserHistory',
         method: 'deleteBrowserHis',
         parameter: {
             product_id: product_id
@@ -44,7 +44,7 @@ const deleteBrowserHis = (id) => {
 }
 const getBrowserHis = () => {
     let data = {
-        controller: 'BrowserHistory',
+        controller: 'browserHistory',
         method: 'getBrowserHis'
     };
     let json = JSON.stringify(data);

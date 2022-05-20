@@ -41,7 +41,7 @@ const insertComment = (product_id) => {
 const deleteComment = () => {
     let comment_id = 4;
     let data = {
-        controller: 'CommentList',
+        controller: 'commentList',
         method: 'deleteComment',
         parameter: {
             comment_id: comment_id
@@ -58,7 +58,7 @@ const deleteComment = () => {
 
 const getComment = () => {
     let data = {
-        controller: 'CommentList',
+        controller: 'commentList',
         method: 'getCommentList'
     };
     let json = JSON.stringify(data);
@@ -76,7 +76,7 @@ const updateComment = () => {
     let comment_id = 4;
     let product_comment = "abcdef";
     let data = {
-        controller: 'CommentList',
+        controller: 'commentList',
         method: 'updateComment',
         parameter: {
             comment_id: comment_id,
