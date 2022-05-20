@@ -5,6 +5,8 @@ use model\Model;
 require_once('./orderProduct.php');
 require_once('./coupon.php');
 require_once('./cart.php');
+require_once('./product.php');
+
 class OrderList extends Model {
     protected $table = 'order_list';
     public function insertOrder($param) {
