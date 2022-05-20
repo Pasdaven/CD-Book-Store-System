@@ -91,6 +91,7 @@ CREATE TABLE cs_message (
     cs_record_id INT UNSIGNED comment '客服紀錄編號',
     msg_content VARCHAR(100) NOT NULL COMMENT '訊息內容',
     msg_by ENUM ('cs', 'member') NOT NULL COMMENT '訊息建立者',
+    msg_state ENUM ('read', 'unread') NOT NULL COMMENT '訊息狀態',
     create_time DATETIME NOT NULL comment '訊息時間',
     FOREIGN KEY(cs_record_id) REFERENCES cs_record(cs_record_id),
     PRIMARY KEY (message_id, cs_record_id)
