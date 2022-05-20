@@ -1,6 +1,6 @@
 const insertCart = (product_id) => {
     let data = {
-        controller: 'Cart',
+        controller: 'cart',
         method: 'insertCart',
         parameter: {
             product_id: product_id
@@ -16,7 +16,7 @@ const insertCart = (product_id) => {
 
 const deleteCart = (cart_id) => {
     let data = {
-        controller: 'Cart',
+        controller: 'cart',
         method: 'deleteCart',
         parameter: {
             cart_id: cart_id
@@ -32,7 +32,7 @@ const deleteCart = (cart_id) => {
 
 const getCart = () => {
     let data = {
-        controller: 'Cart',
+        controller: 'cart',
         method: 'getCart'
     };
     let json = JSON.stringify(data);
@@ -50,7 +50,7 @@ const getCart = () => {
 
 const updateCart = (cart_id, count_num) => {
     let data = {
-        controller: 'Cart',
+        controller: 'cart',
         method: 'updateCart',
         parameter: {
             cart_id: cart_id,
@@ -184,7 +184,7 @@ const checkout = () => {
 
 const getCoupon = () => {
     let data = {
-        controller: 'Coupon',
+        controller: 'coupon',
         method: 'getCoupon'
     };
     let json = JSON.stringify(data);
@@ -204,6 +204,7 @@ const getCoupon = () => {
 
 
 const displayCartInfo = (data) => {
+    console.log(data);
     for (i = 0; i < data.length; i++) {
         if (data[i]['count_num'] == '0') {
             deleteCart(data[i]['cart_id']);
