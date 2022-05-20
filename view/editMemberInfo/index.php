@@ -117,27 +117,29 @@ if (isset($_SESSION['member_id']) && isset($_SESSION['email'])) {
         </div>
 
 
-        <nav class="navbar-expand-lg bg-white p-3">
-            <ul class="navbar-nav pt-3">
-                <li class="nav-item" style="margin-left: 0;">
-                    <input class="form-control search_input" type="text" id="search" placeholder="search">
-                </li>
-                <li class="nav-item" style="margin-left: 0;">
-                    <button class="navbar_btn mx-1" type="button" onclick="" id="search_btn"><i class="bi bi-search"></i></button>
-                </li>
-                <li class="nav-item gradient-text" style="margin: auto;">
-                    <a href="" class="navbar_topic">
-                        <h1><strong>Pascal Store</strong></h1>
-                    </a>
-                </li>
-                <li class="nav-item" style="margin-right: 0;">
-                    <a class="navbar_btn" type="button" href="http://localhost/CD-BOOK-STORE-SYSTEM/view/cart/"><i class="bi bi-cart-fill"></i> </a>
-                </li>
-                <li class="nav-item username-nav-item" style="margin-right: 0;">
+        <div class="container-fluid bg-white p-3">
+            <div class="row">
+                <div class="col-3">
+                    <div class="nav-item d-flex mt-2">
+                        <input class="form-control search_input" type="text" id="search" placeholder="search">
+                        <button class="navbar_btn mx-1" type="button" onclick="" id="search_btn"><i class="bi bi-search"></i></button>
+                    </div>
+                </div>
+                <div class="col-6 d-flex justify-content-center">
+                    <div class="nav-item gradient-text">
+                        <a href="" class="navbar_topic">
+                            <h1><strong>Pascal Store</strong></h1>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-3 d-flex justify-content-end mt-2">
+                    <div class="nav-item username-nav-item" style="height: 32px;">
+                        <a class="navbar_btn mx-1" type="button" href=""><i class="bi bi-cart-fill"></i> </a>
 
-                </li>
-            </ul>
-        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
             <div class="offcanvas-header d-flex justify-content-center username-offcanvas-header">

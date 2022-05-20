@@ -152,6 +152,7 @@ body {
 }
 
 .search_input {
+    width: 240px;
     height: 32px;
 }
 
