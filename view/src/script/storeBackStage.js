@@ -78,7 +78,7 @@ function getAllOrderList() {
                                 </div>
                             </div>
                             <div class="col-6">
-                                <button class="btn green" style="width: 300px;" onclick="changeOrderStateModal(${res[i]['order_id']})">Change Order State</button>
+                                <button class="btn green" style="width: 300px;" onclick="changeOrderStateModal(${res[i]['order_id']}, ${res[i]['member_id']})">Change Order State</button>
                             </div>
                         </div>
                     </div>
