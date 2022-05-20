@@ -64,13 +64,14 @@ const returnOrder = (refundAccount, order_id) => {
     });
 }
 
-function updateOrderState(order_id, order_state) {
+function updateOrderState(order_id, order_state, member_id) {
     let data = {
         controller: 'orderList',
         method: 'updateOrderState',
         parameter: {
             order_id: order_id,
-            order_state: order_state
+            order_state: order_state,
+            member_id: member_id
         }
     };
     let json = JSON.stringify(data);
@@ -106,15 +107,15 @@ function returnModal(order_id) {
     });
 }
 
-function changeOrderStateModal(order_id) {
+function changeOrderStateModal(order_id, member_id) {
     $('#modalChangeOrderState').modal('show');
     $("#changeOrderStateBtn").click(function () {
         let order_state = $('#ChangeOrderState').val();
 
-        if (order_state != 'wait' && order_state != 'arrive' && order_state != 'finish' && order_state != 'cancel' && order_state != 'return') {
+        if (order_state != 'wait' && order_state != 'arrive' && order_state != 'finish' && order_state != 'cancel' && order_state != 'return' && order_state != 'overtime') {
             $('#modalStateError').modal('show');
         } else {
-            updateOrderState(order_id, order_state);
+            updateOrderState(order_id, order_state, member_id);
             $('#modalSuccess').modal('show');
         }
     });
