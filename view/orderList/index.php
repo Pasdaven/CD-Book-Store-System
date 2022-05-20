@@ -85,7 +85,7 @@ if (isset($_SESSION['member_id']) && isset($_SESSION['email'])) {
                         </div>
                         <div class="modal-body">
                             Please send product back to Pascal Company<br>
-                            Address : 1 Infinite Loop Cupertino, CA 95014<br>
+                            Address : 1 Apple Park Way Cupertino, CA 95014<br>
                             <hr>
                             After we get the return product, we will refund to your account<br><br>
                             Thanks~<br><br>
