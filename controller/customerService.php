@@ -1,6 +1,7 @@
 <?php
 
 use model\Model;
+require("orderList.php");
 
 class CustomerService extends Model {
 
