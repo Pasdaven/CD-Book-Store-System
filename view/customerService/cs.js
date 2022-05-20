@@ -26,3 +26,19 @@ const createCsMessage = () => {
     }
 };
 
+const cleanInputBox = () => {
+    $("#msg-content").val("");
+};
+
+const createMsgComponent = (data) => {
+    let msg_by = data["msg_by"] == "cs" ? "by-self" : "by-other";
+    let html = `
+        <div class="col-12 msg-component ${msg_by}">
+            <div class="msg-component-body">
+                ${data["msg_content"]}
+            </div>
+        </div>
+    `;
+    $("#msg-content-area").append(html);
+};
+
