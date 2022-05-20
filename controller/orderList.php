@@ -80,7 +80,16 @@ class OrderList extends Model {
     public function updateOrderState($param) {
         $order_id = $param['order_id'];
         $order_state = $param['order_state'];
-        $sql = $this->update(['order_state' => $order_state, 'order_state' => $order_state]) . $this->where('order_id', '=', $order_id);
+        $member_id = $param['member_id'];
+
+        if (strcmp($order_state, 'overtime') == 0) {
+            $sql = $this->select('member', ['credit_num']) . $this->where('member_id', '=', $member_id);
+            $credit_num = $this->execute($sql);
+            $sql = $this->update(['credit_num' => $credit_num[0]['credit_num'] - 5], 'member') . $this->where('member_id', '=', $member_id);
+            $this->execute($sql);
+        }
+
+        $sql = $this->update(['order_state' => $order_state]) . $this->where('order_id', '=', $order_id);
         return $this->execute($sql);
     }
 }
