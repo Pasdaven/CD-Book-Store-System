@@ -39,5 +39,17 @@ class CustomerService extends Model {
         $this->execute($sql);
     }
 
+    public function searchUnreadMsg($param) {
+        $cs_record_id = $param['cs_record_id'];
+        $msg_by = $param['msg_by'];
+        $sql = $this->select('cs_message') . $this->where('cs_record_id', '=', $cs_record_id) . $this->and('msg_by', '=', $msg_by) . $this->and('msg_state', '=', 'unread');
+
+        $result = $this->execute($sql);
+        foreach ($result as $value) {
+            $this->readMsg($value['message_id']);
+        }
+        return $result;
+    }
+    
     }
 }
