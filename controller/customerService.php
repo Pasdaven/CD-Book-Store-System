@@ -26,8 +26,12 @@ class CustomerService extends Model {
         $msg_content = $param['msg_content'];
         $msg_by = $param['msg_by'];
         $create_time = date("Y-m-d H:i:s");
-        $sql = $this->insert(['cs_record_id' => $cs_record_id, 'msg_content' => $msg_content, 'msg_by' => $msg_by, 'create_time' => $create_time], 'cs_message');
+        $msg_state = 'unread';
+        $sql = $this->insert(['cs_record_id' => $cs_record_id, 'msg_content' => $msg_content, 'msg_by' => $msg_by, 'create_time' => $create_time, 'msg_state' => $msg_state], 'cs_message');
 
-        return $this->execute($sql);
+        $message_id = $this->execute($sql);
+        return $this->searchMsgByMsgId($message_id);
+    }
+
     }
 }
