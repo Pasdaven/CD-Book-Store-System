@@ -32,7 +32,7 @@ if (isset($_SESSION['member_id']) && isset($_SESSION['email'])) {
                     </div>
                     <div class="col-6 d-flex justify-content-center">
                         <div class="nav-item gradient-text">
-                            <a href="" class="navbar_topic">
+                            <a href="http://localhost/CD-BOOK-STORE-SYSTEM/view/" class="navbar_topic">
                                 <h1><strong>Pascal Store</strong></h1>
                             </a>
                         </div>
