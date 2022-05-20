@@ -75,17 +75,17 @@ if (isset($_SESSION['member_id']) && isset($_SESSION['email'])) {
             <div class="container">
                 <div class="row my-1">
                     <div class="container col-7">
-                        <div class="row align-items-center justify-content-center pb-3">
+                        <div class="row align-items-center justify-content-center pb-3" style="width:100%;">
                             <div class="py-4">
                                 <h1>Shopping Cart</h1>
                             </div>
                             <div class="col-5">
                                 <h4>Product</h4>
                             </div>
-                            <div class="col-3 px-0">
-                                <h4>Quanity</h4>
+                            <div class="col-3">
+                                <h4 class="text-center">Quanity</h4>
                             </div>
-                            <div class="col-3 px-0">
+                            <div class="col-3">
                                 <h4>Total Price</h4>
                             </div>
                         </div>
