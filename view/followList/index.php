@@ -39,7 +39,7 @@ if (isset($_SESSION['member_id']) && isset($_SESSION['email'])) {
                     </div>
                     <div class="col-3 d-flex justify-content-end mt-2">
                         <div class="nav-item username-nav-item" style="height: 32px;">
-                            <a class="navbar_btn mx-1" type="button" href=""><i class="bi bi-cart-fill"></i> </a>
+                            <a class="navbar_btn mx-1" type="button" href="http://localhost/CD-BOOK-STORE-SYSTEM/view/cart/"><i class="bi bi-cart-fill"></i> </a>
 
                         </div>
                     </div>
