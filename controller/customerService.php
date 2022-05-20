@@ -15,6 +15,12 @@ class CustomerService extends Model {
         return $this->execute($sql);
     }
 
+    public function searchMsgByMsgId($message_id) {
+        $sql = $this->select('cs_message') . $this->where('message_id', '=', $message_id);
+
+        return $this->execute($sql);
+    }
+
     public function createCsMessage($param) {
         $cs_record_id = $param['cs_record_id'];
         $msg_content = $param['msg_content'];
