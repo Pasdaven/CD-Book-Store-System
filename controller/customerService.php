@@ -63,5 +63,13 @@ class CustomerService extends Model {
         return $result;
     }
     
+    public function searchOrderInfoByCsRecId($param) {
+        $orderList = new OrderList();
+        
+        $cs_record_id = $param['cs_record_id'];
+        $sql = $this->select('order_id') . $this->where('cs_record_id', '=', $cs_record_id);
+        
+        $order_id = $this->execute($sql);
+        return $orderList->getOrderByOrderId($order_id);
     }
 }
