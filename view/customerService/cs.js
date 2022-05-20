@@ -94,3 +94,8 @@ const loadMsg = () => {
     });
 };
 
+const scrollToBottom = () => {
+    let height = $('#msg-content-area')[0].scrollHeight;
+    $("#msg-content-area").scrollTop(height);
+};
+
