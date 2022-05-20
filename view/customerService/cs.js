@@ -1,3 +1,21 @@
+$(() => {
+    loadMsg();
+    $("#send-btn").click(() => {
+        createCsMessage();
+        cleanInputBox();
+    });
+    $("#msg-content").keypress((e) => {
+        code = e.keyCode ? e.keyCode : e.which;
+        if (code == 13) {
+            createCsMessage();
+            cleanInputBox();
+        }
+    });
+    setInterval(() => {
+        loadUnreadMsg();
+    }, 500);
+});
+
 const createCsMessage = () => {
     if ($("#msg-content").val() != "") {
         let cs_record_id = 1;
