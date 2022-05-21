@@ -74,7 +74,7 @@ if (isset($_SESSION['member_id']) && isset($_SESSION['email'])) {
             <div class="container py-5">
                 <div class="row align-items-center justify-content-center">
                     <div>
-                        <h1 class="mx-auto" style="width: 300px;font-size:36px;"><i class="mx-4 bi bi-heart" style="color: #F0B0B0;"></i>Following</h1>
+                        <h1 class="mx-auto" style="width: 300px;font-size:36px;"><i class="me-3 bi bi-search"></i>searchProduct</h1>
                     </div>
                 </div>
                 <div class="row my-3 justify-content-center">
