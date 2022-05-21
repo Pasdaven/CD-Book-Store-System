@@ -20,6 +20,12 @@ class Product extends Model {
         return $arr;
     }
 
+    public function timelysearchProductByName($param) {
+        $product_name = $param["product_name"];
+        $sql = $this->select($this->table) . $this->where('product_name', 'LIKE', "%{$product_name}%");
+        return $this->execute($sql);
+    }
+
     // 使用商品id查詢商品庫存
     public function searchProductNum($param) {
         $product_id = $param["product_id"];
