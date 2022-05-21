@@ -102,7 +102,7 @@ if (isset($_SESSION['member_id']) && isset($_SESSION['email'])) {
         <div class="page">
             <div class="container-fluid bg-white p-3">
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col-3" id="search-div">
                         <div class="nav-item d-flex mt-2">
                             <input class="form-control search_input" type="text" id="search" placeholder="search">
                             <button class="navbar_btn mx-1" type="button" onclick="" id="search_btn"><i class="bi bi-search"></i></button>
