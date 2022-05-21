@@ -179,14 +179,14 @@ const displayBrowserHisInfo = (data) => {
         flag = 1;
         for (let j = 0; j < resCart.length; j++) {
             if (resCart[j]['product_id'] == data[i][0][0]['product_id']) {
-                $('#browserHistory').append(BrowserHisComponentInCart(data[i][0][0]['product_name'], data[i][0][0]['product_author'], data[i][0][0]['product_id'], data[i][0][0]['product_image'], data[i][1]['browse_time']));
+                $('#browserHistory').append(BrowserHisComponentInCart(data[i][0][0]['product_name'], data[i][0][0]['product_author'], data[i][0][0]['product_id'], data[i][0][0]['product_image']));
                 displayRate(parseInt(data[i][2][0]['AVG(star)']), data[i][0][0]['product_id']);
                 flag = 0;
                 break;
             }
         }
         if (flag) {
-            $('#browserHistory').append(BrowserHisComponentNotInCart(data[i][0][0]['product_name'], data[i][0][0]['product_author'], data[i][0][0]['product_id'], data[i][0][0]['product_image'], data[i][1]['browse_time']));
+            $('#browserHistory').append(BrowserHisComponentNotInCart(data[i][0][0]['product_name'], data[i][0][0]['product_author'], data[i][0][0]['product_id'], data[i][0][0]['product_image']));
             displayRate(parseInt(data[i][2][0]['AVG(star)']), data[i][0][0]['product_id']);
         }
     }
@@ -194,7 +194,7 @@ const displayBrowserHisInfo = (data) => {
 
 
 
-const BrowserHisComponentNotInCart = (product_name, product_author, product_id, product_image, browse_time) => {
+const BrowserHisComponentNotInCart = (product_name, product_author, product_id, product_image) => {
     return `
     <div class="shadow card p-4 my-4 card${product_id}">
         <div class="d-flex">
@@ -222,7 +222,7 @@ const BrowserHisComponentNotInCart = (product_name, product_author, product_id, 
     `;
 }
 
-const BrowserHisComponentInCart = (product_name, product_author, product_id, product_image, browse_time) => {
+const BrowserHisComponentInCart = (product_name, product_author, product_id, product_image) => {
     return `
     <div class="shadow card p-4 my-4 card${product_id}">
         <div class="d-flex">
