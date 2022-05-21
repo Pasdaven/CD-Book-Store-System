@@ -28,6 +28,13 @@ function login() {
     });
 }
 
+$("#member_password").keypress((e) => {
+    code = e.keyCode ? e.keyCode : e.which;
+    if (code == 13) {
+        login();
+    }
+});
+
 function logout() {
     let data = {
         controller: 'member',

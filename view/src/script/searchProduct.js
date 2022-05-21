@@ -13,6 +13,14 @@ document.getElementById('search').oninput=function() {
         displayTimelysearchProduct(res);
     }
 };
+$("#search").keypress((e) => {
+    code = e.keyCode ? e.keyCode : e.which;
+    if (code == 13) {
+        let val = $('#search').val();
+        let url = 'http://localhost/CD-BOOK-STORE-SYSTEM/view/searchProduct/?productName=' + val;
+        window.location.replace(url);
+    }
+});
 
 const timelySearchProduct = (product_name) => {
     let data = {
