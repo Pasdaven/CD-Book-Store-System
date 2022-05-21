@@ -12,8 +12,12 @@ class Product extends Model {
     public function searchProductByName($param) {
         $product_name = $param["product_name"];
         $sql = $this->select($this->table) . $this->where('product_name', 'LIKE', "%{$product_name}%");
-
-        return $this->execute($sql);
+        $result = $this->execute($sql);
+        $commentlist = new CommentList();
+        foreach ($result as $r) {
+            $arr[] = [0 => $r, 1 => $commentlist->getAvgStarById($r)];
+        }
+        return $arr;
     }
 
     // 使用商品id查詢商品庫存
