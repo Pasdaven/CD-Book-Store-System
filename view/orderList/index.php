@@ -166,6 +166,7 @@ if (isset($_SESSION['member_id']) && isset($_SESSION['email'])) {
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="/CD-Book-Store-System/view/src/script/member.js"></script>
         <script src="/CD-Book-Store-System/view/src/script/comment.js"></script>
+        <script src="../src/script/searchProduct.js"></script>
         <script src="/CD-Book-Store-System/view/src/script/order.js"></script>
         <script src="/CD-Book-Store-System/view/src/script/orderListLoad.js"></script>
     </body>

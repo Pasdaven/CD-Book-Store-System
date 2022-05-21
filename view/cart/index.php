@@ -151,6 +151,7 @@ if (isset($_SESSION['member_id']) && isset($_SESSION['email'])) {
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="../src/script/member.js"></script>
         <script src="../src/script/cart.js"></script>
+        <script src="../src/script/searchProduct.js"></script>
         <script src="../src/script/cartLoad.js"></script>
     </body>
 

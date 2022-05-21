@@ -235,6 +235,7 @@ if (isset($_SESSION['member_id']) && isset($_SESSION['email'])) {
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="/CD-Book-Store-System/view/src/script/member.js"></script>
+        <script src="../src/script/searchProduct.js"></script>
         <script src="/CD-BOOK-STORE-SYSTEM/view/src/script/cart.js"></script>
         <script>
             getUrl();
