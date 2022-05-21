@@ -29,7 +29,7 @@ if (isset($_SESSION['member_id']) && isset($_SESSION['email'])) {
                         <h5 class="modal-title" id="modalLabel"><strong>Check Out Success</strong></h5>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn green" data-bs-dismiss="modal" onclick="">Close</button>
+                        <a class="btn green" href="http://localhost/CD-BOOK-STORE-SYSTEM/view/">Close</a>
                     </div>
                 </div>
             </div>

@@ -177,9 +177,10 @@ const checkout = () => {
         data: json,
         success: res => {
             console.log(res);
-            $('#modalSuccess').modal('show');
+            // $('#modalSuccess').modal('show');
         }
     });
+    $('#modalSuccess').modal('show');
 }
 
 const getCoupon = () => {
