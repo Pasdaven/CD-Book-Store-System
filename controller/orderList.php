@@ -113,4 +113,10 @@ class OrderList extends Model {
 
         return $order_info;
     }
+
+    public function getMemberIdByOrderId($order_id) {
+        $sql = $this->select($this->table, ['member_id']) . $this->where('order_id', '=', $order_id);
+
+        return $this->execute($sql);
+    }
 }
