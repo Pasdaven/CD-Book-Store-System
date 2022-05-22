@@ -68,10 +68,10 @@ const updateCart = (cart_id, count_num) => {
 function getUrl() {
     let url_string = window.location.href;
     let url = new URL(url_string);
-    let subtotal = url.searchParams.get("subtotal");
-    let deliver = url.searchParams.get("deliver");
-    let discount = url.searchParams.get("discount");
-    let total = url.searchParams.get("total");
+    let subtotal = window.atob(url.searchParams.get(window.btoa("subtotal").substring(0, window.btoa("subtotal").length - 1)));
+    let deliver = window.atob(url.searchParams.get(window.btoa("deliver").substring(0, window.btoa("deliver").length - 2)));
+    let discount = window.atob(url.searchParams.get(window.btoa("discount").substring(0, window.btoa("discount").length - 1)));
+    let total = window.atob(url.searchParams.get(window.btoa("total").substring(0, window.btoa("total").length - 1)));
     $('#subtotal').append(subtotal);
     $('#deliver').append(deliver);
     $('#discount').append(discount);
@@ -82,11 +82,11 @@ const checkout = () => {
     let url_string = window.location.href;
     // let url_string = 'http://localhost/CD-BOOK-STORE-SYSTEM/view/payment/?coupon_id=[4,5]&subtotal=1200&deliver=60&discount=100&total=1160';
     let url = new URL(url_string);
-    let coupon_id = url.searchParams.get("coupon_id");
-    let subtotal = url.searchParams.get("subtotal");
-    let deliver = url.searchParams.get("deliver");
-    let discount = url.searchParams.get("discount");
-    let total = url.searchParams.get("total");
+    let coupon_id = window.atob(url.searchParams.get(window.btoa("coupon_id").substring(0, window.btoa("coupon_id").length - 1)));
+    let subtotal = window.atob(url.searchParams.get(window.btoa("subtotal").substring(0, window.btoa("subtotal").length - 1)));
+    let deliver = window.atob(url.searchParams.get(window.btoa("deliver").substring(0, window.btoa("deliver").length - 2)));
+    let discount = window.atob(url.searchParams.get(window.btoa("discount").substring(0, window.btoa("discount").length - 1)));
+    let total = window.atob(url.searchParams.get(window.btoa("total").substring(0, window.btoa("total").length - 1)));
     let name = $('#name').val();
     let phone_num = $('#phone').val();
 
@@ -177,9 +177,10 @@ const checkout = () => {
         data: json,
         success: res => {
             console.log(res);
-            $('#modalSuccess').modal('show');
+            // $('#modalSuccess').modal('show');
         }
     });
+    $('#modalSuccess').modal('show');
 }
 
 const getCoupon = () => {

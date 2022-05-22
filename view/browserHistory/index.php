@@ -25,7 +25,7 @@ if (isset($_SESSION['member_id']) && isset($_SESSION['email'])) {
         <div class="page">
             <div class="container-fluid bg-white p-3">
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col-3" id="search-div">
                         <div class="nav-item d-flex mt-2">
                             <input class="form-control search_input" type="text" id="search" placeholder="search">
                             <button class="navbar_btn mx-1" type="button" onclick="" id="search_btn"><i class="bi bi-search"></i></button>
@@ -33,7 +33,7 @@ if (isset($_SESSION['member_id']) && isset($_SESSION['email'])) {
                     </div>
                     <div class="col-6 d-flex justify-content-center">
                         <div class="nav-item gradient-text">
-                            <a href="" class="navbar_topic">
+                            <a href="http://localhost/CD-BOOK-STORE-SYSTEM/view/" class="navbar_topic">
                                 <h1><strong>Pascal Store</strong></h1>
                             </a>
                         </div>
@@ -79,7 +79,7 @@ if (isset($_SESSION['member_id']) && isset($_SESSION['email'])) {
                     </div>
                 </div>
                 <div class="row my-3 justify-content-center">
-                    <div class="col-12 scroll" style="width: 1053px;height: 85vh;" id="browserHistory">
+                    <div class="col-12 scroll" style="width: 1053px;height: 700px;" id="browserHistory">
 
 
                     </div>
@@ -89,6 +89,7 @@ if (isset($_SESSION['member_id']) && isset($_SESSION['email'])) {
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="../src/script/member.js"></script>
         <script src="../src/script/cart.js"></script>
+        <script src="../src/script/searchProduct.js"></script>
         <script src="../src/script/browserHistory.js"></script>
     </body>
 

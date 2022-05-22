@@ -119,7 +119,7 @@ if (isset($_SESSION['member_id']) && isset($_SESSION['email'])) {
 
         <div class="container-fluid bg-white p-3">
             <div class="row">
-                <div class="col-3">
+                <div class="col-3" id="search-div">
                     <div class="nav-item d-flex mt-2">
                         <input class="form-control search_input" type="text" id="search" placeholder="search">
                         <button class="navbar_btn mx-1" type="button" onclick="" id="search_btn"><i class="bi bi-search"></i></button>
@@ -127,7 +127,7 @@ if (isset($_SESSION['member_id']) && isset($_SESSION['email'])) {
                 </div>
                 <div class="col-6 d-flex justify-content-center">
                     <div class="nav-item gradient-text">
-                        <a href="" class="navbar_topic">
+                        <a href="http://localhost/CD-BOOK-STORE-SYSTEM/view/" class="navbar_topic">
                             <h1><strong>Pascal Store</strong></h1>
                         </a>
                     </div>
@@ -219,6 +219,7 @@ if (isset($_SESSION['member_id']) && isset($_SESSION['email'])) {
             </div>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="../src/script/searchProduct.js"></script>
         <script src="/CD-BOOK-STORE-SYSTEM/view/src/script/member.js"></script>
         <script>
             getMemberInfoById();

@@ -1,92 +1,8 @@
-const getTime = () => {
-    let time = new Date();
-    date = time.getFullYear() + "-" + (time.getMonth() + 1) + "-" + time.getDate();
-    let hour = time.getHours().toString().padStart(2, '0');
-    let minute = time.getMinutes().toString().padStart(2, '0');
-    let second = time.getSeconds().toString().padStart(2, '0');
-    return (date + " " + hour + ":" + minute + ":" + second);
-};
-
-const insertBrowserHis = () => {
-    let product_id = $('#product_id').val();
-    let browse_time = getTime();
-    let data = {
-        controller: 'browserHistory',
-        method: 'insertBrowserHis',
-        parameter: {
-            product_id: product_id,
-            browse_time: browse_time
-        }
-    };
-    let json = JSON.stringify(data);
-    $.ajax({
-        url: '/CD-Book-Store-System/controller/core.php',
-        method: 'POST',
-        data: json
-    });
-}
-
-const deleteBrowserHis = (id) => {
-    let product_id = id;
-    let data = {
-        controller: 'browserHistory',
-        method: 'deleteBrowserHis',
-        parameter: {
-            product_id: product_id
-        }
-    };
-    let json = JSON.stringify(data);
-    $.ajax({
-        url: '/CD-Book-Store-System/controller/core.php',
-        method: 'POST',
-        data: json
-    });
-}
-const getBrowserHis = () => {
-    let data = {
-        controller: 'browserHistory',
-        method: 'getBrowserHis'
-    };
-    let json = JSON.stringify(data);
-    $.ajax({
-        url: '/CD-Book-Store-System/controller/core.php',
-        method: 'POST',
-        data: json,
-        async: false,
-        success: function (res) {
-            result = res;
-        },
-        error: function (res) {
-            result = 0;
-        }
-    });
-    return result;
-}
-
-
-
-
-
-const removeBrowserHisCard = (id) => {
-    let className = ".card" + id;
-    $(className).remove();
-    deleteBrowserHis(id);
-}
-
-
-
-
-    
-
-
-
 $(() => {
-    let res = getBrowserHis();
-    displayBrowserHisInfo(res);
-    $(".product").click(function() {
-        let id = $(this).attr('id');
-        removeBrowserHisCard(id);
-    });
+    let productName = getProductUrl();
+    let res = searchProduct(productName);
+    displaysearchProductInfo(res);
+
     $(".btn-view-info").click(function() {
         let id = parseInt($(this).attr('id'));
         let url = `http://localhost/CD-BOOK-STORE-SYSTEM/view/product/index.html?id=${id}`;
@@ -116,6 +32,55 @@ $(() => {
     let memberRes = getMemberInfo();
     displayUserName(memberRes);
 });
+
+const getProductUrl = () => {
+    let param = new URLSearchParams(window.location.search);
+    return param.get("productName");
+};
+
+const searchProduct = (product_name) => {
+    let data = {
+        controller: 'product',
+        method: 'searchProductByName',
+        parameter: {
+            product_name: product_name
+        }
+    };
+    let json = JSON.stringify(data);
+    $.ajax({
+        url: '/CD-BOOK-STORE-SYSTEM/controller/core.php',
+        method: 'POST',
+        data: json,
+        async: false,
+        success: function (res) {
+            result = res;
+        },
+        error: function (res) {
+            result = 0;
+        }
+    });
+    return result;
+}
+
+
+
+const removeCart = (product_id) => {
+    let data = {
+        controller: "cart",
+        method: "deleteCartByMIdPId",
+        parameter: {
+            product_id: product_id
+        },
+    };
+    let json = JSON.stringify(data);
+    $.ajax({
+        url: "/cd-book-store-system/controller/core.php",
+        method: "POST",
+        data: json
+    });
+}
+
+
 
 const displayRate = (rate, product_id) => {
     let star1 = '.star1' + product_id;
@@ -164,43 +129,38 @@ const displayRate = (rate, product_id) => {
     }
 }
 
-const displayBrowserHisInfo = (data) => {
+const displaysearchProductInfo = (data) => {
     let resCart = getCart();
     let flag = 1;
-    let check = [];
     if (data == 0) {
-        $('#browserHistory').append(`<h1 class="d-flex justify-content-center align-items-center" style="height:500px;">No Browser History</h1>`);
+        $('#searchProduct').append(`<h1 class="d-flex justify-content-center align-items-center" style="height:500px;">No such product found</h1>`);
     }
     for (let i = 0; i < data.length; i++) {
-        if (check[data[i][0][0]['product_id']]) {
-            continue;
-        }
-        check[data[i][0][0]['product_id']] = 1;
         flag = 1;
         for (let j = 0; j < resCart.length; j++) {
-            if (resCart[j]['product_id'] == data[i][0][0]['product_id']) {
-                $('#browserHistory').append(BrowserHisComponentInCart(data[i][0][0]['product_name'], data[i][0][0]['product_author'], data[i][0][0]['product_id'], data[i][0][0]['product_image']));
-                displayRate(parseInt(data[i][2][0]['AVG(star)']), data[i][0][0]['product_id']);
+            if (resCart[j]['product_id'] == data[i][0]['product_id']) {
+                $('#searchProduct').append(searchProductComponentInCart(data[i][0]['product_name'], data[i][0]['product_author'], data[i][0]['product_id'], data[i][0]['product_image']));
+                displayRate(parseInt(data[i][1][0]['AVG(star)']), data[i][0]['product_id']);
                 flag = 0;
                 break;
             }
         }
         if (flag) {
-            $('#browserHistory').append(BrowserHisComponentNotInCart(data[i][0][0]['product_name'], data[i][0][0]['product_author'], data[i][0][0]['product_id'], data[i][0][0]['product_image']));
-            displayRate(parseInt(data[i][2][0]['AVG(star)']), data[i][0][0]['product_id']);
+            $('#searchProduct').append(searchProductComponentNotInCart(data[i][0]['product_name'], data[i][0]['product_author'], data[i][0]['product_id'], data[i][0]['product_image']));
+            displayRate(parseInt(data[i][1][0]['AVG(star)']), data[i][0]['product_id']);
         }
     }
 }
 
 
 
-const BrowserHisComponentNotInCart = (product_name, product_author, product_id, product_image) => {
+
+const searchProductComponentNotInCart = (product_name, product_author, product_id, product_image) => {
     return `
     <div class="shadow card p-4 my-4 card${product_id}">
         <div class="d-flex">
             <div class="px-3"><img src="${product_image}" alt="" width="165" height="237"></div>
             <div class="flex-fill d-flex flex-column">
-                <div class="align-self-end"><i class="bi bi-trash-fill product" id="${product_id}" style="color: #000;cursor:pointer;"></i></div>
                 <div class="flex-fill d-flex  align-items-center justify-content-end">
                     <div class="col-4">
                         <h1 style="color: #3F4953;font-size:28px;">${product_name}</h1>
@@ -222,13 +182,12 @@ const BrowserHisComponentNotInCart = (product_name, product_author, product_id, 
     `;
 }
 
-const BrowserHisComponentInCart = (product_name, product_author, product_id, product_image) => {
+const searchProductComponentInCart = (product_name, product_author, product_id, product_image) => {
     return `
     <div class="shadow card p-4 my-4 card${product_id}">
         <div class="d-flex">
             <div class="px-3"><img src="${product_image}" alt="" width="165" height="237"></div>
             <div class="flex-fill d-flex flex-column">
-                <div class="align-self-end"><i class="bi bi-trash-fill product" id="${product_id}" style="color: #000;cursor:pointer;"></i></div>
                 <div class="flex-fill d-flex  align-items-center justify-content-end">
                     <div class="col-4">
                         <h1 style="color: #3F4953;font-size:28px;">${product_name}</h1>
