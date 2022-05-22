@@ -75,4 +75,32 @@ class CustomerService extends Model {
         }
         return $orderList->getOrderByOrderId($order_id);
     }
+    
+    public function searchOrderInfoByMemberId() {
+        $orderList = new OrderList();
+        
+        $order_list = $orderList->getOrderById();
+        if (!count($order_list)) {
+            return false;
+        }
+        for ($i = 0; $i < count($order_list); $i++) {
+            $order_list[$i] = $orderList->getOrderByOrderId($order_list[$i]['order_id']);
+        }
+
+        return $order_list;
+    }
+
+    public function jumpChatRoom($param) {
+        $order_id = $param['order_id'];
+
+        $sql = $this->select('cs_record', ['cs_record_id']) . $this->where('order_id', '=', $order_id);
+        $cs_record_id = $this->execute($sql);
+        if (!count($cs_record_id)) {
+            $cs_record_id = $this->createCsRecord($order_id);
+            $result = array(array('cs_record_id' => $cs_record_id));
+            
+            return $result;
+        }
+        return $cs_record_id;
+    }
 }
