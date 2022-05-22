@@ -5,13 +5,8 @@ require("orderList.php");
 
 class CustomerService extends Model {
 
-    // 建立客服紀錄，傳入member_id, cs_id, topic, product_id
-    public function createCsRecord($param) {
-        $member_id = $param['member_id'];
-        $cs_id = $param['cs_id'];
-        $topic = $param['topic'];
-        $product_id = $param['product_id'];
-        $sql = $this->insert(['member_id' => $member_id, 'cs_id' => $cs_id, 'topic' => $topic, 'product_id' => $product_id], 'cs_record');
+    public function createCsRecord($order_id) {
+        $sql = $this->insert(['cs_id' => '1', 'topic' => 'product', 'order_id' => $order_id], 'cs_record');
 
         return $this->execute($sql);
     }
