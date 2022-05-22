@@ -99,3 +99,8 @@ const jumpChatRoom = (order_id) => {
     });
 }
 
+const displayNoOrder = () => {
+    console.log('hu');
+    let html = "<p class='text-center'>You don't have any order yet.</p>";
+    $('#card-area').html(html);
+}
