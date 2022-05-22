@@ -1,3 +1,10 @@
+$(() => {
+    loadOrder();
+    $('#card-area').on("click", ".card", function() {
+        jumpChatRoom($(this).attr("id"));
+    })
+});
+
 const loadOrder = () => {
     let data = {
         controller: "customerService",
