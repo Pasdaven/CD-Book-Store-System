@@ -1,3 +1,10 @@
+<?php
+
+session_start();
+
+if (isset($_SESSION['member_id']) && isset($_SESSION['email'])) {
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -58,3 +65,11 @@
         <script src="main.js"></script>
     </body>
 </html>
+
+
+<?php
+
+} else {
+    header("Location: http://localhost/CD-BOOK-STORE-SYSTEM/view/login");
+}
+?>

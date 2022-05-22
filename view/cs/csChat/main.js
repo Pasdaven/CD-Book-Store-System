@@ -17,8 +17,13 @@ $(() => {
     }, 500);
 });
 
+const getUrl = () => {
+    let param = new URLSearchParams(window.location.search);
+    return param.get("id");
+};
+
 const loadOrder = () => {
-    let cs_record_id = 1;
+    let cs_record_id = getUrl();
     let data = {
         controller: "customerService",
         method: "searchOrderInfoByCsRecId",
@@ -33,7 +38,7 @@ const loadOrder = () => {
         data: json,
         success: (res) => {
             console.log(res);
-            displayOrderInfo(res);
+            res ? displayOrderInfo(res) : display404();
         },
     });
 };
@@ -77,7 +82,7 @@ const displayOrderInfo = (res) => {
 
 const createCsMessage = () => {
     if ($("#msg-content").val() != "") {
-        let cs_record_id = 1;
+        let cs_record_id = getUrl();
         let msg_content = $("#msg-content").val();
         let msg_by = "member";
         let data = {
@@ -120,7 +125,7 @@ const createMsgComponent = (data) => {
 };
 
 const loadUnreadMsg = () => {
-    let cs_record_id = 1;
+    let cs_record_id = getUrl();
     let msg_by = "cs";
     let data = {
         controller: "customerService",
@@ -147,7 +152,7 @@ const loadUnreadMsg = () => {
 };
 
 const loadMsg = () => {
-    let cs_record_id = 1;
+    let cs_record_id = getUrl();
     let data = {
         controller: "customerService",
         method: "searchMsgByCsRecId",
@@ -175,3 +180,7 @@ const scrollToBottom = () => {
     let height = $("#msg-content-area")[0].scrollHeight;
     $("#msg-content-area").scrollTop(height);
 };
+
+const display404 = () => {
+    window.location.replace('http://localhost/cd-book-store-system/view/404');
+}
