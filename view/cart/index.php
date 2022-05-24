@@ -75,76 +75,80 @@ if (isset($_SESSION['member_id']) && isset($_SESSION['email'])) {
                     <a type="button" class="offcanvas_btn" href="" onclick="logout()"><i class="bi bi-box-arrow-left mx-2"></i>Log out</a>
                 </div>
             </div>
-            <div class="container">
-                <div class="row my-1">
-                    <div class="container col-7">
-                        <div class="row align-items-center justify-content-center pb-3" style="width:100%;">
-                            <div class="py-4">
+            <div class="container" style="width:100vw;height:100vh;">
+                <div class="row" style="margin-top:12vh;height:80vh;">
+                    <div class="col-7" style="height: 100%;">
+                        <div class="row align-items-center justify-content-center" style="width:100%;height: 20%;">
+                            <div class="py-4" style="height: 50%;">
                                 <h1>Shopping Cart</h1>
                             </div>
-                            <div class="col-5">
+                            <div class="col-5 d-flex align-items-center" style="height: 50%;">
                                 <h4>Product</h4>
                             </div>
-                            <div class="col-3">
+                            <div class="col-3 d-flex align-items-center" style="height: 50%;">
                                 <h4 class="text-center">Quanity</h4>
                             </div>
-                            <div class="col-3">
+                            <div class="col-3 d-flex align-items-center" style="height: 50%;">
                                 <h4>Total Price</h4>
                             </div>
                         </div>
-                        <div class="scroll" style="height: 55vh;" id="cart">
+                        <div class="scroll" style="height: 65%;" id="cart">
 
                         </div>
-                        <div class="my-5">
+                        <div class="pt-3" style="height: 15%;">
                             <button type="button" class="btn-con-Shop"><i class="bi bi-chevron-left"></i>Continue Shopping</button>
                         </div>
                     </div>
-                    <div class="container col-5">
-                        <div class="ms-5 py-4 d-flex justify-content-center align-items-center">
-                            <div class="card summary pb-5">
-
-
-                                <div class="row">
+                    <div class="col-5" style="height: 100%;">
+                        <div class="d-flex justify-content-center" style="margin-left:8%;width:100%;height: 85%;">
+                            <div class="card summary" style="margin-top:6%;width:100%;height: 96%;">
+                                <div class="row" style="width:100%;height: 16%;">
                                     <div class="py-4 px-5">
                                         <h1 class="px-3">Summary</h1>
                                     </div>
                                 </div>
-                                <div class="card add-coupon ps-5">
-                                    <div class="py-5">
-                                        <h4 class="mb-4">Add Coupon:
-                                            <select class="form-select" id="form-select" style="width: 190px;display: inline;border: none;border-radius: 50px;font-size:24px;cursor:pointer;" aria-label="Default select example">
+                                <div class="card add-coupon ps-5 d-flex" style="width:100%;height: 30%;">
+                                    <div class="d-flex col-12 align-items-end" style="padding-bottom:2%;height: 50%;">
+                                        <div class="d-flex align-items-center">
+                                            <h4 class="m-0 p-0">Add Coupon:</h4>
+                                            <select class="form-select ms-3" id="form-select" style="width: 190px;border: none;border-radius: 50px;font-size:24px;cursor:pointer;" aria-label="Default select example">
                                                 <option class="couponOption" selected>clear all</option>
 
 
                                             </select>
-                                        </h4>
-                                        <h4 id="displayCoupon">Coupon:
+                                        </div>
+
+                                    </div>
+
+                                    <div class="d-flex col-12 align-items-start" style="padding-top:3%;height: 50%;">
+                                        <h4 class="m-0 p-0" id="displayCoupon">Coupon:
 
 
                                         </h4>
                                     </div>
+
                                 </div>
-                                <div class="row px-5 mx-3">
-                                    <div class="mt-4 pt-3 pb-3 px-0 row">
+                                <div class="row" style="margin-left:10%;height: 40%;">
+                                    <div class="px-0 row d-flex align-items-end" style="height: 30%;">
                                         <h3 class="col-6">Subtotal :</h3>
                                         <h3 id="subtotal" class="col-6">$0</h3>
                                     </div>
-                                    <div class="row pb-3 px-0">
+                                    <div class="px-0 row d-flex align-items-center" style="height: 20%;">
                                         <h3 class="col-6">Discount :</h3>
                                         <h3 id="discount" class="col-6">$0</h3>
                                     </div>
-                                    <div class="row pb-3 px-0">
+                                    <div class="px-0 row d-flex align-items-center" style="height: 20%;">
                                         <h3 class="col-6">Deliver :</h3>
                                         <h3 id="shipping" class="col-6">$60</h3>
                                     </div>
-                                    <div class="pt-4 px-0 border-line">
+                                    <div class="px-0 border-line" style="margin-top:3%;padding-top:8%;height: 30%;">
                                         <h3>TOTAL : <a id="total">$0</a></h3>
                                     </div>
                                 </div>
 
                             </div>
                         </div>
-                        <div class="my-3">
+                        <div class="pt-3" style="height: 15%;">
                             <button type="button" class="btn-check-out">Check Out</button>
                         </div>
                     </div>
