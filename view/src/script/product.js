@@ -88,7 +88,9 @@ const searchProductById = (product_id) => {
         url: "/CD-Book-Store-System/controller/core.php",
         method: "POST",
         data: json,
-        success: (res) => displayData(res),
+        success: (res) => {
+            res ? displayData(res) : display404();
+        },
     });
 };
 
@@ -297,4 +299,8 @@ const displayRate = (data) => {
             $(".star1, .star2, .star3, .star4, .star5").addClass("bi-star-fill");
             break;
     }
+};
+
+const display404 = () => {
+    window.location.replace("/CD-Book-Store-System/view/404");
 };
