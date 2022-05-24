@@ -5,8 +5,9 @@ session_start();
 if (isset($_SESSION['member_id']) && isset($_SESSION['email'])) {
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
+
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -64,7 +65,8 @@ if (isset($_SESSION['member_id']) && isset($_SESSION['email'])) {
         <!-- Custom js -->
         <script src="main.js"></script>
     </body>
-</html>
+
+    </html>
 
 
 <?php

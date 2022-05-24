@@ -150,7 +150,7 @@ const checkFollow = () => {
         controller: "followList",
         method: "isFollow",
         parameter: {
-            product_id: product_id
+            product_id: product_id,
         },
     };
     let json = JSON.stringify(data);
@@ -168,7 +168,7 @@ const addToFollow = () => {
         controller: "followList",
         method: "insertFollowList",
         parameter: {
-            product_id: product_id
+            product_id: product_id,
         },
     };
     let json = JSON.stringify(data);
@@ -186,7 +186,7 @@ const removeFollow = () => {
         controller: "followList",
         method: "deleteFollowList",
         parameter: {
-            product_id: product_id
+            product_id: product_id,
         },
     };
     let json = JSON.stringify(data);
@@ -204,7 +204,7 @@ const checkCart = () => {
         controller: "cart",
         method: "isCart",
         parameter: {
-            product_id: product_id
+            product_id: product_id,
         },
     };
     let json = JSON.stringify(data);
@@ -222,7 +222,7 @@ const addToCart = () => {
         controller: "cart",
         method: "insertCart",
         parameter: {
-            product_id: product_id
+            product_id: product_id,
         },
     };
     let json = JSON.stringify(data);
@@ -240,7 +240,7 @@ const removeCart = () => {
         controller: "cart",
         method: "deleteCartByMIdPId",
         parameter: {
-            product_id: product_id
+            product_id: product_id,
         },
     };
     let json = JSON.stringify(data);
@@ -258,7 +258,7 @@ const createBrowsingHistory = () => {
         controller: "browserHistory",
         method: "insertBrowserHis",
         parameter: {
-            product_id: product_id
+            product_id: product_id,
         },
     };
     let json = JSON.stringify(data);

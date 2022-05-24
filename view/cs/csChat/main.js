@@ -47,38 +47,38 @@ const createProductComponent = (data) => {
     let html = `
         <div class="col-12 product-component">
             <div class="product-img">
-                <img src="${data['product_info'][0]['product_image']}">
+                <img src="${data["product_info"][0]["product_image"]}">
             </div>
             <div class="product-info">
-                <h1>${data['product_info'][0]['product_name']}</h1>
-                <a>Count:</a> ${data['count_num']}<br>
-                <a>Price:</a> ${data['product_info'][0]['product_price']}<br>
+                <h1>${data["product_info"][0]["product_name"]}</h1>
+                <a>Count:</a> ${data["count_num"]}<br>
+                <a>Price:</a> ${data["product_info"][0]["product_price"]}<br>
             </div>
         </div>
-    `
-    $('#product_component_area').append(html);
-}
+    `;
+    $("#product_component_area").append(html);
+};
 
 const displayOrderInfo = (res) => {
-    $('#order_id').html(res[0]['order_id']);
-    $('#order_state').html(res[0]['order_state']);
-    $('.product-order-state').addClass(res[0]['order_state']);
-    if (res[0]['order_state'] == 'wait') {
-        $('#state_icon').addClass('bi-hourglass-top');
+    $("#order_id").html(res[0]["order_id"]);
+    $("#order_state").html(res[0]["order_state"]);
+    $(".product-order-state").addClass(res[0]["order_state"]);
+    if (res[0]["order_state"] == "wait") {
+        $("#state_icon").addClass("bi-hourglass-top");
     }
-    if (res[0]['order_state'] == 'finish') {
-        $('#state_icon').addClass('bi-check-circle');
+    if (res[0]["order_state"] == "finish") {
+        $("#state_icon").addClass("bi-check-circle");
     }
-    if (res[0]['order_state'] == 'cancel') {
-        $('#state_icon').addClass('bi-x-circle');
+    if (res[0]["order_state"] == "cancel") {
+        $("#state_icon").addClass("bi-x-circle");
     }
-    if (res[0]['order_state'] == 'return') {
-        $('#state_icon').addClass('bi-truck');
+    if (res[0]["order_state"] == "return") {
+        $("#state_icon").addClass("bi-truck");
     }
-    res['product'].forEach((element) => {
+    res["product"].forEach((element) => {
         createProductComponent(element);
     });
-}
+};
 
 const createCsMessage = () => {
     if ($("#msg-content").val() != "") {
