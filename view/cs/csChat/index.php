@@ -14,13 +14,7 @@ if (isset($_SESSION['member_id']) && isset($_SESSION['email'])) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <!-- Bootstrap Icon -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css" />
-        <!-- Bootstrap CSS -->
-        <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
-            crossorigin="anonymous"
-        />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
         <!-- Custom CSS -->
         <link rel="stylesheet" href="style.css" />
         <title>Member CS</title>
@@ -57,11 +51,10 @@ if (isset($_SESSION['member_id']) && isset($_SESSION['email'])) {
         <!-- Google api jQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <!-- JavaScript Bundle with Popper -->
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-            crossorigin="anonymous"
-        ></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <!-- Navbar js -->
+        <script src="/CD-Book-Store-System/view/src/script/member.js"></script>
+        <script src="../../src/script/searchProduct.js"></script>
         <!-- Custom js -->
         <script src="main.js"></script>
     </body>
