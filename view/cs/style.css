@@ -16,24 +16,28 @@ body {
     height: 100%;
 }
 .title-area {
-    height: 10%;
+    height: 20%;
 }
 .subtitle-area {
     height: 10%;
 }
 .order-list-area {
-    height: 80%;
+    height: 70%;
     overflow-y: scroll;
+}
+
+.title {
+    padding-top: 15vh;
 }
 
 .card {
     border-radius: 15px;
     border: none;
-    transition: .5s;
+    transition: 0.5s;
 }
 .card:hover {
     box-shadow: 6.5px 6.8px 18.2px -24px rgba(0, 0, 0, 0.035), 52px 54px 145px -24px rgba(0, 0, 0, 0.07);
-    transition: .5s;
+    transition: 0.5s;
     cursor: pointer;
 }
 
@@ -53,6 +57,18 @@ body {
 .product-order-state.wait {
     background: rgb(165, 216, 165);
     color: rgb(49, 127, 49);
+}
+.product-order-state.finish {
+    background: rgb(237, 213, 62);
+    color: white;
+}
+.product-order-state.cancel {
+    background: rgb(223, 79, 79);
+    color: rgb(255, 255, 255);
+}
+.product-order-state.return {
+    background: rgb(165, 188, 216);
+    color: rgb(49, 91, 127);
 }
 
 /* Product Component */
@@ -81,14 +97,15 @@ body {
     font-size: 20px;
 }
 .product-info > a {
-    color: red;
     font-weight: bold;
 }
 
 /* custom scrollbar */
 ::-webkit-scrollbar {
     display: none;
-}}
+}
+
+/* Nav Bar */
 .navbar-area {
     position: fixed;
 }
