@@ -2,16 +2,19 @@
 
 namespace model;
 
+require_once("env.php");
+
 class Model {
 
     public $null = NULL;
     //連接資料庫
     private function getDB() {
         $host = 'localhost';
-        $dbuser = 'root';
-        $dbpassword = '';
-        $dbname = 'CD_Book_Store_System';
+        $dbuser = $_ENV['DB_USERNAME'];
+        $dbpassword = $_ENV['DB_PASSWORD'];
+        $dbname = $_ENV['DB_NAME'];
         $link = mysqli_connect($host, $dbuser, $dbpassword, $dbname);
+        mysqli_query($link, "SET NAMES 'utf8mb4'");
 
         return $link;
     }

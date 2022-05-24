@@ -6,3 +6,9 @@
 
 # Test Folder
 *test
+
+# Composer
+/vendor/
+
+# dotenv
+.env
