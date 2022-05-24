@@ -41,7 +41,6 @@ const loadOrder = () => {
         method: "POST",
         data: json,
         success: (res) => {
-            console.log(res);
             res ? displayOrderInfo(res) : display404();
         },
     });
