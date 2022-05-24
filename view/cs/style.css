@@ -88,4 +88,149 @@ body {
 /* custom scrollbar */
 ::-webkit-scrollbar {
     display: none;
+}}
+.navbar-area {
+    position: fixed;
+}
+.offcanvas {
+    width: 350px;
+}
+
+.offcanvas-header {
+    margin-top: 40px;
+    color: #a19a9a;
+    font-size: 24px;
+}
+
+.offcanvas-body {
+    color: #a19a9a;
+    font-size: 24px;
+}
+
+.offcanvas-body button {
+    margin-top: 40px;
+}
+
+.offcanvas-footer {
+    margin-bottom: 40px;
+    color: #a19a9a;
+    font-size: 24px;
+}
+
+.search_input {
+    height: 32px;
+}
+
+.navbar_btn {
+    border: none;
+    font-size: 20px;
+    text-decoration: none;
+    /* margin: 20px; */
+    background-color: white;
+    color: #a19a9a;
+    position: relative;
+    display: inline-block;
+}
+
+.navbar_btn:hover {
+    color: #a19a9a;
+}
+
+.offcanvas_btn {
+    border: none;
+    /* padding: 10px 10px; */
+    font-size: 24px;
+    text-decoration: none;
+    /* margin: 20px; */
+    background-color: white;
+    color: #a19a9a;
+    position: relative;
+    display: inline-block;
+}
+
+.offcanvas_btn:hover {
+    color: #a19a9a;
+}
+
+.search_input {
+    width: 240px;
+    height: 32px;
+}
+
+.navbar-nav {
+    color: #a19a9a;
+}
+
+.navbar-nav ul {
+    width: 100vw;
+}
+
+.navbar_topic {
+    text-decoration: none;
+    color: transparent;
+}
+
+.navbar_topic:hover {
+    color: transparent;
+}
+
+.gradient-text {
+    color: transparent;
+    background: conic-gradient(
+        #d9d7f1 12%,
+        #baabda 12%,
+        #baabda 33%,
+        #e7fbbe 33%,
+        #e7fbbe 55%,
+        #ffcbcb 55%,
+        #ffcbcb 70%,
+        #b5deff 70%,
+        #b5deff 87%,
+        #f7d1ba 87%
+    );
+    background-size: 50%;
+    background-clip: text;
+    -webkit-background-clip: text;
+
+    animation: expand-rev 0.5s ease forwards;
+
+    cursor: pointer;
+}
+
+.gradient-text:hover {
+    animation: expand 0.5s ease forwards;
+}
+
+@keyframes expand {
+    0% {
+        background-size: 50%;
+        background-position: 0 0;
+    }
+
+    20% {
+        background-size: 55%;
+        background-position: 0 1em;
+    }
+
+    100% {
+        background-size: 325%;
+        background-position: -10em -4em;
+    }
+}
+
+@keyframes expand-rev {
+    0% {
+        background-size: 325%;
+        background-position: -10em -4em;
+    }
+
+    20% {
+        background-size: 55%;
+        background-position: 0 1em;
+    }
+
+    100% {
+        background-size: 50%;
+        background-position: 0 0;
+    }
 }

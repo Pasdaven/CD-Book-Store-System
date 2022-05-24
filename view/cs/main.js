@@ -1,4 +1,9 @@
 $(() => {
+    /* Navbar */
+    let memberRes = getMemberInfo();
+    displayUserName(memberRes);
+    /* Navbar End */
+
     loadOrder();
     $("#card-area").on("click", ".card", function () {
         jumpChatRoom($(this).attr("id"));

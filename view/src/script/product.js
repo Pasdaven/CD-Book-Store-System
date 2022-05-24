@@ -1,4 +1,8 @@
 $(() => {
+    /* Navbar */
+    let memberRes = getMemberInfo();
+    displayUserName(memberRes);
+    /* Navbar End */
     let product_id = getUrl();
     searchProductById(product_id);
     createBrowsingHistory();

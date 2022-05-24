@@ -1,4 +1,8 @@
 $(() => {
+    /* Navbar */
+    let memberRes = getMemberInfo();
+    displayUserName(memberRes);
+    /* Navbar End */
     loadOrder();
     loadMsg();
     $("#send-btn").click(() => {
