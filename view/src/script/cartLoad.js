@@ -71,7 +71,7 @@ $(() => {
         }
         let deliver = parseInt($('#shipping').text().substring(1));
         let total = parseInt($('#total').text().substring(1));
-        let url = `http://localhost/CD-BOOK-STORE-SYSTEM/view/payment/?${window.btoa('coupon_id').substring(0, window.btoa('coupon_id').length - 1)}=${window.btoa(coupon_id)}&${window.btoa('subtotal').substring(0, window.btoa('subtotal').length - 1)}=${window.btoa(subtotal)}&${window.btoa('deliver').substring(0, window.btoa('deliver').length - 1)}${window.btoa(deliver)}&${window.btoa('discount').substring(0, window.btoa('discount').length - 1)}=${window.btoa(discount)}&${window.btoa('total').substring(0, window.btoa('total').length - 1)}=${window.btoa(total)}`;
+        let url = `/CD-Book-Store-System/view/payment/?${window.btoa('coupon_id').substring(0, window.btoa('coupon_id').length - 1)}=${window.btoa(coupon_id)}&${window.btoa('subtotal').substring(0, window.btoa('subtotal').length - 1)}=${window.btoa(subtotal)}&${window.btoa('deliver').substring(0, window.btoa('deliver').length - 1)}${window.btoa(deliver)}&${window.btoa('discount').substring(0, window.btoa('discount').length - 1)}=${window.btoa(discount)}&${window.btoa('total').substring(0, window.btoa('total').length - 1)}=${window.btoa(total)}`;
         window.location = url;
     });
     let memberRes = getMemberInfo();

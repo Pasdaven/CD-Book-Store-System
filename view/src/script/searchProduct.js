@@ -1,7 +1,7 @@
 
 $('#search_btn').click(function() {
     let val = $('#search').val();
-    let url = 'http://localhost/CD-BOOK-STORE-SYSTEM/view/searchProduct/?productName=' + val;
+    let url = '/CD-Book-Store-System/view/searchProduct/?productName=' + val;
     window.location.replace(url);
 });
 document.getElementById('search').oninput=function() {
@@ -17,7 +17,7 @@ $("#search").keypress((e) => {
     code = e.keyCode ? e.keyCode : e.which;
     if (code == 13) {
         let val = $('#search').val();
-        let url = 'http://localhost/CD-BOOK-STORE-SYSTEM/view/searchProduct/?productName=' + val;
+        let url = '/CD-Book-Store-System/view/searchProduct/?productName=' + val;
         window.location.replace(url);
     }
 });
@@ -32,7 +32,7 @@ const timelySearchProduct = (product_name) => {
     };
     let json = JSON.stringify(data);
     $.ajax({
-        url: '/CD-BOOK-STORE-SYSTEM/controller/core.php',
+        url: '/CD-Book-Store-System/controller/core.php',
         method: 'POST',
         data: json,
         async: false,
@@ -48,7 +48,7 @@ const timelySearchProduct = (product_name) => {
 
 const displayTimelysearchProduct = (data) => {
     for (let i = 0; i < data.length; i++) {
-        $('#search-list-group').append(`<a href="http://localhost/CD-BOOK-STORE-SYSTEM/view/searchProduct/?productName=${data[i]['product_name']}" class="list-group-item list-group-item-action">${data[i]['product_name']}</a>`);
+        $('#search-list-group').append(`<a href="/CD-Book-Store-System/view/searchProduct/?productName=${data[i]['product_name']}" class="list-group-item list-group-item-action">${data[i]['product_name']}</a>`);
     }
 }
 

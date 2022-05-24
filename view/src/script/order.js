@@ -5,7 +5,7 @@ const getOrder = () => {
     };
     let json = JSON.stringify(data);
     $.ajax({
-        url: '/CD-BOOK-STORE-SYSTEM/controller/core.php',
+        url: '/CD-Book-Store-System/controller/core.php',
         method: 'POST',
         data: json,
         success: res => {}
@@ -22,7 +22,7 @@ const finishOrder = (order_id) => {
     };
     let json = JSON.stringify(data);
     $.ajax({
-        url: '/CD-BOOK-STORE-SYSTEM/controller/core.php',
+        url: '/CD-Book-Store-System/controller/core.php',
         method: 'POST',
         data: json,
         success: res => { }
@@ -39,7 +39,7 @@ const cancelOrder = (order_id) => {
     };
     let json = JSON.stringify(data);
     $.ajax({
-        url: '/CD-BOOK-STORE-SYSTEM/controller/core.php',
+        url: '/CD-Book-Store-System/controller/core.php',
         method: 'POST',
         data: json,
         success: res => { }
@@ -57,7 +57,7 @@ const returnOrder = (refundAccount, order_id) => {
     };
     let json = JSON.stringify(data);
     $.ajax({
-        url: '/CD-BOOK-STORE-SYSTEM/controller/core.php',
+        url: '/CD-Book-Store-System/controller/core.php',
         method: 'POST',
         data: json,
         success: res => { }
@@ -76,7 +76,7 @@ function updateOrderState(order_id, order_state, member_id) {
     };
     let json = JSON.stringify(data);
     $.ajax({
-        url: '/CD-BOOK-STORE-SYSTEM/controller/core.php',
+        url: '/CD-Book-Store-System/controller/core.php',
         method: 'POST',
         data: json,
         success: res => { }

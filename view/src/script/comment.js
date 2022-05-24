@@ -29,7 +29,7 @@ const insertComment = (product_id) => {
     };
     let json = JSON.stringify(data);
     $.ajax({
-        url: '/CD-BOOK-STORE-SYSTEM/controller/core.php',
+        url: '/CD-Book-Store-System/controller/core.php',
         method: 'POST',
         data: json,
         success: res => {
@@ -49,7 +49,7 @@ const deleteComment = () => {
     };
     let json = JSON.stringify(data);
     $.ajax({
-        url: '/CD-BOOK-STORE-SYSTEM/controller/core.php',
+        url: '/CD-Book-Store-System/controller/core.php',
         method: 'POST',
         data: json,
         success: res => console.log(res)
@@ -63,7 +63,7 @@ const getComment = () => {
     };
     let json = JSON.stringify(data);
     $.ajax({
-        url: '/CD-BOOK-STORE-SYSTEM/controller/core.php',
+        url: '/CD-Book-Store-System/controller/core.php',
         method: 'POST',
         data: json,
         success: res => {
@@ -85,7 +85,7 @@ const updateComment = () => {
     };
     let json = JSON.stringify(data);
     $.ajax({
-        url: '/CD-BOOK-STORE-SYSTEM/controller/core.php',
+        url: '/CD-Book-Store-System/controller/core.php',
         method: 'POST',
         data: json,
         success: res => console.log(res)

@@ -33,7 +33,7 @@ const loadOrder = () => {
     };
     let json = JSON.stringify(data);
     $.ajax({
-        url: "/cd-book-store-system/controller/core.php",
+        url: "/CD-Book-Store-System/controller/core.php",
         method: "POST",
         data: json,
         success: (res) => {
@@ -96,7 +96,7 @@ const createCsMessage = () => {
         };
         let json = JSON.stringify(data);
         $.ajax({
-            url: "/cd-book-store-system/controller/core.php",
+            url: "/CD-Book-Store-System/controller/core.php",
             method: "POST",
             data: json,
             success: (res) => {
@@ -137,7 +137,7 @@ const loadUnreadMsg = () => {
     };
     let json = JSON.stringify(data);
     $.ajax({
-        url: "/cd-book-store-system/controller/core.php",
+        url: "/CD-Book-Store-System/controller/core.php",
         method: "POST",
         data: json,
         success: (res) => {
@@ -162,7 +162,7 @@ const loadMsg = () => {
     };
     let json = JSON.stringify(data);
     $.ajax({
-        url: "/cd-book-store-system/controller/core.php",
+        url: "/CD-Book-Store-System/controller/core.php",
         method: "POST",
         data: json,
         success: (res) => {
@@ -182,5 +182,5 @@ const scrollToBottom = () => {
 };
 
 const display404 = () => {
-    window.location.replace('http://localhost/cd-book-store-system/view/404');
-}
+    window.location.replace("/CD-Book-Store-System/view/404");
+};

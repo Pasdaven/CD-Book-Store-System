@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <a href="https://emap.presco.com.tw/c2cemap.ashx?eshopid=870&&servicetype=1&url=http://localhost/CD-BOOK-STORE-SYSTEM/convenienceStoreLink.php">link</a>
+    <a href="https://emap.presco.com.tw/c2cemap.ashx?eshopid=870&&servicetype=1&url=http://localhost/CD-Book-Store-System/convenienceStoreLink.php">link</a>
     <?php
     $store_data = $_POST;
     if (count($store_data) != 0) {

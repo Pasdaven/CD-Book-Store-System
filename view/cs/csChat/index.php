@@ -70,6 +70,6 @@ if (isset($_SESSION['member_id']) && isset($_SESSION['email'])) {
 <?php
 
 } else {
-    header("Location: http://localhost/CD-BOOK-STORE-SYSTEM/view/login");
+    header("Location: /CD-Book-Store-System/view/login");
 }
 ?>

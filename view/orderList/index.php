@@ -110,14 +110,14 @@ if (isset($_SESSION['member_id']) && isset($_SESSION['email'])) {
                     </div>
                     <div class="col-6 d-flex justify-content-center">
                         <div class="nav-item gradient-text">
-                            <a href="http://localhost/CD-BOOK-STORE-SYSTEM/view/" class="navbar_topic">
+                            <a href="/CD-Book-Store-System/view/" class="navbar_topic">
                                 <h1><strong>Pascal Store</strong></h1>
                             </a>
                         </div>
                     </div>
                     <div class="col-3 d-flex justify-content-end mt-2">
                         <div class="nav-item username-nav-item" style="height: 32px;">
-                            <a class="navbar_btn mx-1" type="button" href="http://localhost/CD-BOOK-STORE-SYSTEM/view/cart/"><i class="bi bi-cart-fill"></i> </a>
+                            <a class="navbar_btn mx-1" type="button" href="/CD-Book-Store-System/view/cart/"><i class="bi bi-cart-fill"></i> </a>
 
                         </div>
                     </div>
@@ -130,19 +130,22 @@ if (isset($_SESSION['member_id']) && isset($_SESSION['email'])) {
                 </div>
                 <div class="offcanvas-body">
                     <div class="d-flex justify-content-center">
-                        <a type="button" class="offcanvas_btn my-3" href="http://localhost/CD-BOOK-STORE-SYSTEM/view/editMemberInfo/"><i class="bi bi-pen mx-3"></i>Edit Profile</a>
+                        <a type="button" class="offcanvas_btn my-3" href="/CD-Book-Store-System/view/editMemberInfo/"><i class="bi bi-pen mx-3"></i>Edit Profile</a>
                     </div>
                     <div class="d-flex justify-content-center">
-                        <a type="button" class="offcanvas_btn my-3" href="http://localhost/CD-BOOK-STORE-SYSTEM/view/orderList/"><i class="bi bi-card-list mx-3"></i></i>Order List</a>
+                        <a type="button" class="offcanvas_btn my-3" href="/CD-Book-Store-System/view/orderList/"><i class="bi bi-card-list mx-3"></i></i>Order List</a>
                     </div>
                     <div class="d-flex justify-content-center">
-                        <a type="button" class="offcanvas_btn my-3" href="http://localhost/CD-BOOK-STORE-SYSTEM/view/cart/"><i class="bi bi-cart-fill mx-3"></i>Shopping Cart</a>
+                        <a type="button" class="offcanvas_btn my-3" href="/CD-Book-Store-System/view/cart/"><i class="bi bi-cart-fill mx-3"></i>Shopping Cart</a>
                     </div>
                     <div class="d-flex justify-content-center">
-                        <a type="button" class="offcanvas_btn my-3" href="http://localhost/CD-BOOK-STORE-SYSTEM/view/followList/"><i class="bi bi-list-stars mx-3"></i>Following</a>
+                        <a type="button" class="offcanvas_btn my-3" href="/CD-Book-Store-System/view/followList/"><i class="bi bi-list-stars mx-3"></i>Following</a>
                     </div>
                     <div class="d-flex justify-content-center">
-                        <a type="button" class="offcanvas_btn my-3" href="http://localhost/CD-BOOK-STORE-SYSTEM/view/browserHistory/"><i class="bi bi-clock-history mx-3"></i>History</a>
+                        <a type="button" class="offcanvas_btn my-3" href="/CD-Book-Store-System/view/browserHistory/"><i class="bi bi-clock-history mx-3"></i>History</a>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <a type="button" class="offcanvas_btn my-3" href="/CD-Book-Store-System/view/cs/"><i class="bi bi-chat-dots mx-3"></i>Customer Service</a>
                     </div>
                 </div>
                 <div class="offcanvas-footer d-flex justify-content-center">
@@ -176,6 +179,6 @@ if (isset($_SESSION['member_id']) && isset($_SESSION['email'])) {
 <?php
 
 } else {
-    header("Location: http://localhost/CD-BOOK-STORE-SYSTEM/view/login");
+    header("Location: /CD-Book-Store-System/view/login");
 }
 ?>

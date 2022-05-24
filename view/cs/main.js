@@ -12,7 +12,7 @@ const loadOrder = () => {
     };
     let json = JSON.stringify(data);
     $.ajax({
-        url: "/cd-book-store-system/controller/core.php",
+        url: "/CD-Book-Store-System/controller/core.php",
         method: "POST",
         data: json,
         success: (res) => {
@@ -96,12 +96,12 @@ const jumpChatRoom = (order_id) => {
     };
     let json = JSON.stringify(data);
     $.ajax({
-        url: "/cd-book-store-system/controller/core.php",
+        url: "/CD-Book-Store-System/controller/core.php",
         method: "POST",
         data: json,
         success: (res) => {
-            let url = 'http://localhost/CD-BOOK-STORE-SYSTEM/view/cs/csChat/?id=' + res[0]['cs_record_id'];
-            window.location= url;
+            let url = "./csChat/?id=" + res[0]["cs_record_id"];
+            window.location = url;
         },
     });
 }

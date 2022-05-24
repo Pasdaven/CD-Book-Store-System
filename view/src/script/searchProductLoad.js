@@ -5,7 +5,7 @@ $(() => {
 
     $(".btn-view-info").click(function() {
         let id = parseInt($(this).attr('id'));
-        let url = `http://localhost/CD-BOOK-STORE-SYSTEM/view/product/index.html?id=${id}`;
+        let url = `/CD-Book-Store-System/view/product/index.html?id=${id}`;
         window.location = url;
     });
 
@@ -48,7 +48,7 @@ const searchProduct = (product_name) => {
     };
     let json = JSON.stringify(data);
     $.ajax({
-        url: '/CD-BOOK-STORE-SYSTEM/controller/core.php',
+        url: '/CD-Book-Store-System/controller/core.php',
         method: 'POST',
         data: json,
         async: false,
@@ -74,7 +74,7 @@ const removeCart = (product_id) => {
     };
     let json = JSON.stringify(data);
     $.ajax({
-        url: "/cd-book-store-system/controller/core.php",
+        url: "/CD-Book-Store-System/controller/core.php",
         method: "POST",
         data: json
     });

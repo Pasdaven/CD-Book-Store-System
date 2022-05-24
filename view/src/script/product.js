@@ -81,7 +81,7 @@ const searchProductById = (product_id) => {
     };
     let json = JSON.stringify(data);
     $.ajax({
-        url: "/cd-book-store-system/controller/core.php",
+        url: "/CD-Book-Store-System/controller/core.php",
         method: "POST",
         data: json,
         success: (res) => displayData(res),
@@ -99,7 +99,7 @@ const searchProductByName = () => {
     };
     let json = JSON.stringify(data);
     $.ajax({
-        url: "/cd-book-store-system/controller/core.php",
+        url: "/CD-Book-Store-System/controller/core.php",
         method: "POST",
         data: json,
         success: (res) => console.log(res),
@@ -117,7 +117,7 @@ const searchProductNum = () => {
     };
     let json = JSON.stringify(data);
     $.ajax({
-        url: "/cd-book-store-system/controller/core.php",
+        url: "/CD-Book-Store-System/controller/core.php",
         method: "POST",
         data: json,
         success: (res) => console.log(res),
@@ -137,7 +137,7 @@ const updateProductNum = () => {
     };
     let json = JSON.stringify(data);
     $.ajax({
-        url: "/cd-book-store-system/controller/core.php",
+        url: "/CD-Book-Store-System/controller/core.php",
         method: "POST",
         data: json,
         success: (res) => console.log(res),
@@ -155,7 +155,7 @@ const checkFollow = () => {
     };
     let json = JSON.stringify(data);
     $.ajax({
-        url: "/cd-book-store-system/controller/core.php",
+        url: "/CD-Book-Store-System/controller/core.php",
         method: "POST",
         data: json,
         success: (res) => displayFollowBtn(res),
@@ -173,7 +173,7 @@ const addToFollow = () => {
     };
     let json = JSON.stringify(data);
     $.ajax({
-        url: "/cd-book-store-system/controller/core.php",
+        url: "/CD-Book-Store-System/controller/core.php",
         method: "POST",
         data: json,
         success: (res) => console.log("follow"),
@@ -191,7 +191,7 @@ const removeFollow = () => {
     };
     let json = JSON.stringify(data);
     $.ajax({
-        url: "/cd-book-store-system/controller/core.php",
+        url: "/CD-Book-Store-System/controller/core.php",
         method: "POST",
         data: json,
         success: (res) => console.log("un follow"),
@@ -209,7 +209,7 @@ const checkCart = () => {
     };
     let json = JSON.stringify(data);
     $.ajax({
-        url: "/cd-book-store-system/controller/core.php",
+        url: "/CD-Book-Store-System/controller/core.php",
         method: "POST",
         data: json,
         success: (res) => displayCartBtn(res),
@@ -227,7 +227,7 @@ const addToCart = () => {
     };
     let json = JSON.stringify(data);
     $.ajax({
-        url: "/cd-book-store-system/controller/core.php",
+        url: "/CD-Book-Store-System/controller/core.php",
         method: "POST",
         data: json,
         success: (res) => console.log("add to cart"),
@@ -245,7 +245,7 @@ const removeCart = () => {
     };
     let json = JSON.stringify(data);
     $.ajax({
-        url: "/cd-book-store-system/controller/core.php",
+        url: "/CD-Book-Store-System/controller/core.php",
         method: "POST",
         data: json,
         success: (res) => console.log("remove cart"),
@@ -263,7 +263,7 @@ const createBrowsingHistory = () => {
     };
     let json = JSON.stringify(data);
     $.ajax({
-        url: "/cd-book-store-system/controller/core.php",
+        url: "/CD-Book-Store-System/controller/core.php",
         method: "POST",
         data: json,
         success: (res) => console.log(res),

@@ -8,7 +8,7 @@ const insertCart = (product_id) => {
     };
     let json = JSON.stringify(data);
     $.ajax({
-        url: '/CD-BOOK-STORE-SYSTEM/controller/core.php',
+        url: '/CD-Book-Store-System/controller/core.php',
         method: 'POST',
         data: json
     });
@@ -24,7 +24,7 @@ const deleteCart = (cart_id) => {
     };
     let json = JSON.stringify(data);
     $.ajax({
-        url: '/CD-BOOK-STORE-SYSTEM/controller/core.php',
+        url: '/CD-Book-Store-System/controller/core.php',
         method: 'POST',
         data: json
     });
@@ -37,7 +37,7 @@ const getCart = () => {
     };
     let json = JSON.stringify(data);
     $.ajax({
-        url: '/CD-BOOK-STORE-SYSTEM/controller/core.php',
+        url: '/CD-Book-Store-System/controller/core.php',
         method: 'POST',
         data: json,
         async: false,
@@ -59,7 +59,7 @@ const updateCart = (cart_id, count_num) => {
     };
     let json = JSON.stringify(data);
     $.ajax({
-        url: '/CD-BOOK-STORE-SYSTEM/controller/core.php',
+        url: '/CD-Book-Store-System/controller/core.php',
         method: 'POST',
         data: json
     });
@@ -80,7 +80,7 @@ function getUrl() {
 
 const checkout = () => {
     let url_string = window.location.href;
-    // let url_string = 'http://localhost/CD-BOOK-STORE-SYSTEM/view/payment/?coupon_id=[4,5]&subtotal=1200&deliver=60&discount=100&total=1160';
+    // let url_string = '/CD-Book-Store-System/view/payment/?coupon_id=[4,5]&subtotal=1200&deliver=60&discount=100&total=1160';
     let url = new URL(url_string);
     let coupon_id = window.atob(url.searchParams.get(window.btoa("coupon_id").substring(0, window.btoa("coupon_id").length - 1)));
     let subtotal = window.atob(url.searchParams.get(window.btoa("subtotal").substring(0, window.btoa("subtotal").length - 1)));
@@ -172,7 +172,7 @@ const checkout = () => {
     };
     let json = JSON.stringify(data);
     $.ajax({
-        url: '/CD-BOOK-STORE-SYSTEM/controller/core.php',
+        url: '/CD-Book-Store-System/controller/core.php',
         method: 'POST',
         data: json,
         success: res => {
@@ -190,7 +190,7 @@ const getCoupon = () => {
     };
     let json = JSON.stringify(data);
     $.ajax({
-        url: '/CD-BOOK-STORE-SYSTEM/controller/core.php',
+        url: '/CD-Book-Store-System/controller/core.php',
         method: 'POST',
         data: json,
         async: false,

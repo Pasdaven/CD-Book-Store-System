@@ -32,7 +32,7 @@ const createCsMessage = () => {
         };
         let json = JSON.stringify(data);
         $.ajax({
-            url: "/cd-book-store-system/controller/core.php",
+            url: "/CD-Book-Store-System/controller/core.php",
             method: "POST",
             data: json,
             success: (res) => {
@@ -73,7 +73,7 @@ const loadUnreadMsg = () => {
     };
     let json = JSON.stringify(data);
     $.ajax({
-        url: "/cd-book-store-system/controller/core.php",
+        url: "/CD-Book-Store-System/controller/core.php",
         method: "POST",
         data: json,
         success: (res) => {
@@ -98,7 +98,7 @@ const loadMsg = () => {
     };
     let json = JSON.stringify(data);
     $.ajax({
-        url: "/cd-book-store-system/controller/core.php",
+        url: "/CD-Book-Store-System/controller/core.php",
         method: "POST",
         data: json,
         success: (res) => {
