@@ -272,7 +272,6 @@ const createBrowsingHistory = () => {
         url: "/CD-Book-Store-System/controller/core.php",
         method: "POST",
         data: json,
-        success: (res) => console.log(res),
     });
 };
 
