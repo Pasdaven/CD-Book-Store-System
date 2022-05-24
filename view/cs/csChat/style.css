@@ -11,6 +11,7 @@ body {
 
 .container-full > .wrap {
     margin: 0;
+    padding-top: 10vh;
 }
 
 .product-info-wrap {
@@ -72,7 +73,7 @@ body {
     display: flex;
     padding-left: 16px;
     padding-right: 16px;
-    max-height: 80vh;
+    max-height: 70vh;
     overflow-y: scroll;
 }
 .product-component {
@@ -85,11 +86,11 @@ body {
     border: 1px solid rgb(236, 236, 236);
     align-items: center;
     margin-bottom: 26px;
-    transition: .5s;
+    transition: 0.5s;
 }
 .product-component:hover {
     background: rgb(245, 245, 245);
-    transition: .5s;
+    transition: 0.5s;
 }
 .product-img {
     height: 100%;
@@ -109,7 +110,7 @@ body {
 }
 
 .msg-wrap {
-    height: 100vh;
+    height: 90vh;
     padding-right: 5vw;
 }
 
