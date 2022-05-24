@@ -351,6 +351,10 @@ section {
 .commentUserName {
     color: #3f4953;
 }
+.commentUserName > h1 {
+    font-size: 24px;
+    margin: 0;
+}
 .commentTextRate {
     display: flex;
     align-items: center;
@@ -363,6 +367,9 @@ section {
 }
 .commentText {
     color: #8c929b;
+    margin: 0;
+}
+
 /* Nav Bar */
 .navbar-area {
     position: fixed;
