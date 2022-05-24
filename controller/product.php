@@ -77,6 +77,9 @@ class Product extends Model {
         $product_id = $param['product_id'];
         $sql = $this->select($this->table) . $this->where('product_id', '=', $product_id);
         $result = $this->execute($sql);
+        if (!$result) {
+            return false;
+        }
         $result[0]['avg_star'] = $commentList->getAvgStarById($param);
 
         return $result;
