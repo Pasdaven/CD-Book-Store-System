@@ -9,6 +9,115 @@ body {
     background: #f3f5f7;
 }
 
+.loading-area {
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+    position: fixed;
+    display: flex;
+}
+.loading-area .logo-box {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.shine {
+    color: transparent;
+    background: conic-gradient(
+        #d9d7f1 12%,
+        #baabda 12%,
+        #baabda 33%,
+        #e7fbbe 33%,
+        #e7fbbe 55%,
+        #ffcbcb 55%,
+        #ffcbcb 70%,
+        #b5deff 70%,
+        #b5deff 87%,
+        #f7d1ba 87%
+    );
+    background-size: 50%;
+    background-clip: text;
+    -webkit-background-clip: text;
+
+    animation: logoShine 1.5s ease forwards;
+}
+.logo-text {
+    color: transparent;
+    opacity: 1;
+}
+.loading-area .left-box {
+    height: 100%;
+    width: 50%;
+    background: white;
+}
+.loading-area .right-box {
+    height: 100%;
+    width: 50%;
+    background: white;
+}
+.slideUp {
+    animation: slideUp;
+    animation-duration: 0.8s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+.slideDown {
+    animation: slideDown;
+    animation-duration: 0.8s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+.fadeOut {
+    animation: fadeOut;
+    animation-duration: 0.4s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+@keyframes logoShine {
+    0% {
+        background-size: 50%;
+        background-position: 0 0;
+    }
+
+    20% {
+        background-size: 55%;
+        background-position: 0 1em;
+    }
+
+    100% {
+        background-size: 325%;
+        background-position: -10em -4em;
+    }
+}
+@keyframes slideUp {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(100%);
+    }
+}
+@keyframes slideDown {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-100%);
+    }
+}
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
 /* Ad */
 .ad-area {
     height: 35vh;

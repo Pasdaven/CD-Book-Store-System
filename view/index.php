@@ -15,6 +15,22 @@
 
 <body>
 
+    <div class="loading-area" id="loading-area">
+        <div class="logo-box" id="logo-box">
+            <div class="shine">
+                <div class="logo-text">
+                    <h1><strong>Pascal Store</strong></h1>
+                </div>
+            </div>
+        </div>
+        <div class="left-box" id="left-box">
+
+        </div>
+        <div class="right-box" id="right-box">
+
+        </div>
+    </div>
+
     <?php
 
     session_start();
