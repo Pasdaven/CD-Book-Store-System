@@ -12,7 +12,7 @@ class Cart extends Model {
         $product = new Product();
         $product_num = $product->searchProductNum($param)[0]['product_number'];
 
-        $sql = $this->select($this->table, ['count_num']) . $this->where('product_id', '=', $product_id);
+        $sql = $this->select($this->table, ['count_num']) . $this->where('product_id', '=', $product_id) . $this->and('member_id', '=', $member_id);
         if ($result = $this->execute($sql)) {
             if ($product_num >= $count_num + $result[0]['count_num']) {
                 $sql = $this->update(['count_num' => $count_num + $result[0]['count_num']]) . $this->where('product_id', '=', $product_id);
