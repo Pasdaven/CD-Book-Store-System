@@ -47,8 +47,6 @@ function logout() {
         data: json,
         success: res => {
             // 登出
-            $url = "/CD-Book-Store-System/view/login/";
-            window.location.href = $url;
         }
     });
 }
