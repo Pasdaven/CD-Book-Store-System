@@ -72,7 +72,7 @@ if (isset($_SESSION['member_id']) && isset($_SESSION['email'])) {
                     </div>
                 </div>
                 <div class="offcanvas-footer d-flex justify-content-center">
-                    <a type="button" class="offcanvas_btn" href="" onclick="logout()"><i class="bi bi-box-arrow-left mx-2"></i>Log out</a>
+                    <a type="button" class="offcanvas_btn" href="/CD-Book-Store-System/view/" onclick="logout()"><i class="bi bi-box-arrow-left mx-2"></i>Log out</a>
                 </div>
             </div>
             <div class="container" style="width:100vw;height:100vh;">
