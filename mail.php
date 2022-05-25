@@ -14,7 +14,7 @@ $to  = 'davidho0403@gmail.com';
 $subject = 'Pascal Store reset password';
 
 // Message
-$message = $renderer->render(`
+$message = $renderer->render('
 <mjml>
   <mj-body>
     <mj-section>
@@ -38,13 +38,13 @@ $message = $renderer->render(`
     <mj-section background-color="#fafafa">
       <mj-column>
         <mj-text letter-spacing="2px" line-height="26px" color="gray">
-          You received this email because you requested to reset password to Pascal Store. If you didn't request to reset password, you can safely ignore this email.
+          You received this email because you requested to reset password to Pascal Store. If you didn not request to reset password, you can safely ignore this email.
         </mj-text>
       </mj-column>
     </mj-section>
   </mj-body>
 </mjml>
-`);
+');
 
 // To send HTML mail, the Content-type header must be set
 $headers  = 'MIME-Version: 1.0' . "\r\n";
