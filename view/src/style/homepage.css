@@ -119,12 +119,13 @@ body {
     height: 30vh;
 }
 .foryou-component > .wrap {
-    transition: .5s;
+    transition: 0.5s;
     background: white;
     height: 100%;
+    border-radius: 5px;
 }
 .foryou-component:hover > .wrap {
-    transition: .5s;
+    transition: 0.5s;
     cursor: pointer;
     -webkit-box-shadow: 6px 6px 48px -17px rgba(0, 0, 0, 0.3);
     -moz-box-shadow: 6px 6px 48px -17px rgba(0, 0, 0, 0.3);
@@ -163,6 +164,10 @@ body {
 }
 .foryou-product-info-text > .rate {
     height: 10%;
+}
+.star {
+    color: #8c929b;
+    margin-right: 4px;
 }
 .foryou-product-info-text h1 {
     margin: 0;
