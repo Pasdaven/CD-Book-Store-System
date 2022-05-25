@@ -1,6 +1,7 @@
 <?php
 
 use model\Model;
+require_once "mailer.php";
 
 class Member extends Model {
     protected $member_table = 'member';
@@ -47,12 +48,14 @@ class Member extends Model {
     }
 
     public function forgetPassword($param) {
+        $mailer = new Mailer();
         $account_data = $this->execute($this->select($this->member_account_table) . $this->where('email', '=', $param['email']));
         if (count($account_data) == 1) {
             $password = $this->execute($this->select($this->member_account_table, ['member_password']) . $this->where('email', '=', $param['email']));
             $confirm_number = (int)(crc32($password[0]['member_password']) / 10000);
             // 發送 confirm number email
-            mail($param['email'],'Pascal Store Forget Password Verification Code','Verification Code : ' . $confirm_number);
+            // mail($param['email'],'Pascal Store Forget Password Verification Code','Verification Code : ' . $confirm_number);
+            $mailer->send($param['email'], $confirm_number);
             return $confirm_number;
             // return true;
         } else {
