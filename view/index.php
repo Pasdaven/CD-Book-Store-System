@@ -87,10 +87,12 @@
         <!-- No Login Navbar -->
         <div class="container-fluid bg-white p-3 navbar-area">
             <div class="row">
-                <div class="col-3">
+                <div class="col-3" id="search-div">
                     <div class="nav-item d-flex mt-2">
-                        <input class="form-control search_input" type="text" id="search" placeholder="search">
-                        <button class="navbar_btn mx-1" type="button" onclick="" id="search_btn"><i class="bi bi-search"></i></button>
+                        <input class="form-control search_input" type="text" id="search" placeholder="search" style="width: 240px" />
+                        <button class="navbar_btn mx-1" type="button" onclick="" id="search_btn">
+                            <i class="bi bi-search"></i>
+                        </button>
                     </div>
                 </div>
                 <div class="col-6 d-flex justify-content-center">
