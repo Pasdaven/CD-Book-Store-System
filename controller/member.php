@@ -52,6 +52,7 @@ class Member extends Model {
             $password = $this->execute($this->select($this->member_account_table, ['member_password']) . $this->where('email', '=', $param['email']));
             $confirm_number = (int)(crc32($password[0]['member_password']) / 10000);
             // 發送 confirm number email
+            mail($param['email'],'Pascal Store Forget Password Verification Code','Verification Code : ' . $confirm_number);
             return $confirm_number;
             // return true;
         } else {
