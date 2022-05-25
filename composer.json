@@ -1,5 +1,6 @@
 {
     "require": {
-        "vlucas/phpdotenv": "^5.4"
+        "vlucas/phpdotenv": "^5.4",
+        "qferr/mjml-php": "^2.0"
     }
 }

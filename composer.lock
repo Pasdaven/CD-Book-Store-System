@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6535dd32cf28e7080321a8cc1fe2a17f",
+    "content-hash": "271e50756fc981c30d136765ee1fe016",
     "packages": [
         {
             "name": "graham-campbell/result-type",
@@ -138,6 +138,51 @@
                 }
             ],
             "time": "2021-12-04T23:24:31+00:00"
+        },
+        {
+            "name": "qferr/mjml-php",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/qferr/mjml-php.git",
+                "reference": "c7185024d8b561bd3b532b29f46cba0f4b789b70"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/qferr/mjml-php/zipball/c7185024d8b561bd3b532b29f46cba0f4b789b70",
+                "reference": "c7185024d8b561bd3b532b29f46cba0f4b789b70",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^8.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Qferrer\\Mjml\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Quentin",
+                    "email": "qferrer@outook.com"
+                }
+            ],
+            "description": "A simple PHP library to render MJML to HTML.",
+            "support": {
+                "issues": "https://github.com/qferr/mjml-php/issues",
+                "source": "https://github.com/qferr/mjml-php/tree/2.0.0"
+            },
+            "time": "2022-04-09T21:34:38+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
