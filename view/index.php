@@ -1,4 +1,4 @@
-<?php 
+<?php
 header("Cache-Control: no-cache");
 ?>
 
@@ -328,195 +328,16 @@ header("Cache-Control: no-cache");
         <!-- Content Area -->
         <div class="content-area">
             <div class="row m-0 p-0">
-                <div class="col-3 recent-area ps-3 p-0">
+                <div class="col-3 recent-area ps-3 p-0" id="recent-area">
                     <div class="head p-4 mb-3">
                         <h1><i class="bi bi-clock-history me-2"></i>Recent Browsing</h1>
-                    </div>
-                    <div class="col-12 browsing-history-component mb-3 p-3 d-flex">
-                        <div class="browsing-history-image">
-                            <img src="./src/image/book-1.png" />
-                        </div>
-                        <div class="browsing-history-info d-flex align-items-center ms-3">
-                            <div class="row">
-                                <div class="col-12">
-                                    <h1>Elon Musk</h1>
-                                </div>
-                                <div class="col-12">
-                                    <h3>by Ashlee Vance</h3>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="col-9 foryou-area pe-5">
                     <div class="head py-4 mb-3">
                         <h1><i class="bi bi-star me-2"></i>For <strong class="strong-black">You</strong></h1>
                     </div>
-                    <div class="row foryou-component-area m-0">
-                        <div class="col-6 foryou-component p-3">
-                            <div class="row wrap mx-1">
-                                <div class="col-12 for-youstar d-flex justify-content-end pt-3 pe-3">
-                                    <i class="bi bi-heart"></i>
-                                </div>
-                                <div class="col-12 foryou-product-info">
-                                    <div class="row">
-                                        <div class="col-4 d-flex justify-content-center foryou-product-image">
-                                            <img src="./src/image/book-1.png" />
-                                        </div>
-                                        <div class="col-8 foryou-product-info-text pe-3">
-                                            <div class="row">
-                                                <div class="col-12 title">
-                                                    <h1>Elon Musk</h1>
-                                                </div>
-                                                <div class="col-12 subtitle">
-                                                    <h3>by Ashlee Vance</h3>
-                                                </div>
-                                                <div class="col-12 content">
-                                                    <p>
-                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                        Cras sed faucibus id etiam mattis libero sed. At amet,
-                                                        sodales sem nibh urna in senectus.
-                                                    </p>
-                                                </div>
-                                                <div class="col-12 rate">
-                                                    <i class="bi star1 star bi-star-fill"></i>
-                                                    <i class="bi star2 star bi-star-fill"></i>
-                                                    <i class="bi star3 star bi-star-fill"></i>
-                                                    <i class="bi star4 star bi-star-fill"></i>
-                                                    <i class="bi star5 star bi-star-fill"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 for-you-cart-btn d-flex justify-content-end pb-3 pe-3">
-                                    <i class="bi bi-cart-fill me-2"></i>Add To Cart
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6 foryou-component p-3">
-                            <div class="row wrap mx-1">
-                                <div class="col-12 for-youstar d-flex justify-content-end pt-3 pe-3">
-                                    <i class="bi bi-heart"></i>
-                                </div>
-                                <div class="col-12 foryou-product-info">
-                                    <div class="row">
-                                        <div class="col-4 d-flex justify-content-center foryou-product-image">
-                                            <img src="./src/image/book-1.png" />
-                                        </div>
-                                        <div class="col-8 foryou-product-info-text pe-3">
-                                            <div class="row">
-                                                <div class="col-12 title">
-                                                    <h1>Elon Musk</h1>
-                                                </div>
-                                                <div class="col-12 subtitle">
-                                                    <h3>by Ashlee Vance</h3>
-                                                </div>
-                                                <div class="col-12 content">
-                                                    <p>
-                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                        Cras sed faucibus id etiam mattis libero sed. At amet,
-                                                        sodales sem nibh urna in senectus.
-                                                    </p>
-                                                </div>
-                                                <div class="col-12 rate">
-                                                    <i class="bi star1 star bi-star-fill"></i>
-                                                    <i class="bi star2 star bi-star-fill"></i>
-                                                    <i class="bi star3 star bi-star-fill"></i>
-                                                    <i class="bi star4 star bi-star-fill"></i>
-                                                    <i class="bi star5 star bi-star-fill"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 for-you-cart-btn d-flex justify-content-end pb-3 pe-3">
-                                    <i class="bi bi-cart-fill me-2"></i>Add To Cart
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6 foryou-component p-3">
-                            <div class="row wrap mx-1">
-                                <div class="col-12 for-youstar d-flex justify-content-end pt-3 pe-3">
-                                    <i class="bi bi-heart"></i>
-                                </div>
-                                <div class="col-12 foryou-product-info">
-                                    <div class="row">
-                                        <div class="col-4 d-flex justify-content-center foryou-product-image">
-                                            <img src="./src/image/book-1.png" />
-                                        </div>
-                                        <div class="col-8 foryou-product-info-text pe-3">
-                                            <div class="row">
-                                                <div class="col-12 title">
-                                                    <h1>Elon Musk</h1>
-                                                </div>
-                                                <div class="col-12 subtitle">
-                                                    <h3>by Ashlee Vance</h3>
-                                                </div>
-                                                <div class="col-12 content">
-                                                    <p>
-                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                        Cras sed faucibus id etiam mattis libero sed. At amet,
-                                                        sodales sem nibh urna in senectus.
-                                                    </p>
-                                                </div>
-                                                <div class="col-12 rate">
-                                                    <i class="bi star1 star bi-star-fill"></i>
-                                                    <i class="bi star2 star bi-star-fill"></i>
-                                                    <i class="bi star3 star bi-star-fill"></i>
-                                                    <i class="bi star4 star bi-star-fill"></i>
-                                                    <i class="bi star5 star bi-star-fill"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 for-you-cart-btn d-flex justify-content-end pb-3 pe-3">
-                                    <i class="bi bi-cart-fill me-2"></i>Add To Cart
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6 foryou-component p-3">
-                            <div class="row wrap mx-1">
-                                <div class="col-12 for-youstar d-flex justify-content-end pt-3 pe-3">
-                                    <i class="bi bi-heart"></i>
-                                </div>
-                                <div class="col-12 foryou-product-info">
-                                    <div class="row">
-                                        <div class="col-4 d-flex justify-content-center foryou-product-image">
-                                            <img src="./src/image/book-1.png" />
-                                        </div>
-                                        <div class="col-8 foryou-product-info-text pe-3">
-                                            <div class="row">
-                                                <div class="col-12 title">
-                                                    <h1>Elon Musk</h1>
-                                                </div>
-                                                <div class="col-12 subtitle">
-                                                    <h3>by Ashlee Vance</h3>
-                                                </div>
-                                                <div class="col-12 content">
-                                                    <p>
-                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                        Cras sed faucibus id etiam mattis libero sed. At amet,
-                                                        sodales sem nibh urna in senectus.
-                                                    </p>
-                                                </div>
-                                                <div class="col-12 rate">
-                                                    <i class="bi star1 star bi-star-fill"></i>
-                                                    <i class="bi star2 star bi-star-fill"></i>
-                                                    <i class="bi star3 star bi-star-fill"></i>
-                                                    <i class="bi star4 star bi-star-fill"></i>
-                                                    <i class="bi star5 star bi-star-fill"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 for-you-cart-btn d-flex justify-content-end pb-3 pe-3">
-                                    <i class="bi bi-cart-fill me-2"></i>Add To Cart
-                                </div>
-                            </div>
-                        </div>
+                    <div class="row foryou-component-area m-0" id="foryou-component-area">
                     </div>
                 </div>
             </div>
@@ -532,7 +353,7 @@ header("Cache-Control: no-cache");
     <script src="/CD-Book-Store-System/view/src/script/searchProduct.js"></script>
     <script src="/CD-Book-Store-System/view/src/script/member.js"></script>
     <!-- Custom -->
-    <script src="/CD-Book-Store-System/view/src/script/homepage.js?20220526"></script>
+    <script src="/CD-Book-Store-System/view/src/script/homepage.js?0506"></script>
 </body>
 
 </html>
