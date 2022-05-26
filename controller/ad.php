@@ -6,7 +6,7 @@ class Ad extends Model {
     protected $table = 'ad';
 
     public function insertAd($param) {
-        $sql = $this->insert(['ad_description' => $param['ad_description'], 'ad_img_id' => $param['ad_img_id']]);
+        $sql = $this->insert(['product_id' => $param['product_id'], 'product_discount' => $param['product_discount']]);
         return $this->execute($sql);
     }
 

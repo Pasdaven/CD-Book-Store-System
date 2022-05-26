@@ -55,13 +55,27 @@ class Member extends Model {
             $confirm_number = (int)(crc32($password[0]['member_password']) / 10000);
             // 發送 confirm number email
             // mail($param['email'],'Pascal Store Forget Password Verification Code','Verification Code : ' . $confirm_number);
-            $mailer->send($param['email'], $confirm_number);
+            // $mailer->send($param['email'], $confirm_number);
             return $confirm_number;
             // return true;
         } else {
             // 無此email
             return false;
         }
+    }
+
+    public function emailExist($param) {
+        $account_data = $this->execute($this->select($this->member_account_table) . $this->where('email', '=', $param['email']));
+        if (count($account_data) != 1) {
+            return true;
+        }
+    }
+
+    public function getConfirmNumber($param) {
+        $email = $param['email'];
+        $password = $this->execute($this->select($this->member_account_table, ['member_password']) . $this->where('email', '=', $email));
+        $confirm_number = (int)(crc32($password[0]['member_password']) / 10000);
+        return $confirm_number;
     }
 
     public function confirm($param) {
@@ -75,7 +89,9 @@ class Member extends Model {
     }
 
     public function resetPassword($param) {
-        $sql = $this->update(['member_password' => $param['new_password']], $this->member_account_table) . $this->where('member_id', '=', $_SESSION['member_id']);
+        $email = $param['email'];
+        $member_id = $this->execute($this->select($this->member_account_table, ['member_id']) . $this->where('email', '=', $email));
+        $sql = $this->update(['member_password' => $param['new_password']], $this->member_account_table) . $this->where('member_id', '=', $member_id[0]['member_id']);
         return $this->execute($sql);
     }
 

@@ -14,9 +14,6 @@ CREATE TABLE product (
     product_description VARCHAR(500) NOT NULL COMMENT '商品說明',
     product_image VARCHAR(100) NOT NULL COMMENT '商品圖片',
     product_price INT UNSIGNED NOT NULL COMMENT '商品價格',
-    product_discount ENUM ('0.9', '0.85', '0.8') COMMENT '商品特價',
-    product_discount_start_date DATE COMMENT '商品折價開始日期',
-    product_discount_end_date DATE COMMENT '商品折價開始日期',
     product_number INT UNSIGNED NOT NULL COMMENT '商品庫存'
 ) COMMENT '商品';
 
@@ -67,8 +64,9 @@ CREATE TABLE cart (
 
 CREATE TABLE ad (
     ad_id INT UNSIGNED PRIMARY KEY auto_increment COMMENT '廣告編號',
-    ad_description VARCHAR(100) COMMENT '廣告說明',
-    ad_img_id VARCHAR(100) COMMENT '廣告圖片'
+    product_id INT UNSIGNED NOT NULL COMMENT '商品編號',
+    product_discount ENUM ('0.9', '0.85', '0.8') COMMENT '商品特價',
+    FOREIGN KEY(product_id) REFERENCES product (product_id)
 ) COMMENT '廣告';
 
 CREATE TABLE customer_service (

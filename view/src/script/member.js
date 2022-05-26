@@ -180,7 +180,7 @@ function confirm() {
             console.log(res);
             if (res) {
                 // 驗證碼正確
-                window.location.replace('/CD-Book-Store-System/view/resetPassword/index.html');
+                window.location.replace(`/CD-Book-Store-System/view/resetPassword/index.html?email=${email}&confirm=${confirmNumber}`);
             } else {
                 // 驗證碼錯誤
                 $('#modalConfirmWrong').modal('show');
@@ -189,16 +189,67 @@ function confirm() {
     });
 }
 
+function confirmResetPage() {
+    let url_string = window.location.href;
+    let url = new URL(url_string);
+    let email = url.searchParams.get('email');
+    let confirmNumber = url.searchParams.get('confirm');
+
+    let data = {
+        controller: 'member',
+        method: 'emailExist',
+        parameter: {
+            email: email
+        }
+    };
+    let json = JSON.stringify(data);
+    $.ajax({
+        url: '/CD-Book-Store-System/controller/core.php',
+        method: 'POST',
+        data: json,
+        success: res => {
+            if (res) {
+                window.location.replace("/CD-Book-Store-System/view/404");
+            }
+        }
+    });
+
+    let data1 = {
+        controller: 'member',
+        method: 'getConfirmNumber',
+        parameter: {
+            email: email
+        }
+    };
+    let json1 = JSON.stringify(data1);
+    $.ajax({
+        url: '/CD-Book-Store-System/controller/core.php',
+        method: 'POST',
+        data: json1,
+        success: res => {
+            if (res != confirmNumber) {
+                window.location.replace("/CD-Book-Store-System/view/404");
+            }
+        }
+    });
+}
+
 function resetPassword() {
     let new_password = $('#new_password').val();
     let confirm_password = $('#confirm_password').val();
+    
+    let url_string = window.location.href;
+    let url = new URL(url_string);
+    let email = url.searchParams.get('email');
+    let confirmNumber = url.searchParams.get('confirm');
 
     if (new_password.localeCompare(confirm_password) == 0) {
         let data = {
             controller: 'member',
             method: 'resetPassword',
             parameter: {
-                new_password: new_password
+                new_password: new_password,
+                email: email
             }
         };
         let json = JSON.stringify(data);
