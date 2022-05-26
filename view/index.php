@@ -532,7 +532,7 @@ header("Cache-Control: no-cache");
     <script src="/CD-Book-Store-System/view/src/script/searchProduct.js"></script>
     <script src="/CD-Book-Store-System/view/src/script/member.js"></script>
     <!-- Custom -->
-    <script src="/CD-Book-Store-System/view/src/script/homepage.js"></script>
+    <script src="/CD-Book-Store-System/view/src/script/homepage.js?20220526"></script>
 </body>
 
 </html>
