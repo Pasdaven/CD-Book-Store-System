@@ -84,4 +84,17 @@ class Product extends Model {
 
         return $result;
     }
+
+    public function getRandTenProduct() {
+        $commentList = new CommentList();
+
+        $sql = $this->select($this->table) . " ORDER BY RAND() LIMIT 10";
+        $result = $this->execute($sql);
+        for ($i = 0; $i < count($result); $i++) {
+            $param = array('product_id' => $result[$i]['product_id']);
+            $result[$i]['avg_star'] = $commentList->getAvgStarById($param);
+        }
+
+        return $result;
+    }
 }
