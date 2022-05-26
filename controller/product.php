@@ -3,6 +3,8 @@
 use model\Model;
 
 require_once("commentList.php");
+require_once("followList.php");
+require_once("cart.php");
 
 class Product extends Model {
 
@@ -87,12 +89,16 @@ class Product extends Model {
 
     public function getRandTenProduct() {
         $commentList = new CommentList();
+        $follow_list = new FollowList();
+        $cart = new Cart();
 
         $sql = $this->select($this->table) . " ORDER BY RAND() LIMIT 10";
         $result = $this->execute($sql);
         for ($i = 0; $i < count($result); $i++) {
             $param = array('product_id' => $result[$i]['product_id']);
             $result[$i]['avg_star'] = $commentList->getAvgStarById($param);
+            $result[$i]['member_data']['isFollow'] = $follow_list->isFollow($param);
+            $result[$i]['member_data']['isCart'] = $cart->isCart($param);
         }
 
         return $result;
