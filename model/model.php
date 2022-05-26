@@ -89,4 +89,11 @@ class Model {
     public function leftjoin($table, $kname, $comparator, $kvalue) {
         return " LEFT JOIN ON $table $kname $comparator '$kvalue'";
     }
+    public function selectDistinct($table, $arr = NULL) {
+        if ($arr) {
+            return "SELECT DISTINCT " . implode(',', $arr) . " FROM $table";
+        } else {
+            return "SELECT DISTINCT * FROM $table";
+        }
+    }
 }
