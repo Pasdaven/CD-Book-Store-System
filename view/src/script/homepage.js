@@ -48,7 +48,7 @@ const truncate = (str, n) => {
 /* Component */
 const browsingHistoryComponent = (data) => {
     let html = `
-    <div class="col-12 browsing-history-component mb-3 p-3 d-flex">
+    <div class="col-12 browsing-history-component mb-3 p-3 d-flex" onclick="jumpProductPage(${data[0][0]["product_id"]})">
         <div class="browsing-history-image">
             <img src="${data[0][0]["product_image"]}" />
         </div>
@@ -76,7 +76,7 @@ const forYouComponent = (data) => {
             <div class="col-12 foryou-product-info">
                 <div class="row">
                     <div class="col-4 d-flex justify-content-center foryou-product-image">
-                        <img src="${data["product_image"]}" />
+                        <img src="${data["product_image"]}" onclick="jumpProductPage(${data["product_id"]})"/>
                     </div>
                     <div class="col-8 foryou-product-info-text pe-3">
                         <div class="row">
