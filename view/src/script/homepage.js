@@ -27,7 +27,7 @@ const getRandTenProduct = () => {
 const getBrowsingHistory = () => {
     let data = {
         controller: "browserHistory",
-        method: "getBrowserHis",
+        method: "getDistinctBrowserHis",
     };
     let json = JSON.stringify(data);
     $.ajax({
