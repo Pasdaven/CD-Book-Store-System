@@ -177,6 +177,10 @@ body {
     color: #8c929b;
     font-size: 20px;
 }
+.browsing-history-component-wrap {
+    height: 90%;
+    overflow-y: scroll;
+}
 .browsing-history-component {
     transition: 0.5s;
     border-top-right-radius: 15px;
@@ -224,6 +228,10 @@ body {
 .strong-black {
     color: black;
 }
+.foryou-component-area {
+    height: 90%;
+    overflow-y: scroll;
+}
 .foryou-component {
     height: 30vh;
 }
@@ -234,14 +242,20 @@ body {
     border-radius: 5px;
 }
 .foryou-component:hover > .wrap {
+    -webkit-box-shadow: 2px 2px 12px 0px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 2px 2px 12px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 2px 12px 0px rgba(0, 0, 0, 0.1);
     transition: 0.5s;
-    cursor: pointer;
-    -webkit-box-shadow: 6px 6px 48px -17px rgba(0, 0, 0, 0.3);
-    -moz-box-shadow: 6px 6px 48px -17px rgba(0, 0, 0, 0.3);
-    box-shadow: 6px 6px 48px -17px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
 }
-.foryou-star {
+.foryou-heart {
     height: 16%;
+}
+.heart {
+    color: #F0B0B0;
+}
+.heart:hover {
+    cursor: pointer;
 }
 .foryou-product-info {
     height: 68%;
@@ -257,6 +271,12 @@ body {
 }
 .foryou-product-info img {
     height: 100%;
+    transition: 0.4s;
+}
+.foryou-product-info img:hover {
+    margin-top: -10px;
+    cursor: pointer;
+    transition: 0.4s;
 }
 .foryou-product-info-text {
     height: 100%;
@@ -293,9 +313,22 @@ body {
     color: #9199a0;
     font-size: 16px;
 }
-.for-you-cart-btn {
+.cart-btn {
     color: #9199a0;
     letter-spacing: 4px;
+    transition: 0.4s;
+}
+.add-to-cart-btn:hover {
+    cursor: pointer;
+    margin-right: 10px;
+    transition: 0.4s;
+    color: #b1dee9;
+}
+.remove-from-cart-btn:hover {
+    cursor: pointer;
+    margin-right: 10px;
+    transition: 0.4s;
+    color: #F0B0B0;;
 }
 
 /* Nav Bar */
