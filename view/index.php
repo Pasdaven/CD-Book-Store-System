@@ -333,6 +333,7 @@ header("Cache-Control: no-cache");
                     <div class="head p-4">
                         <h1><i class="bi bi-clock-history me-2"></i>Recent Browsing</h1>
                     </div>
+                    <div class="browsing-history-component-wrap" id="browsing-history-component-wrap"></div>
                 </div>
                 <!-- Recent Area End -->
                 <!-- Foryou Area -->
