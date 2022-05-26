@@ -67,11 +67,14 @@ const browsingHistoryComponent = (data) => {
     return html;
 };
 const forYouComponent = (data) => {
+    let followHeartIconType = data['member_data']['isFollow'][0] ? "bi-heart-fill" : "bi-heart";
+    let cartBtnType = data['member_data']['isCart'][0] ? "remove-from-cart-btn" : "add-to-cart-btn";
+    let cartText = data['member_data']['isCart'][0] ? "Remove From Cart" : "Add To Cart";
     let html = `
     <div class="col-6 foryou-component p-3">
         <div class="row wrap mx-1">
-            <div class="col-12 for-youstar d-flex justify-content-end pt-3 pe-3">
-                <i class="bi bi-heart"></i>
+            <div class="col-12 foryou-heart d-flex justify-content-end pt-3 pe-3">
+                <i class="bi heart ${followHeartIconType}"></i>
             </div>
             <div class="col-12 foryou-product-info">
                 <div class="row">
@@ -100,8 +103,10 @@ const forYouComponent = (data) => {
                     </div>
                 </div>
             </div>
-            <div class="col-12 for-you-cart-btn d-flex justify-content-end pb-3 pe-3">
-                <i class="bi bi-cart-fill me-2"></i>Add To Cart
+            <div class="col-12 d-flex justify-content-end pb-3 pe-3">
+                <div class="cart-btn ${cartBtnType}">
+                    <i class="bi bi-cart-fill me-2" onclick="console.log('test');"></i>${cartText}
+                </div>
             </div>
         </div>
     </div>
