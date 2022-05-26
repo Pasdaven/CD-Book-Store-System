@@ -330,14 +330,14 @@ header("Cache-Control: no-cache");
             <div class="row m-0 p-0">
                 <!-- Recent Area -->
                 <div class="col-3 recent-area ps-3 p-0" id="recent-area">
-                    <div class="head p-4 mb-3">
+                    <div class="head p-4">
                         <h1><i class="bi bi-clock-history me-2"></i>Recent Browsing</h1>
                     </div>
                 </div>
                 <!-- Recent Area End -->
                 <!-- Foryou Area -->
                 <div class="col-9 foryou-area pe-5">
-                    <div class="head py-4 mb-3">
+                    <div class="head py-4">
                         <h1><i class="bi bi-star me-2"></i>For <strong class="strong-black">You</strong></h1>
                     </div>
                     <div class="row foryou-component-area m-0" id="foryou-component-area">
