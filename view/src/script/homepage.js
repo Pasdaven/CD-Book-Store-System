@@ -110,6 +110,10 @@ const forYouComponent = (data) => {
 };
 
 /* Dom */
+const jumpProductPage = (product_id) => {
+    let url = "/CD-Book-Store-System/view/product/index.html?id=" + product_id;
+    window.location = url;
+}
 const displayHistory = (data) => {
     data.forEach((element) => {
         $("#recent-area").append(browsingHistoryComponent(element));
