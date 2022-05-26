@@ -33,4 +33,19 @@ class BrowserHistory extends Model {
         $sql = $this->delete() . $this->where('member_id', '=', $member_id) . $this->and('product_id', '=', $product_id);
         $this->execute($sql);
     }
+
+    public function getDistinctBrowserHis() {
+        $member_id = $_SESSION['member_id'];
+        $sql = $this->selectDistinct($this->table, ['product_id']) . $this->where('member_id', '=', $member_id) . $this->orderby('browsing_his_id', 'DESC');
+        // return $sql;
+        $result = $this->execute($sql);
+        // return $result;
+        $commentlist = new CommentList();
+        $product = new Product();
+        foreach ($result as $r) {
+            $param['product_id'] = $r['product_id'];
+            $arr[] = [0 => $product->searchProductById($param), 1 => $r, 2 => $commentlist->getAvgStarById($param)];
+        }
+        return $arr;
+    }
 }
