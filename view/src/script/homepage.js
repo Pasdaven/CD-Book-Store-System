@@ -121,7 +121,7 @@ const jumpProductPage = (product_id) => {
 }
 const displayHistory = (data) => {
     data.forEach((element) => {
-        $("#recent-area").append(browsingHistoryComponent(element));
+        $("#browsing-history-component-wrap").append(browsingHistoryComponent(element));
     });
 };
 const displayRate = (data) => {
