@@ -12,7 +12,7 @@ class Mailer extends Model {
         $to  = $email;
 
         // Subject
-        $subject = 'Pascal Store reset password';
+        $subject = 'Pascal Store | reset password';
 
         // Message
         $message = $renderer->render('
@@ -39,7 +39,7 @@ class Mailer extends Model {
             <mj-section background-color="#fafafa">
             <mj-column>
                 <mj-text letter-spacing="2px" line-height="26px" color="gray">
-                You received this email because you requested to reset password to Pascal Store. If you didn not request to reset password, you can safely ignore this email.
+                You received this email because you requested to reset password to Pascal Store. If you did not request to reset password, you can safely ignore this email.
                 </mj-text>
             </mj-column>
             </mj-section>
