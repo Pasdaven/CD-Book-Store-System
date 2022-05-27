@@ -291,6 +291,10 @@ const jumpProductPage = (product_id) => {
     let url = "/CD-Book-Store-System/view/product/?id=" + product_id;
     window.location = url;
 };
+const jumpLoginPage = () => {
+    let url = "/CD-Book-Store-System/view/login";
+            window.location = url;
+}
 const displayHistory = (data) => {
     data.forEach((element) => {
         $("#browsing-history-component-wrap").append(browsingHistoryComponent(element));
