@@ -320,6 +320,9 @@ section {
     height: 90%;
     overflow-y: scroll;
 }
+.commentComponentArea .no-comment-text {
+    color: #9199a0;
+}
 .commentComponent {
     transition: 0.6s;
     background: white;

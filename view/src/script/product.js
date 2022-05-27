@@ -5,15 +5,29 @@ $(() => {
     /* Navbar End */
     let product_id = getUrl();
     searchProductById(product_id);
+    searchComment(product_id);
     createBrowsingHistory();
     checkFollow();
     checkCart();
 });
 
+/* logic */
+const displayFollowBtn = (data) => {
+    data == "" ? showFollowBtn() : showUnFollowBtn();
+};
+
+const displayCartBtn = (data) => {
+    data == "" ? showCartBtn() : showUnCartBtn();
+};
+
 /* DOM Function */
 const getUrl = () => {
     let param = new URLSearchParams(window.location.search);
     return param.get("id");
+};
+
+const display404 = () => {
+    window.location.replace("/CD-Book-Store-System/view/404");
 };
 
 const displayData = (data) => {
@@ -29,19 +43,18 @@ const displayData = (data) => {
     displayRate(data);
 };
 
-const displayFollowBtn = (data) => {
-    data == "" ? showFollowBtn() : showUnFollowBtn();
-};
 const showFollowBtn = () => {
     $("#follow_btn_txt").html("Follow");
     $("#follow_btn").removeClass("unFollow-btn");
     $("#follow_btn").addClass("follow-btn");
 };
+
 const showUnFollowBtn = () => {
     $("#follow_btn_txt").html("Unfollow");
     $("#follow_btn").removeClass("follow-btn");
     $("#follow_btn").addClass("unFollow-btn");
 };
+
 $("#follow_btn").click(() => {
     if ($("#follow_btn").hasClass("follow-btn")) {
         addToFollow();
@@ -52,19 +65,18 @@ $("#follow_btn").click(() => {
     }
 });
 
-const displayCartBtn = (data) => {
-    data == "" ? showCartBtn() : showUnCartBtn();
-};
 const showCartBtn = () => {
     $("#cart_btn_txt").html("Add To Cart");
     $("#cart_btn").removeClass("unCart-btn");
     $("#cart_btn").addClass("cart-btn");
 };
+
 const showUnCartBtn = () => {
     $("#cart_btn_txt").html("Remove");
     $("#cart_btn").removeClass("cart-btn");
     $("#cart_btn").addClass("unCart-btn");
 };
+
 $("#cart_btn").click(() => {
     if ($("#cart_btn").hasClass("cart-btn")) {
         addToCart();
@@ -74,6 +86,111 @@ $("#cart_btn").click(() => {
         showCartBtn();
     }
 });
+
+const displayRate = (data) => {
+    let rate = parseInt(data[0]["avg_star"][0]["AVG(star)"]);
+    switch (rate) {
+        case 1:
+            $(".star1").addClass("bi-star-fill");
+            $(".star2, .star3, .star4, .star5").addClass("bi-star");
+            break;
+        case 2:
+            $(".star1, .star2").addClass("bi-star-fill");
+            $(".star3, .star4, .star5").addClass("bi-star");
+            break;
+        case 3:
+            $(".star1, .star2, .star3").addClass("bi-star-fill");
+            $(".star4, .star5").addClass("bi-star");
+            break;
+        case 4:
+            $(".star1, .star2, .star3, .star4").addClass("bi-star-fill");
+            $(".star5").addClass("bi-star");
+            break;
+        case 5:
+            $(".star1, .star2, .star3, .star4, .star5").addClass("bi-star-fill");
+            break;
+    }
+};
+
+const displayComment = (comment) => {
+    let html = `
+    <div class="commentComponent">
+        <div class="commentProfileImageArea">
+            <img src="../src/image/profile-image.png" class="profileImg" />
+        </div>
+        <div class="commentTextArea">
+            <div class="commentTextHead">
+                <div class="commentUserName">
+                    <h1>${comment["member_name"]}</h1>
+                </div>
+                <div class="commentTextRate">
+                
+    `
+    switch (comment["star"]) {
+        case "1":
+            html += `
+                    <i class="bi bi-star-fill starDark"></i>
+                    <i class="bi bi-star starDark"></i>
+                    <i class="bi bi-star starDark"></i>
+                    <i class="bi bi-star starDark"></i>
+                    <i class="bi bi-star starDark"></i>
+            `;
+            break;
+        case "2":
+            html += `
+                    <i class="bi bi-star-fill starDark"></i>
+                    <i class="bi bi-star-fill starDark"></i>
+                    <i class="bi bi-star starDark"></i>
+                    <i class="bi bi-star starDark"></i>
+                    <i class="bi bi-star starDark"></i>
+            `;
+            break;
+        case "3":
+            html += `
+                    <i class="bi bi-star-fill starDark"></i>
+                    <i class="bi bi-star-fill starDark"></i>
+                    <i class="bi bi-star-fill starDark"></i>
+                    <i class="bi bi-star starDark"></i>
+                    <i class="bi bi-star starDark"></i>
+            `;
+            break;
+        case "4":
+            html += `
+                    <i class="bi bi-star-fill starDark"></i>
+                    <i class="bi bi-star-fill starDark"></i>
+                    <i class="bi bi-star-fill starDark"></i>
+                    <i class="bi bi-star-fill starDark"></i>
+                    <i class="bi bi-star starDark"></i>
+            `;
+            break;
+        case "5":
+            html += `
+                    <i class="bi bi-star-fill starDark"></i>
+                    <i class="bi bi-star-fill starDark"></i>
+                    <i class="bi bi-star-fill starDark"></i>
+                    <i class="bi bi-star-fill starDark"></i>
+                    <i class="bi bi-star-fill starDark"></i>
+            `;
+            break;
+    }
+    html += `
+                </div>
+            </div>
+            <div class="commentTextBody">
+                <p class="commentText">${comment["product_comment"]}</p>
+            </div>
+        </div>
+    </div>
+    `;
+    $("#commentComponentArea").append(html);
+};
+
+const displayNoComment = () => {
+    let html = `
+    <h5 class="no-comment-text">There are no comments for this product yet.</h5>
+    `
+    $("#commentComponentArea").append(html);
+}
 
 /* Ajax Function */
 const searchProductById = (product_id) => {
@@ -183,7 +300,6 @@ const addToFollow = () => {
         url: "/CD-Book-Store-System/controller/core.php",
         method: "POST",
         data: json,
-        success: (res) => console.log("follow"),
     });
 };
 
@@ -201,7 +317,6 @@ const removeFollow = () => {
         url: "/CD-Book-Store-System/controller/core.php",
         method: "POST",
         data: json,
-        success: (res) => console.log("un follow"),
     });
 };
 
@@ -237,7 +352,6 @@ const addToCart = () => {
         url: "/CD-Book-Store-System/controller/core.php",
         method: "POST",
         data: json,
-        success: (res) => console.log("add to cart"),
     });
 };
 
@@ -255,7 +369,6 @@ const removeCart = () => {
         url: "/CD-Book-Store-System/controller/core.php",
         method: "POST",
         data: json,
-        success: (res) => console.log("remove cart"),
     });
 };
 
@@ -276,31 +389,27 @@ const createBrowsingHistory = () => {
     });
 };
 
-const displayRate = (data) => {
-    let rate = parseInt(data[0]["avg_star"][0]["AVG(star)"]);
-    switch (rate) {
-        case 1:
-            $(".star1").addClass("bi-star-fill");
-            $(".star2, .star3, .star4, .star5").addClass("bi-star");
-            break;
-        case 2:
-            $(".star1, .star2").addClass("bi-star-fill");
-            $(".star3, .star4, .star5").addClass("bi-star");
-            break;
-        case 3:
-            $(".star1, .star2, .star3").addClass("bi-star-fill");
-            $(".star4, .star5").addClass("bi-star");
-            break;
-        case 4:
-            $(".star1, .star2, .star3, .star4").addClass("bi-star-fill");
-            $(".star5").addClass("bi-star");
-            break;
-        case 5:
-            $(".star1, .star2, .star3, .star4, .star5").addClass("bi-star-fill");
-            break;
-    }
-};
-
-const display404 = () => {
-    window.location.replace("/CD-Book-Store-System/view/404");
+const searchComment = (product_id) => {
+    let data = {
+        controller: "commentList",
+        method: "getCommentByProductId",
+        parameter: {
+            product_id: product_id,
+        },
+    };
+    let json = JSON.stringify(data);
+    $.ajax({
+        url: "/CD-Book-Store-System/controller/core.php",
+        method: "POST",
+        data: json,
+        success: (res) => {
+            if (res != "") {
+                res.forEach((element) => {
+                    displayComment(element);
+                });
+            } else {
+                displayNoComment();
+            }
+        },
+    });
 };

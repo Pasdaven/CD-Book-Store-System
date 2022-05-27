@@ -1,6 +1,7 @@
 <?php
 
 use model\Model;
+require_once "member.php";
 
 class CommentList extends Model {
     protected $table = 'comment_list';
@@ -34,5 +35,15 @@ class CommentList extends Model {
         $product_id = $param['product_id'];
         $sql = $this->select($this->table, ['AVG(star)']) . $this->where('product_id', '=', $product_id);
         return $this->execute($sql);
+    }
+    public function getCommentByProductId($param) {
+        $member = new Member();
+        $product_id = $param['product_id'];
+        $sql = $this->select($this->table) . $this->where('product_id', '=', $product_id);
+        $result = $this->execute($sql);
+        for ($i = 0; $i < count($result); $i++) {
+            $result[$i]['member_name'] = $member->getMemberNameByMemberId($result[$i]['member_id'])[0]['member_name'];
+        }
+        return $result;
     }
 }
