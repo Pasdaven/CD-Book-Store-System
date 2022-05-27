@@ -99,45 +99,55 @@ function loadAdList() {
         data: json,
         success: res => {
             console.log(res);
-            for (var i = 0; i < res.length; i++) {
-                let discount = res[i]['product_discount'];
-                let data = {
-                    controller: 'product',
-                    method: 'searchProductById',
-                    parameter: {
-                        product_id: res[i]['product_id']
-                    }
-                };
-                let json = JSON.stringify(data);
-                $.ajax({
-                    url: '/CD-Book-Store-System/controller/core.php',
-                    method: 'POST',
-                    data: json,
-                    success: res => {
-                        console.log(res);
-                        list = `
-                        <div class="shadow card p-4 my-4">
-                            <div class="d-flex">
-                                <div class="px-3"><img src="${res[0]['product_image']}" alt="" width="165" height="237"></div>
-                                <div class="flex-fill d-flex flex-column">
-                                    <div class="flex-fill d-flex justify-content-center">
-                                        <h1 style="color: #3F4953;font-size:24px;">${res[0]['product_name']}</h1>
-                                    </div>
-                                    <div class="flex-fill d-flex justify-content-center">
-                                    <h1 style="color: #3F4953; font-size:24px;">Discount : ${discount}</h1>
-                                        <h1 style="color: #3F4953; font-size:24px; margin-left: 20px;">After Discount Price : ${res[0]['product_price']}</h1>
-                                    </div>
-                                    <div class="d-flex justify-content-center">
-                                        <button type="button" class="btn red" onclick="checkDeleteAd(${res[0]['product_id']}, ${discount});">Delete AD</button>
+
+            if (res.length == 0) {
+                noAd = `
+                <h1 class="d-flex justify-content-center align-items-center" style="height:500px;">No Product AD</h1>
+                `
+                $('#AdList').append(noAd);
+            } else {
+                for (var i = 0; i < res.length; i++) {
+                    let discount = res[i]['product_discount'];
+                    let data = {
+                        controller: 'product',
+                        method: 'searchProductById',
+                        parameter: {
+                            product_id: res[i]['product_id']
+                        }
+                    };
+                    let json = JSON.stringify(data);
+                    $.ajax({
+                        url: '/CD-Book-Store-System/controller/core.php',
+                        method: 'POST',
+                        data: json,
+                        success: res => {
+                            console.log(res);
+                            list = `
+                            <div class="shadow card p-4 my-4">
+                                <div class="d-flex">
+                                    <div class="px-3"><img src="${res[0]['product_image']}" alt="" width="165" height="237"></div>
+                                    <div class="flex-fill d-flex flex-column">
+                                        <div class="flex-fill d-flex justify-content-center">
+                                            <h1 style="color: #3F4953;font-size:24px;">${res[0]['product_name']}</h1>
+                                        </div>
+                                        <div class="flex-fill d-flex justify-content-center">
+                                        <h1 style="color: #3F4953; font-size:24px;">Discount : ${discount}</h1>
+                                            <h1 style="color: #3F4953; font-size:24px; margin-left: 20px;">After Discount Price : ${res[0]['product_price']}</h1>
+                                        </div>
+                                        <div class="d-flex justify-content-center">
+                                            <button type="button" class="btn red" onclick="checkDeleteAd(${res[0]['product_id']}, ${discount});">Delete AD</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        `
-                        $('#AdList').append(list);
-                    }
-                });
+                            `
+                            $('#AdList').append(list);
+                        }
+                    });
+                }
             }
+
+
         }
     });
 }
