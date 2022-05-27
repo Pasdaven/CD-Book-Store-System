@@ -74,6 +74,40 @@ const removeFromCart = (product_id) => {
     });
 };
 
+const addToFollow = (product_id) => {
+    let data = {
+        controller: "followList",
+        method: "insertFollowList",
+        parameter: {
+            product_id: product_id,
+        },
+    };
+    let json = JSON.stringify(data);
+    $.ajax({
+        url: "/CD-Book-Store-System/controller/core.php",
+        method: "POST",
+        data: json,
+        success: (res) => console.log("follow"),
+    });
+};
+
+const removeFollow = (product_id) => {
+    let data = {
+        controller: "followList",
+        method: "deleteFollowList",
+        parameter: {
+            product_id: product_id,
+        },
+    };
+    let json = JSON.stringify(data);
+    $.ajax({
+        url: "/CD-Book-Store-System/controller/core.php",
+        method: "POST",
+        data: json,
+        success: (res) => console.log("un follow"),
+    });
+};
+
 /* Logic */
 const truncate = (str, n) => {
     return str.length > n ? str.substr(0, n - 1) + "&hellip;" : str;
