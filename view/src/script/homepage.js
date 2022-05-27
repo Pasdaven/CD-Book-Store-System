@@ -172,7 +172,9 @@ const forYouComponent = (data) => {
     <div class="col-6 foryou-component p-3">
         <div class="row wrap mx-1">
             <div class="col-12 foryou-heart d-flex justify-content-end pt-3 pe-3">
-                <i class="bi heart ${followHeartIconType}"></i>
+                <i class="bi heart ${followHeartIconType} follow-btn-${
+        data["product_id"]
+    }" onclick="updateFollowState(${data["product_id"]});"></i>
             </div>
             <div class="col-12 foryou-product-info">
                 <div class="row">
@@ -202,8 +204,12 @@ const forYouComponent = (data) => {
                 </div>
             </div>
             <div class="col-12 d-flex justify-content-end pb-3 pe-3">
-                <div class="cart-btn ${cartBtnType}">
-                    <i class="bi bi-cart-fill me-2" onclick="console.log('test');"></i>${cartText}
+                <div class="cart-btn ${cartBtnType} cart-btn-${data["product_id"]}" onclick="updateCartState(${
+        data["product_id"]
+    });">
+                    <i class="bi bi-cart-fill me-2"></i><span class="cart-text cart-text-${
+                        data["product_id"]
+                    }">${cartText}</span>
                 </div>
             </div>
         </div>
