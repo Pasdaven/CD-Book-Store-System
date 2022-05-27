@@ -165,9 +165,9 @@ const browsingHistoryComponent = (data) => {
     return html;
 };
 const forYouComponent = (data) => {
-    let followHeartIconType = data['member_data']['isFollow'][0] ? "bi-heart-fill" : "bi-heart";
-    let cartBtnType = data['member_data']['isCart'][0] ? "remove-from-cart-btn" : "add-to-cart-btn";
-    let cartText = data['member_data']['isCart'][0] ? "Remove From Cart" : "Add To Cart";
+    let followHeartIconType = data["member_data"]["isFollow"][0] ? "bi-heart-fill" : "bi-heart";
+    let cartBtnType = data["member_data"]["isCart"][0] ? "remove-from-cart-btn" : "add-to-cart-btn";
+    let cartText = data["member_data"]["isCart"][0] ? "Remove From Cart" : "Add To Cart";
     let html = `
     <div class="col-6 foryou-component p-3">
         <div class="row wrap mx-1">
@@ -216,7 +216,7 @@ const forYouComponent = (data) => {
 const jumpProductPage = (product_id) => {
     let url = "/CD-Book-Store-System/view/product/index.html?id=" + product_id;
     window.location = url;
-}
+};
 const displayHistory = (data) => {
     data.forEach((element) => {
         $("#browsing-history-component-wrap").append(browsingHistoryComponent(element));
