@@ -57,7 +57,9 @@ class Product extends Model {
         $product_image = $param['product_image'];
         $product_price = $param['product_price'];
         $product_number = $param['product_number'];
-        $sql = $this->insert(['product_name' => $product_name, 'product_description' => $product_description, 'product_image' => $product_image, 'product_price' => $product_price, 'product_number' => $product_number]);
+        $product_author = $param['product_author'];
+        $color_theme = $param['color_theme'];
+        $sql = $this->insert(['color_theme' => $color_theme, 'product_author' => $product_author, 'product_name' => $product_name, 'product_description' => $product_description, 'product_image' => $product_image, 'product_price' => $product_price, 'product_number' => $product_number]);
 
         return $this->execute($sql);
     }
