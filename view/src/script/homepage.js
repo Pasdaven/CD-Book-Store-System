@@ -339,6 +339,11 @@ const displayAd = (data) => {
     $('#ad-area').append(adComponentEnd());
 };
 
+const homepageLogout = () => {
+    logout();
+    location.reload();
+}
+
 /* Animation Control */
 const heartBtnBounce = (followBtnClass) => {
     $(followBtnClass).addClass("bounce");
