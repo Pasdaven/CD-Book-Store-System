@@ -110,6 +110,20 @@ const removeFollow = (product_id) => {
     });
 };
 
+const getAd = () => {
+    let data = {
+        controller: "ad",
+        method: "getAdProductInfo",
+    };
+    let json = JSON.stringify(data);
+    $.ajax({
+        url: "/CD-Book-Store-System/controller/core.php",
+        method: "POST",
+        data: json,
+        success: (res) => displayAd(res),
+    });
+};
+
 /* Logic */
 const truncate = (str, n) => {
     return str.length > n ? str.substr(0, n - 1) + "&hellip;" : str;
