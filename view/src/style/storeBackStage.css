@@ -1,0 +1,165 @@
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* custom scrollbar */
+::-webkit-scrollbar {
+    width: 20px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #d6dee1;
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #cad3d6;
+}
+
+.page {
+    background-color: #F3F5F7;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.title {
+    margin-top: 20px;
+    width: 440px;
+    font-size: 36px;
+}
+
+.card {
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    box-shadow: 0px 15px 41px -11px rgba(0, 0, 0, 0.56);
+    width: 500px;
+    height: 500px;
+    overflow: hidden;
+    position: relative;
+}
+
+.card:nth-child(1) {
+    background-color: #B1DEE9;
+}
+
+.card .icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: 1s;
+    z-index: 1;
+}
+
+.card .icon img {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: 1s;
+    z-index: 1
+}
+
+.card:nth-child(1) .icon {
+    background: #e3f2fd;
+}
+
+.card:hover .icon {
+    top: 20px;
+    left: calc(50% - 40px);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.card .icon i {
+    color: white;
+    font-size: 80px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: 1s;
+    z-index: 1
+}
+
+.card:hover .icon i {
+    font-size: 40px;
+}
+
+.card .details {
+    position: absolute;
+    height: 350px;
+    text-align: center;
+    padding: 20px;
+    top: 120px;
+    color: white;
+    font-size: 16px;
+    line-height: 1.8rem;
+}
+
+.button {
+    width: 50px;
+    position: relative;
+    width: 250px;
+    display: inline-block;
+    color: #A19A9A;
+    text-decoration: none;
+    border-radius: 5px;
+    border: solid 1px #ECFBB2;
+    background: #ECFBB2;
+    text-align: center;
+    padding: 16px 18px 14px;
+    margin: 12px;
+
+    -webkit-transition: all 0.1s;
+    -moz-transition: all 0.1s;
+    transition: all 0.1s;
+
+    -webkit-box-shadow: 0px 6px 0px #d7e4a1;
+    -moz-box-shadow: 0px 6px 0px #d7e4a1;
+    box-shadow: 0px 6px 0px #d7e4a1;
+}
+
+.button:active {
+    -webkit-box-shadow: 0px 2px 0px #ECFBB2;
+    -moz-box-shadow: 0px 2px 0px #ECFBB2;
+    box-shadow: 0px 2px 0px #ECFBB2;
+    position: relative;
+    top: 4px;
+}
+
+.button:hover {
+    color: #A19A9A;
+}
+
+.btn {
+    border-radius: 20px;
+    padding: 10px 10px;
+    font-size: 22px;
+    text-decoration: none;
+    margin: 5px;
+    color: #A19A9A;
+    position: relative;
+    display: inline-block;
+}
+
+.green {
+    background-color: #ECFBB2;
+}
+
+.green:hover {
+    color: #A19A9A;
+}

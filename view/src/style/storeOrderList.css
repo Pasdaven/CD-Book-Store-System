@@ -82,6 +82,11 @@ body {
     content: center;
 }
 
+.product_list {
+    height: 180px;
+    overflow-y: scroll;
+}
+
 .btn {
     border-radius: 20px;
     padding: 10px 10px;

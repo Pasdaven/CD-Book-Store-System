@@ -98,7 +98,6 @@ function loadAdList() {
         method: 'POST',
         data: json,
         success: res => {
-            console.log(res);
 
             if (res.length == 0) {
                 noAd = `
@@ -121,7 +120,6 @@ function loadAdList() {
                         method: 'POST',
                         data: json,
                         success: res => {
-                            console.log(res);
                             list = `
                             <div class="shadow card p-4 my-4">
                                 <div class="d-flex">

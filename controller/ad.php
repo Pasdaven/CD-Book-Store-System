@@ -1,6 +1,7 @@
 <?php
 
 use model\Model;
+require_once "product.php";
 
 class Ad extends Model {
     protected $table = 'ad';
@@ -30,5 +31,16 @@ class Ad extends Model {
     public function getAd() {
         $sql = $this->select($this->table);
         return $this->execute($sql);
+    }
+    
+    public function getAdProductInfo() {
+        $product = new Product();
+        $sql = $this->select($this->table);
+        $result = $this->execute($sql);
+        for ($i = 0; $i < count($result); $i++) {
+            $param = array("product_id" => $result[$i]["product_id"]);
+            $result[$i]['product_info'] = $product->searchProductById($param);
+        }
+        return $result;
     }
 }
