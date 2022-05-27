@@ -5,32 +5,15 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pascal Store | Home</title>
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous" />
+    <link rel="stylesheet" href="../src/style/product.css?05270859" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css" />
-    <link rel="stylesheet" href="src/style/homepage.css?2022052801" />
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
     <link rel="shortcut icon" href="/CD-Book-Store-System/view/src/image/logo.png" type="image/x-icon" />
+    <title>Pascal Store</title>
 </head>
 
 <body>
-
-    <div class="loading-area" id="loading-area">
-        <div class="logo-box" id="logo-box">
-            <div class="shine">
-                <div class="logo-text">
-                    <h1><strong>Pascal Store</strong></h1>
-                </div>
-            </div>
-        </div>
-        <div class="left-box" id="left-box">
-
-        </div>
-        <div class="right-box" id="right-box">
-
-        </div>
-    </div>
-
     <?php
 
     session_start();
@@ -89,7 +72,7 @@
                 </div>
             </div>
             <div class="offcanvas-footer d-flex justify-content-center">
-                <a type="button" class="offcanvas_btn" href="" onclick="homepageLogout()"><i class="bi bi-box-arrow-left mx-2"></i>Log out</a>
+                <a type="button" class="offcanvas_btn" href="" onclick="logout()"><i class="bi bi-box-arrow-left mx-2"></i>Log out</a>
             </div>
         </div>
         <!-- Navbar end -->
@@ -113,7 +96,7 @@
                 </div>
                 <div class="col-6 d-flex justify-content-center">
                     <div class="nav-item gradient-text">
-                        <a href="" class="navbar_topic">
+                        <a href="/CD-Book-Store-System/view/" class="navbar_topic">
                             <h1><strong>Pascal Store</strong></h1>
                         </a>
                     </div>
@@ -134,46 +117,99 @@
 
     ?>
 
-    <div class="container-full">
-        <!-- Ad Area -->
-        <div class="ad-area" id="ad-area">
-            <div class="col-3 ad-wrap p-3"></div>
-        </div>
-        <!-- Ad End -->
-        <!-- Content Area -->
-        <div class="content-area">
-            <div class="row m-0 p-0">
-                <!-- Recent Area -->
-                <div class="col-3 recent-area ps-3 p-0" id="recent-area">
-                    <div class="head p-4">
-                        <h1><i class="bi bi-clock-history me-2"></i>Recent Browsing</h1>
-                    </div>
-                    <div class="browsing-history-component-wrap" id="browsing-history-component-wrap"></div>
-                </div>
-                <!-- Recent Area End -->
-                <!-- Foryou Area -->
-                <div class="col-9 foryou-area pe-5" id="foryou-area">
-                    <div class="head py-4">
-                        <h1><i class="bi bi-star me-2"></i>For <strong class="strong-black">You</strong></h1>
-                    </div>
-                    <div class="row foryou-component-area m-0" id="foryou-component-area">
+    <!-- Navbar end -->
+    <div class="page">
+        <!-- contentArea -->
+        <section class="contentArea" id="contentArea">
+            <div class="productWrap">
+                <!-- productLeftBox -->
+                <div class="productLeftBox">
+                    <img src="" class="book-img" id="product_image" />
+                    <div class="rate">
+                        <i class="bi star1 star"></i>
+                        <i class="bi star2 star"></i>
+                        <i class="bi star3 star"></i>
+                        <i class="bi star4 star"></i>
+                        <i class="bi star5 star"></i>
                     </div>
                 </div>
-                <!-- Foryou Area End -->
+                <!-- productLeftBox end -->
+                <!-- productRightBox -->
+                <div class="productRightBox">
+                    <div class="product-text">
+                        <h1 class="book-name" id="product_name"></h1>
+                        <h2 class="book-auth">by <a id="product_author"></a></h2>
+                        <p class="book-description" id="product_description"></p>
+                    </div>
+                    <div class="price">
+                        <p class="price-text">
+                            <strong>NT$ <a id="product_price"></a></strong>
+                        </p>
+                    </div>
+                    <div class="btn-area">
+                        <button class="follow-btn" id="follow_btn">
+                            <a id="follow_btn_txt"></a><i class="bi bi-heart-fill"></i>
+                        </button>
+                        <button class="cart-btn" id="cart_btn">
+                            <a id="cart_btn_txt"></a><i class="bi bi-cart-fill"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- productRightBox end -->
             </div>
-        </div>
-        <!-- Content Area End -->
+            <div class="scrollHint" onclick="document.getElementById('commentArea').scrollIntoView({behavior: 'smooth'});">
+                <p>Scroll to see comments</p>
+                <div class="scrollIcon">
+                    <i class="bi bi-chevron-compact-down"></i>
+                </div>
+            </div>
+        </section>
+        <!-- contentArea end -->
+        <!-- commentArea -->
+        <section class="commentArea" id="commentArea">
+            <div class="commentWrap">
+                <!-- commentLeftBox -->
+                <div class="commentLeftBox">
+                    <div class="commentImgArea">
+                        <img src="" class="commentBookImg" id="comment_product_image" />
+                    </div>
+                    <div class="commentInfoArea">
+                        <h1 class="commentBookName" id="comment_product_name"></h1>
+                        <h2 class="commentBookAuth">by Ashlee Vance</h2>
+                        <div class="commentRate">
+                            <i class="bi star1 star"></i>
+                            <i class="bi star2 star"></i>
+                            <i class="bi star3 star"></i>
+                            <i class="bi star4 star"></i>
+                            <i class="bi star5 star"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- commentLeftBox end -->
+                <!-- commentRightBox -->
+                <div class="commentRightBox">
+                    <div class="commentTitleArea">
+                        <h1 class="commentTitle">Comments</h1>
+                    </div>
+                    <!-- Comment Component Area -->
+                    <div class="commentComponentArea" id="commentComponentArea"></div>
+                    <!-- Comment Component Area end-->
+                </div>
+                <!-- commentRightBox end -->
+            </div>
+        </section>
+        <!-- commentArea end -->
     </div>
-
-    <!-- Google api jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-    <!-- Navbar -->
-    <script src="/CD-Book-Store-System/view/src/script/searchProduct.js"></script>
-    <script src="/CD-Book-Store-System/view/src/script/member.js"></script>
-    <!-- Custom -->
-    <script src="/CD-Book-Store-System/view/src/script/homepage.js?2022052801"></script>
 </body>
+
+<!-- Google api jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<!-- Navbar js -->
+<script src="/CD-Book-Store-System/view/src/script/member.js"></script>
+<script src="../src/script/searchProduct.js"></script>
+<!-- Custom js -->
+<script src="../src/script/product.js?2022052801"></script>
 
 </html>

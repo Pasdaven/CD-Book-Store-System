@@ -118,8 +118,12 @@ class Member extends Model {
     }
 
     public function getMemberInfo() {
-        $sql = $this->select($this->member_table) . $this->where('member_id', '=', $_SESSION['member_id']);
-        return $this->execute($sql);
+        if (isset($_SESSION['member_id'])) {
+            $sql = $this->select($this->member_table) . $this->where('member_id', '=', $_SESSION['member_id']);
+            return $this->execute($sql);
+        } else {
+            return false;
+        }
     }
 
     public function getMemberAccountById() {
