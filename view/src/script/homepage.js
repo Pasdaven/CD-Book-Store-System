@@ -40,6 +40,40 @@ const getBrowsingHistory = () => {
     });
 };
 
+const addToCart = (product_id) => {
+    let data = {
+        controller: "cart",
+        method: "insertCart",
+        parameter: {
+            product_id: product_id,
+        },
+    };
+    let json = JSON.stringify(data);
+    $.ajax({
+        url: "/CD-Book-Store-System/controller/core.php",
+        method: "POST",
+        data: json,
+        success: (res) => console.log("add to cart"),
+    });
+};
+
+const removeFromCart = (product_id) => {
+    let data = {
+        controller: "cart",
+        method: "deleteCartByMIdPId",
+        parameter: {
+            product_id: product_id,
+        },
+    };
+    let json = JSON.stringify(data);
+    $.ajax({
+        url: "/CD-Book-Store-System/controller/core.php",
+        method: "POST",
+        data: json,
+        success: (res) => console.log("remove cart"),
+    });
+};
+
 /* Logic */
 const truncate = (str, n) => {
     return str.length > n ? str.substr(0, n - 1) + "&hellip;" : str;
