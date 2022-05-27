@@ -97,8 +97,10 @@ class Product extends Model {
         for ($i = 0; $i < count($result); $i++) {
             $param = array('product_id' => $result[$i]['product_id']);
             $result[$i]['avg_star'] = $commentList->getAvgStarById($param);
-            $result[$i]['member_data']['isFollow'] = $follow_list->isFollow($param);
-            $result[$i]['member_data']['isCart'] = $cart->isCart($param);
+            if (isset($_SESSION['member_id'])) {
+                $result[$i]['member_data']['isFollow'] = $follow_list->isFollow($param);
+                $result[$i]['member_data']['isCart'] = $cart->isCart($param);
+            }
         }
 
         return $result;
