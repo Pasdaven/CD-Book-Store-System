@@ -152,7 +152,7 @@
                 </div>
                 <!-- Recent Area End -->
                 <!-- Foryou Area -->
-                <div class="col-9 foryou-area pe-5">
+                <div class="col-9 foryou-area pe-5" id="foryou-area">
                     <div class="head py-4">
                         <h1><i class="bi bi-star me-2"></i>For <strong class="strong-black">You</strong></h1>
                     </div>
