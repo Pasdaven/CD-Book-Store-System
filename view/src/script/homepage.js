@@ -288,7 +288,7 @@ const adComponentEnd = () => {
 
 /* Dom */
 const jumpProductPage = (product_id) => {
-    let url = "/CD-Book-Store-System/view/product/index.html?id=" + product_id;
+    let url = "/CD-Book-Store-System/view/product/?id=" + product_id;
     window.location = url;
 };
 const displayHistory = (data) => {
