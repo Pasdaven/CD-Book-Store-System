@@ -31,6 +31,8 @@ const display404 = () => {
 };
 
 const displayData = (data) => {
+    $("#contentArea").addClass("bg-img-" + data[0]["color_theme"]);
+    $("#commentArea").addClass("bg-" + data[0]["color_theme"]);
     document.title = "Pascal Store | " + data[0]["product_name"];
     $("#product_name").html(data[0]["product_name"]);
     $("#comment_product_name").html(data[0]["product_name"]);
