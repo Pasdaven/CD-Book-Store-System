@@ -38,11 +38,21 @@ section {
 
 /* Content Area */
 .contentArea {
-    background-image: url("../image/product-bg.png");
-    background-size: 100% 100%;
     display: flex;
     flex-flow: column;
     flex-wrap: wrap;
+}
+.bg-img-blue {
+    background-image: url("../image/product-bg-blue.png");
+    background-size: 100% 100%;
+}
+.bg-img-purple {
+    background-image: url("../image/product-bg-purple.png");
+    background-size: 100% 100%;
+}
+.bg-img-red {
+    background-image: url("../image/product-bg-red.png");
+    background-size: 100% 100%;
 }
 
 /* Product Wrap */
@@ -247,10 +257,18 @@ section {
 
 /* Comment Area */
 .commentArea {
-    background: #b1dee9;
     display: flex;
     flex-flow: column;
     flex-wrap: wrap;
+}
+.bg-blue {
+    background: #b1dee9;
+}
+.bg-red {
+    background: #f0b0b0;
+}
+.bg-purple {
+    background: #c7b6df;
 }
 
 /* Comment Wrap */
@@ -369,6 +387,7 @@ section {
     margin-right: 10px;
 }
 .commentText {
+    letter-spacing: 1px;
     color: #8c929b;
     margin: 0;
 }
