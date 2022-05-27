@@ -1,0 +1,102 @@
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* custom scrollbar */
+::-webkit-scrollbar {
+    width: 20px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #d6dee1;
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #cad3d6;
+}
+
+.page {
+    background-color: #F3F5F7;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.title {
+    margin-top: 20px;
+    width: 440px;
+    font-size: 36px;
+}
+
+.card_title {
+    color: #9DAB73;
+}
+
+.card_text {
+    width: 65px;
+}
+
+.orderList {
+    box-sizing: border-box;
+    height: 75vh;
+    overflow-y: scroll;
+}
+
+.orderList_card {
+    width: 1050px;
+    height: 420px;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    box-shadow: -20px -20px #F6FAF1;
+}
+
+.card {
+    border: none;
+    color: #A19A9A;
+}
+
+.card_up {
+    margin-left: 24px;
+}
+
+.card_down {
+    margin-left: 24px;
+}
+
+.state_input {
+    width: 300px;
+    height: 50px;
+    background: #F0F0F0;
+    border-radius: 20px;
+    position: relative;
+    display: inline-block;
+    content: center;
+}
+
+.btn {
+    border-radius: 20px;
+    padding: 10px 10px;
+    font-size: 22px;
+    text-decoration: none;
+    margin: 20px;
+    color: #A19A9A;
+    position: relative;
+    display: inline-block;
+}
+
+.green {
+    background-color: #ECFBB2;
+}
+
+.green:hover {
+    color: #A19A9A;
+}

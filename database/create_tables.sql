@@ -66,7 +66,7 @@ CREATE TABLE cart (
 CREATE TABLE ad (
     ad_id INT UNSIGNED PRIMARY KEY auto_increment COMMENT '廣告編號',
     product_id INT UNSIGNED NOT NULL COMMENT '商品編號',
-    product_discount ENUM ('0.9', '0.85', '0.8') COMMENT '商品特價',
+    product_discount FLOAT UNSIGNED COMMENT '商品特價',
     FOREIGN KEY(product_id) REFERENCES product (product_id)
 ) COMMENT '廣告';
 
