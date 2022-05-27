@@ -279,6 +279,13 @@ const adComponent = (data) => {
     return html;
 };
 
+const adComponentEnd = () => {
+    let html = `
+    <div class="col-3 ad-wrap p-3"></div>
+    `
+    return html;
+}
+
 /* Dom */
 const jumpProductPage = (product_id) => {
     let url = "/CD-Book-Store-System/view/product/index.html?id=" + product_id;
