@@ -185,6 +185,13 @@ const displayComment = (comment) => {
     $("#commentComponentArea").append(html);
 };
 
+const displayNoComment = () => {
+    let html = `
+    <h5 class="no-comment-text">There are no comments for this product yet.</h5>
+    `
+    $("#commentComponentArea").append(html);
+}
+
 /* Ajax Function */
 const searchProductById = (product_id) => {
     let data = {
