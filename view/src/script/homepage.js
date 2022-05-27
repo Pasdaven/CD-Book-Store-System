@@ -113,6 +113,22 @@ const truncate = (str, n) => {
     return str.length > n ? str.substr(0, n - 1) + "&hellip;" : str;
 };
 
+const updateCartState = (product_id) => {
+    let cartBtnClass = ".cart-btn-" + product_id;
+    let cartTextClass = ".cart-text-" + product_id;
+    if ($(cartBtnClass).hasClass("add-to-cart-btn")) {
+        addToCart(product_id);
+        $(cartBtnClass).removeClass("add-to-cart-btn");
+        $(cartBtnClass).addClass("remove-from-cart-btn");
+        $(cartTextClass).html("Remove From Cart");
+    } else {
+        removeFromCart(product_id);
+        $(cartBtnClass).removeClass("remove-from-cart-btn");
+        $(cartBtnClass).addClass("add-to-cart-btn");
+        $(cartTextClass).html("Add To Cart");
+    }
+};
+
 /* Component */
 const browsingHistoryComponent = (data) => {
     let html = `
