@@ -129,6 +129,20 @@ const updateCartState = (product_id) => {
     }
 };
 
+const updateFollowState = (product_id) => {
+    let followBtnClass = ".follow-btn-" + product_id;
+    heartBtnBounce(followBtnClass);
+    if ($(followBtnClass).hasClass("bi-heart")) {
+        addToFollow(product_id);
+        $(followBtnClass).removeClass("bi-heart");
+        $(followBtnClass).addClass("bi-heart-fill");
+    } else {
+        removeFollow(product_id);
+        $(followBtnClass).removeClass("bi-heart-fill");
+        $(followBtnClass).addClass("bi-heart");
+    }
+};
+
 /* Component */
 const browsingHistoryComponent = (data) => {
     let html = `
