@@ -1,10 +1,16 @@
 $(() => {
-    /* Navbar */
     let memberRes = getMemberInfo();
-    displayUserName(memberRes);
-    /* Navbar End */
-    getRandTenProduct();
-    getBrowsingHistory();
+    if (memberRes) {
+        displayUserName(memberRes);
+        getRandTenProduct(1);
+        getBrowsingHistory();
+    } else {
+        $("#recent-area").remove();
+        $("#foryou-area").removeClass("col-9");
+        $("#foryou-area").addClass("col-12");
+        getRandTenProduct(0);
+    }
+    getAd();
 });
 
 /* Ajax */
