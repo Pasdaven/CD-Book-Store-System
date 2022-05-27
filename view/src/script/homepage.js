@@ -14,7 +14,7 @@ $(() => {
 });
 
 /* Ajax */
-const getRandTenProduct = () => {
+const getRandTenProduct = (member_state) => {
     let data = {
         controller: "product",
         method: "getRandTenProduct",
@@ -25,7 +25,7 @@ const getRandTenProduct = () => {
         method: "POST",
         data: json,
         success: (res) => {
-            displayForYouList(res);
+            displayForYouList(res, member_state);
         },
     });
 };
@@ -166,17 +166,33 @@ const browsingHistoryComponent = (data) => {
     `;
     return html;
 };
-const forYouComponent = (data) => {
-    let followHeartIconType = data["member_data"]["isFollow"][0] ? "bi-heart-fill" : "bi-heart";
-    let cartBtnType = data["member_data"]["isCart"][0] ? "remove-from-cart-btn" : "add-to-cart-btn";
-    let cartText = data["member_data"]["isCart"][0] ? "Remove From Cart" : "Add To Cart";
+const forYouComponent = (data, member_state) => {
+    let followHeartIconType;
+    let cartBtnType;
+    let cartText;
+    let followFunction;
+    let cartFunction;
+    let col;
+    if (member_state) {
+        followHeartIconType = data["member_data"]["isFollow"][0] ? "bi-heart-fill" : "bi-heart";
+        cartBtnType = data["member_data"]["isCart"][0] ? "remove-from-cart-btn" : "add-to-cart-btn";
+        cartText = data["member_data"]["isCart"][0] ? "Remove From Cart" : "Add To Cart";
+        followFunction = "updateFollowState(" + data['product_id'] + ");";
+        cartFunction = "updateCartState(" + data['product_id'] + ");";
+        col = "col-6";
+    } else {
+        followHeartIconType = "bi-heart";
+        cartBtnType = "add-to-cart-btn";
+        cartText = "Add To Cart";
+        followFunction = "jumpLoginPage();";
+        cartFunction = "jumpLoginPage();";
+        col = "col-4";
+    }
     let html = `
-    <div class="col-6 foryou-component p-3">
+    <div class="${col} foryou-component p-3">
         <div class="row wrap mx-1">
             <div class="col-12 foryou-heart d-flex justify-content-end pt-3 pe-3">
-                <i class="bi heart ${followHeartIconType} follow-btn-${
-        data["product_id"]
-    }" onclick="updateFollowState(${data["product_id"]});"></i>
+                <i class="bi heart ${followHeartIconType} follow-btn-${data["product_id"]}" onclick="${followFunction}"></i>
             </div>
             <div class="col-12 foryou-product-info">
                 <div class="row">
@@ -206,9 +222,7 @@ const forYouComponent = (data) => {
                 </div>
             </div>
             <div class="col-12 d-flex justify-content-end pb-3 pe-3">
-                <div class="cart-btn ${cartBtnType} cart-btn-${data["product_id"]}" onclick="updateCartState(${
-        data["product_id"]
-    });">
+                <div class="cart-btn ${cartBtnType} cart-btn-${data["product_id"]}" onclick="${cartFunction}">
                     <i class="bi bi-cart-fill me-2"></i><span class="cart-text cart-text-${
                         data["product_id"]
                     }">${cartText}</span>
@@ -254,9 +268,10 @@ const displayRate = (data) => {
             break;
     }
 };
-const displayForYouList = (data) => {
+
+const displayForYouList = (data, member_state) => {
     data.forEach((element) => {
-        $("#foryou-component-area").append(forYouComponent(element));
+        $("#foryou-component-area").append(forYouComponent(element, member_state));
         displayRate(element);
     });
 };
