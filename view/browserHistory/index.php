@@ -79,7 +79,7 @@ if (isset($_SESSION['member_id']) && isset($_SESSION['email'])) {
             <div class="container py-5">
                 <div class="row align-items-center justify-content-center pt-5 mt-4">
                     <div>
-                        <h1 class="mx-auto" style="width: 320px;font-size:36px;"><i class="bi bi-clock-history me-3"></i>browserHistory</h1>
+                        <h1 class="mx-auto" style="width: 400px;font-size:36px;"><i class="bi bi-clock-history me-3"></i>Browsing History</h1>
                     </div>
                 </div>
                 <div class="row my-3 justify-content-center">
