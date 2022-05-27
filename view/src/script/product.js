@@ -5,6 +5,7 @@ $(() => {
     /* Navbar End */
     let product_id = getUrl();
     searchProductById(product_id);
+    searchComment(product_id);
     createBrowsingHistory();
     checkFollow();
     checkCart();
@@ -385,4 +386,27 @@ const createBrowsingHistory = () => {
     });
 };
 
+const searchComment = (product_id) => {
+    let data = {
+        controller: "commentList",
+        method: "getCommentByProductId",
+        parameter: {
+            product_id: product_id,
+        },
+    };
+    let json = JSON.stringify(data);
+    $.ajax({
+        url: "/CD-Book-Store-System/controller/core.php",
+        method: "POST",
+        data: json,
+        success: (res) => {
+            if (res != "") {
+                res.forEach((element) => {
+                    displayComment(element);
+                });
+            } else {
+                displayNoComment();
+            }
+        },
+    });
 };
