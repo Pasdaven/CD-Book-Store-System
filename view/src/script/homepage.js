@@ -332,6 +332,13 @@ const displayForYouList = (data, member_state) => {
     });
 };
 
+const displayAd = (data) => {
+    data.forEach(element => {
+        $('#ad-area').append(adComponent(element['product_info'][0]));
+    });
+    $('#ad-area').append(adComponentEnd());
+};
+
 /* Animation Control */
 const heartBtnBounce = (followBtnClass) => {
     $(followBtnClass).addClass("bounce");
