@@ -13,7 +13,7 @@ header("Cache-Control: no-cache");
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css" />
-    <link rel="stylesheet" href="src/style/homepage.css?02570207" />
+    <link rel="stylesheet" href="src/style/homepage.css?05270122" />
     <link rel="shortcut icon" href="/CD-Book-Store-System/view/src/image/logo.png" type="image/x-icon" />
 </head>
 
@@ -358,7 +358,7 @@ header("Cache-Control: no-cache");
     <script src="/CD-Book-Store-System/view/src/script/searchProduct.js"></script>
     <script src="/CD-Book-Store-System/view/src/script/member.js"></script>
     <!-- Custom -->
-    <script src="/CD-Book-Store-System/view/src/script/homepage.js?05270207"></script>
+    <script src="/CD-Book-Store-System/view/src/script/homepage.js?05270122"></script>
 </body>
 
 </html>
