@@ -131,4 +131,9 @@ class Member extends Model {
         $sql = $this->select($this->member_table, ['member_id']) . $this->where('credit_num', '>=', '80');
         return $this->execute($sql);
     }
+    
+    public function getMemberNameByMemberId($member_id) {
+        $sql = $this->select($this->member_table, ['member_name']) . $this->where('member_id', '=', $member_id);
+        return $this->execute($sql);
+    }
 }
