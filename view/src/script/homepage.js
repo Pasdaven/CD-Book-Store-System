@@ -53,7 +53,6 @@ const addToCart = (product_id) => {
         url: "/CD-Book-Store-System/controller/core.php",
         method: "POST",
         data: json,
-        success: (res) => console.log("add to cart"),
     });
 };
 
@@ -70,7 +69,6 @@ const removeFromCart = (product_id) => {
         url: "/CD-Book-Store-System/controller/core.php",
         method: "POST",
         data: json,
-        success: (res) => console.log("remove cart"),
     });
 };
 
@@ -87,7 +85,6 @@ const addToFollow = (product_id) => {
         url: "/CD-Book-Store-System/controller/core.php",
         method: "POST",
         data: json,
-        success: (res) => console.log("follow"),
     });
 };
 
@@ -104,7 +101,6 @@ const removeFollow = (product_id) => {
         url: "/CD-Book-Store-System/controller/core.php",
         method: "POST",
         data: json,
-        success: (res) => console.log("un follow"),
     });
 };
 
