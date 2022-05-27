@@ -10,10 +10,23 @@ $(() => {
     checkCart();
 });
 
+/* logic */
+const displayFollowBtn = (data) => {
+    data == "" ? showFollowBtn() : showUnFollowBtn();
+};
+
+const displayCartBtn = (data) => {
+    data == "" ? showCartBtn() : showUnCartBtn();
+};
+
 /* DOM Function */
 const getUrl = () => {
     let param = new URLSearchParams(window.location.search);
     return param.get("id");
+};
+
+const display404 = () => {
+    window.location.replace("/CD-Book-Store-System/view/404");
 };
 
 const displayData = (data) => {
@@ -29,19 +42,18 @@ const displayData = (data) => {
     displayRate(data);
 };
 
-const displayFollowBtn = (data) => {
-    data == "" ? showFollowBtn() : showUnFollowBtn();
-};
 const showFollowBtn = () => {
     $("#follow_btn_txt").html("Follow");
     $("#follow_btn").removeClass("unFollow-btn");
     $("#follow_btn").addClass("follow-btn");
 };
+
 const showUnFollowBtn = () => {
     $("#follow_btn_txt").html("Unfollow");
     $("#follow_btn").removeClass("follow-btn");
     $("#follow_btn").addClass("unFollow-btn");
 };
+
 $("#follow_btn").click(() => {
     if ($("#follow_btn").hasClass("follow-btn")) {
         addToFollow();
@@ -52,19 +64,18 @@ $("#follow_btn").click(() => {
     }
 });
 
-const displayCartBtn = (data) => {
-    data == "" ? showCartBtn() : showUnCartBtn();
-};
 const showCartBtn = () => {
     $("#cart_btn_txt").html("Add To Cart");
     $("#cart_btn").removeClass("unCart-btn");
     $("#cart_btn").addClass("cart-btn");
 };
+
 const showUnCartBtn = () => {
     $("#cart_btn_txt").html("Remove");
     $("#cart_btn").removeClass("cart-btn");
     $("#cart_btn").addClass("unCart-btn");
 };
+
 $("#cart_btn").click(() => {
     if ($("#cart_btn").hasClass("cart-btn")) {
         addToCart();
@@ -301,6 +312,4 @@ const displayRate = (data) => {
     }
 };
 
-const display404 = () => {
-    window.location.replace("/CD-Book-Store-System/view/404");
 };
