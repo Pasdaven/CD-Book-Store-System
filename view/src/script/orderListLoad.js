@@ -65,8 +65,9 @@ function getOrderList() {
                                 </div>
                                 </div>
                             </div>
-                            <div class="col-7 card" id="product-${res[i]['order_id']}">
+                            <div class="col-7 card">
                             <h5 class="card_title">Purchase Product : </h5>
+                            <div class="product_list py-3" id="product-${res[i]['order_id']}"></div>
                             </div>
                         </div>
                         <hr class="mx-4" style="height: 2px;">
@@ -184,7 +185,7 @@ function getOrderProduct(order_id, order_state) {
                             <h6 class="px-2 card_text">${count_num}</h6>
                             <h6 class="card_title">Price : </h6>
                             <h6 class="px-2" style="width: 80px;">${count_num * res1[0]['product_price']}</h6>
-                            <div id="orderComment-${product_id}"><div>
+                            <div id="orderComment-${order_id}-${product_id}"><div>
                         </div>
                             
                         `
@@ -196,7 +197,7 @@ function getOrderProduct(order_id, order_state) {
                                     <button class="btn btn-sm green" style="font-size: 12px;" onclick="showCommentModal(${product_id})">Comment</button>
                                 </div>
                             `
-                            $(`#orderComment-${product_id}`).append(comment);
+                            $(`#orderComment-${order_id}-${product_id}`).append(comment);
 
                             let modal = `
                                 <div class="modal fade" id="modal-${product_id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
