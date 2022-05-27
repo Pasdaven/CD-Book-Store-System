@@ -52,8 +52,9 @@ function getAllOrderList() {
                                 </div>
                                 </div>
                             </div>
-                            <div class="col-7 card" id="product-${res[i]['order_id']}">
+                            <div class="col-7 card">
                             <h5 class="card_title">Purchase Product : </h5>
+                            <div class="product_list py-3" id="product-${res[i]['order_id']}"></div>
                             </div>
                         </div>
                         <hr class="mx-4" style="height: 2px;">
