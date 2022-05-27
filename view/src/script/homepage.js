@@ -260,6 +260,12 @@ const displayForYouList = (data) => {
 };
 
 /* Animation Control */
+const heartBtnBounce = (followBtnClass) => {
+    $(followBtnClass).addClass("bounce");
+    setTimeout(() => {
+        $(followBtnClass).removeClass("bounce");
+    }, 200);
+}
 const hideLoadingAnimation = () => {
     $("#loading-area").remove();
 };
