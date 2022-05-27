@@ -14,7 +14,8 @@ CREATE TABLE product (
     product_description VARCHAR(500) NOT NULL COMMENT '商品說明',
     product_image VARCHAR(100) NOT NULL COMMENT '商品圖片',
     product_price INT UNSIGNED NOT NULL COMMENT '商品價格',
-    product_number INT UNSIGNED NOT NULL COMMENT '商品庫存'
+    product_number INT UNSIGNED NOT NULL COMMENT '商品庫存',
+    color_theme ENUM('blue', 'purple', 'red') NOT NULL COMMENT '商品主題顏色'
 ) COMMENT '商品';
 
 CREATE TABLE order_list (
