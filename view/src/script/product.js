@@ -111,6 +111,79 @@ const displayRate = (data) => {
     }
 };
 
+const displayComment = (comment) => {
+    let html = `
+    <div class="commentComponent">
+        <div class="commentProfileImageArea">
+            <img src="../src/image/profile-image.png" class="profileImg" />
+        </div>
+        <div class="commentTextArea">
+            <div class="commentTextHead">
+                <div class="commentUserName">
+                    <h1>${comment["member_name"]}</h1>
+                </div>
+                <div class="commentTextRate">
+                
+    `
+    switch (comment["star"]) {
+        case "1":
+            html += `
+                    <i class="bi bi-star-fill starDark"></i>
+                    <i class="bi bi-star starDark"></i>
+                    <i class="bi bi-star starDark"></i>
+                    <i class="bi bi-star starDark"></i>
+                    <i class="bi bi-star starDark"></i>
+            `;
+            break;
+        case "2":
+            html += `
+                    <i class="bi bi-star-fill starDark"></i>
+                    <i class="bi bi-star-fill starDark"></i>
+                    <i class="bi bi-star starDark"></i>
+                    <i class="bi bi-star starDark"></i>
+                    <i class="bi bi-star starDark"></i>
+            `;
+            break;
+        case "3":
+            html += `
+                    <i class="bi bi-star-fill starDark"></i>
+                    <i class="bi bi-star-fill starDark"></i>
+                    <i class="bi bi-star-fill starDark"></i>
+                    <i class="bi bi-star starDark"></i>
+                    <i class="bi bi-star starDark"></i>
+            `;
+            break;
+        case "4":
+            html += `
+                    <i class="bi bi-star-fill starDark"></i>
+                    <i class="bi bi-star-fill starDark"></i>
+                    <i class="bi bi-star-fill starDark"></i>
+                    <i class="bi bi-star-fill starDark"></i>
+                    <i class="bi bi-star starDark"></i>
+            `;
+            break;
+        case "5":
+            html += `
+                    <i class="bi bi-star-fill starDark"></i>
+                    <i class="bi bi-star-fill starDark"></i>
+                    <i class="bi bi-star-fill starDark"></i>
+                    <i class="bi bi-star-fill starDark"></i>
+                    <i class="bi bi-star-fill starDark"></i>
+            `;
+            break;
+    }
+    html += `
+                </div>
+            </div>
+            <div class="commentTextBody">
+                <p class="commentText">${comment["product_comment"]}</p>
+            </div>
+        </div>
+    </div>
+    `;
+    $("#commentComponentArea").append(html);
+};
+
 /* Ajax Function */
 const searchProductById = (product_id) => {
     let data = {
