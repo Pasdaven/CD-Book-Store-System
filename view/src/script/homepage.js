@@ -248,6 +248,37 @@ const forYouComponent = (data, member_state) => {
     return html;
 };
 
+const adComponent = (data) => {
+    let html = `
+    <div class="col-6 ad-wrap p-3">
+        <div class="ad-component ad-bg-${data['color_theme']}">
+            <div class="row px-3">
+                <div class="col-4 ad-img-wrap d-flex align-items-center justify-content-center">
+                    <img src="${data['product_image']}" />
+                </div>
+                <div class="col-8 ad-info-wrap d-flex align-items-center">
+                    <div class="row">
+                        <div class="col-12">
+                            <h1>${data['product_name']}</h1>
+                        </div>
+                        <div class="col-12">
+                            <h3>by ${data['product_author']}</h3>
+                        </div>
+                        <div class="col-12">
+                            <p>${truncate(data["product_description"], 220)}</p>
+                        </div>
+                        <div class="col-12">
+                            <button class="ad-view-btn view-btn-${data['color_theme']} px-5 py-2" onclick="jumpProductPage(${data['product_id']});">View</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    `;
+    return html;
+};
+
 /* Dom */
 const jumpProductPage = (product_id) => {
     let url = "/CD-Book-Store-System/view/product/index.html?id=" + product_id;
