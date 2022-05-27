@@ -89,7 +89,7 @@
                 </div>
             </div>
             <div class="offcanvas-footer d-flex justify-content-center">
-                <a type="button" class="offcanvas_btn" href="" onclick="logout()"><i class="bi bi-box-arrow-left mx-2"></i>Log out</a>
+                <a type="button" class="offcanvas_btn" href="" onclick="homepageLogout()"><i class="bi bi-box-arrow-left mx-2"></i>Log out</a>
             </div>
         </div>
         <!-- Navbar end -->
