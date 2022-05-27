@@ -1,14 +1,45 @@
 $(() => {
-    /* Navbar */
     let memberRes = getMemberInfo();
-    displayUserName(memberRes);
-    /* Navbar End */
+    if (memberRes) {
+        displayUserName(memberRes);
+        createBrowsingHistory();
+        checkFollow();
+        checkCart();
+        $("#follow_btn").click(() => {
+            if ($("#follow_btn").hasClass("follow-btn")) {
+                addToFollow();
+                showUnFollowBtn();
+            } else {
+                removeFollow();
+                showFollowBtn();
+            }
+        });
+        $("#cart_btn").click(() => {
+            if ($("#cart_btn").hasClass("cart-btn")) {
+                addToCart();
+                showUnCartBtn();
+            } else {
+                removeCart();
+                showCartBtn();
+            }
+        });
+    } else {
+        $("#follow_btn_txt").html("Follow");
+        $("#follow_btn").addClass("follow-btn");
+        $("#cart_btn_txt").html("Add To Cart");
+        $("#cart_btn").addClass("cart-btn");
+        $("#follow_btn").click(() => {
+            let url = "/CD-Book-Store-System/view/login";
+            window.location = url;
+        });
+        $("#cart_btn").click(() => {
+            let url = "/CD-Book-Store-System/view/login";
+            window.location = url;
+        });
+    }
     let product_id = getUrl();
     searchProductById(product_id);
     searchComment(product_id);
-    createBrowsingHistory();
-    checkFollow();
-    checkCart();
 });
 
 /* logic */
@@ -57,16 +88,6 @@ const showUnFollowBtn = () => {
     $("#follow_btn").addClass("unFollow-btn");
 };
 
-$("#follow_btn").click(() => {
-    if ($("#follow_btn").hasClass("follow-btn")) {
-        addToFollow();
-        showUnFollowBtn();
-    } else {
-        removeFollow();
-        showFollowBtn();
-    }
-});
-
 const showCartBtn = () => {
     $("#cart_btn_txt").html("Add To Cart");
     $("#cart_btn").removeClass("unCart-btn");
@@ -78,16 +99,6 @@ const showUnCartBtn = () => {
     $("#cart_btn").removeClass("cart-btn");
     $("#cart_btn").addClass("unCart-btn");
 };
-
-$("#cart_btn").click(() => {
-    if ($("#cart_btn").hasClass("cart-btn")) {
-        addToCart();
-        showUnCartBtn();
-    } else {
-        removeCart();
-        showCartBtn();
-    }
-});
 
 const displayRate = (data) => {
     let rate = parseInt(data[0]["avg_star"][0]["AVG(star)"]);
