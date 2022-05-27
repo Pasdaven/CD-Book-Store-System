@@ -350,7 +350,7 @@ const heartBtnBounce = (followBtnClass) => {
     setTimeout(() => {
         $(followBtnClass).removeClass("bounce");
     }, 200);
-}
+};
 const hideLoadingAnimation = () => {
     $("#loading-area").remove();
 };

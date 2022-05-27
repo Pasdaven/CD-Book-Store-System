@@ -138,7 +138,7 @@ const displayComment = (comment) => {
                 </div>
                 <div class="commentTextRate">
                 
-    `
+    `;
     switch (comment["star"]) {
         case "1":
             html += `
@@ -201,9 +201,9 @@ const displayComment = (comment) => {
 const displayNoComment = () => {
     let html = `
     <h5 class="no-comment-text">There are no comments for this product yet.</h5>
-    `
+    `;
     $("#commentComponentArea").append(html);
-}
+};
 
 /* Ajax Function */
 const searchProductById = (product_id) => {
