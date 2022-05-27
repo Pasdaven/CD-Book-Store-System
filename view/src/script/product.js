@@ -17,6 +17,7 @@ const getUrl = () => {
 };
 
 const displayData = (data) => {
+    document.title = "Pascal Store | " + data[0]["product_name"];
     $("#product_name").html(data[0]["product_name"]);
     $("#comment_product_name").html(data[0]["product_name"]);
     $("#product_author").html(data[0]["product_author"]);
