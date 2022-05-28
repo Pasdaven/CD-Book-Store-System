@@ -1,26 +1,3 @@
-$(() => {
-    /* Navbar */
-    let memberRes = getMemberInfo();
-    displayUserName(memberRes);
-    /* Navbar End */
-    loadOrder();
-    loadMsg();
-    $("#send-btn").click(() => {
-        createCsMessage();
-        cleanInputBox();
-    });
-    $("#msg-content").keypress((e) => {
-        code = e.keyCode ? e.keyCode : e.which;
-        if (code == 13) {
-            createCsMessage();
-            cleanInputBox();
-        }
-    });
-    setInterval(() => {
-        loadUnreadMsg();
-    }, 500);
-});
-
 const getUrl = () => {
     let param = new URLSearchParams(window.location.search);
     return param.get("id");
@@ -83,11 +60,10 @@ const displayOrderInfo = (res) => {
     });
 };
 
-const createCsMessage = () => {
+const createCsMessage = (msg_by) => {
     if ($("#msg-content").val() != "") {
         let cs_record_id = getUrl();
         let msg_content = $("#msg-content").val();
-        let msg_by = "member";
         let data = {
             controller: "customerService",
             method: "createCsMessage",
@@ -127,9 +103,8 @@ const createMsgComponent = (data) => {
     $("#msg-content-area").append(html);
 };
 
-const loadUnreadMsg = () => {
+const loadUnreadMsg = (msg_by) => {
     let cs_record_id = getUrl();
-    let msg_by = "cs";
     let data = {
         controller: "customerService",
         method: "searchUnreadMsg",
@@ -154,13 +129,14 @@ const loadUnreadMsg = () => {
     });
 };
 
-const loadMsg = () => {
+const loadMsg = (read_who) => {
     let cs_record_id = getUrl();
     let data = {
         controller: "customerService",
         method: "searchMsgByCsRecId",
         parameter: {
             cs_record_id: cs_record_id,
+            read_who: read_who,
         },
     };
     let json = JSON.stringify(data);

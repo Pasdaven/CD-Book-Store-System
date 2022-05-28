@@ -16,9 +16,9 @@ if (isset($_SESSION['member_id']) && isset($_SESSION['email'])) {
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
         <!-- Custom CSS -->
-        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="/CD-Book-Store-System/view/src/style/memberChat.css?2022052801" />
         <link rel="shortcut icon" href="/CD-Book-Store-System/view/src/image/logo.png" type="image/x-icon" />
-        <title>Member CS</title>
+        <title>Pascal Store | Customer Service</title>
     </head>
 
     <body>
@@ -113,7 +113,8 @@ if (isset($_SESSION['member_id']) && isset($_SESSION['email'])) {
         <script src="/CD-Book-Store-System/view/src/script/member.js"></script>
         <script src="../../src/script/searchProduct.js"></script>
         <!-- Custom js -->
-        <script src="main.js"></script>
+        <script src="/CD-Book-Store-System/view/src/script/msgCore.js?2022052801"></script>
+        <script src="/CD-Book-Store-System/view/src/script/memberChat.js?2022052801"></script>
     </body>
 
     </html>

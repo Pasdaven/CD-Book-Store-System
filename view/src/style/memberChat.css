@@ -116,12 +116,12 @@ body {
 
 /* Area Setting */
 .msg-content-area {
-    height: 95%;
+    height: calc(100% - 50px);
     padding: 20px;
     overflow-y: scroll;
 }
 .send-area {
-    height: 5%;
+    height: 50px;
     padding-bottom: 10px;
     padding-left: 20px;
     padding-right: 20px;
