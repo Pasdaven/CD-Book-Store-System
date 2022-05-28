@@ -1,0 +1,12 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  .page {
+    background-color: #F3F5F7;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }

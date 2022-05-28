@@ -97,7 +97,7 @@ if (isset($_SESSION['member_id']) && isset($_SESSION['email'])) {
 
                         </div>
                         <div class="pt-3" style="height: 15%;">
-                            <button type="button" class="btn-con-Shop"><i class="bi bi-chevron-left"></i>Continue Shopping</button>
+                            <button type="button" class="btn-con-Shop" onclick="window.location.href='/CD-Book-Store-System/view/'"><i class="bi bi-chevron-left"></i>Continue Shopping</button>
                         </div>
                     </div>
                     <div class="col-5" style="height: 100%;">
