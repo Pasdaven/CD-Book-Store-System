@@ -8,7 +8,7 @@ $(() => {
     });
     $(".btn-view-info").click(function() {
         let id = parseInt($(this).attr('id'));
-        let url = `/CD-Book-Store-System/view/product/index.html?id=${id}`;
+        let url = `/CD-Book-Store-System/view/product/?id=${id}`;
         window.location = url;
     });
 

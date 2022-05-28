@@ -95,7 +95,7 @@ if (isset($_SESSION['member_id']) && isset($_SESSION['email'])) {
         <script src="../src/script/cart.js"></script>
         <script src="../src/script/followList.js"></script>
         <script src="../src/script/searchProduct.js"></script>
-        <script src="../src/script/browserHistory.js"></script>
+        <script src="../src/script/browserHistory.js?2022052901"></script>
     </body>
 
     </html>
