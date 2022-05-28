@@ -11,6 +11,26 @@ class CustomerService extends Model {
         return $this->execute($sql);
     }
 
+    public function getCsRecordByCsId($param) {
+        $orderList = new OrderList();
+        $cs_id = $param['cs_id'];
+        $sql = $this->select('cs_record') . $this->where('cs_id', '=', $cs_id);
+        $result = $this->execute($sql);
+        for ($i = 0; $i < count($result); $i++) {
+            // order, member, product info
+            $cs_record_id = $result[$i]['cs_record_id'];
+            $sql = $this->select('cs_record', ['order_id']) . $this->where('cs_record_id', '=', $cs_record_id);
+            $order_id = $this->execute($sql)[0]['order_id'];
+            $result[$i]['order_info'] = $orderList->getOrderByOrderId($order_id);
+
+            // unread message count
+            $sql = $this->select('cs_message') . $this->where('cs_record_id', '=', $cs_record_id) . $this->and('msg_by', '=', 'member') . $this->and('msg_state', '=', 'unread');
+            $result[$i]['unread_count'] = count($this->execute($sql));
+        }
+        
+        return $result;
+    }
+
     public function searchMsgByMsgId($message_id) {
         $sql = $this->select('cs_message') . $this->where('message_id', '=', $message_id);
 
