@@ -49,11 +49,14 @@ class CustomerService extends Model {
     
     public function searchMsgByCsRecId($param) {
         $cs_record_id = $param['cs_record_id'];
+        $read_who = $param['read_who'];
         $sql = $this->select('cs_message') . $this->where('cs_record_id', '=', $cs_record_id);
         
         $result = $this->execute($sql);
         foreach ($result as $value) {
-            $this->readMsg($value['message_id']);
+            if ($value['msg_by'] == $read_who) {
+                $this->readMsg($value['message_id']);
+            }
         }
         
         return $result;
