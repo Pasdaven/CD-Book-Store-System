@@ -1,3 +1,10 @@
+<?php
+
+session_start();
+
+if (isset($_SESSION['member_id']) && isset($_SESSION['email'])) {
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -14,9 +21,9 @@
             crossorigin="anonymous"
         />
         <!-- Custom CSS -->
-        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="/CD-Book-Store-System/view/src/style/cs.css" />
         <link rel="shortcut icon" href="/CD-Book-Store-System/view/src/image/logo.png" type="image/x-icon" />
-        <title>CS</title>
+        <title>Pascal Store | Customer Service</title>
     </head>
     <body>
         <!-- Navbar -->
@@ -132,6 +139,13 @@
         <script src="/CD-Book-Store-System/view/src/script/member.js"></script>
         <script src="../src/script/searchProduct.js"></script>
         <!-- Custom js -->
-        <script src="main.js"></script>
+        <script src="/CD-Book-Store-System/view/src/script/cs.js"></script>
     </body>
 </html>
+
+<?php
+
+} else {
+    header("Location: /CD-Book-Store-System/view/login");
+}
+?>
