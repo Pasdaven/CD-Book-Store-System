@@ -147,6 +147,7 @@ function getAllOrderProduct(order_id, order_state) {
             for (var i = 0; i < res.length; i++) {
                 let product_id = res[i]['product_id'];
                 let count_num = res[i]['count_num'];
+                let product_price = res[i]['product_price'];
                 let data = {
                     controller: 'product',
                     method: 'searchProductById',
@@ -168,7 +169,7 @@ function getAllOrderProduct(order_id, order_state) {
                             <h6 class="card_title">Count : </h6>
                             <h6 class="px-2 card_text">${count_num}</h6>
                             <h6 class="card_title">Price : </h6>
-                            <h6 class="px-2" style="width: 80px;">${count_num * res1[0]['product_price']}</h6>
+                            <h6 class="px-2" style="width: 80px;">${count_num * product_price}</h6>
                         </div>
                             
                         `
