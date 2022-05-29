@@ -2,7 +2,7 @@ CREATE TABLE member (
     member_id INT UNSIGNED PRIMARY KEY auto_increment COMMENT '會員編號',
     member_name VARCHAR(20) COMMENT '會員名稱',
     birthday DATE COMMENT '生日',
-    phone_num INT UNSIGNED COMMENT '手機號碼',
+    phone_num VARCHAR(10) COMMENT '手機號碼',
     sex ENUM('Male', 'Female') COMMENT '性別',
     credit_num INT COMMENT '信用分數'
 ) COMMENT '會員資料';
