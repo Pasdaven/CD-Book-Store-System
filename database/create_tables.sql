@@ -49,6 +49,7 @@ CREATE TABLE order_product (
     order_id INT UNSIGNED NOT NULL COMMENT '訂單編號',
     product_id INT UNSIGNED NOT NULL COMMENT '商品編號',
     count_num INT UNSIGNED NOT NULL COMMENT '商品數量',
+    product_price INT UNSIGNED NOT NULL COMMENT '商品價格',
     FOREIGN KEY(product_id) REFERENCES product (product_id),
     FOREIGN KEY(order_id) REFERENCES order_list (order_id),
     PRIMARY KEY(order_id, product_id)
