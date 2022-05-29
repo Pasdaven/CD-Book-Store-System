@@ -14,8 +14,10 @@ class OrderProduct extends Model {
         foreach ($arr as $kvalue) {
             $product_id = $kvalue['product_id'];
             $count_num = $kvalue['count_num'];
-            $sql = $this->insert(['order_id' => $order_id, 'product_id' => $product_id, 'count_num' => $count_num]);
-            $this->execute($sql);
+            $product_price = $this->execute($this->select('product', ['product_price']) . $this->where('product_id', '=', $product_id));
+            
+            $sql = $this->insert(['order_id' => $order_id, 'product_id' => $product_id, 'count_num' => $count_num, 'product_price' => $product_price[0]['product_price']]);
+            $this->execute($sql); 
             $product = new Product();
             $price += ($product->searchPriceById($product_id)[0]['product_price']) * $count_num;
             $product->reduceProductNum($kvalue);
