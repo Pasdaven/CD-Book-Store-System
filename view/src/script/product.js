@@ -67,6 +67,7 @@ const displayData = (data) => {
     document.title = "Pascal Store | " + data[0]["product_name"];
     $("#product_name").html(data[0]["product_name"]);
     $("#comment_product_name").html(data[0]["product_name"]);
+    $("#comment_product_author").html(data[0]["product_author"]);
     $("#product_author").html(data[0]["product_author"]);
     $("#product_description").html(data[0]["product_description"]);
     $("#product_price").html(data[0]["product_price"]);

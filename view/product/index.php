@@ -175,7 +175,7 @@
                     </div>
                     <div class="commentInfoArea">
                         <h1 class="commentBookName" id="comment_product_name"></h1>
-                        <h2 class="commentBookAuth">by Ashlee Vance</h2>
+                        <h2 class="commentBookAuth">by <a id="comment_product_author"></a></h2>
                         <div class="commentRate">
                             <i class="bi star1 star"></i>
                             <i class="bi star2 star"></i>
