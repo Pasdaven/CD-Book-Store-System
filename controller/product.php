@@ -107,4 +107,26 @@ class Product extends Model {
 
         return $result;
     }
+
+    public function deleteProduct($param) {
+        $product_id = $param['product_id'];
+        $sql = $this->delete() . $this->where('product_id', '=', $product_id);
+        $this->execute($sql);
+    }
+    public function updateProduct($param) {
+        $product_name = $param['product_name'];
+        $product_description = $param['product_description'];
+        $product_image = $param['product_image'];
+        $product_price = $param['product_price'];
+        $product_number = $param['product_number'];
+        $product_author = $param['product_author'];
+        $color_theme = $param['color_theme'];
+        $product_id = $param['product_id'];
+        if ($product_image == "/CD-Book-Store-System/view/src/image/book/") {
+            $sql = $this->update(['color_theme' => $color_theme, 'product_author' => $product_author, 'product_name' => $product_name, 'product_description' => $product_description, 'product_price' => $product_price, 'product_number' => $product_number]) . $this->where('product_id', '=', $product_id);
+        } else {
+            $sql = $this->update(['color_theme' => $color_theme, 'product_author' => $product_author, 'product_name' => $product_name, 'product_description' => $product_description, 'product_image' => $product_image, 'product_price' => $product_price, 'product_number' => $product_number]) . $this->where('product_id', '=', $product_id);
+        }
+        return $this->execute($sql);
+    }
 }
