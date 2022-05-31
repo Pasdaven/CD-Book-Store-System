@@ -1,3 +1,6 @@
+let selfIdentity;
+let otherIdentity;
+
 const getUrl = () => {
     let param = new URLSearchParams(window.location.search);
     return param.get("id");
@@ -40,6 +43,8 @@ const createProductComponent = (data) => {
 };
 
 const displayOrderInfo = (res) => {
+    $('#member_id').html(res[0]["member_id"]);
+    $('#member_name').html(res[0]["member_name"]);
     $("#order_id").html(res[0]["order_id"]);
     $("#order_state").html(res[0]["order_state"]);
     $(".product-order-state").addClass(res[0]["order_state"]);
@@ -60,7 +65,7 @@ const displayOrderInfo = (res) => {
     });
 };
 
-const createCsMessage = (msg_by) => {
+const createCsMessage = () => {
     if ($("#msg-content").val() != "") {
         let cs_record_id = getUrl();
         let msg_content = $("#msg-content").val();
@@ -70,7 +75,7 @@ const createCsMessage = (msg_by) => {
             parameter: {
                 cs_record_id: cs_record_id,
                 msg_content: msg_content,
-                msg_by: msg_by,
+                msg_by: selfIdentity,
             },
         };
         let json = JSON.stringify(data);
@@ -92,7 +97,7 @@ const cleanInputBox = () => {
 };
 
 const createMsgComponent = (data) => {
-    let msg_by = data["msg_by"] == "member" ? "by-self" : "by-other";
+    let msg_by = data["msg_by"] == selfIdentity ? "by-self" : "by-other";
     let html = `
         <div class="col-12 msg-component ${msg_by}">
             <div class="msg-component-body">
@@ -110,7 +115,7 @@ const loadUnreadMsg = (msg_by) => {
         method: "searchUnreadMsg",
         parameter: {
             cs_record_id: cs_record_id,
-            msg_by: msg_by,
+            msg_by: otherIdentity,
         },
     };
     let json = JSON.stringify(data);
@@ -129,14 +134,14 @@ const loadUnreadMsg = (msg_by) => {
     });
 };
 
-const loadMsg = (read_who) => {
+const loadMsg = () => {
     let cs_record_id = getUrl();
     let data = {
         controller: "customerService",
         method: "searchMsgByCsRecId",
         parameter: {
             cs_record_id: cs_record_id,
-            read_who: read_who,
+            read_who: otherIdentity,
         },
     };
     let json = JSON.stringify(data);

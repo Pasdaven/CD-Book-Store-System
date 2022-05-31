@@ -85,8 +85,17 @@ if (isset($_SESSION['member_id']) && isset($_SESSION['email'])) {
                             <h1 class="product-order-id">Order #<a id="order_id"></a></h1>
                             <div class="product-order-state"><i class="bi" id="state_icon"></i><a id="order_state"></a></div>
                         </div>
-                        <div class="row body-wrap" id="product_component_area">
+                        <div class="row member-info mt-3 px-2">
+                            <div class="member-text col-6">
+                                <span class="title">Member ID</span><br />
+                                <span id="member_id"></span><br />
+                            </div>
+                            <div class="state-text col-6">
+                                <span class="title">Member Name</span><br />
+                                <span id="member_name"></span>
+                            </div>
                         </div>
+                        <div class="row body-wrap" id="product_component_area"></div>
                     </div>
                 </div>
                 <div class="col-xl-9 msg-wrap">

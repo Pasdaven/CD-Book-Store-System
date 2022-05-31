@@ -3,8 +3,8 @@ $(() => {
     let memberRes = getMemberInfo();
     displayUserName(memberRes);
     /* Navbar End */
-    selfIdentity = "member";
-    otherIdentity = "cs";
+    selfIdentity = "cs";
+    otherIdentity = "member";
     loadOrder();
     loadMsg();
     $("#send-btn").click(() => {
