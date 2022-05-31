@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../src/style/product.css?05270859" />
+    <link rel="stylesheet" href="../src/style/product.css?2022053101" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css" />
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
@@ -137,9 +137,9 @@
                 <!-- productRightBox -->
                 <div class="productRightBox">
                     <div class="product-text">
-                        <h1 class="book-name" id="product_name"></h1>
-                        <h2 class="book-auth">by <a id="product_author"></a></h2>
-                        <p class="book-description" id="product_description"></p>
+                        <h1 class="book-name ellipsis-3" id="product_name"></h1>
+                        <h2 class="book-auth ellipsis-1">by <a id="product_author"></a></h2>
+                        <p class="book-description ellipsis-6" id="product_description"></p>
                     </div>
                     <div class="price">
                         <p class="price-text">

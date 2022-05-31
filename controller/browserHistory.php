@@ -36,10 +36,22 @@ class BrowserHistory extends Model {
 
     public function getDistinctBrowserHis() {
         $member_id = $_SESSION['member_id'];
-        $sql = $this->selectDistinct($this->table, ['product_id']) . $this->where('member_id', '=', $member_id) . $this->orderby('browsing_his_id', 'DESC');
-        // return $sql;
-        $result = $this->execute($sql);
-        // return $result;
+        $sql = $this->select($this->table) . $this->where('member_id', '=', $member_id) . $this->orderby('browsing_his_id', 'DESC');
+        $list = $this->execute($sql);
+        $count = 0;
+        $result = array();
+        for ($i = 0; $i < count($list); $i++) {
+            $dup = 0;
+            for ($j = 0; $j < $count; $j++) {
+                if ($list[$i]['product_id'] == $result[$j]['product_id']) {
+                    $dup = 1;
+                }
+            }
+            if (!$dup) {
+                $result[$count] = $list[$i];
+                $count++;
+            }
+        }
         $commentlist = new CommentList();
         $product = new Product();
         foreach ($result as $r) {
