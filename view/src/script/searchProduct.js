@@ -6,7 +6,7 @@ $('#search_btn').click(function() {
 });
 document.getElementById('search').oninput=function() {
     $('#search-list-group').remove();
-    $('#search-div').append(`<div class="list-group" id="search-list-group" style="position: fixed;width:240px;"></div>`)
+    $('#search-div').append(`<div class="list-group" id="search-list-group" style="position: fixed;width:240px;"></div>`);
     product_name = $('#search').val();
     if (product_name != "") {
         res = timelySearchProduct(product_name);
