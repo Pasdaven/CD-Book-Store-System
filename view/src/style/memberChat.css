@@ -340,3 +340,8 @@ body {
         background-position: 0 0;
     }
 }
+.member-info .title {
+    color: rgb(42, 93, 196);
+    font-size: 14px;
+    font-weight: bold;
+}
