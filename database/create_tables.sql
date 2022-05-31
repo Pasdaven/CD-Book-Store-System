@@ -33,7 +33,9 @@ CREATE TABLE order_list (
     payment ENUM('cash', 'credit card') NOT NULL COMMENT '付款方式',
     refund_account VARCHAR(100) COMMENT '退款帳戶',
     order_state ENUM('wait', 'arrive', 'finish', 'cancel', 'return', 'overtime') NOT NULL COMMENT '訂單狀態',
-    order_time VARCHAR(100) COMMENT '購買日期',
+    order_year VARCHAR(100) COMMENT '購買日期(year)',
+    order_month VARCHAR(100) COMMENT '購買日期(month)',
+    order_date VARCHAR(100) COMMENT '購買日期(date)',
     FOREIGN KEY(member_id) REFERENCES member (member_id)
 ) COMMENT '訂單';
 
