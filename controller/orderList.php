@@ -6,6 +6,7 @@ require_once('./orderProduct.php');
 require_once('./coupon.php');
 require_once('./cart.php');
 require_once('./product.php');
+require_once('./member.php');
 
 class OrderList extends Model {
     protected $table = 'order_list';
@@ -101,10 +102,12 @@ class OrderList extends Model {
     public function getOrderByOrderId($order_id) {
         $orderProduct = new OrderProduct();
         $product = new Product();
+        $member = new Member();
 
         $sql = $this->select($this->table) . $this->where('order_id', '=', $order_id);
         $order_info = $this->execute($sql);
-        
+
+        $order_info[0]['member_name'] = $member->getMemberNameByMemberId($order_info[0]['member_id'])[0]['member_name'];
         $param = array('order_id' => $order_info[0]['order_id']);
         $order_product = $orderProduct->getOrderProductById($param);
         for ($i = 0; $i < count($order_product); $i++) {
