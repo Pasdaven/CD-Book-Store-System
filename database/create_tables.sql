@@ -129,7 +129,7 @@ CREATE TABLE comment_list (
     product_id INT UNSIGNED NOT NULL COMMENT '商品編號',
     comment_id INT UNSIGNED PRIMARY KEY auto_increment comment '評論編號',
     star INT COMMENT '評價星星',
-    product_comment VARCHAR(100) NOT NULL COMMENT '商品評論',
+    product_comment VARCHAR(300) NOT NULL COMMENT '商品評論',
     comment_create_time DATETIME NOT NULL COMMENT '評論時間',
     FOREIGN KEY (member_id) REFERENCES member (member_id),
     FOREIGN KEY (product_id) REFERENCES product (product_id)
