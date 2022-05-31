@@ -169,7 +169,7 @@ const browsingHistoryComponent = (data) => {
         <div class="browsing-history-info d-flex align-items-center ms-3">
             <div class="row">
                 <div class="col-12">
-                    <h1>${data[0][0]["product_name"]}</h1>
+                    <h1 class="ellipsis-1">${data[0][0]["product_name"]}</h1>
                 </div>
                 <div class="col-12">
                     <h3>by ${data[0][0]["product_author"]}</h3>
@@ -216,13 +216,13 @@ const forYouComponent = (data, member_state) => {
                     <div class="col-8 foryou-product-info-text pe-3">
                         <div class="row">
                             <div class="col-12 title">
-                                <h1>${data["product_name"]}</h1>
+                                <h1 class="ellipsis-1">${data["product_name"]}</h1>
                             </div>
                             <div class="col-12 subtitle">
                                 <h3>by ${data["product_author"]}</h3>
                             </div>
                             <div class="col-12 content">
-                                <p>${truncate(data["product_description"], 180)}</p>
+                                <p class="ellipsis-4">${data["product_description"]}</p>
                             </div>
                             <div class="col-12 rate">
                                 <i class="bi star1 star"></i>
@@ -259,13 +259,13 @@ const adComponent = (data) => {
                 <div class="col-8 ad-info-wrap d-flex align-items-center">
                     <div class="row">
                         <div class="col-12">
-                            <h1>${data['product_name']}</h1>
+                            <h1 class="ellipsis-1">${data["product_name"]}</h1>
                         </div>
                         <div class="col-12">
                             <h3>by ${data['product_author']}</h3>
                         </div>
                         <div class="col-12">
-                            <p>${truncate(data["product_description"], 220)}</p>
+                            <p class="ellipsis-5">${data["product_description"]}</p>
                         </div>
                         <div class="col-12">
                             <button class="ad-view-btn view-btn-${data['color_theme']} px-5 py-2" onclick="jumpProductPage(${data['product_id']});">View</button>
