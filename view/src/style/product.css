@@ -94,18 +94,15 @@ section {
     height: 75%;
 }
 .book-name {
-    height: 15%;
     color: #3f4953;
     font-size: 48px;
 }
 .book-auth {
-    height: 15%;
     margin-top: 10px;
     color: #9199a0;
     font-size: 32px;
 }
 .book-description {
-    height: 70%;
     margin-top: 10px;
     color: #9199a0;
     font-size: 26px;
@@ -341,7 +338,7 @@ section {
     overflow-y: scroll;
 }
 .commentComponentArea .no-comment-text {
-    color: #9199a0;
+    color: #f6f6f6;
 }
 .commentComponent {
     transition: 0.6s;
@@ -539,4 +536,31 @@ section {
         background-size: 50%;
         background-position: 0 0;
     }
+}
+.ellipsis-1 {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+}
+.ellipsis-3 {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+}
+.ellipsis-6 {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    white-space: normal;
 }
