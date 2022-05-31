@@ -83,7 +83,7 @@ if (isset($_SESSION['member_id']) && isset($_SESSION['email'])) {
                     </div>
                 </div>
                 <div class="row my-3 justify-content-center">
-                    <div class="col-12 scroll" style="width: 1053px;height: 700px;" id="browserHistory">
+                    <div class="col-12 scroll" style="width: 1053px;height:70vh;" id="browserHistory">
 
 
                     </div>
