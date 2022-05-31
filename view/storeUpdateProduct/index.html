@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pascal Store | Update Product</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/CD-Book-Store-System/view/src/style/storeAddProduct.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css" />
+</head>
+<body>
+    <div class="page">
+        <div class="container" style="width:100vw;height:100vh;">
+            <div class="row d-flex align-items-center justify-content-center" style="margin-top:12vh;height:80vh;">
+                <div class="p-5 card d-flex align-items-center justify-content-center" style="width: 50%;">
+                    
+                    
+                    <form action="/CD-Book-Store-System/controller/updateProduct.php" method="post" enctype="multipart/form-data">
+                        <input type="text" id="product_id" name="product_id" class="m-3 form-control" readonly="true">
+                        <input type="text" id="product_name" name="product_name" class="m-3 form-control" placeholder="product_name">
+                        <input type="text" id="product_author" name="product_author" class="m-3 form-control" placeholder="product_author">
+                        <input type="text" id="product_description" name="product_description" class="m-3 form-control" placeholder="product_description">
+                        <input type="file" id="product_image" name="product_image" style="display: none;">
+                        <div class="row align-items-center justify-content-center">
+                            <input type="button" value="select file" id="fileButton" class="col-5 m-3 form-control" style="width: 25%;">
+                            <span class="col-7" id="filename"></span>
+                        </div>
+                        <input type="text" id="product_price" name="product_price" class="m-3 form-control" placeholder="product_price">
+                        <input type="text" id="product_number" name="product_number" class="m-3 form-control" placeholder="product_number">
+                        <select id="color_theme" name="color_theme" class="m-3 form-select" aria-label="Default color_theme">
+                            <option id="color_theme_selected" selected></option>
+                            <option value="1">blue</option>
+                            <option value="2">red</option>
+                            <option value="3">purple</option>
+                        </select>
+                        <input type="submit" style="margin-left:270px;width:100px;" value="upload">
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="../src/script/storeUpdateProduct.js"></script>
+</body>
+</html>
