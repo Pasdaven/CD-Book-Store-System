@@ -8,10 +8,16 @@ const sendFreeShippingCoupon = () => {
         url: "/CD-Book-Store-System/controller/core.php",
         method: "POST",
         data: json,
-        success: (res) => console.log(res),
+        success: (res) => {
+            if (res == true) {
+                $('#modalSuccess').modal('show');
+            } else {
+                $('#modalRepeat').modal('show');
+            }
+        },
     });
 };
 
-$("#btn-4").click(() => {
+$("#sendCoupon").click(() => {
     sendFreeShippingCoupon();
 });

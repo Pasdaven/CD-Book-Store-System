@@ -22,8 +22,11 @@ class OrderList extends Model {
         $payment = $param['payment'];
         $order_state = 'wait';
         $deliver_method = $param['deliver_method'];
+        $order_year = date("Y");
+        $order_month = date("m");
+        $order_date = date("d");
         $sql = $this->insert([
-            'name' => $name, 'member_id' => $member_id, 'deliver_method' => $deliver_method, 'price' => $price, 'subtotal' => $subtotal, 'deliver' => $deliver, 'discount' => $discount, 'phone_num' => $phone_num, 'convenience_store' => $convenience_store, 'order_address' => $order_address, 'payment' => $payment, 'order_state' => $order_state
+            'name' => $name, 'member_id' => $member_id, 'deliver_method' => $deliver_method, 'price' => $price, 'subtotal' => $subtotal, 'deliver' => $deliver, 'discount' => $discount, 'phone_num' => $phone_num, 'convenience_store' => $convenience_store, 'order_address' => $order_address, 'payment' => $payment, 'order_state' => $order_state, 'order_year' => $order_year, 'order_month' => $order_month, 'order_date' => $order_date
         ]);
         $order_id = $this->execute($sql);
         $shipping_fee = 0;

@@ -36,6 +36,10 @@ function getAllOrderList() {
                                     <h6 class="card_title"><i class="bi bi-clock mx-3"></i>State : </h6>
                                     <h6 class="px-2">${res[i]['order_state']}</h6>
                                 </div>
+                                <div class="d-flex">
+                                    <h6 class="card_title"><i class="bi bi-calendar3 mx-3"></i>Time : </h6>
+                                    <h6 class="px-2">${res[i]['order_year']}-${res[i]['order_month']}-${res[i]['order_date']}</h6>
+                                </div>
                                 <div class="d-flex" id="refund-${res[i]['order_id']}" style="color: pink;"></div>
                                 <div class="d-flex">
                                     <h6 class="card_title"><i class="bi bi-person-circle mx-3"></i>Name : </h6> 
