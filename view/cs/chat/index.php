@@ -122,7 +122,7 @@ if (isset($_SESSION['member_id']) && isset($_SESSION['email'])) {
         <script src="/CD-Book-Store-System/view/src/script/member.js"></script>
         <script src="../../src/script/searchProduct.js"></script>
         <!-- Custom js -->
-        <script src="/CD-Book-Store-System/view/src/script/msgCore.js?2022060101"></script>
+        <script src="/CD-Book-Store-System/view/src/script/chatCore.js?2022060101"></script>
         <script src="/CD-Book-Store-System/view/src/script/memberChat.js?2022060101"></script>
     </body>
 
