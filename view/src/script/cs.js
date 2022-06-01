@@ -104,7 +104,7 @@ const jumpChatRoom = (order_id) => {
         method: "POST",
         data: json,
         success: (res) => {
-            let url = "./csChat/?id=" + res[0]["cs_record_id"];
+            let url = "./chat/?id=" + res[0]["cs_record_id"];
             window.location = url;
         },
     });

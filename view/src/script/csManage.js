@@ -42,7 +42,7 @@ const displayNone = () => {
 };
 
 const jumpChatRoom = (cs_record_id) => {
-    let url = "./csChat/?id=" + cs_record_id;
+    let url = "./chat/?id=" + cs_record_id;
     window.location = url;
 };
 
