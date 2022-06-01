@@ -162,6 +162,9 @@ if (isset($_SESSION['member_id']) && isset($_SESSION['email'])) {
                 <div class="d-flex justify-content-center">
                     <a type="button" class="offcanvas_btn my-3" href="/CD-Book-Store-System/view/browserHistory/"><i class="bi bi-clock-history mx-3"></i>History</a>
                 </div>
+                <div class="d-flex justify-content-center">
+                    <a type="button" class="offcanvas_btn my-3" href="/CD-Book-Store-System/view/cs/"><i class="bi bi-chat-dots mx-3"></i>Customer Service</a>
+                </div>
             </div>
             <div class="offcanvas-footer d-flex justify-content-center">
                 <a type="button" class="offcanvas_btn" href="/CD-Book-Store-System/view/" onclick="logout()"><i class="bi bi-box-arrow-left mx-2"></i>Log out</a>
