@@ -84,19 +84,22 @@ class CustomerService extends Model {
     }
 
     public function searchOrderInfoByCsRecId($param) {
-        $member_id = $_SESSION['member_id'];
         $orderList = new OrderList();
 
         $cs_record_id = $param['cs_record_id'];
+        $search_by = $param['search_by'];
         $sql = $this->select('cs_record', ['order_id']) . $this->where('cs_record_id', '=', $cs_record_id);
         $order_id = $this->execute($sql);
         if (!$order_id) {
             return false;
         }
         $order_id = $this->execute($sql)[0]['order_id'];
-        $order_member_id = $orderList->getMemberIdByOrderId($order_id)[0]['member_id'];
-        if ($member_id != $order_member_id) {
-            return false;
+        if ($search_by == "member") {
+            $member_id = $_SESSION['member_id'];
+            $order_member_id = $orderList->getMemberIdByOrderId($order_id)[0]['member_id'];
+            if ($member_id != $order_member_id) {
+                return false;
+            }
         }
         return $orderList->getOrderByOrderId($order_id);
     }
