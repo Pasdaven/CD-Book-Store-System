@@ -1,9 +1,9 @@
 INSERT INTO `member` 
-VALUES  (NULL, 'david', '2022-05-08', '0912345345', 'Male', '100'),
-        (NULL, 'ho', '2022-01-08', '091234456', 'Male', '100'),
-        (NULL, '阿東雅', '2022-02-08', '0912456545', 'Female', '100'),
-        (NULL, '阿南懷', '2012-05-04', '0946456534', 'Male', '100'),
-        (NULL, '阿南郭', '2002-05-08', '0914789784', 'Female', '100');
+VALUES  (NULL, 'Mike Clark', '2022-05-08', '0912345345', 'Male', '100'),
+        (NULL, 'Alex Kuhn', '2022-01-08', '091234456', 'Male', '100'),
+        (NULL, 'Nelson Bradley', '2022-02-08', '0912456545', 'Female', '100'),
+        (NULL, 'Herminia Foster', '2012-05-04', '0946456534', 'Male', '100'),
+        (NULL, 'Carl Morrison', '2002-05-08', '0914789784', 'Female', '100');
 
 INSERT INTO `member_account`
 VALUES  (1, 'member1@gmail.com', '1234'),
@@ -13,7 +13,7 @@ VALUES  (1, 'member1@gmail.com', '1234'),
         (5, 'member5@gmail.com', '4321');
 
 INSERT INTO `customer_service`
-VALUES  (1, 'Pascal');
+VALUES  (1, 'Pascal Chung');
 
 INSERT INTO `product` 
 VALUES  (1, '鋼鐵人馬斯克', '阿什利·萬斯', '馬斯克曾兩度被自己一手創立的公司踢出門，其中之一是啟動線上支付革命的PayPal，如今他已蛻變成為全球百大影響力人物、科技界的超級偶像。跟賈伯斯一樣，馬斯克被稱為「改變世界的科技狂人」，但他的夢想顯然更大、也更瘋狂。他的Tesla排名超越Google、蘋果，名列全球最聰明企業，關鍵技術更是好到其他汽車大廠都不能沒有它；SpaceX是史上第一家為國際太空站運輸物資的私人航太公司，卻一再以不可思議的低成本和尖端技術，挑戰極限，創造太空業奇蹟。', '/CD-Book-Store-System/view/src/image/book-1.png', '100', '200', 'blue'),
