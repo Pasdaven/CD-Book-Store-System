@@ -43,8 +43,8 @@ const createProductComponent = (data) => {
 };
 
 const displayOrderInfo = (res) => {
-    $('#member_id').html(res[0]["member_id"]);
-    $('#member_name').html(res[0]["member_name"]);
+    $("#member_id").html(res[0]["member_id"]);
+    $("#member_name").html(res[0]["member_name"]);
     $("#order_id").html(res[0]["order_id"]);
     $("#order_state").html(res[0]["order_state"]);
     $(".product-order-state").addClass(res[0]["order_state"]);
