@@ -61,6 +61,12 @@ const displayOrderInfo = (res) => {
     if (res[0]["order_state"] == "return") {
         $("#state_icon").addClass("bi-truck");
     }
+    if (res[0]["order_state"] == "arrive") {
+        $("#state_icon").addClass("bi-house");
+    }
+    if (res[0]["order_state"] == "overtime") {
+        $("#state_icon").addClass("bi-calendar-x");
+    }
     res["product"].forEach((element) => {
         createProductComponent(element);
     });

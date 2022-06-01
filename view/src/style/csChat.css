@@ -73,6 +73,14 @@ body {
     background: rgb(165, 188, 216);
     color: rgb(49, 91, 127);
 }
+.product-order-state.arrive {
+    background: rgb(247, 153, 76);
+    color: rgb(255, 255, 255);
+}
+.product-order-state.overtime {
+    background: rgb(145, 76, 247);
+    color: rgb(255, 255, 255);
+}
 
 .body-wrap {
     margin-top: 30px;
