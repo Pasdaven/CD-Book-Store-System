@@ -1,6 +1,7 @@
 <?php
 
 use model\Model;
+
 require("orderList.php");
 
 class CustomerService extends Model {
@@ -27,7 +28,7 @@ class CustomerService extends Model {
             $sql = $this->select('cs_message') . $this->where('cs_record_id', '=', $cs_record_id) . $this->and('msg_by', '=', 'member') . $this->and('msg_state', '=', 'unread');
             $result[$i]['unread_count'] = count($this->execute($sql));
         }
-        
+
         return $result;
     }
 
@@ -66,26 +67,26 @@ class CustomerService extends Model {
         }
         return $result;
     }
-    
+
     public function searchMsgByCsRecId($param) {
         $cs_record_id = $param['cs_record_id'];
         $read_who = $param['read_who'];
         $sql = $this->select('cs_message') . $this->where('cs_record_id', '=', $cs_record_id);
-        
+
         $result = $this->execute($sql);
         foreach ($result as $value) {
             if ($value['msg_by'] == $read_who) {
                 $this->readMsg($value['message_id']);
             }
         }
-        
+
         return $result;
     }
-    
+
     public function searchOrderInfoByCsRecId($param) {
         $member_id = $_SESSION['member_id'];
         $orderList = new OrderList();
-        
+
         $cs_record_id = $param['cs_record_id'];
         $sql = $this->select('cs_record', ['order_id']) . $this->where('cs_record_id', '=', $cs_record_id);
         $order_id = $this->execute($sql);
@@ -99,10 +100,10 @@ class CustomerService extends Model {
         }
         return $orderList->getOrderByOrderId($order_id);
     }
-    
+
     public function searchOrderInfoByMemberId() {
         $orderList = new OrderList();
-        
+
         $order_list = $orderList->getOrderById();
         if (!count($order_list)) {
             return false;
@@ -122,7 +123,7 @@ class CustomerService extends Model {
         if (!count($cs_record_id)) {
             $cs_record_id = $this->createCsRecord($order_id);
             $result = array(array('cs_record_id' => $cs_record_id));
-            
+
             return $result;
         }
         return $cs_record_id;
