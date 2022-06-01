@@ -13,6 +13,7 @@ const loadOrder = () => {
         method: "searchOrderInfoByCsRecId",
         parameter: {
             cs_record_id: cs_record_id,
+            search_by: selfIdentity,
         },
     };
     let json = JSON.stringify(data);
