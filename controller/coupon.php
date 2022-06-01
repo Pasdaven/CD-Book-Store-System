@@ -24,6 +24,14 @@ class Coupon extends Model {
 
         $year = date("Y");
         $month = date("m");
+
+        if ($month == 1) {
+            $month = 12;
+            $year -= 1;
+        } else {
+            $month -= 1;
+        }
+
         $sql = 'SELECT member_id, SUM(price) FROM order_list WHERE order_year = ' . $year . ' and order_month = ' . $month . ' GROUP BY member_id';
         $orderList = $this->execute($sql);
         for ($i = 0; $i < count($orderList); $i++) {
