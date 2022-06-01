@@ -37,16 +37,22 @@ class OrderList extends Model {
         // } else {
         //     $shipping_fee = 60;
         // }
+
         $coupon = new Coupon();
-        foreach ($param['coupon_id'] as $coupon_id) {
+        $coupon_list = explode(",", $param['coupon_id']);
+        for ($i = 0; $i < count($coupon_list); $i++) {
+            $coupon->useCoupon($order_id, $coupon_list[$i]);
+        }
+
+        // foreach ($param['coupon_id'] as $coupon_id) {
             // $feature = $coupon->getCouponFeature($coupon_id)[0]['feature'];
             // if ($feature == 'free-shipping') {
             //     $shipping_fee = 0;
             // } else {
             //     $coupon_fee = $feature;
             // }
-            $coupon->useCoupon($order_id, $coupon_id);
-        }
+            // $coupon->useCoupon($order_id, $coupon_id);
+        // }
         $o_p = new OrderProduct();
         $price = $o_p->insertOrderProductAndCalculatePrice($param, $order_id, $coupon_fee, $shipping_fee);
         // $sql = $this->update(['price' => $price]) . $this->where('order_id', '=', $order_id);
