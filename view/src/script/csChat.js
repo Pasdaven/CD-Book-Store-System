@@ -1,8 +1,4 @@
 $(() => {
-    /* Navbar */
-    let memberRes = getMemberInfo();
-    displayUserName(memberRes);
-    /* Navbar End */
     selfIdentity = "cs";
     otherIdentity = "member";
     loadOrder();
