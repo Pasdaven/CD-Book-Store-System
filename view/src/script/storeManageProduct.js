@@ -57,12 +57,9 @@ $(() => {
     let res = searchProduct(productName);
     displaysearchProductInfo(res);
 
-    $(".delete").click(function() {
+    $(".deleteButton").click(function() {
         let id = $(this).attr('id');
-        $(".deleteButton").click(function() {
-            removeProductCard(id);
-        });
-        
+        removeProductCard(id);
     });
     $(".update").click(function() {
         let id = $(this).attr('id');
@@ -177,6 +174,9 @@ const deleteProduct = (id) => {
         url: '/CD-Book-Store-System/controller/core.php',
         method: 'POST',
         data: json,
+        success: function (res) {
+           console.log(res);
+        }
     });
 }
 
@@ -189,6 +189,20 @@ const removeProductCard = (id) => {
 
 const searchProductComponent = (product_name, product_author, product_id, product_image) => {
     return `
+    <div class="modal fade" id="deleteModal${product_id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle${product_id}"><strong></strong>Sure you want to delete it?</strong></h5>
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">cancel</button>
+                    <button type="button" class="btn btn-primary deleteButton" id="${product_id}" data-bs-dismiss="modal">delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="shadow card p-4 my-4 card${product_id}" style="width: 100%;">
         <div class="d-flex align-items-center justify-content-center">
             <div class="col-3"><img src="${product_image}" alt="" width="165" height="237"></div>
@@ -204,7 +218,7 @@ const searchProductComponent = (product_name, product_author, product_id, produc
             <div class="col-1"></div>
             <div class="col-2 btn">
                 <button type="button" class="my-2 align-items-center justify-content-center d-flex btn update" id="${product_id}" style="width:100%;height:120px;background:rgba(44, 172, 56, 0.2);">update</button>
-                <button type="button" class="my-2 align-items-center justify-content-center d-flex btn delete" id="${product_id}" style="width:100%;height:120px;background:rgba(232, 61, 61, 0.2);" data-bs-toggle="modal" data-bs-target="#deleteModal">delete</button>
+                <button type="button" class="my-2 align-items-center justify-content-center d-flex btn delete" style="width:100%;height:120px;background:rgba(232, 61, 61, 0.2);" data-bs-toggle="modal" data-bs-target="#deleteModal${product_id}">delete</button>
             </div>
         </div>
     </div>
