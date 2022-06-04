@@ -52,7 +52,7 @@ class Mailer extends Model {
         $headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
 
         // Additional headers
-        $headers .= 'From: Pascal Store <contact@pasdaven.com>' . "\r\n";
+        $headers .= 'From: Pascal Store <resetpassword@pasdaven.com>' . "\r\n";
 
 
         // Mail it
