@@ -59,7 +59,10 @@ $(() => {
 
     $(".delete").click(function() {
         let id = $(this).attr('id');
-        removeProductCard(id);
+        $(".deleteButton").click(function() {
+            removeProductCard(id);
+        });
+        
     });
     $(".update").click(function() {
         let id = $(this).attr('id');
@@ -201,7 +204,7 @@ const searchProductComponent = (product_name, product_author, product_id, produc
             <div class="col-1"></div>
             <div class="col-2 btn">
                 <button type="button" class="my-2 align-items-center justify-content-center d-flex btn update" id="${product_id}" style="width:100%;height:120px;background:rgba(44, 172, 56, 0.2);">update</button>
-                <button type="button" class="my-2 align-items-center justify-content-center d-flex btn delete" id="${product_id}" style="width:100%;height:120px;background:rgba(232, 61, 61, 0.2);">delete</button>
+                <button type="button" class="my-2 align-items-center justify-content-center d-flex btn delete" id="${product_id}" style="width:100%;height:120px;background:rgba(232, 61, 61, 0.2);" data-bs-toggle="modal" data-bs-target="#deleteModal">delete</button>
             </div>
         </div>
     </div>
