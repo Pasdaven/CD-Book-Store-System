@@ -47,6 +47,12 @@ const createOrderComponent = (data) => {
     if (data[0]["order_state"] == "return") {
         state_icon = "bi-truck";
     }
+    if (data[0]["order_state"] == "arrive") {
+        state_icon = "bi-house";
+    }
+    if (data[0]["order_state"] == "overtime") {
+        state_icon = "bi-calendar-x";
+    }
     let html = `
     <div class="card px-5 py-4 mb-5" id="${data[0]["order_id"]}">
         <div class="row">
@@ -104,7 +110,7 @@ const jumpChatRoom = (order_id) => {
         method: "POST",
         data: json,
         success: (res) => {
-            let url = "./csChat/?id=" + res[0]["cs_record_id"];
+            let url = "./chat/?id=" + res[0]["cs_record_id"];
             window.location = url;
         },
     });

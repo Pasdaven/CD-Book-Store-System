@@ -6,6 +6,7 @@ require_once('./orderProduct.php');
 require_once('./coupon.php');
 require_once('./cart.php');
 require_once('./product.php');
+require_once('./member.php');
 
 class OrderList extends Model {
     protected $table = 'order_list';
@@ -36,16 +37,22 @@ class OrderList extends Model {
         // } else {
         //     $shipping_fee = 60;
         // }
+
         $coupon = new Coupon();
-        foreach ($param['coupon_id'] as $coupon_id) {
+        $coupon_list = explode(",", $param['coupon_id']);
+        for ($i = 0; $i < count($coupon_list); $i++) {
+            $coupon->useCoupon($order_id, $coupon_list[$i]);
+        }
+
+        // foreach ($param['coupon_id'] as $coupon_id) {
             // $feature = $coupon->getCouponFeature($coupon_id)[0]['feature'];
             // if ($feature == 'free-shipping') {
             //     $shipping_fee = 0;
             // } else {
             //     $coupon_fee = $feature;
             // }
-            $coupon->useCoupon($order_id, $coupon_id);
-        }
+            // $coupon->useCoupon($order_id, $coupon_id);
+        // }
         $o_p = new OrderProduct();
         $price = $o_p->insertOrderProductAndCalculatePrice($param, $order_id, $coupon_fee, $shipping_fee);
         // $sql = $this->update(['price' => $price]) . $this->where('order_id', '=', $order_id);
@@ -101,10 +108,12 @@ class OrderList extends Model {
     public function getOrderByOrderId($order_id) {
         $orderProduct = new OrderProduct();
         $product = new Product();
+        $member = new Member();
 
         $sql = $this->select($this->table) . $this->where('order_id', '=', $order_id);
         $order_info = $this->execute($sql);
-        
+
+        $order_info[0]['member_name'] = $member->getMemberNameByMemberId($order_info[0]['member_id'])[0]['member_name'];
         $param = array('order_id' => $order_info[0]['order_id']);
         $order_product = $orderProduct->getOrderProductById($param);
         for ($i = 0; $i < count($order_product); $i++) {

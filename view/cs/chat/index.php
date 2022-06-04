@@ -16,7 +16,7 @@ if (isset($_SESSION['member_id']) && isset($_SESSION['email'])) {
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
         <!-- Custom CSS -->
-        <link rel="stylesheet" href="/CD-Book-Store-System/view/src/style/memberChat.css?2022052801" />
+        <link rel="stylesheet" href="/CD-Book-Store-System/view/src/style/memberChat.css?2022060202" />
         <link rel="shortcut icon" href="/CD-Book-Store-System/view/src/image/logo.png" type="image/x-icon" />
         <title>Pascal Store | Customer Service</title>
     </head>
@@ -85,8 +85,17 @@ if (isset($_SESSION['member_id']) && isset($_SESSION['email'])) {
                             <h1 class="product-order-id">Order #<a id="order_id"></a></h1>
                             <div class="product-order-state"><i class="bi" id="state_icon"></i><a id="order_state"></a></div>
                         </div>
-                        <div class="row body-wrap" id="product_component_area">
+                        <div class="row member-info mt-3 px-2">
+                            <div class="member-text col-6">
+                                <span class="title">Member ID</span><br />
+                                <span id="member_id"></span><br />
+                            </div>
+                            <div class="state-text col-6">
+                                <span class="title">Member Name</span><br />
+                                <span id="member_name"></span>
+                            </div>
                         </div>
+                        <div class="row body-wrap" id="product_component_area"></div>
                     </div>
                 </div>
                 <div class="col-xl-9 msg-wrap">
@@ -113,8 +122,8 @@ if (isset($_SESSION['member_id']) && isset($_SESSION['email'])) {
         <script src="/CD-Book-Store-System/view/src/script/member.js"></script>
         <script src="../../src/script/searchProduct.js"></script>
         <!-- Custom js -->
-        <script src="/CD-Book-Store-System/view/src/script/msgCore.js?2022052801"></script>
-        <script src="/CD-Book-Store-System/view/src/script/memberChat.js?2022052801"></script>
+        <script src="/CD-Book-Store-System/view/src/script/chatCore.js?2022060202"></script>
+        <script src="/CD-Book-Store-System/view/src/script/memberChat.js?2022060201"></script>
     </body>
 
     </html>

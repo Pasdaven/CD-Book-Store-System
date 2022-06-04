@@ -21,7 +21,7 @@ if (isset($_SESSION['member_id']) && isset($_SESSION['email'])) {
             crossorigin="anonymous"
         />
         <!-- Custom CSS -->
-        <link rel="stylesheet" href="/CD-Book-Store-System/view/src/style/cs.css" />
+        <link rel="stylesheet" href="/CD-Book-Store-System/view/src/style/cs.css?2022060202" />
         <link rel="shortcut icon" href="/CD-Book-Store-System/view/src/image/logo.png" type="image/x-icon" />
         <title>Pascal Store | Customer Service</title>
     </head>
@@ -139,7 +139,7 @@ if (isset($_SESSION['member_id']) && isset($_SESSION['email'])) {
         <script src="/CD-Book-Store-System/view/src/script/member.js"></script>
         <script src="../src/script/searchProduct.js"></script>
         <!-- Custom js -->
-        <script src="/CD-Book-Store-System/view/src/script/cs.js"></script>
+        <script src="/CD-Book-Store-System/view/src/script/cs.js?2022060202"></script>
     </body>
 </html>
 

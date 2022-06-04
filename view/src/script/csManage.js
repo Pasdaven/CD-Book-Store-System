@@ -1,5 +1,8 @@
 $(() => {
     getCsRecordByCsId();
+    $("#cs-list-area").on("click", ".cs-component", function () {
+        jumpChatRoom($(this).attr("id"));
+    });
 });
 
 /* Ajax */
@@ -38,10 +41,15 @@ const displayNone = () => {
     $("#cs-list-area").append(html);
 };
 
+const jumpChatRoom = (cs_record_id) => {
+    let url = "./chat/?id=" + cs_record_id;
+    window.location = url;
+};
+
 /* Component */
 const csComponent = (data) => {
     let html = `
-<div class="col-4 cs-component mb-4">
+<div class="col-4 cs-component mb-4" id="${data["cs_record_id"]}">
     <div class="card">
         <div class="col-12 head d-flex justify-content-between px-3 mt-3 align-items-center">
             <span class="order-id">Order ID #${data["order_id"]}</span>
