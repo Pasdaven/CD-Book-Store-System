@@ -55,7 +55,7 @@ class Member extends Model {
             $confirm_number = (int)(crc32($password[0]['member_password']) / 10000);
             // 發送 confirm number email
             // mail($param['email'],'Pascal Store Forget Password Verification Code','Verification Code : ' . $confirm_number);
-            // $mailer->send($param['email'], $confirm_number);
+            $mailer->send($param['email'], $confirm_number);
             return $confirm_number;
             // return true;
         } else {
