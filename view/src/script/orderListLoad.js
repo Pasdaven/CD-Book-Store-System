@@ -193,11 +193,11 @@ function getOrderProduct(order_id, order_state) {
                         // console.log(res1);
                         let product = `
                         <div class="d-flex">
-                            <h6 class="card_title">Name : </h6>
+                            <h6 class="card_title" style="width: 70px;">Name : </h6>
                             <h6 class="px-2" style="width: 220px;">${res1[0]['product_name']}</h6>
-                            <h6 class="card_title">Count : </h6>
+                            <h6 class="card_title" style="width: 75px;">Count : </h6>
                             <h6 class="px-2 card_text">${count_num}</h6>
-                            <h6 class="card_title">Price : </h6>
+                            <h6 class="card_title" style="width: 65px;">Price : </h6>
                             <h6 class="px-2" style="width: 80px;">${count_num * product_price}</h6>
                             <div id="orderComment-${order_id}-${product_id}"><div>
                         </div>
