@@ -12,3 +12,6 @@
 
 # dotenv
 .env
+
+# VSCodeCounter
+.VSCodeCounter
